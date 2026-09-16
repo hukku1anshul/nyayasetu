@@ -181,7 +181,16 @@
         <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">Net ROI</span>
       </a>
 
-      <div class="sidebar-category">Legal & Tax Copilot</div>
+            <div class="sidebar-category">Citizen & Worker Moats</div>
+      <a onclick="switchTab('statutory')" id="nav-item-statutory" class="sidebar-link">
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">???</span>
+          <span>5 Statutory Shields</span>
+        </div>
+        <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-bold">New Moats</span>
+      </a>
+
+<div class="sidebar-category">Legal & Tax Copilot</div>
       <a onclick="switchTab('vakilca')" id="nav-item-vakilca" class="sidebar-link">
         <div class="flex items-center gap-2.5">
           <span class="text-base">⚖️</span>
@@ -2128,24 +2137,21 @@
       <div id="vakil-subtab-content-notices" class="space-y-4">
         
         <!-- Step-by-Step Instructions Card -->
-        <div class="bg-purple-950/20 border border-purple-500/20 rounded-xl p-4 text-xs space-y-2">
-          <div class="font-bold text-purple-400 flex items-center gap-2 text-sm">
-            <span>📖</span> Step-by-Step Instructions: How to Generate & Serve Statutory Legal Notices
+        <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl px-4 py-2.5 text-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-3 shadow-sm">
+          <div class="flex items-center gap-2 text-[var(--muted-foreground)] flex-wrap">
+            <span class="px-2 py-0.5 rounded-md bg-purple-500/10 text-purple-400 font-bold text-[10px]">1</span> Category & Parties
+            <span class="text-slate-600">?</span>
+            <span class="px-2 py-0.5 rounded-md bg-purple-500/10 text-purple-400 font-bold text-[10px]">2</span> 15-Day Cure Window
+            <span class="text-slate-600">?</span>
+            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">3</span> Speed Post Ready
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-[var(--muted-foreground)] pt-1">
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">1. Select Notice Category & Parties</span>
-              Choose Section 138 (Cheque Bounce), Section 106 TPA (Rental Arrears/Eviction), Consumer Protection Act 2019, or Unpaid Salary/Dues. Enter sender and recipient legal names and addresses.
+          <details class="text-[11px] text-[var(--muted-foreground)] cursor-pointer group">
+            <summary class="hover:text-white font-medium flex items-center gap-1"><span>?? Statutory Guidelines</span><span class="group-open:rotate-180 transition-transform">?</span></summary>
+            <div class="mt-2 p-3 rounded-lg bg-[var(--card)] border border-[var(--border)] text-[11px] text-slate-300 space-y-1">
+              <div>? <strong>Sec 138 NI Act:</strong> 15-day statutory notice mandatory before filing criminal complaint.</div>
+              <div>? <strong>Service:</strong> Serve via Registered Post AD or Speed Post to obtain postal delivery certificate for court record.</div>
             </div>
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">2. Statutory Mandate & Timeline</span>
-              Our engine automatically embeds statutory cure periods (mandatory 15 days under Section 138 NI Act & Section 106 TPA), bank return memo particulars, and legal consequences.
-            </div>
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">3. Service via Speed Post / Email</span>
-              Copy or export the drafted notice. Under Indian law, send via Registered Post AD / Speed Post to generate a tracking delivery docket for court admission.
-            </div>
-          </div>
+          </details>
         </div>
 
         <!-- Interactive Legal Notice Generator Form & Preview -->
@@ -2266,24 +2272,21 @@ Click "Generate Statutory Legal Notice" or select a sample above to view complet
       <div id="vakil-subtab-content-agreements" class="space-y-4 hidden">
         
         <!-- Step-by-Step Instructions Card -->
-        <div class="bg-indigo-950/20 border border-indigo-500/20 rounded-xl p-4 text-xs space-y-2">
-          <div class="font-bold text-indigo-400 flex items-center gap-2 text-sm">
-            <span>🛡️</span> Step-by-Step Instructions: Audit Contracts Against Indian Statutory Law
+        <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl px-4 py-2.5 text-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-3 shadow-sm">
+          <div class="flex items-center gap-2 text-[var(--muted-foreground)] flex-wrap">
+            <span class="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-400 font-bold text-[10px]">1</span> Paste Contract
+            <span class="text-slate-600">?</span>
+            <span class="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-400 font-bold text-[10px]">2</span> Section 27 & 74 Audit
+            <span class="text-slate-600">?</span>
+            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">3</span> Supreme Court Citations
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-[var(--muted-foreground)] pt-1">
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">1. Paste Questionable Clauses</span>
-              Paste your employment contract, freelance retainer agreement, tenancy lease, or vendor terms. Or click "Load Predatory IT Offer Letter".
+          <details class="text-[11px] text-[var(--muted-foreground)] cursor-pointer group">
+            <summary class="hover:text-white font-medium flex items-center gap-1"><span>?? Void Covenant Rules</span><span class="group-open:rotate-180 transition-transform">?</span></summary>
+            <div class="mt-2 p-3 rounded-lg bg-[var(--card)] border border-[var(--border)] text-[11px] text-slate-300 space-y-1">
+              <div>? <strong>Section 27:</strong> Post-employment non-competes are void ab initio (Percept D'Mark v Zaheer Khan).</div>
+              <div>? <strong>Section 74:</strong> Liquidated damage bonds exceeding actual training expenditure are unenforceable penalties.</div>
             </div>
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">2. Statutory Void Term Engine</span>
-              Scans for terms rendered strictly void ab initio under Section 27 of the Indian Contract Act 1872 (Non-compete after exit is void), Section 28 (Arbitration bar), and Section 74 (Disproportionate liquidated damages).
-            </div>
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">3. Counter-Drafting Protection</span>
-              Receive plain-English legal advice on why the clause cannot be enforced against you in an Indian court, plus recommended safe counter-drafting clauses.
-            </div>
-          </div>
+          </details>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -2349,24 +2352,21 @@ Click "Generate Statutory Legal Notice" or select a sample above to view complet
       <div id="vakil-subtab-content-taxregime" class="space-y-4 hidden">
         
         <!-- Instructions Card -->
-        <div class="bg-emerald-950/20 border border-emerald-500/20 rounded-xl p-4 text-xs space-y-2">
-          <div class="font-bold text-emerald-400 flex items-center gap-2 text-sm">
-            <span>📊</span> Step-by-Step Instructions: Compare FY 2026-27 Tax Regimes (Section 115BAC vs Old)
+        <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl px-4 py-2.5 text-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-3 shadow-sm">
+          <div class="flex items-center gap-2 text-[var(--muted-foreground)] flex-wrap">
+            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">1</span> Gross CTC
+            <span class="text-slate-600">?</span>
+            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">2</span> 80C/80D/HRA Deductions
+            <span class="text-slate-600">?</span>
+            <span class="px-2 py-0.5 rounded-md bg-purple-500/10 text-purple-400 font-bold text-[10px]">3</span> Optimal Tax Regime
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-[var(--muted-foreground)] pt-1">
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">1. Enter Annual Gross CTC</span>
-              Enter your total gross annual salary or professional income. The New Regime automatically grants a ₹75,000 standard deduction and effective zero tax up to ₹12,75,000 via Section 87A rebate.
+          <details class="text-[11px] text-[var(--muted-foreground)] cursor-pointer group">
+            <summary class="hover:text-white font-medium flex items-center gap-1"><span>?? Budget 2026-27 Slabs</span><span class="group-open:rotate-180 transition-transform">?</span></summary>
+            <div class="mt-2 p-3 rounded-lg bg-[var(--card)] border border-[var(--border)] text-[11px] text-slate-300 space-y-1">
+              <div>? <strong>Section 115BAC:</strong> Standard ?75,000 deduction, ?3L-?7L slab at 5%, ?7L-?10L at 10%. Rebate up to ?7L.</div>
+              <div>? <strong>Old Regime:</strong> Best only when itemized deductions exceed the calculated break-even threshold.</div>
             </div>
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">2. Enter Deductions Available</span>
-              Specify Section 80C (EPF/PPF/ELSS up to ₹1.5L), Section 80D (Health insurance), Section 24(b) (Home loan interest up to ₹2L), and Section 10(13A) HRA exemption.
-            </div>
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">3. Breakeven Threshold</span>
-              The calculator computes exact net tax for both options, accounts for 4% Health & Education Cess, and highlights your exact break-even deduction point.
-            </div>
-          </div>
+          </details>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -2454,24 +2454,21 @@ Click "Generate Statutory Legal Notice" or select a sample above to view complet
       <div id="vakil-subtab-content-44ada" class="space-y-4 hidden">
         
         <!-- Instructions Card -->
-        <div class="bg-blue-950/20 border border-blue-500/20 rounded-xl p-4 text-xs space-y-2">
-          <div class="font-bold text-blue-400 flex items-center gap-2 text-sm">
-            <span>💼</span> Step-by-Step Instructions: Section 44ADA Presumptive Taxation for Professionals & Freelancers
+        <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl px-4 py-2.5 text-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-3 shadow-sm">
+          <div class="flex items-center gap-2 text-[var(--muted-foreground)] flex-wrap">
+            <span class="px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-400 font-bold text-[10px]">1</span> Gross Receipts (?75L Cap)
+            <span class="text-slate-600">?</span>
+            <span class="px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-400 font-bold text-[10px]">2</span> 50% Deemed Profit
+            <span class="text-slate-600">?</span>
+            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">3</span> Zero Books Audit
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-[var(--muted-foreground)] pt-1">
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">1. Eligibility Criteria</span>
-              Available for Specified Professionals (Software Developers, UX Designers, IT Consultants, Doctors, Lawyers, CAs, Technical Consultants) with Gross Receipts up to ₹75,00,000 (provided digital payments are ≥95%).
+          <details class="text-[11px] text-[var(--muted-foreground)] cursor-pointer group">
+            <summary class="hover:text-white font-medium flex items-center gap-1"><span>?? Eligible Professions</span><span class="group-open:rotate-180 transition-transform">?</span></summary>
+            <div class="mt-2 p-3 rounded-lg bg-[var(--card)] border border-[var(--border)] text-[11px] text-slate-300 space-y-1">
+              <div>? <strong>Notified:</strong> Software engineers, IT consultants, designers, CA, legal, doctors, architects.</div>
+              <div>? <strong>Benefit:</strong> Declare 50% as income, pay tax on 50%, no maintenance of books under Sec 44AA.</div>
             </div>
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">2. 50% Deemed Profit Scheme</span>
-              No need to maintain complex expense vouchers or undergo mandatory Section 44AB tax audit. Declare flat 50% of receipts as net taxable income.
-            </div>
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">3. Mandatory Advance Tax Calendar</span>
-              Professionals under Section 44ADA are required to pay advance tax. View the exact quarterly compliance installments to avoid Section 234B/234C interest penalties.
-            </div>
-          </div>
+          </details>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -2552,24 +2549,22 @@ Click "Generate Statutory Legal Notice" or select a sample above to view complet
       <div id="vakil-subtab-content-explainer" class="space-y-4 hidden">
         
         <!-- Instructions Card -->
-        <div class="bg-amber-950/20 border border-amber-500/20 rounded-xl p-4 text-xs space-y-2">
-          <div class="font-bold text-amber-400 flex items-center gap-2 text-sm">
-            <span>🚨</span> Step-by-Step Instructions: Decode Threatening Income Tax Department Notices
+        <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl px-4 py-2.5 text-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-3 shadow-sm">
+          <div class="flex items-center gap-2 text-[var(--muted-foreground)] flex-wrap">
+            <span class="px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-400 font-bold text-[10px]">1</span> Notice Section Code
+            <span class="text-slate-600">?</span>
+            <span class="px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-400 font-bold text-[10px]">2</span> Plain English Diagnosis
+            <span class="text-slate-600">?</span>
+            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">3</span> Statutory Reply Strategy
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-[var(--muted-foreground)] pt-1">
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">1. Identify Section Code</span>
-              Check the section number on your email, SMS, or PDF notice from `donotreply@incometax.gov.in` (e.g. 143(1), 139(9), 148, 156, 142(1)).
+          <details class="text-[11px] text-[var(--muted-foreground)] cursor-pointer group">
+            <summary class="hover:text-white font-medium flex items-center gap-1"><span>?? Common Notice Sections</span><span class="group-open:rotate-180 transition-transform">?</span></summary>
+            <div class="mt-2 p-3 rounded-lg bg-[var(--card)] border border-[var(--border)] text-[11px] text-slate-300 space-y-1">
+              <div>? <strong>143(1):</strong> Intimation of refund or tax calculation variance.</div>
+              <div>? <strong>139(9):</strong> Defective return (15-day response window).</div>
+              <div>? <strong>148 / 148A:</strong> Income escaping assessment enquiry (High risk).</div>
             </div>
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">2. Plain English Translation</span>
-              We translate threatening bureaucratic jargon into what the Income Tax Department actually discovered (e.g., Form 26AS mismatch, AIS share sale, claim error).
-            </div>
-            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              <span class="font-bold text-[var(--foreground)] block mb-1">3. Step-by-Step Resolution</span>
-              Get the exact 4-step checklist to submit your response or rectification request directly on the e-filing portal before statutory deadlines expire.
-            </div>
-          </div>
+          </details>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -2627,6 +2622,471 @@ Click "Generate Statutory Legal Notice" or select a sample above to view complet
     </section>
 
     <!-- ================= TAB: LIVE PUBLIC RAILS (ZERO-COST LOOKUPS) ================= -->
+        <!-- ==================== TAB: 5 STATUTORY CITIZEN SHIELDS ==================== -->
+    <section id="tab-statutory" class="tab-content hidden space-y-6">
+      
+      <!-- Top Banner -->
+      <div class="bg-gradient-to-r from-amber-950/40 via-[var(--card)] to-indigo-950/40 border border-amber-500/30 rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                ??? 5 Strategic Market Moats
+              </span>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                65M+ Covered Citizens
+              </span>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                100% Free Public Rails
+              </span>
+            </div>
+            <h2 class="text-xl font-bold mt-2 text-[var(--foreground)]">Citizen & Worker Statutory Protections Engine</h2>
+            <p class="text-xs text-[var(--muted-foreground)] mt-1 max-w-3xl">
+              Zero-cost instant audits for EPFO passbook mismatches, multi-state land stamp duties, CIBIL adverse remarks, Payment of Gratuity Act exemptions, and Model Tenancy Act lease agreements.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5 Subtabs -->
+        <div class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-[var(--border)]">
+          <button onclick="switchStatutorySubTab('epfo')" id="btn-statutory-subtab-epfo" class="px-3.5 py-2 rounded-xl bg-amber-600 text-white font-bold text-xs shadow-md transition">
+            ?? EPFO Passbook & Joint Declaration
+          </button>
+          <button onclick="switchStatutorySubTab('stampduty')" id="btn-statutory-subtab-stampduty" class="px-3.5 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition">
+            ??? Land Stamp Duty & Circle Rates
+          </button>
+          <button onclick="switchStatutorySubTab('cibil')" id="btn-statutory-subtab-cibil" class="px-3.5 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition">
+            ?? CIBIL Negative Remark & CICRA Notice
+          </button>
+          <button onclick="switchStatutorySubTab('gratuity')" id="btn-statutory-subtab-gratuity" class="px-3.5 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition">
+            ?? Gratuity & Retiring Tax Shield
+          </button>
+          <button onclick="switchStatutorySubTab('rental')" id="btn-statutory-subtab-rental" class="px-3.5 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition">
+            ?? Model Tenancy Act Agreement Audit
+          </button>
+        </div>
+      </div>
+
+      <!-- ================= SUBTAB 1: EPFO PASSBOOK DIAGNOSTIC ================= -->
+      <div id="statutory-subtab-content-epfo" class="space-y-6">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 pb-3 border-b border-[var(--border)]">
+            <div>
+              <h3 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+                <span>??</span> EPFO Passbook Rejection Diagnostic & SOP Joint Declaration
+              </h3>
+              <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                Diagnoses 14 clerical mismatch triggers causing 35% EPFO claim rejections. Auto-generates official 2024 SOP Joint Declaration form.
+              </p>
+            </div>
+            <!-- Quick Fill Chips -->
+            <div class="flex flex-wrap gap-2">
+              <button onclick="loadEPFOSample('mismatch')" class="px-2.5 py-1 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/20 text-[11px] font-bold transition">
+                ? Test Name Mismatch & Missing DOE
+              </button>
+              <button onclick="loadEPFOSample('father')" class="px-2.5 py-1 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/20 text-[11px] font-bold transition">
+                ? Test Father Initial Discrepancy
+              </button>
+              <button onclick="loadEPFOSample('clean')" class="px-2.5 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-[11px] font-bold transition">
+                ? Test Clean Passbook (Eligible)
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Member Name in EPFO</label>
+              <input type="text" id="epfo-name-epfo" value="Aditya Verma" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Member Name in Aadhaar</label>
+              <input type="text" id="epfo-name-aadhaar" value="Aditya K Verma" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Father's Name in EPFO</label>
+              <input type="text" id="epfo-father-epfo" value="R. K. Verma" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Father's Name in ID Proof</label>
+              <input type="text" id="epfo-father-id" value="Ram Kumar Verma" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Date of Exit (DOE) Marked?</label>
+              <select id="epfo-doe-exit" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+                <option value="false">? No (Exit Not Marked by Employer)</option>
+                <option value="true">? Yes (DOE Marked on Portal)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Aadhaar Seeded & Verified?</label>
+              <select id="epfo-aadhaar-seeded" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+                <option value="true">? Yes (Seeded with Green Tick)</option>
+                <option value="false">? No (Unseeded / Pending)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">PAN Linked on E-Sewa?</label>
+              <select id="epfo-pan-linked" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+                <option value="true">? Yes (PAN Verified)</option>
+                <option value="false">? No (TDS will apply at 34.6%)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Continuous Service (Years)</label>
+              <input type="number" id="epfo-service-years" value="4.5" step="0.5" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+          </div>
+
+          <div class="mt-4 flex flex-wrap items-center gap-3">
+            <button onclick="diagnoseEPFOPassbook()" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow-md transition flex items-center gap-2">
+              <span>??</span> Run EPFO Rejection Diagnostic
+            </button>
+          </div>
+
+          <!-- Diagnostic Results Output -->
+          <div id="epfo-diag-output" class="hidden mt-6 pt-5 border-t border-[var(--border)] space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="epfo-kpi-cards"></div>
+            <div id="epfo-findings-list" class="space-y-2"></div>
+
+            <!-- Pre-filled Joint Declaration Generator Box -->
+            <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4 mt-4">
+              <div class="flex items-center justify-between flex-wrap gap-2 mb-3">
+                <h4 class="text-xs font-bold text-white flex items-center gap-1.5">
+                  <span>??</span> Official EPFO SOP Joint Declaration Generator
+                </h4>
+                <button onclick="generateEPFOJointDeclaration()" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition flex items-center gap-1">
+                  <span>?</span> Generate Official Form Text
+                </button>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                <div>
+                  <label class="text-[11px] text-[var(--muted-foreground)]">Member UAN</label>
+                  <input type="text" id="epfo-jd-uan" value="101234567890" class="w-full bg-[var(--card)] border border-[var(--border)] rounded-lg py-1.5 px-2.5 text-xs text-white">
+                </div>
+                <div>
+                  <label class="text-[11px] text-[var(--muted-foreground)]">Establishment (Company) Name</label>
+                  <input type="text" id="epfo-jd-company" value="Infosys BPM Limited" class="w-full bg-[var(--card)] border border-[var(--border)] rounded-lg py-1.5 px-2.5 text-xs text-white">
+                </div>
+                <div>
+                  <label class="text-[11px] text-[var(--muted-foreground)]">Regional PF Office</label>
+                  <input type="text" id="epfo-jd-rpfc" value="Regional PF Commissioner, Bangalore" class="w-full bg-[var(--card)] border border-[var(--border)] rounded-lg py-1.5 px-2.5 text-xs text-white">
+                </div>
+              </div>
+              
+              <div id="epfo-jd-output-container" class="hidden mt-3">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-[11px] font-bold text-emerald-400">? Official SOP Form Ready for Signature & Submission</span>
+                  <div class="flex gap-2">
+                    <button onclick="copyToClipboard('epfo-jd-text-pre')" class="px-2.5 py-1 rounded bg-slate-700 hover:bg-slate-600 text-white text-[11px] font-semibold transition">?? Copy Form</button>
+                    <button onclick="window.print()" class="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-semibold transition">??? Print</button>
+                  </div>
+                </div>
+                <pre id="epfo-jd-text-pre" class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-[11px] text-slate-200 font-mono whitespace-pre-wrap max-h-80 overflow-y-auto select-all"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SUBTAB 2: LAND STAMP DUTY & CIRCLE RATES ================= -->
+      <div id="statutory-subtab-content-stampduty" class="hidden space-y-6">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 pb-3 border-b border-[var(--border)]">
+            <div>
+              <h3 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+                <span>???</span> Multi-State Land Stamp Duty, Circle Rate & Female Rebate Calculator
+              </h3>
+              <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                Circle rate floor valuation under Section 50C of Income Tax Act, state stamp acts, metro cesses, and female buyer concessions across 8 states.
+              </p>
+            </div>
+            <!-- Quick Fill Chips -->
+            <div class="flex flex-wrap gap-2">
+              <button onclick="loadStampDutySample('mumbai')" class="px-2.5 py-1 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/20 text-[11px] font-bold transition">
+                ? Mumbai Bandra 2BHK (?1.5 Cr, Female)
+              </button>
+              <button onclick="loadStampDutySample('bangalore')" class="px-2.5 py-1 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/20 text-[11px] font-bold transition">
+                ? Bengaluru Villa (?1.2 Cr, Joint)
+              </button>
+              <button onclick="loadStampDutySample('delhi')" class="px-2.5 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-[11px] font-bold transition">
+                ? Delhi NCR Flat (?85L)
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div class="md:col-span-2">
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">State / Jurisdiction</label>
+              <select id="stamp-state" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+                <option value="MH">Maharashtra (IGR - 5-7% + 1% Metro Cess)</option>
+                <option value="KA">Karnataka (Kaveri - 3-5% + 10% Surcharge)</option>
+                <option value="DL">Delhi NCR (DORIS - 6% Male / 4% Female)</option>
+                <option value="UP">Uttar Pradesh (IGRSUP - 7% + 1% Women Rebate)</option>
+                <option value="TN">Tamil Nadu (TNREGINET - 7% Stamp + 4% Reg)</option>
+                <option value="TS">Telangana (CARD - 4% Stamp + 1.5% Transfer)</option>
+                <option value="GJ">Gujarat (Garvi - 4.9% Male / 0% Female Stamp)</option>
+                <option value="WB">West Bengal (WBRegistration - 5-6%)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Agreed Value (?)</label>
+              <input type="number" id="stamp-agreed-val" value="15000000" step="50000" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Carpet Area (Sq Ft)</label>
+              <input type="number" id="stamp-carpet-area" value="850" step="25" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Circle Rate / Sq Ft (?)</label>
+              <input type="number" id="stamp-circle-rate" value="12000" step="500" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Buyer Gender</label>
+              <select id="stamp-gender" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+                <option value="female">?? Female Buyer (Rebate Active)</option>
+                <option value="joint">?? Joint (Male + Female)</option>
+                <option value="male">?? Male Buyer</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-center gap-3">
+            <button onclick="calculateStampDuty()" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow-md transition flex items-center gap-2">
+              <span>???</span> Calculate Government Charges & Taxes
+            </button>
+          </div>
+
+          <div id="stamp-result-output" class="hidden mt-6 pt-5 border-t border-[var(--border)] space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4" id="stamp-kpi-cards"></div>
+            <div id="stamp-breakdown-card" class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SUBTAB 3: CIBIL ADVERSE REMARK & CICRA NOTICE ================= -->
+      <div id="statutory-subtab-content-cibil" class="hidden space-y-6">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 pb-3 border-b border-[var(--border)]">
+            <div>
+              <h3 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+                <span>??</span> CIBIL Adverse Remark Diagnostic & CICRA 2005 Dispute Drafter
+              </h3>
+              <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                Section 21 statutory demand notice to Banks and Bureau. Enforces RBI's ?100/day penalty for delays beyond 30 days.
+              </p>
+            </div>
+            <!-- Quick Fill Chips -->
+            <div class="flex flex-wrap gap-2">
+              <button onclick="loadCIBILSample('written_off')" class="px-2.5 py-1 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 text-[11px] font-bold transition">
+                ? Written-Off Loan (-85 pts)
+              </button>
+              <button onclick="loadCIBILSample('settled')" class="px-2.5 py-1 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/20 text-[11px] font-bold transition">
+                ? Settled Account (-65 pts)
+              </button>
+              <button onclick="loadCIBILSample('dpd_90')" class="px-2.5 py-1 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 border border-purple-500/20 text-[11px] font-bold transition">
+                ? False 90+ DPD Overdue
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Adverse Remark Code</label>
+              <select id="cibil-remark-code" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+                <option value="WRITTEN_OFF">WRITTEN OFF (Complete Credit Freeze -85 pts)</option>
+                <option value="SETTLED">SETTLED / COMPROMISE (Pre-Closes Lending -65 pts)</option>
+                <option value="POST_WRITE_OFF_SETTLED">POST WRITE OFF SETTLED (Partial Recovery -50 pts)</option>
+                <option value="DPD_90_PLUS">90+ DAYS PAST DUE (False SMA/NPA Tag -75 pts)</option>
+                <option value="SUIT_FILED">SUIT FILED / WILFUL DEFAULTER (-100 pts)</option>
+                <option value="IDENTITY_THEFT_FRAUD">IDENTITY THEFT / PHANTOM LOAN (-90 pts)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Reporting Lender Bank / NBFC</label>
+              <input type="text" id="cibil-bank-name" value="HDFC Bank Limited" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Loan / Card Account No.</label>
+              <input type="text" id="cibil-acc-no" value="50100456789012" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Disputed / Settled Amount (?)</label>
+              <input type="number" id="cibil-dispute-amt" value="75000" step="1000" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-center gap-3">
+            <button onclick="diagnoseCIBILRemark()" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow-md transition flex items-center gap-2">
+              <span>??</span> Diagnose Impact & Draft Statutory Dispute Notice
+            </button>
+          </div>
+
+          <div id="cibil-result-output" class="hidden mt-6 pt-5 border-t border-[var(--border)] space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4" id="cibil-kpi-cards"></div>
+            <div id="cibil-notice-card" class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SUBTAB 4: GRATUITY & RETIRING EMPLOYEE TAX SHIELD ================= -->
+      <div id="statutory-subtab-content-gratuity" class="hidden space-y-6">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 pb-3 border-b border-[var(--border)]">
+            <div>
+              <h3 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+                <span>??</span> Payment of Gratuity Act 1972 & Retiring Employee Tax Shield
+              </h3>
+              <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                Statutory Section 4(2) 15/26 formula, Section 10(10) ?20L exemption cap, Section 10(10AA) ?25L leave encashment, and EPS 95 pension.
+              </p>
+            </div>
+            <!-- Quick Fill Chips -->
+            <div class="flex flex-wrap gap-2">
+              <button onclick="loadGratuitySample('senior')" class="px-2.5 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-[11px] font-bold transition">
+                ? 12.6 Yrs Service (IT Manager ?1.1L)
+              </button>
+              <button onclick="loadGratuitySample('veteran')" class="px-2.5 py-1 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/20 text-[11px] font-bold transition">
+                ? 25 Yrs Service (Senior Exec ?1.8L)
+              </button>
+              <button onclick="loadGratuitySample('ineligible')" class="px-2.5 py-1 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 text-[11px] font-bold transition">
+                ? 4.2 Yrs Service (< 5 Yrs Check)
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Last Drawn Basic (Monthly ?)</label>
+              <input type="number" id="grat-basic" value="100000" step="5000" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Last Drawn DA (Monthly ?)</label>
+              <input type="number" id="grat-da" value="10000" step="1000" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Years of Service</label>
+              <input type="number" id="grat-years" value="12.6" step="0.5" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Covered Under Gratuity Act?</label>
+              <select id="grat-covered" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+                <option value="true">? Yes (15/26 Formula, 6+ mos = 1 yr)</option>
+                <option value="false">? No (15/30 Formula)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Leave Encashment (?)</label>
+              <input type="number" id="grat-leave-encashment" value="800000" step="25000" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-center gap-3">
+            <button onclick="calculateGratuity()" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow-md transition flex items-center gap-2">
+              <span>??</span> Calculate Gratuity, Tax Relief & Pension
+            </button>
+          </div>
+
+          <div id="grat-result-output" class="hidden mt-6 pt-5 border-t border-[var(--border)] space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4" id="grat-kpi-cards"></div>
+            <div id="grat-formula-breakdown" class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SUBTAB 5: MODEL TENANCY ACT RENTAL AGREEMENT ================= -->
+      <div id="statutory-subtab-content-rental" class="hidden space-y-6">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 pb-3 border-b border-[var(--border)]">
+            <div>
+              <h3 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+                <span>??</span> Instant Model Tenancy Act (MTA 2021) Agreement & e-Stamping Bridge
+              </h3>
+              <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                Audits against predatory clauses: strictly enforces 2-month deposit cap (Sec 11) & mandatory 24-hr inspection notice (Sec 15).
+              </p>
+            </div>
+            <!-- Quick Fill Chips -->
+            <div class="flex flex-wrap gap-2">
+              <button onclick="loadRentalAgreementSample('compliant')" class="px-2.5 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-[11px] font-bold transition">
+                ? Bengaluru 11-mo (MTA Compliant)
+              </button>
+              <button onclick="loadRentalAgreementSample('violation')" class="px-2.5 py-1 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 text-[11px] font-bold transition">
+                ? Mumbai 11-mo (Excess Deposit Violation)
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Landlord Name & Address</label>
+              <input type="text" id="rent-landlord" value="Ramesh Gupta, Flat 101, Bandra West, Mumbai" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Tenant Name & Address</label>
+              <input type="text" id="rent-tenant" value="Priya Nair, A-203, Andheri East, Mumbai" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Rented Property Address</label>
+              <input type="text" id="rent-property" value="Flat 402, Palm Heights, Bandra West, Mumbai" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">State / Jurisdiction</label>
+              <select id="rent-state" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+                <option value="MH">Maharashtra (Bombay Stamp Act Art 36A)</option>
+                <option value="KA">Karnataka (Karnataka Stamp Act)</option>
+                <option value="DL">Delhi NCR (Delhi Stamp Act)</option>
+                <option value="UP">Uttar Pradesh</option>
+                <option value="TN">Tamil Nadu</option>
+                <option value="TS">Telangana</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Monthly Rent (?)</label>
+              <input type="number" id="rent-monthly" value="40000" step="1000" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Security Deposit Demanded (?)</label>
+              <input type="number" id="rent-deposit" value="80000" step="5000" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Tenure (Months)</label>
+              <input type="number" id="rent-tenure" value="11" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Property Type</label>
+              <select id="rent-type" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 px-3 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500">
+                <option value="residential">?? Residential (Max 2 Mos Deposit)</option>
+                <option value="commercial">?? Commercial (Max 6 Mos Deposit)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-center gap-3">
+            <button onclick="auditAndGenerateRentalAgreement()" class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow-md transition flex items-center gap-2">
+              <span>??</span> Audit Terms & Generate MTA Compliant Deed
+            </button>
+          </div>
+
+          <div id="rent-result-output" class="hidden mt-6 pt-5 border-t border-[var(--border)] space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="rent-kpi-cards"></div>
+            <div id="rent-violations-card" class="space-y-2"></div>
+            <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-emerald-400">? Model Tenancy Act Compliant Lease Deed Generated</span>
+                <div class="flex gap-2">
+                  <button onclick="copyToClipboard('rent-agreement-text')" class="px-2.5 py-1 rounded bg-slate-700 hover:bg-slate-600 text-white text-[11px] font-semibold transition">?? Copy Agreement</button>
+                  <button onclick="window.print()" class="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-semibold transition">??? Print</button>
+                </div>
+              </div>
+              <pre id="rent-agreement-text" class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-[11px] text-slate-200 font-mono whitespace-pre-wrap max-h-80 overflow-y-auto select-all"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
     <section id="tab-rails" class="tab-content hidden space-y-6">
       
       <!-- Top Banner -->
@@ -3176,6 +3636,7 @@ Click "Generate Statutory Legal Notice" or select a sample above to view complet
         'loanmitra': 'Loan Mitra Marketplace (RBI 2025)',
         'cardsmart': 'CardSmart ROI & Upgrade Engine',
         'vakilca': 'AI Vakil & CA India Suite (5-in-1)',
+        'statutory': '5 Statutory Moats (EPFO, Stamp Duty, CIBIL, Gratuity, MTA)',
         'rails': 'Live Public Rails (IFSC, PIN, PAN, GSTIN)',
         'history': 'Activity History & Dockets',
         'freetools': 'Free Viral Consumer Tools (HRA, Succession)',
@@ -6181,7 +6642,602 @@ Click "Generate Statutory Legal Notice" or select a sample above to view complet
       explainNoticeUI();
       renderHistory('all');
     };
-  </script>
+  
+
+    // ================= 5 STATUTORY CITIZEN SHIELDS JS HANDLERS =================
+    function switchStatutorySubTab(subTabId) {
+      const subTabs = ['epfo', 'stampduty', 'cibil', 'gratuity', 'rental'];
+      subTabs.forEach(tab => {
+        const content = document.getElementById('statutory-subtab-content-' + tab);
+        const btn = document.getElementById('btn-statutory-subtab-' + tab);
+        if (content) content.classList.add('hidden');
+        if (btn) {
+          btn.className = "px-3.5 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition";
+        }
+      });
+      const activeContent = document.getElementById('statutory-subtab-content-' + subTabId);
+      const activeBtn = document.getElementById('btn-statutory-subtab-' + subTabId);
+      if (activeContent) activeContent.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.className = "px-3.5 py-2 rounded-xl bg-amber-600 text-white font-bold text-xs shadow-md transition";
+      }
+    }
+
+    // 1. EPFO Passbook Diagnostic & Joint Declaration
+    function loadEPFOSample(type) {
+      if (type === 'mismatch') {
+        document.getElementById('epfo-name-epfo').value = 'Aditya Verma';
+        document.getElementById('epfo-name-aadhaar').value = 'Aditya K Verma';
+        document.getElementById('epfo-father-epfo').value = 'R. K. Verma';
+        document.getElementById('epfo-father-id').value = 'Ram Kumar Verma';
+        document.getElementById('epfo-doe-exit').value = 'false';
+        document.getElementById('epfo-aadhaar-seeded').value = 'true';
+        document.getElementById('epfo-pan-linked').value = 'true';
+        document.getElementById('epfo-service-years').value = '4.5';
+      } else if (type === 'father') {
+        document.getElementById('epfo-name-epfo').value = 'Rahul Sharma';
+        document.getElementById('epfo-name-aadhaar').value = 'Rahul Sharma';
+        document.getElementById('epfo-father-epfo').value = 'S. P. Sharma';
+        document.getElementById('epfo-father-id').value = 'Surya Prakash Sharma';
+        document.getElementById('epfo-doe-exit').value = 'true';
+        document.getElementById('epfo-aadhaar-seeded').value = 'true';
+        document.getElementById('epfo-pan-linked').value = 'true';
+        document.getElementById('epfo-service-years').value = '6.0';
+      } else if (type === 'clean') {
+        document.getElementById('epfo-name-epfo').value = 'Priya Nair';
+        document.getElementById('epfo-name-aadhaar').value = 'Priya Nair';
+        document.getElementById('epfo-father-epfo').value = 'Gopinathan Nair';
+        document.getElementById('epfo-father-id').value = 'Gopinathan Nair';
+        document.getElementById('epfo-doe-exit').value = 'true';
+        document.getElementById('epfo-aadhaar-seeded').value = 'true';
+        document.getElementById('epfo-pan-linked').value = 'true';
+        document.getElementById('epfo-service-years').value = '5.2';
+      }
+      diagnoseEPFOPassbook();
+    }
+
+    async function diagnoseEPFOPassbook() {
+      const payload = {
+        member_name_epfo: document.getElementById('epfo-name-epfo').value,
+        member_name_aadhaar: document.getElementById('epfo-name-aadhaar').value,
+        father_name_epfo: document.getElementById('epfo-father-epfo').value,
+        father_name_id: document.getElementById('epfo-father-id').value,
+        has_date_of_exit: document.getElementById('epfo-doe-exit').value === 'true',
+        is_aadhaar_seeded: document.getElementById('epfo-aadhaar-seeded').value === 'true',
+        is_pan_linked: document.getElementById('epfo-pan-linked').value === 'true',
+        service_years: parseFloat(document.getElementById('epfo-service-years').value) || 0
+      };
+
+      try {
+        const resp = await fetch('/api/v1/epfo/diagnose-passbook', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+        
+        document.getElementById('epfo-diag-output').classList.remove('hidden');
+        
+        const riskColor = data.rejection_risk_score >= 60 ? 'text-red-400' : (data.rejection_risk_score > 0 ? 'text-amber-400' : 'text-emerald-400');
+        const statusBadge = data.can_file_online_now 
+          ? '<span class="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold text-xs">?? Ready for Online Claim</span>'
+          : '<span class="px-2 py-0.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 font-bold text-xs">?? Online Claim Will Reject</span>';
+
+        document.getElementById('epfo-kpi-cards').innerHTML = `
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Rejection Risk Meter</div>
+            <div class="text-2xl font-bold ${riskColor} mt-1">${data.rejection_risk_score}%</div>
+            <div class="w-full bg-slate-800 rounded-full h-1.5 mt-2">
+              <div class="h-1.5 rounded-full ${data.rejection_risk_score >= 60 ? 'bg-red-500' : (data.rejection_risk_score > 0 ? 'bg-amber-500' : 'bg-emerald-500')}" style="width: ${data.rejection_risk_score}%"></div>
+            </div>
+            <div class="text-[10px] text-slate-400 mt-1">${data.risk_level}</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Online Claim Status</div>
+            <div class="mt-2">${statusBadge}</div>
+            <div class="text-[10px] text-slate-400 mt-2">${data.findings_count} Clerical Mismatches Found</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Statutory Action Path</div>
+            <div class="text-xs font-semibold text-white mt-1">EPFO SOP 2024 Circular</div>
+            <div class="text-[11px] text-amber-400 mt-1">${data.recommended_action}</div>
+          </div>
+        `;
+
+        let findingsHtml = '';
+        if (data.findings && data.findings.length > 0) {
+          findingsHtml = data.findings.map(f => {
+            const sevBadge = f.severity === 'CRITICAL' ? 'bg-red-500/10 text-red-400 border-red-500/20' : 'bg-amber-500/10 text-amber-400 border-amber-500/20';
+            return `
+              <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full border ${sevBadge}">${f.severity}</span>
+                    <span class="text-xs font-bold text-white">${f.title}</span>
+                  </div>
+                  <div class="text-[11px] text-[var(--muted-foreground)] mt-1">${f.details}</div>
+                </div>
+                <div class="text-[11px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-lg">
+                  ?? ${f.solution}
+                </div>
+              </div>
+            `;
+          }).join('');
+        } else {
+          findingsHtml = `<div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold">? No Mismatches Detected! All Member demographic records align with UIDAI Aadhaar. Claim is 100% safe to file.</div>`;
+        }
+        document.getElementById('epfo-findings-list').innerHTML = findingsHtml;
+      } catch (err) {
+        console.error('EPFO diag error:', err);
+      }
+    }
+
+    async function generateEPFOJointDeclaration() {
+      const payload = {
+        uan: document.getElementById('epfo-jd-uan').value,
+        member_name_correct: document.getElementById('epfo-name-aadhaar').value,
+        member_name_wrong: document.getElementById('epfo-name-epfo').value,
+        father_name_correct: document.getElementById('epfo-father-id').value,
+        father_name_wrong: document.getElementById('epfo-father-epfo').value,
+        establishment_name: document.getElementById('epfo-jd-company').value,
+        regional_pf_office: document.getElementById('epfo-jd-rpfc').value
+      };
+
+      try {
+        const resp = await fetch('/api/v1/epfo/generate-joint-declaration', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+        if (data.success && data.form_text) {
+          document.getElementById('epfo-jd-output-container').classList.remove('hidden');
+          document.getElementById('epfo-jd-text-pre').textContent = data.form_text;
+
+          // Log to user history
+          fetch('/api/v1/user/history', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              category: 'EPFO_JOINT_DECLARATION',
+              title: `EPFO Joint Declaration (${data.docket_number})`,
+              summary: `Generated SOP Form for UAN ${data.uan} (${payload.member_name_correct})`,
+              data: {docket: data.docket_number, uan: data.uan}
+            })
+          }).catch(()=>{});
+        }
+      } catch (err) {
+        console.error('EPFO JD error:', err);
+      }
+    }
+
+    // 2. Multi-State Stamp Duty Calculator
+    function loadStampDutySample(preset) {
+      if (preset === 'mumbai') {
+        document.getElementById('stamp-state').value = 'MH';
+        document.getElementById('stamp-agreed-val').value = '15000000';
+        document.getElementById('stamp-carpet-area').value = '850';
+        document.getElementById('stamp-circle-rate').value = '12000';
+        document.getElementById('stamp-gender').value = 'female';
+      } else if (preset === 'bangalore') {
+        document.getElementById('stamp-state').value = 'KA';
+        document.getElementById('stamp-agreed-val').value = '12000000';
+        document.getElementById('stamp-carpet-area').value = '1200';
+        document.getElementById('stamp-circle-rate').value = '7500';
+        document.getElementById('stamp-gender').value = 'joint';
+      } else if (preset === 'delhi') {
+        document.getElementById('stamp-state').value = 'DL';
+        document.getElementById('stamp-agreed-val').value = '8500000';
+        document.getElementById('stamp-carpet-area').value = '900';
+        document.getElementById('stamp-circle-rate').value = '7000';
+        document.getElementById('stamp-gender').value = 'male';
+      }
+      calculateStampDuty();
+    }
+
+    async function calculateStampDuty() {
+      const payload = {
+        state_code: document.getElementById('stamp-state').value,
+        agreed_value_inr: parseFloat(document.getElementById('stamp-agreed-val').value) || 0,
+        carpet_area_sqft: parseFloat(document.getElementById('stamp-carpet-area').value) || 0,
+        circle_rate_per_sqft: parseFloat(document.getElementById('stamp-circle-rate').value) || 0,
+        buyer_gender: document.getElementById('stamp-gender').value,
+        is_urban: true
+      };
+
+      try {
+        const resp = await fetch('/api/v1/property/calculate-stamp-duty', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+
+        document.getElementById('stamp-result-output').classList.remove('hidden');
+
+        document.getElementById('stamp-kpi-cards').innerHTML = `
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Total Government Charges</div>
+            <div class="text-2xl font-bold text-amber-400 mt-1">?${data.total_government_outflow_inr.toLocaleString('en-IN')}</div>
+            <div class="text-[10px] text-slate-400 mt-1">Effective Tax: ${data.effective_tax_pct}%</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Basic Stamp Duty</div>
+            <div class="text-xl font-bold text-white mt-1">?${data.stamp_duty_inr.toLocaleString('en-IN')}</div>
+            <div class="text-[10px] text-slate-400 mt-1">${data.state_name}</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Registration & Cess</div>
+            <div class="text-xl font-bold text-white mt-1">?${(data.registration_fee_inr + data.metro_or_local_cess_inr).toLocaleString('en-IN')}</div>
+            <div class="text-[10px] text-slate-400 mt-1">Reg: ?${data.registration_fee_inr.toLocaleString('en-IN')} | Cess: ?${data.metro_or_local_cess_inr.toLocaleString('en-IN')}</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Female Buyer Savings</div>
+            <div class="text-xl font-bold text-emerald-400 mt-1">?${data.female_buyer_savings_inr.toLocaleString('en-IN')}</div>
+            <div class="text-[10px] text-emerald-300 mt-1">${data.buyer_gender === 'female' ? '? 1% Concession Applied' : 'Standard Rate'}</div>
+          </div>
+        `;
+
+        document.getElementById('stamp-breakdown-card').innerHTML = `
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+            <div>
+              <div class="text-xs font-bold text-white">Section 50C Deemed Consideration Floor Audit</div>
+              <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">
+                Circle Value: ?${data.circle_rate_valuation_inr.toLocaleString('en-IN')} vs Agreed Consideration: ?${data.agreed_value_inr.toLocaleString('en-IN')}
+                <span class="ml-2 font-bold ${data.is_circle_rate_higher ? 'text-amber-400' : 'text-emerald-400'}">
+                  ${data.is_circle_rate_higher ? '?? Circle Rate higher (Statutory floor invoked)' : '? Agreed value exceeds circle floor'}
+                </span>
+              </div>
+            </div>
+            <div class="text-[11px] text-slate-300 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
+              ?? ${data.statutory_note}
+            </div>
+          </div>
+        `;
+
+        // Log to history
+        fetch('/api/v1/user/history', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            category: 'STAMP_DUTY',
+            title: `Stamp Duty Audit: ${data.state_name}`,
+            summary: `Total Outflow: ?${data.total_government_outflow_inr.toLocaleString('en-IN')} on ?${data.statutory_taxable_value_inr.toLocaleString('en-IN')} property`,
+            data: {state: data.state_code, total: data.total_government_outflow_inr}
+          })
+        }).catch(()=>{});
+      } catch (err) {
+        console.error('Stamp duty error:', err);
+      }
+    }
+
+    // 3. CIBIL Adverse Remark & CICRA Dispute Notice
+    function loadCIBILSample(preset) {
+      if (preset === 'written_off') {
+        document.getElementById('cibil-remark-code').value = 'WRITTEN_OFF';
+        document.getElementById('cibil-bank-name').value = 'HDFC Bank Limited';
+        document.getElementById('cibil-acc-no').value = '50100456789012';
+        document.getElementById('cibil-dispute-amt').value = '75000';
+      } else if (preset === 'settled') {
+        document.getElementById('cibil-remark-code').value = 'SETTLED';
+        document.getElementById('cibil-bank-name').value = 'State Bank of India';
+        document.getElementById('cibil-acc-no').value = '33400192831';
+        document.getElementById('cibil-dispute-amt').value = '45000';
+      } else if (preset === 'dpd_90') {
+        document.getElementById('cibil-remark-code').value = 'DPD_90_PLUS';
+        document.getElementById('cibil-bank-name').value = 'ICICI Bank';
+        document.getElementById('cibil-acc-no').value = '001205948392';
+        document.getElementById('cibil-dispute-amt').value = '18500';
+      }
+      diagnoseCIBILRemark();
+    }
+
+    async function diagnoseCIBILRemark() {
+      const payload = {
+        remark_code: document.getElementById('cibil-remark-code').value,
+        bank_name: document.getElementById('cibil-bank-name').value,
+        account_number: document.getElementById('cibil-acc-no').value,
+        disputed_amount_inr: parseFloat(document.getElementById('cibil-dispute-amt').value) || 0
+      };
+
+      try {
+        const resp = await fetch('/api/v1/credit/diagnose-cibil-remark', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+
+        document.getElementById('cibil-result-output').classList.remove('hidden');
+
+        document.getElementById('cibil-kpi-cards').innerHTML = `
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Estimated Score Damage</div>
+            <div class="text-2xl font-bold text-red-400 mt-1">${data.estimated_score_penalty} Points</div>
+            <div class="text-[10px] text-red-300 mt-1">${data.severity_level}</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Statutory Bank Cure Window</div>
+            <div class="text-xl font-bold text-white mt-1">${data.statutory_resolution_window_days} Days</div>
+            <div class="text-[10px] text-slate-400 mt-1">Section 21(3) CICRA 2005</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">RBI Delay Penalty</div>
+            <div class="text-xl font-bold text-amber-400 mt-1">?${data.rbi_penalty_per_day_inr}/Day</div>
+            <div class="text-[10px] text-amber-300 mt-1">Mandatory lender liability</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Lender & Account</div>
+            <div class="text-sm font-bold text-white mt-1 truncate">${data.bank_name}</div>
+            <div class="text-[10px] text-slate-400 mt-1">Acc: ${data.account_number}</div>
+          </div>
+        `;
+
+        // Automatically draft the statutory notice
+        draftCICRANotice();
+      } catch (err) {
+        console.error('CIBIL diag error:', err);
+      }
+    }
+
+    async function draftCICRANotice() {
+      const payload = {
+        complainant_name: 'Aditya Sharma',
+        complainant_pan: 'ABCPS1234E',
+        complainant_mobile: '9876543210',
+        complainant_address: 'Flat 402, Indiranagar, Bengaluru, Karnataka - 560038',
+        lender_bank_name: document.getElementById('cibil-bank-name').value,
+        account_number: document.getElementById('cibil-acc-no').value,
+        remark_type: document.getElementById('cibil-remark-code').value,
+        disputed_amount_inr: parseFloat(document.getElementById('cibil-dispute-amt').value) || 0
+      };
+
+      try {
+        const resp = await fetch('/api/v1/credit/generate-cicra-notice', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+
+        if (data.success && data.notice_text) {
+          document.getElementById('cibil-notice-card').innerHTML = `
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-emerald-400">? Section 21 Statutory Notice Drafted (${data.docket_number})</span>
+              <div class="flex gap-2">
+                <button onclick="copyToClipboard('cibil-notice-pre')" class="px-2.5 py-1 rounded bg-slate-700 hover:bg-slate-600 text-white text-[11px] font-semibold transition">?? Copy Notice</button>
+                <button onclick="window.print()" class="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-semibold transition">??? Print</button>
+              </div>
+            </div>
+            <pre id="cibil-notice-pre" class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-[11px] text-slate-200 font-mono whitespace-pre-wrap max-h-80 overflow-y-auto select-all">${data.notice_text}</pre>
+          `;
+
+          // Log to user history
+          fetch('/api/v1/user/history', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              category: 'CIBIL_DISPUTE',
+              title: `CICRA Notice: ${payload.lender_bank_name} (${data.docket_number})`,
+              summary: `Demanded rectification of ${payload.remark_type} on A/C ${payload.account_number} under threat of ?100/day penalty`,
+              data: {docket: data.docket_number, bank: payload.lender_bank_name}
+            })
+          }).catch(()=>{});
+        }
+      } catch (err) {
+        console.error('CICRA notice draft error:', err);
+      }
+    }
+
+    // 4. Gratuity & Retiring Employee Tax Shield
+    function loadGratuitySample(preset) {
+      if (preset === 'senior') {
+        document.getElementById('grat-basic').value = '110000';
+        document.getElementById('grat-da').value = '10000';
+        document.getElementById('grat-years').value = '12.6';
+        document.getElementById('grat-covered').value = 'true';
+        document.getElementById('grat-leave-encashment').value = '800000';
+      } else if (preset === 'veteran') {
+        document.getElementById('grat-basic').value = '180000';
+        document.getElementById('grat-da').value = '20000';
+        document.getElementById('grat-years').value = '25.0';
+        document.getElementById('grat-covered').value = 'true';
+        document.getElementById('grat-leave-encashment').value = '1500000';
+      } else if (preset === 'ineligible') {
+        document.getElementById('grat-basic').value = '80000';
+        document.getElementById('grat-da').value = '0';
+        document.getElementById('grat-years').value = '4.2';
+        document.getElementById('grat-covered').value = 'true';
+        document.getElementById('grat-leave-encashment').value = '200000';
+      }
+      calculateGratuity();
+    }
+
+    async function calculateGratuity() {
+      const payload = {
+        last_drawn_basic_monthly: parseFloat(document.getElementById('grat-basic').value) || 0,
+        last_drawn_da_monthly: parseFloat(document.getElementById('grat-da').value) || 0,
+        years_of_service: parseFloat(document.getElementById('grat-years').value) || 0,
+        is_covered_under_act: document.getElementById('grat-covered').value === 'true',
+        leave_encashment_received_inr: parseFloat(document.getElementById('grat-leave-encashment').value) || 0
+      };
+
+      try {
+        const resp = await fetch('/api/v1/tax/calculate-gratuity', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+
+        document.getElementById('grat-result-output').classList.remove('hidden');
+
+        document.getElementById('grat-kpi-cards').innerHTML = `
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Statutory Gratuity Amount</div>
+            <div class="text-2xl font-bold text-amber-400 mt-1">?${data.statutory_gratuity_amount_inr.toLocaleString('en-IN')}</div>
+            <div class="text-[10px] text-slate-400 mt-1">${data.completed_statutory_years} Completed Statutory Years</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Section 10(10) Tax Exemption</div>
+            <div class="text-2xl font-bold text-emerald-400 mt-1">?${data.exempt_gratuity_section_10_10_inr.toLocaleString('en-IN')}</div>
+            <div class="text-[10px] text-emerald-300 mt-1">Taxable Portion: ?${data.taxable_gratuity_inr.toLocaleString('en-IN')}</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Sec 10(10AA) Leave Relief</div>
+            <div class="text-xl font-bold text-white mt-1">?${data.exempt_leave_encashment_10_10aa_inr.toLocaleString('en-IN')}</div>
+            <div class="text-[10px] text-slate-400 mt-1">?25L Exemption Cap (Budget 2023)</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Est. EPS 95 Monthly Pension</div>
+            <div class="text-xl font-bold text-blue-400 mt-1">?${data.estimated_monthly_eps_pension_inr.toLocaleString('en-IN')}/mo</div>
+            <div class="text-[10px] text-slate-400 mt-1">${data.pension_eligibility_status}</div>
+          </div>
+        `;
+
+        document.getElementById('grat-formula-breakdown').innerHTML = `
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+            <div>
+              <div class="text-xs font-bold text-white">Statutory Formula Transparency: ${data.formula_applied}</div>
+              <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">
+                Monthly Wage Base (Basic + DA): ?${data.monthly_basic_plus_da.toLocaleString('en-IN')} | Statutory Cap: ?${data.gratuity_statutory_cap_inr.toLocaleString('en-IN')} (Section 4(3))
+              </div>
+            </div>
+            <div class="text-[11px] text-slate-300 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
+              ?? ${data.statutory_basis}
+            </div>
+          </div>
+        `;
+
+        // Log to history
+        fetch('/api/v1/user/history', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            category: 'GRATUITY_TAX_SHIELD',
+            title: `Retirement Shield: ?${data.statutory_gratuity_amount_inr.toLocaleString('en-IN')} Gratuity`,
+            summary: `Tax-exempt: ?${data.exempt_gratuity_section_10_10_inr.toLocaleString('en-IN')} (Sec 10(10)), Pension: ?${data.estimated_monthly_eps_pension_inr.toLocaleString('en-IN')}/mo`,
+            data: {gratuity: data.statutory_gratuity_amount_inr, exempt: data.exempt_gratuity_section_10_10_inr}
+          })
+        }).catch(()=>{});
+      } catch (err) {
+        console.error('Gratuity error:', err);
+      }
+    }
+
+    // 5. Model Tenancy Act Agreement & Compliance Audit
+    function loadRentalAgreementSample(preset) {
+      if (preset === 'compliant') {
+        document.getElementById('rent-landlord').value = 'Ramesh Gupta, Flat 101, Indiranagar, Bangalore';
+        document.getElementById('rent-tenant').value = 'Priya Nair, Koramangala, Bangalore';
+        document.getElementById('rent-property').value = 'Flat 402, Palm Heights, Indiranagar, Bangalore';
+        document.getElementById('rent-state').value = 'KA';
+        document.getElementById('rent-monthly').value = '35000';
+        document.getElementById('rent-deposit').value = '70000'; // exactly 2 mos
+        document.getElementById('rent-tenure').value = '11';
+        document.getElementById('rent-type').value = 'residential';
+      } else if (preset === 'violation') {
+        document.getElementById('rent-landlord').value = 'Sunil Mehta, Bandra West, Mumbai';
+        document.getElementById('rent-tenant').value = 'Kunal Deshmukh, Andheri East, Mumbai';
+        document.getElementById('rent-property').value = 'Flat 801, Sea View Towers, Worli, Mumbai';
+        document.getElementById('rent-state').value = 'MH';
+        document.getElementById('rent-monthly').value = '45000';
+        document.getElementById('rent-deposit').value = '250000'; // breaches 2 mos cap
+        document.getElementById('rent-tenure').value = '11';
+        document.getElementById('rent-type').value = 'residential';
+      }
+      auditAndGenerateRentalAgreement();
+    }
+
+    async function auditAndGenerateRentalAgreement() {
+      const landlordParts = document.getElementById('rent-landlord').value.split(',');
+      const tenantParts = document.getElementById('rent-tenant').value.split(',');
+
+      const payload = {
+        landlord_name: landlordParts[0].trim(),
+        landlord_address: landlordParts.slice(1).join(',').trim() || 'Mumbai, Maharashtra',
+        tenant_name: tenantParts[0].trim(),
+        tenant_address: tenantParts.slice(1).join(',').trim() || 'Mumbai, Maharashtra',
+        property_address: document.getElementById('rent-property').value,
+        monthly_rent: parseFloat(document.getElementById('rent-monthly').value) || 0,
+        security_deposit: parseFloat(document.getElementById('rent-deposit').value) || 0,
+        tenure_months: parseInt(document.getElementById('rent-tenure').value) || 11,
+        property_type: document.getElementById('rent-type').value,
+        state: document.getElementById('rent-state').value,
+        notice_period_days: 30,
+        inspection_notice_hrs: 24,
+        annual_escalation_pct: 5.0,
+        maintenance_charges: 0.0,
+        maintenance_payer: 'tenant'
+      };
+
+      try {
+        const resp = await fetch('/api/v1/legal/generate-rental-agreement', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+
+        document.getElementById('rent-result-output').classList.remove('hidden');
+
+        const scoreColor = data.is_mta_compliant ? 'text-emerald-400' : 'text-red-400';
+
+        document.getElementById('rent-kpi-cards').innerHTML = `
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">MTA 2021 Compliance Score</div>
+            <div class="text-2xl font-bold ${scoreColor} mt-1">${data.compliance_score}%</div>
+            <div class="text-[10px] text-slate-400 mt-1">${data.is_mta_compliant ? '? 100% MTA Compliant' : `?? ${data.violations_count} Illegal Terms Flagged`}</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Estimated Stamp & Registration</div>
+            <div class="text-2xl font-bold text-white mt-1">?${data.stamp_duty_estimate.total_statutory_cost.toLocaleString('en-IN')}</div>
+            <div class="text-[10px] text-slate-400 mt-1">e-Stamp: ?${data.stamp_duty_estimate.stamp_duty} | Reg: ?${data.stamp_duty_estimate.registration_fee}</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Statutory Safeguards</div>
+            <div class="text-xs font-semibold text-emerald-400 mt-1">Section 11, 15, 20 & 23 MTA</div>
+            <div class="text-[10px] text-slate-400 mt-1">Deposit capped, 24h entry notice, 2x overstay penalty</div>
+          </div>
+        `;
+
+        let violationsHtml = '';
+        if (data.violations && data.violations.length > 0) {
+          violationsHtml = data.violations.map(v => `
+            <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-3 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-red-500/20 text-red-300 font-bold text-[10px]">ILLEGAL UNDER MTA</span>
+                <span class="font-bold text-white">${v.title}</span>
+                <span class="text-[10px] text-slate-400">(${v.section})</span>
+              </div>
+              <div class="text-[11px] text-red-200 mt-1">${v.detail}</div>
+              <div class="text-[11px] text-emerald-400 font-medium mt-1">?? Statutory Remedy: ${v.remedy}</div>
+            </div>
+          `).join('');
+        } else {
+          violationsHtml = `<div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold">? Zero MTA Violations! Agreement conforms strictly to Model Tenancy Act 2021 caps and safeguards.</div>`;
+        }
+        document.getElementById('rent-violations-card').innerHTML = violationsHtml;
+
+        document.getElementById('rent-agreement-text').textContent = data.agreement_markdown;
+
+        // Log to history
+        fetch('/api/v1/user/history', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            category: 'RENTAL_AGREEMENT',
+            title: `MTA Lease Deed: ${payload.landlord_name} vs ${payload.tenant_name}`,
+            summary: `Rent: ?${payload.monthly_rent.toLocaleString('en-IN')}/mo, Deposit: ?${payload.security_deposit.toLocaleString('en-IN')}, Compliance: ${data.compliance_score}%`,
+            data: {compliant: data.is_mta_compliant, score: data.compliance_score}
+          })
+        }).catch(()=>{});
+      } catch (err) {
+        console.error('Rental agreement error:', err);
+      }
+    }
+
+</script>
 
   <!-- Fixed Mobile Bottom Navigation Bar (Hardware Ergonomic Thumb Bar) -->
   <nav id="mobile-bottom-nav" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-[var(--card)]/95 backdrop-blur-md border-t border-[var(--border)] px-2 py-1 flex items-center justify-around shadow-2xl safe-area-inset-bottom select-none">

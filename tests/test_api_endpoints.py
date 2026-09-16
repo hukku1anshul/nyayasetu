@@ -126,7 +126,99 @@ def run_tests():
     assert code == 200 and res.get("valid") is True, f"CNR Failed: {res}"
     print(f"PASS: /api/v1/lookup/decode-cnr -> Court: {res['court_name']}, Identifier: {res['case_identifier']}")
 
-    print("\nSUCCESS: ALL 14 REST API ENDPOINTS VERIFIED & FULLY FUNCTIONAL!")
+
+    # 15. Test EPFO Passbook Diagnostic
+    code, res = post("/api/v1/epfo/diagnose-passbook", {
+        "member_name_epfo": "Rahul Sharma",
+        "member_name_aadhaar": "Rahul K Sharma",
+        "father_name_epfo": "S. P. Sharma",
+        "father_name_id": "Surya Prakash Sharma",
+        "has_date_of_exit": False,
+        "is_aadhaar_seeded": True,
+        "is_pan_linked": True,
+        "service_years": 5.2
+    })
+    assert code == 200 and res.get("rejection_risk_score") > 50, f"EPFO Diagnose Failed: {res}"
+    print(f"PASS: /api/v1/epfo/diagnose-passbook -> Risk Score: {res['rejection_risk_score']}, Level: {res['risk_level']}")
+
+    # 16. Test EPFO Joint Declaration
+    code, res = post("/api/v1/epfo/generate-joint-declaration", {
+        "uan": "101234567890",
+        "member_name_correct": "Rahul K Sharma",
+        "member_name_wrong": "Rahul Sharma",
+        "father_name_correct": "Surya Prakash Sharma",
+        "father_name_wrong": "S. P. Sharma",
+        "dob_correct": "1990-08-15",
+        "establishment_name": "Tech Corp Pvt Ltd"
+    })
+    assert code == 200 and res.get("success") is True, f"EPFO JD Failed: {res}"
+    print(f"PASS: /api/v1/epfo/generate-joint-declaration -> Docket: {res['docket_number']}")
+
+    # 17. Test Stamp Duty Calculator
+    code, res = post("/api/v1/property/calculate-stamp-duty", {
+        "state_code": "MH",
+        "agreed_value_inr": 8500000,
+        "carpet_area_sqft": 750,
+        "circle_rate_per_sqft": 9000,
+        "buyer_gender": "female",
+        "is_urban": True
+    })
+    assert code == 200 and res.get("total_government_outflow_inr") > 0, f"Stamp Duty Failed: {res}"
+    print(f"PASS: /api/v1/property/calculate-stamp-duty -> State: {res['state_name']}, Outflow: Rs. {res['total_government_outflow_inr']}")
+
+    # 18. Test CIBIL Remark Diagnostic
+    code, res = post("/api/v1/credit/diagnose-cibil-remark", {
+        "remark_code": "WRITTEN_OFF",
+        "bank_name": "State Bank of India",
+        "account_number": "33400192831",
+        "disputed_amount_inr": 45000
+    })
+    assert code == 200 and res.get("severity_level") == "CRITICAL", f"CIBIL Diagnose Failed: {res}"
+    print(f"PASS: /api/v1/credit/diagnose-cibil-remark -> Severity: {res['severity_level']}, RBI Penalty: Rs. {res['rbi_penalty_per_day_inr']}/day")
+
+    # 19. Test CICRA Dispute Notice
+    code, res = post("/api/v1/credit/generate-cicra-notice", {
+        "complainant_name": "Aman Mehra",
+        "complainant_pan": "ABCDE1234F",
+        "complainant_mobile": "9876543210",
+        "complainant_address": "Indiranagar, Bangalore",
+        "lender_bank_name": "State Bank of India",
+        "account_number": "33400192831",
+        "remark_type": "WRITTEN_OFF",
+        "disputed_amount_inr": 45000
+    })
+    assert code == 200 and res.get("success") is True, f"CICRA Notice Failed: {res}"
+    print(f"PASS: /api/v1/credit/generate-cicra-notice -> Docket: {res['docket_number']}, Period: {res['statutory_period_days']} days")
+
+    # 20. Test Gratuity & Retirement Shield
+    code, res = post("/api/v1/tax/calculate-gratuity", {
+        "last_drawn_basic_monthly": 80000,
+        "last_drawn_da_monthly": 5000,
+        "years_of_service": 8.5,
+        "is_covered_under_act": True,
+        "leave_encashment_received_inr": 400000
+    })
+    assert code == 200 and res.get("statutory_gratuity_amount_inr") > 0, f"Gratuity Failed: {res}"
+    print(f"PASS: /api/v1/tax/calculate-gratuity -> Gratuity: Rs. {res['statutory_gratuity_amount_inr']}, Taxable: Rs. {res['taxable_gratuity_inr']}")
+
+    # 21. Test Model Tenancy Act Rental Agreement
+    code, res = post("/api/v1/legal/generate-rental-agreement", {
+        "landlord_name": "Anil Kapoor",
+        "landlord_address": "Juhu, Mumbai",
+        "tenant_name": "Vikram Seth",
+        "tenant_address": "Koramangala, Bengaluru",
+        "property_address": "Flat 801, Sea View Apartments, Worli, Mumbai",
+        "monthly_rent": 50000,
+        "security_deposit": 100000,
+        "tenure_months": 11,
+        "property_type": "residential",
+        "state": "MH"
+    })
+    assert code == 200 and "agreement_markdown" in res, f"Rental Agreement Failed: {res}"
+    print(f"PASS: /api/v1/legal/generate-rental-agreement -> MTA Compliant: {res['is_mta_compliant']}, Score: {res['compliance_score']}")
+
+    print("\nSUCCESS: ALL 21 REST API ENDPOINTS VERIFIED & FULLY FUNCTIONAL!")
+
 
 if __name__ == "__main__":
     run_tests()

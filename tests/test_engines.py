@@ -17,6 +17,11 @@ from nyayasetu.engines.iepf_recovery import IEPFTransmissionEngine, UnclaimedAss
 from nyayasetu.engines.free_tools_engine import HRARentReceiptEngine, InheritanceShareCalculator, VehicleComplianceRadar
 from nyayasetu.engines.loan_mitra_engine import LoanMitraMatchEngine, BalanceTransferEngine, LoanMitraCRM
 from nyayasetu.engines.lookup_rails_engine import LookupRailsEngine
+from nyayasetu.engines.epfo_engine import EPFOEngine
+from nyayasetu.engines.stamp_duty_engine import StampDutyEngine
+from nyayasetu.engines.cibil_dispute_engine import CIBILDisputeEngine
+from nyayasetu.engines.gratuity_engine import GratuityEngine
+from nyayasetu.engines.rental_agreement_engine import RentalAgreementEngine
 from nyayasetu.engines.legal_tax_engine import (
     LegalNoticeEngine,
     AgreementRiskEngine,
@@ -290,6 +295,113 @@ def test_tax_regime_and_44ada():
     assert pres["is_eligible_under_75_lakhs"] is True
     print(f"Section 44ADA Presumptive Tax passed! Deemed Profit: Rs. {pres['deemed_taxable_profit_inr']:,.2f}")
 
+
+def test_epfo_passbook_and_joint_declaration():
+    # 1. Passbook diagnosis
+    diag = EPFOEngine.diagnose_passbook(
+        member_name_epfo="Aditya Verma",
+        member_name_aadhaar="Aditya K Verma",
+        father_name_epfo="R. K. Verma",
+        father_name_id="Ram Kumar Verma",
+        has_date_of_exit=False,
+        is_aadhaar_seeded=True,
+        is_pan_linked=True,
+        service_years=4.5
+    )
+    assert diag["rejection_risk_score"] > 50
+    assert "CRITICAL" in diag["risk_level"] or "HIGH" in diag["risk_level"]
+    assert len(diag["findings"]) >= 2
+    print(f"EPFO Passbook Diagnostic passed! Risk Score: {diag['rejection_risk_score']} ({diag['risk_level']})")
+
+    # 2. Joint declaration generation
+    jd = EPFOEngine.generate_joint_declaration(
+        uan="101234567890",
+        member_name_correct="Aditya K Verma",
+        member_name_wrong="Aditya Verma",
+        father_name_correct="Ram Kumar Verma",
+        father_name_wrong="R. K. Verma",
+        dob_correct="1992-05-15",
+        dob_wrong="1992-05-18",
+        doj_correct="2020-01-01",
+        doe_correct="2024-01-01",
+        establishment_name="Acme Infotech Ltd"
+    )
+    assert "JOINT DECLARATION" in jd["form_text"]
+    assert "101234567890" in jd["form_text"]
+    print("EPFO Joint Declaration Generator passed!")
+
+def test_stamp_duty_calculator():
+    res = StampDutyEngine.calculate_stamp_duty(
+        state_code="MH",
+        agreed_value_inr=10000000.0, # 1 Crore
+        carpet_area_sqft=800.0,
+        circle_rate_per_sqft=11000.0, # circle value = 88 Lakhs, taxable = 1 Crore
+        buyer_gender="female",
+        is_urban=True
+    )
+    assert "Maharashtra" in res["state_name"]
+    assert res["statutory_taxable_value_inr"] == 10000000.0
+    assert res["female_buyer_savings_inr"] > 0 # Female rebate 1%
+    assert res["total_government_outflow_inr"] > 0
+    print(f"Stamp Duty Calculator passed! Total Govt Charges: Rs. {res['total_government_outflow_inr']:,.2f}")
+
+def test_cibil_dispute_and_notice():
+    diag = CIBILDisputeEngine.diagnose_remark(
+        remark_code="WRITTEN_OFF",
+        bank_name="HDFC Bank",
+        account_number="50100456789012",
+        disputed_amount_inr=75000.0
+    )
+    assert diag["severity_level"] == "CRITICAL"
+    assert abs(diag["estimated_score_penalty"]) >= 70
+    print(f"CIBIL Remark Diagnostic passed! Severity: {diag['severity_level']} (Hit: {diag['estimated_score_penalty']} pts)")
+
+    notice = CIBILDisputeEngine.generate_cicra_dispute_notice(
+        complainant_name="Sunil Sharma",
+        complainant_pan="ABCPS1234E",
+        complainant_mobile="9876543210",
+        complainant_address="B-402, Powai, Mumbai",
+        lender_bank_name="HDFC Bank",
+        account_number="50100456789012",
+        remark_type="WRITTEN_OFF",
+        disputed_amount_inr=75000.0
+    )
+    assert "SECTION 21" in notice["notice_text"]
+    assert "HDFC Bank" in notice["notice_text"]
+    print("CICRA 2005 Section 21 Dispute Notice Generator passed!")
+
+def test_gratuity_and_pension():
+    res = GratuityEngine.calculate_retirement_benefits(
+        last_drawn_basic_monthly=100000.0,
+        last_drawn_da_monthly=10000.0,
+        years_of_service=12.6, # rounds to 13 years
+        is_covered_under_act=True,
+        leave_encashment_received_inr=800000.0
+    )
+    assert res["statutory_gratuity_amount_inr"] > 0
+    assert res["exempt_gratuity_section_10_10_inr"] <= 2000000.0
+    assert "Eligible" in res["pension_eligibility_status"]
+    print(f"Gratuity & Pension Shield passed! Gratuity: Rs. {res['statutory_gratuity_amount_inr']:,.2f}, Taxable: Rs. {res['taxable_gratuity_inr']:,.2f}")
+
+def test_rental_agreement_and_mta_audit():
+    audit = RentalAgreementEngine.audit_and_generate(
+        landlord_name="Ramesh Gupta",
+        landlord_address="Flat 101, Bandra West, Mumbai",
+        tenant_name="Priya Nair",
+        tenant_address="A-203, Andheri East, Mumbai",
+        property_address="Flat 402, Palm Heights, Bandra, Mumbai",
+        monthly_rent=40000.0,
+        security_deposit=150000.0, # Breaches 2 months cap
+        tenure_months=11,
+        property_type="residential",
+        state="MH",
+        notice_period_days=15 # Sub-statutory notice
+    )
+    assert audit["is_mta_compliant"] is False
+    assert len(audit["violations"]) >= 2
+    assert "LEASE AGREEMENT" in audit["agreement_markdown"]
+    print(f"Model Tenancy Act Audit & Generator passed! Violations: {len(audit['violations'])}")
+
 if __name__ == "__main__":
     test_credit_card_personalized_ranking()
     test_credit_card_upgrade_calculator()
@@ -306,5 +418,9 @@ if __name__ == "__main__":
     test_legal_notice_engine()
     test_agreement_risk_analyzer()
     test_tax_regime_and_44ada()
-    print("\nALL 15+ ENGINES (LOAN MITRA, CARDSMART, VAKIL & CA INDIA, PUBLIC RAILS) PASSED AUTOMATED TESTS SUCCESSFULLY!")
-
+    test_epfo_passbook_and_joint_declaration()
+    test_stamp_duty_calculator()
+    test_cibil_dispute_and_notice()
+    test_gratuity_and_pension()
+    test_rental_agreement_and_mta_audit()
+    print("\nALL 20+ ENGINES (LOAN MITRA, CARDSMART, VAKIL & CA INDIA, PUBLIC RAILS, AND 5 NEW MOATS) PASSED AUTOMATED TESTS SUCCESSFULLY!")

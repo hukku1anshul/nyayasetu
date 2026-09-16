@@ -30,6 +30,12 @@ from nyayasetu.engines.loan_mitra_engine import (
     LoanMitraCRM
 )
 from nyayasetu.engines.lookup_rails_engine import LookupRailsEngine
+from nyayasetu.engines.epfo_engine import EPFOEngine
+from nyayasetu.engines.stamp_duty_engine import StampDutyEngine
+from nyayasetu.engines.cibil_dispute_engine import CIBILDisputeEngine
+from nyayasetu.engines.gratuity_engine import GratuityEngine
+from nyayasetu.engines.rental_agreement_engine import RentalAgreementEngine
+
 from nyayasetu.engines.legal_tax_engine import (
     LegalNoticeEngine,
     AgreementRiskEngine,
@@ -399,6 +405,211 @@ def calculate_44ada(req: PresumptiveTaxRequest):
 def explain_tax_notice(section_code: str):
     """Provides plain-English diagnosis and statutory response strategy for IT notices."""
     return NoticeExplainerEngine.explain_notice(section_code)
+
+# ----------------- 5 NEW MARKET MOAT CONSUMER ENGINES -----------------
+
+# 1. EPFO Passbook & Joint Declaration
+class EPFODiagnoseRequest(BaseModel):
+    member_name_epfo: str
+    member_name_aadhaar: str
+    father_name_epfo: str = ""
+    father_name_id: str = ""
+    has_date_of_exit: bool = True
+    is_aadhaar_seeded: bool = True
+    is_pan_linked: bool = True
+    service_years: float = 4.5
+    dob_epfo: str = "1992-05-15"
+    dob_aadhaar: str = "1992-05-15"
+
+class EPFOJointDeclarationRequest(BaseModel):
+    uan: str
+    member_name_correct: str
+    member_name_wrong: str = ""
+    father_name_correct: str = ""
+    father_name_wrong: str = ""
+    dob_correct: str = "1992-05-15"
+    dob_wrong: str = ""
+    doj_correct: str = "2020-01-01"
+    doe_correct: str = "2024-01-01"
+    establishment_name: str
+    regional_pf_office: str = "Regional PF Commissioner, Bangalore"
+    member_address: str = "Bengaluru, Karnataka"
+
+@app.get("/api/v1/epfo/mismatch-rules")
+def get_epfo_mismatch_rules():
+    """Returns statutory EPFO mismatch catalog and severity weights."""
+    return {"success": True, "rules": EPFOEngine.MISMATCH_RULES}
+
+@app.post("/api/v1/epfo/diagnose-passbook")
+def diagnose_epfo_passbook(req: EPFODiagnoseRequest):
+    """Diagnoses 14 EPFO passbook rejection reasons and computes rejection risk score."""
+    return EPFOEngine.diagnose_passbook(
+        member_name_epfo=req.member_name_epfo,
+        member_name_aadhaar=req.member_name_aadhaar,
+        father_name_epfo=req.father_name_epfo,
+        father_name_id=req.father_name_id,
+        has_date_of_exit=req.has_date_of_exit,
+        is_aadhaar_seeded=req.is_aadhaar_seeded,
+        is_pan_linked=req.is_pan_linked,
+        service_years=req.service_years,
+        dob_epfo=req.dob_epfo,
+        dob_aadhaar=req.dob_aadhaar
+    )
+
+@app.post("/api/v1/epfo/generate-joint-declaration")
+def generate_epfo_joint_declaration(req: EPFOJointDeclarationRequest):
+    """Generates official EPFO SOP Joint Declaration legal text with Annexure A checklist."""
+    return EPFOEngine.generate_joint_declaration(
+        uan=req.uan,
+        member_name_correct=req.member_name_correct,
+        member_name_wrong=req.member_name_wrong,
+        father_name_correct=req.father_name_correct,
+        father_name_wrong=req.father_name_wrong,
+        dob_correct=req.dob_correct,
+        dob_wrong=req.dob_wrong,
+        doj_correct=req.doj_correct,
+        doe_correct=req.doe_correct,
+        establishment_name=req.establishment_name,
+        regional_pf_office=req.regional_pf_office,
+        member_address=req.member_address
+    )
+
+# 2. Multi-State Land Stamp Duty & Circle Rate Calculator
+class StampDutyRequest(BaseModel):
+    state_code: str
+    agreed_value_inr: float
+    carpet_area_sqft: float = 0.0
+    circle_rate_per_sqft: float = 0.0
+    buyer_gender: str = "male"
+    is_urban: bool = True
+
+@app.get("/api/v1/property/stamp-duty-rates")
+def get_stamp_duty_rates():
+    """Returns official stamp duty schedules across 8 major Indian states."""
+    return {"success": True, "states": StampDutyEngine.STATE_RATES}
+
+@app.post("/api/v1/property/calculate-stamp-duty")
+def calculate_property_stamp_duty(req: StampDutyRequest):
+    """Calculates state stamp duty, registration fee, metro cess, and women rebate."""
+    return StampDutyEngine.calculate_stamp_duty(
+        state_code=req.state_code,
+        agreed_value_inr=req.agreed_value_inr,
+        carpet_area_sqft=req.carpet_area_sqft,
+        circle_rate_per_sqft=req.circle_rate_per_sqft,
+        buyer_gender=req.buyer_gender,
+        is_urban=req.is_urban
+    )
+
+# 3. CIBIL Negative Remark Diagnostic & CICRA Dispute Notice
+class CIBILDiagnoseRequest(BaseModel):
+    remark_code: str
+    bank_name: str
+    account_number: str
+    disputed_amount_inr: float = 0.0
+
+class CICRADisputeRequest(BaseModel):
+    complainant_name: str
+    complainant_pan: str
+    complainant_mobile: str
+    complainant_address: str
+    lender_bank_name: str
+    account_number: str
+    remark_type: str = "WRITTEN_OFF"
+    disputed_amount_inr: float = 50000.0
+    settlement_date: str = "15-January-2025"
+    bureau_name: str = "TransUnion CIBIL Limited"
+
+@app.get("/api/v1/credit/cibil-remarks")
+def get_cibil_remark_catalog():
+    """Returns credit bureau negative remark catalog with damage severity."""
+    return {"success": True, "remarks": CIBILDisputeEngine.REMARK_CATALOG}
+
+@app.post("/api/v1/credit/diagnose-cibil-remark")
+def diagnose_cibil_remark(req: CIBILDiagnoseRequest):
+    """Diagnoses credit bureau adverse remark and calculates impact & dispute odds."""
+    return CIBILDisputeEngine.diagnose_remark(
+        remark_code=req.remark_code,
+        bank_name=req.bank_name,
+        account_number=req.account_number,
+        disputed_amount_inr=req.disputed_amount_inr
+    )
+
+@app.post("/api/v1/credit/generate-cicra-notice")
+def generate_cicra_notice(req: CICRADisputeRequest):
+    """Generates Section 21 statutory dispute notice under CICRA 2005 with Rs. 100/day RBI penalty."""
+    return CIBILDisputeEngine.generate_cicra_dispute_notice(
+        complainant_name=req.complainant_name,
+        complainant_pan=req.complainant_pan,
+        complainant_mobile=req.complainant_mobile,
+        complainant_address=req.complainant_address,
+        lender_bank_name=req.lender_bank_name,
+        account_number=req.account_number,
+        remark_type=req.remark_type,
+        disputed_amount_inr=req.disputed_amount_inr,
+        settlement_date=req.settlement_date,
+        bureau_name=req.bureau_name
+    )
+
+# 4. Payment of Gratuity Act & Retiring Employee Tax Shield
+class GratuityRequest(BaseModel):
+    last_drawn_basic_monthly: float
+    last_drawn_da_monthly: float = 0.0
+    years_of_service: float = 10.0
+    is_covered_under_act: bool = True
+    leave_encashment_received_inr: float = 0.0
+    actual_gratuity_received_inr: Optional[float] = None
+
+@app.post("/api/v1/tax/calculate-gratuity")
+def calculate_gratuity(req: GratuityRequest):
+    """Calculates Section 4(2) 15/26 formula gratuity, Sec 10(10) Rs. 20L exemption, Sec 10(10AA) leave encashment, and EPS 95 pension."""
+    return GratuityEngine.calculate_retirement_benefits(
+        last_drawn_basic_monthly=req.last_drawn_basic_monthly,
+        last_drawn_da_monthly=req.last_drawn_da_monthly,
+        years_of_service=req.years_of_service,
+        is_covered_under_act=req.is_covered_under_act,
+        leave_encashment_received_inr=req.leave_encashment_received_inr,
+        actual_gratuity_received_inr=req.actual_gratuity_received_inr
+    )
+
+# 5. Model Tenancy Act 2021 Rental Agreement & Compliance Audit
+class RentalAgreementRequest(BaseModel):
+    landlord_name: str
+    landlord_address: str
+    tenant_name: str
+    tenant_address: str
+    property_address: str
+    monthly_rent: float
+    security_deposit: float
+    tenure_months: int = 11
+    property_type: str = "residential"
+    state: str = "MH"
+    notice_period_days: int = 30
+    inspection_notice_hrs: int = 24
+    annual_escalation_pct: float = 5.0
+    maintenance_charges: float = 0.0
+    maintenance_payer: str = "tenant"
+
+@app.post("/api/v1/legal/generate-rental-agreement")
+def generate_rental_agreement(req: RentalAgreementRequest):
+    """Audits rental terms under Model Tenancy Act 2021 and generates compliant lease deed."""
+    return RentalAgreementEngine.audit_and_generate(
+        landlord_name=req.landlord_name,
+        landlord_address=req.landlord_address,
+        tenant_name=req.tenant_name,
+        tenant_address=req.tenant_address,
+        property_address=req.property_address,
+        monthly_rent=req.monthly_rent,
+        security_deposit=req.security_deposit,
+        tenure_months=req.tenure_months,
+        property_type=req.property_type,
+        state=req.state,
+        notice_period_days=req.notice_period_days,
+        inspection_notice_hrs=req.inspection_notice_hrs,
+        annual_escalation_pct=req.annual_escalation_pct,
+        maintenance_charges=req.maintenance_charges,
+        maintenance_payer=req.maintenance_payer
+    )
+
 
 # ----------------- PERSISTENT USER HISTORY & DOCKET AUDIT -----------------
 USER_HISTORY_STORE: List[Dict[str, Any]] = [
