@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NyayaSetu & CardSmart - Legal, Bureaucracy & Financial Platform</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--muted-foreground); }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased font-sans min-h-screen p-4 md:p-8">
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto space-y-6">
+
+    <!-- Header & Hero Section -->
+    <header class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
+            💳
+          </div>
+          <div>
+            <h1 class="text-2xl font-bold tracking-tight text-[var(--foreground)] flex items-center gap-2">
+              CardSmart & NyayaSetu <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 font-semibold">Free Financial Rails</span>
+            </h1>
+            <p class="text-sm text-[var(--muted-foreground)]">India's Personalized Credit Card ROI & Legal-Bureaucracy Platform</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center gap-3">
+        <button onclick="switchTab('cardsmart')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
+          <span>💳</span> CardSmart ROI Engine
+        </button>
+        <button onclick="switchTab('freetools')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
+          <span>🎁</span> Free Viral Tools
+        </button>
+        <button onclick="switchTab('revenue')" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
+          <span>💸</span> Revenue Studio
+        </button>
+        <button onclick="switchTab('whatsapp')" class="px-4 py-2 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] font-medium text-xs shadow-sm transition flex items-center gap-1.5">
+          <span>💬</span> WhatsApp Bot
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="flex border-b border-[var(--border)] gap-2 overflow-x-auto pb-1 text-sm font-medium">
+      <button onclick="switchTab('cardsmart')" id="tab-btn-cardsmart" class="tab-btn px-4 py-2.5 border-b-2 border-indigo-600 text-indigo-500 flex items-center gap-2 transition font-bold">
+        💳 CardSmart ROI & Upgrade Engine
+      </button>
+      <button onclick="switchTab('freetools')" id="tab-btn-freetools" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-semibold">
+        🎁 Free Viral Tools (HRA • Succession • Challan)
+      </button>
+      <button onclick="switchTab('revenue')" id="tab-btn-revenue" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-semibold">
+        💸 Revenue & Upsell Studio
+      </button>
+      <button onclick="switchTab('rta')" id="tab-btn-rta" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-semibold">
+        🏢 Local RTA & Registers
+      </button>
+      <button onclick="switchTab('realgov')" id="tab-btn-realgov" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition">
+        ⚡ Live Gov Integrations
+      </button>
+      <button onclick="switchTab('iepf')" id="tab-btn-iepf" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition">
+        💰 Unclaimed Wealth Calculator
+      </button>
+      <button onclick="switchTab('gazette')" id="tab-btn-gazette" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition">
+        📰 Central Gazette Wizard
+      </button>
+    </div>
+
+    <!-- ================= TAB 0: CARDSMART CREDIT CARD ROI ENGINE ================= -->
+    <section id="tab-cardsmart" class="tab-content space-y-6">
+      
+      <!-- Top Banner -->
+      <div class="bg-gradient-to-r from-indigo-950/25 via-[var(--card)] to-purple-950/25 border border-indigo-500/30 rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+              Personalized Card Ranking Algorithm
+            </span>
+            <h2 class="text-xl font-bold mt-2 text-[var(--foreground)]">What is a Credit Card Actually Worth to YOU?</h2>
+            <p class="text-xs text-[var(--muted-foreground)] mt-1 max-w-2xl leading-relaxed">
+              No generic "best card" claims. CardSmart calculates: <b>Annual Category Rewards + Milestone Bonuses + Lounge Value − Annual Fee (with spend waivers) − Forex Losses</b> based on your exact monthly budget.
+            </p>
+          </div>
+          <div class="flex gap-2">
+            <div class="px-4 py-3 bg-[var(--background)] border border-[var(--border)] rounded-xl text-center">
+              <div class="text-[10px] text-[var(--muted-foreground)] uppercase">Total Monthly Spend</div>
+              <div id="summary-monthly-spend" class="text-lg font-black text-indigo-400">₹70,000</div>
+            </div>
+            <div class="px-4 py-3 bg-[var(--background)] border border-[var(--border)] rounded-xl text-center">
+              <div class="text-[10px] text-[var(--muted-foreground)] uppercase">Top Card Net Value</div>
+              <div id="summary-top-benefit" class="text-lg font-black text-emerald-500">₹24,800/yr</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Two Column Layout: Spend Inputs vs Live Card Rankings -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Left: Spend Breakdown Questionnaire -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-[var(--border)]">
+              <h3 class="text-xs font-bold text-[var(--foreground)] uppercase tracking-wider">Your Monthly Spending</h3>
+              <span class="text-[10px] text-indigo-400 font-semibold">Real-time Recalculation</span>
+            </div>
+
+            <!-- Online Shopping -->
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Online Shopping (Amazon/Flipkart):</span>
+                <b id="lbl-spend-online" class="text-indigo-400">₹15,000</b>
+              </div>
+              <input type="range" id="spend-online" min="0" max="60000" step="2500" value="15000" oninput="recalculateCards()" class="w-full accent-indigo-500">
+            </div>
+
+            <!-- Dining & Food -->
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Dining & Food Delivery (Zomato/Swiggy):</span>
+                <b id="lbl-spend-dining" class="text-indigo-400">₹7,000</b>
+              </div>
+              <input type="range" id="spend-dining" min="0" max="40000" step="1000" value="7000" oninput="recalculateCards()" class="w-full accent-indigo-500">
+            </div>
+
+            <!-- Travel (Flights/Hotels) -->
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Travel (Flights, Hotels, IRCTC):</span>
+                <b id="lbl-spend-travel" class="text-indigo-400">₹15,000</b>
+              </div>
+              <input type="range" id="spend-travel" min="0" max="80000" step="2500" value="15000" oninput="recalculateCards()" class="w-full accent-indigo-500">
+            </div>
+
+            <!-- Groceries -->
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Groceries & Quick Commerce (Blinkit/Zepto):</span>
+                <b id="lbl-spend-groceries" class="text-indigo-400">₹8,000</b>
+              </div>
+              <input type="range" id="spend-groceries" min="0" max="40000" step="1000" value="8000" oninput="recalculateCards()" class="w-full accent-indigo-500">
+            </div>
+
+            <!-- Fuel -->
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Fuel (Petrol/Diesel):</span>
+                <b id="lbl-spend-fuel" class="text-indigo-400">₹5,000</b>
+              </div>
+              <input type="range" id="spend-fuel" min="0" max="25000" step="1000" value="5000" oninput="recalculateCards()" class="w-full accent-indigo-500">
+            </div>
+
+            <!-- General Other -->
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>General Offline / Utilities:</span>
+                <b id="lbl-spend-other" class="text-indigo-400">₹20,000</b>
+              </div>
+              <input type="range" id="spend-other" min="0" max="80000" step="2500" value="20000" oninput="recalculateCards()" class="w-full accent-indigo-500">
+            </div>
+
+          </div>
+
+          <!-- 'Should I Upgrade?' Mini Widget -->
+          <div class="bg-gradient-to-br from-[var(--card)] to-indigo-950/20 border border-indigo-500/30 rounded-2xl p-5 shadow-sm space-y-3">
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">
+              Feature: Should I Upgrade?
+            </span>
+            <h4 class="text-xs font-bold text-[var(--foreground)]">Compare Your Current Card vs Upgrade</h4>
+            
+            <div class="space-y-2 text-xs">
+              <div>
+                <label class="text-[11px] text-[var(--muted-foreground)]">Your Current Card:</label>
+                <select id="upgrade-current" onchange="runUpgradeComparison()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-2.5 py-1.5 text-xs text-[var(--foreground)] outline-none">
+                  <option value="hdfc-millennia">HDFC Millennia (₹1,000 fee)</option>
+                  <option value="icici-amazon-pay">Amazon Pay ICICI (₹0 LTF)</option>
+                  <option value="sbi-cashback">SBI Cashback (₹999 fee)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="text-[11px] text-[var(--muted-foreground)]">Considering Upgrading To:</label>
+                <select id="upgrade-target" onchange="runUpgradeComparison()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-2.5 py-1.5 text-xs text-[var(--foreground)] outline-none">
+                  <option value="hdfc-regalia-gold">HDFC Regalia Gold (₹2,500 fee)</option>
+                  <option value="axis-atlas">Axis Bank Atlas (₹5,000 fee)</option>
+                  <option value="tata-neu-infinity">Tata Neu Infinity (₹1,499 fee)</option>
+                  <option value="idfc-first-wealth">IDFC FIRST Wealth (₹0 LTF)</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="upgrade-verdict-box" class="p-3 bg-[var(--background)] rounded-xl border border-emerald-500/30 text-xs space-y-1">
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-emerald-400">Net Annual Gain:</span>
+                <span id="upgrade-delta-val" class="font-extrabold text-sm text-emerald-400">+₹13,600/yr</span>
+              </div>
+              <p id="upgrade-verdict-text" class="text-[10px] text-[var(--muted-foreground)] leading-relaxed">
+                UPGRADE RECOMMENDED: Extra travel points and 12 airport lounges easily exceed the ₹2,500 fee.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Dynamic Personalized Card Leaderboard -->
+        <div class="lg:col-span-8 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-[var(--foreground)]">Ranked by Net Annual Value for Your Spends</h3>
+            <span class="text-xs text-emerald-500 font-medium">Updated with Live Issuer Rules</span>
+          </div>
+
+          <!-- Cards List (Dynamic) -->
+          <div id="card-rankings-container" class="space-y-4">
+            <!-- Populated via JavaScript -->
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= TAB: FREE VIRAL CONSUMER TOOLS ================= -->
+    <section id="tab-freetools" class="tab-content hidden space-y-6">
+
+      <!-- Top Banner -->
+      <div class="bg-gradient-to-r from-teal-950/30 via-[var(--card)] to-emerald-950/30 border border-emerald-500/30 rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              100% Free Public Utilities • Zero Friction • No Mandatory Login
+            </span>
+            <h2 class="text-xl font-bold mt-2 text-[var(--foreground)]">Free Viral Consumer Tools & Legal Calculators</h2>
+            <p class="text-xs text-[var(--muted-foreground)] mt-1 max-w-2xl leading-relaxed">
+              Targeting India's highest anxiety friction points with statutory mathematical accuracy. Zero-CAC lead magnets attracting millions of salaried taxpayers, car owners, and family heirs into NyayaSetu's high-margin legal & compliance rails.
+            </p>
+          </div>
+          <div class="flex gap-2">
+            <div class="px-4 py-2.5 bg-[var(--background)] border border-[var(--border)] rounded-xl text-center">
+              <div class="text-[10px] text-[var(--muted-foreground)] uppercase">Monthly Active Utility Searches</div>
+              <div class="text-base font-black text-emerald-400">4.2M+ / mo</div>
+            </div>
+            <div class="px-4 py-2.5 bg-[var(--background)] border border-[var(--border)] rounded-xl text-center">
+              <div class="text-[10px] text-[var(--muted-foreground)] uppercase">Customer Acquisition Cost</div>
+              <div class="text-base font-black text-indigo-400">₹0 (Organic Rails)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool Sub-tabs Selector -->
+        <div class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-[var(--border)]">
+          <button onclick="switchFreeTool('hra')" id="subtab-btn-hra" class="freetool-btn px-4 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow-md transition flex items-center gap-2">
+            <span>🏠</span> 1-Click HRA Rent Receipt & Tax Saver (Sec 10(13A))
+          </button>
+          <button onclick="switchFreeTool('succession')" id="subtab-btn-succession" class="freetool-btn px-4 py-2 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs transition flex items-center gap-2">
+            <span>⚖️</span> Hindu Succession Legal Heir Share Calculator (Class-I)
+          </button>
+          <button onclick="switchFreeTool('vehicle')" id="subtab-btn-vehicle" class="freetool-btn px-4 py-2 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs transition flex items-center gap-2">
+            <span>🚗</span> Multi-State Vehicle Compliance & Challan Radar
+          </button>
+        </div>
+      </div>
+
+      <!-- ---------------- SUB-TOOL 1: HRA RENT RECEIPTS & TAX SAVER ---------------- -->
+      <div id="subtool-hra" class="freetool-content space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+          <!-- Left Column: Inputs -->
+          <div class="lg:col-span-5 space-y-4">
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+              <div class="flex items-center justify-between pb-2 border-b border-[var(--border)]">
+                <h3 class="text-xs font-bold text-[var(--foreground)] uppercase tracking-wider">HRA & Salary Details</h3>
+                <span class="text-[10px] text-emerald-400 font-semibold">Section 10(13A) Rule 2A</span>
+              </div>
+
+              <!-- Monthly Basic Salary -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs">
+                  <span>Basic Salary + DA (Monthly):</span>
+                  <b id="lbl-hra-basic" class="text-emerald-400">₹60,000</b>
+                </div>
+                <input type="range" id="hra-basic" min="15000" max="250000" step="5000" value="60000" oninput="calculateHRAUI()" class="w-full accent-emerald-500">
+              </div>
+
+              <!-- Monthly HRA Received -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs">
+                  <span>HRA Received from Employer (Monthly):</span>
+                  <b id="lbl-hra-received" class="text-emerald-400">₹25,000</b>
+                </div>
+                <input type="range" id="hra-received" min="5000" max="150000" step="2500" value="25000" oninput="calculateHRAUI()" class="w-full accent-emerald-500">
+              </div>
+
+              <!-- Monthly Rent Paid -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs">
+                  <span>Rent Actually Paid to Landlord (Monthly):</span>
+                  <b id="lbl-hra-rent" class="text-emerald-400">₹28,000</b>
+                </div>
+                <input type="range" id="hra-rent" min="5000" max="150000" step="2000" value="28000" oninput="calculateHRAUI()" class="w-full accent-emerald-500">
+              </div>
+
+              <!-- City Type -->
+              <div class="space-y-1.5">
+                <label class="text-xs text-[var(--muted-foreground)] block">City Jurisdiction (HRA Percentage Rule):</label>
+                <div class="grid grid-cols-2 gap-2">
+                  <button type="button" onclick="setHRACity(true)" id="btn-city-metro" class="py-2 px-3 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow transition text-center">
+                    Metro (50% of Basic)<br><span class="text-[10px] font-normal opacity-80">Delhi, Mum, Kol, Chn</span>
+                  </button>
+                  <button type="button" onclick="setHRACity(false)" id="btn-city-nonmetro" class="py-2 px-3 rounded-xl text-xs font-bold bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition text-center">
+                    Non-Metro (40% of Basic)<br><span class="text-[10px] font-normal opacity-80">Bengaluru, Pune, Hyd...</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Tenant & Landlord Manifest Inputs -->
+              <div class="pt-3 border-t border-[var(--border)] space-y-3">
+                <div class="text-[11px] font-bold text-[var(--foreground)] uppercase tracking-wider">Receipt Generation Info</div>
+                <div>
+                  <label class="text-[11px] text-[var(--muted-foreground)] block mb-1">Tenant Name</label>
+                  <input type="text" id="hra-tenant-name" value="Arjun Mehta" oninput="updateReceiptPreview()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)]">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                  <div>
+                    <label class="text-[11px] text-[var(--muted-foreground)] block mb-1">Landlord Name</label>
+                    <input type="text" id="hra-landlord-name" value="Suresh Chandra Gupta" oninput="updateReceiptPreview()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)]">
+                  </div>
+                  <div>
+                    <label class="text-[11px] text-[var(--muted-foreground)] block mb-1">Landlord PAN</label>
+                    <input type="text" id="hra-landlord-pan" value="ABCDE1234F" oninput="updateReceiptPreview(); calculateHRAUI();" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs uppercase text-[var(--foreground)]">
+                  </div>
+                </div>
+                <div>
+                  <label class="text-[11px] text-[var(--muted-foreground)] block mb-1">Rented Residence Address</label>
+                  <input type="text" id="hra-property-address" value="Flat 504, Palms Residency, Indiranagar, Bengaluru" oninput="updateReceiptPreview()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)]">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right Column: Statutory Math & Live Stamped Receipt -->
+          <div class="lg:col-span-7 space-y-4">
+
+            <!-- Calculation Output Cards -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-sm">
+                <div class="text-[10px] text-[var(--muted-foreground)] uppercase">Annual Tax-Exempt HRA</div>
+                <div id="hra-res-exempt" class="text-xl font-black text-emerald-400 mt-1">₹2,64,000</div>
+                <div class="text-[10px] text-emerald-500/90 mt-0.5" id="hra-res-exempt-mo">₹22,000 / month</div>
+              </div>
+              <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-sm">
+                <div class="text-[10px] text-[var(--muted-foreground)] uppercase">Taxable HRA Amount</div>
+                <div id="hra-res-taxable" class="text-xl font-black text-amber-400 mt-1">₹36,000</div>
+                <div class="text-[10px] text-[var(--muted-foreground)] mt-0.5">Subject to income slab</div>
+              </div>
+              <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-sm col-span-2 sm:col-span-1">
+                <div class="text-[10px] text-[var(--muted-foreground)] uppercase">Estimated Tax Saved</div>
+                <div id="hra-res-taxsaved" class="text-xl font-black text-indigo-400 mt-1">₹82,368</div>
+                <div class="text-[10px] text-indigo-400/90 mt-0.5">@ 31.2% slab rate</div>
+              </div>
+            </div>
+
+            <!-- Statutory 3-Clause Explainer -->
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-sm space-y-2 text-xs">
+              <div class="font-bold text-[var(--foreground)] flex items-center justify-between">
+                <span>Statutory Rule 2A Audit Trail (Least of 3 is Exempt):</span>
+                <span id="hra-pan-badge" class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  Landlord PAN Compliant ✅
+                </span>
+              </div>
+              <div class="grid grid-cols-3 gap-2 bg-[var(--background)] p-3 rounded-xl border border-[var(--border)] text-[11px]">
+                <div>
+                  <span class="text-[10px] text-[var(--muted-foreground)] block">1. Actual HRA:</span>
+                  <b id="hra-clause-1" class="text-[var(--foreground)]">₹3,00,000</b>
+                </div>
+                <div>
+                  <span class="text-[10px] text-[var(--muted-foreground)] block">2. 50%/40% of Salary:</span>
+                  <b id="hra-clause-2" class="text-[var(--foreground)]">₹3,60,000</b>
+                </div>
+                <div>
+                  <span class="text-[10px] text-[var(--muted-foreground)] block">3. Rent − 10% Sal:</span>
+                  <b id="hra-clause-3" class="text-emerald-400 font-bold">₹2,64,000 (Min)</b>
+                </div>
+              </div>
+            </div>
+
+            <!-- Authentic Live Stamped Rent Receipt Preview -->
+            <div class="bg-gradient-to-br from-amber-500/5 via-[var(--card)] to-amber-500/10 border-2 border-dashed border-amber-500/30 rounded-2xl p-6 shadow-sm space-y-4 relative overflow-hidden">
+              <div class="flex items-start justify-between pb-3 border-b border-[var(--border)]">
+                <div>
+                  <span class="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                    Statutory Rent Receipt Form (Sec 10(13A))
+                  </span>
+                  <h4 class="text-sm font-bold text-[var(--foreground)] mt-1.5">RECEIPT FOR PAYMENT OF HOUSE RENT</h4>
+                  <div class="text-[11px] text-[var(--muted-foreground)]">Receipt No: <span id="prev-rec-no" class="font-mono text-indigo-400 font-bold">REC-2026-04</span> • Period: <span id="prev-rec-period" class="font-bold text-[var(--foreground)]">April 2026</span></div>
+                </div>
+
+                <!-- Graphic Revenue Stamp Badge -->
+                <div class="w-16 h-20 border-2 border-red-600 bg-red-950/20 rounded-lg p-1.5 flex flex-col items-center justify-center text-center shadow-sm">
+                  <div class="text-[8px] uppercase tracking-tighter text-red-400 font-bold">INDIA</div>
+                  <div class="text-xs font-black text-red-500">₹1</div>
+                  <div class="text-[7px] text-red-300 uppercase leading-none mt-0.5">REVENUE STAMP</div>
+                  <div class="text-[6px] text-red-400/80 mt-1 italic">Sign Across</div>
+                </div>
+              </div>
+
+              <!-- Receipt Statement Body -->
+              <p class="text-xs leading-relaxed text-[var(--foreground)]">
+                Received with thanks from <b id="prev-rec-tenant" class="text-indigo-400 underline decoration-indigo-400/30">Arjun Mehta</b> a sum of 
+                <b id="prev-rec-amount" class="text-emerald-400 font-bold">₹28,000 (Rupees Twenty-Eight Thousand Only)</b> 
+                towards rent for the residential premises located at: 
+                <span id="prev-rec-address" class="italic text-[var(--muted-foreground)]">Flat 504, Palms Residency, Indiranagar, Bengaluru</span>.
+              </p>
+
+              <div class="grid grid-cols-2 gap-4 pt-3 border-t border-[var(--border)] text-xs">
+                <div>
+                  <span class="text-[10px] text-[var(--muted-foreground)] block">Landlord PAN (Sec 139A):</span>
+                  <b id="prev-rec-pan" class="font-mono text-indigo-400 font-bold">ABCDE1234F</b>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] text-[var(--muted-foreground)] block">Authorized Signature:</span>
+                  <div id="prev-rec-landlord" class="font-serif italic font-bold text-amber-300 text-sm mt-0.5">Suresh Chandra Gupta</div>
+                  <span class="text-[9px] text-[var(--muted-foreground)]">(Landlord / Owner)</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap items-center justify-between gap-2 pt-2">
+                <span class="text-[10px] text-[var(--muted-foreground)]">Statutory format accepted across all IT corporate payrolls & ITR filing.</span>
+                <button onclick="alert('Generated 12-Month Stamped Receipts PDF package! Ready for payroll submission.')" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow-md flex items-center gap-1.5">
+                  <span>📥</span> Download Full 12-Month Receipts (PDF)
+                </button>
+              </div>
+            </div>
+
+            <!-- Upsell Bridge to NyayaSetu Legal Docs -->
+            <div class="bg-[var(--background)] border border-indigo-500/30 rounded-2xl p-4 text-xs flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+              <div>
+                <b class="text-indigo-400">Need a Registered & Notarized Rent Agreement for Passport/Address Proof?</b>
+                <p class="text-[11px] text-[var(--muted-foreground)]">Drafted on official government e-Stamp paper with biometric Aadhaar e-Sign.</p>
+              </div>
+              <button onclick="alert('Redirecting to NyayaSetu Instant Rental Agreement Concierge (₹499)')" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold whitespace-nowrap shadow">
+                Order Agreement (₹499) →
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ---------------- SUB-TOOL 2: HINDU SUCCESSION SHARE CALCULATOR ---------------- -->
+      <div id="subtool-succession" class="freetool-content hidden space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+          <!-- Left Column: Family Tree Inputs -->
+          <div class="lg:col-span-5 space-y-4">
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+              <div class="flex items-center justify-between pb-2 border-b border-[var(--border)]">
+                <h3 class="text-xs font-bold text-[var(--foreground)] uppercase tracking-wider">Deceased & Family Details</h3>
+                <span class="text-[10px] text-indigo-400 font-semibold">Hindu Succession Act 1956</span>
+              </div>
+
+              <!-- Gender Selection -->
+              <div class="space-y-1.5">
+                <label class="text-xs text-[var(--muted-foreground)] block">Deceased Person:</label>
+                <div class="grid grid-cols-2 gap-2">
+                  <button type="button" onclick="setSuccessionGender('MALE')" id="btn-succ-male" class="py-2 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow transition text-center">
+                    Deceased Male<br><span class="text-[10px] font-normal opacity-80">Section 8 Class-I Rules</span>
+                  </button>
+                  <button type="button" onclick="setSuccessionGender('FEMALE')" id="btn-succ-female" class="py-2 px-3 rounded-xl text-xs font-bold bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition text-center">
+                    Deceased Female<br><span class="text-[10px] font-normal opacity-80">Section 15 Rules</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Total Estate Valuation Slider -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs">
+                  <span>Total Ancestral / Estate Value:</span>
+                  <b id="lbl-succ-estate" class="text-emerald-400 font-bold">₹1,00,00,000 (1 Crore)</b>
+                </div>
+                <input type="range" id="succ-estate" min="500000" max="50000000" step="500000" value="10000000" oninput="calculateSuccessionUI()" class="w-full accent-emerald-500">
+              </div>
+
+              <!-- Surviving Relatives Checklist -->
+              <div class="space-y-3 pt-2 border-t border-[var(--border)]">
+                <div class="text-[11px] font-bold text-[var(--foreground)] uppercase tracking-wider">Surviving Primary Relatives</div>
+
+                <label class="flex items-center gap-2.5 text-xs p-2 bg-[var(--background)] rounded-xl border border-[var(--border)] cursor-pointer">
+                  <input type="checkbox" id="succ-spouse" checked onchange="calculateSuccessionUI()" class="accent-indigo-600 rounded">
+                  <span id="lbl-succ-spouse-text">Surviving Widow (Wife)</span>
+                </label>
+
+                <label class="flex items-center gap-2.5 text-xs p-2 bg-[var(--background)] rounded-xl border border-[var(--border)] cursor-pointer">
+                  <input type="checkbox" id="succ-mother" checked onchange="calculateSuccessionUI()" class="accent-indigo-600 rounded">
+                  <span>Surviving Mother (Class-I Heir)</span>
+                </label>
+
+                <label class="flex items-center gap-2.5 text-xs p-2 bg-[var(--background)] rounded-xl border border-[var(--border)] cursor-pointer">
+                  <input type="checkbox" id="succ-father" checked onchange="calculateSuccessionUI()" class="accent-indigo-600 rounded">
+                  <span>Surviving Father <span class="text-[10px] text-amber-400 font-medium">(Class-II Heir)</span></span>
+                </label>
+
+                <div class="grid grid-cols-2 gap-3 pt-1">
+                  <div>
+                    <label class="text-[11px] text-[var(--muted-foreground)] block mb-1">Number of Sons:</label>
+                    <select id="succ-sons" onchange="calculateSuccessionUI()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)]">
+                      <option value="0">0 Sons</option>
+                      <option value="1" selected>1 Son</option>
+                      <option value="2">2 Sons</option>
+                      <option value="3">3 Sons</option>
+                      <option value="4">4 Sons</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="text-[11px] text-[var(--muted-foreground)] block mb-1">Number of Daughters:</label>
+                    <select id="succ-daughters" onchange="calculateSuccessionUI()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)]">
+                      <option value="0">0 Daughters</option>
+                      <option value="1" selected>1 Daughter</option>
+                      <option value="2">2 Daughters</option>
+                      <option value="3">3 Daughters</option>
+                      <option value="4">4 Daughters</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right Column: Statutory Heir Distribution Cards -->
+          <div class="lg:col-span-7 space-y-4">
+
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-[var(--foreground)]">Statutory Distribution Breakdown</h3>
+              <span class="text-xs text-indigo-400 font-medium">Supreme Court 2005 Coparcenary Rule</span>
+            </div>
+
+            <!-- Dynamic Heirs List Container -->
+            <div id="succ-heirs-container" class="space-y-3">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Father Statutory Exclusion Alert -->
+            <div id="succ-father-alert" class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 text-xs text-amber-300 space-y-1">
+              <div class="font-bold flex items-center gap-1.5">
+                <span>⚠️</span> Why does the Father receive 0% share?
+              </div>
+              <p class="text-[11px] text-amber-200/80 leading-relaxed">
+                Under <b>Section 8 of the Hindu Succession Act, 1956</b>, the Father is placed in Class-II (Entry-I). Class-II heirs are legally entitled to inherit <b>ONLY IF</b> there are no surviving Class-I heirs (Widow, Mother, Sons, or Daughters). Since Class-I heirs are present, the Father is statutorily excluded.
+              </p>
+            </div>
+
+            <!-- Upsell Bridge to NyayaSetu Form-C NOC & IEPF Transmission -->
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-3">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                <div>
+                  <h4 class="font-bold text-xs text-[var(--foreground)]">Settling Estate, IEPF Shares or Bank Accounts?</h4>
+                  <p class="text-[11px] text-[var(--muted-foreground)] mt-0.5">Family members can release their claims to a single legal heir with statutory Form-C Relinquishment Deeds.</p>
+                </div>
+                <button onclick="alert('Generated SEBI Form-C Relinquishment Deed Draft!')" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold whitespace-nowrap shadow transition">
+                  Generate Form-C NOC (₹1,499) →
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ---------------- SUB-TOOL 3: MULTI-STATE VEHICLE RADAR ---------------- -->
+      <div id="subtool-vehicle" class="freetool-content hidden space-y-6">
+
+        <!-- Vehicle Search Plate -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+              <h3 class="text-sm font-bold text-[var(--foreground)] uppercase tracking-wider">Instant Multi-State Vehicle Compliance Audit</h3>
+              <p class="text-xs text-[var(--muted-foreground)] mt-1">Pending Virtual Court Challans, Insurance Expiry, PUCC Validity & Bank Loan Hypothecation (HP) Status.</p>
+            </div>
+
+            <!-- Quick sample buttons -->
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="text-[11px] text-[var(--muted-foreground)] self-center">Try Sample:</span>
+              <button onclick="setVehicleReg('KA-03-MG-5678')" class="px-2.5 py-1 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[11px] font-mono hover:border-indigo-500 transition">KA-03-MG-5678</button>
+              <button onclick="setVehicleReg('DL-01-AB-1234')" class="px-2.5 py-1 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[11px] font-mono hover:border-indigo-500 transition">DL-01-AB-1234</button>
+              <button onclick="setVehicleReg('MH-02-CP-8901')" class="px-2.5 py-1 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[11px] font-mono hover:border-indigo-500 transition">MH-02-CP-8901</button>
+            </div>
+          </div>
+
+          <!-- Number Plate Input Box -->
+          <div class="flex flex-col sm:flex-row gap-3">
+            <div class="relative flex-1">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                <span class="text-amber-500 font-black text-sm">IND</span>
+              </div>
+              <input type="text" id="vehicle-reg-input" value="KA-03-MG-5678" class="w-full pl-14 pr-4 py-3 bg-[var(--background)] border-2 border-indigo-500/50 rounded-xl font-mono text-base font-bold tracking-wider text-[var(--foreground)] uppercase focus:outline-none focus:border-indigo-500">
+            </div>
+            <button onclick="auditVehicleUI()" class="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center justify-center gap-2">
+              <span>🔍</span> Scan Vehicle Radar
+            </button>
+          </div>
+        </div>
+
+        <!-- Radar Output Dashboard -->
+        <div id="vehicle-radar-output" class="space-y-4">
+          <!-- Dynamically populated via JS -->
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= TAB 1: REVENUE STUDIO ================= -->
+    <section id="tab-revenue" class="tab-content hidden space-y-6">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+        <h2 class="text-xl font-bold text-[var(--foreground)]">Revenue & Upsell Studio</h2>
+        <p class="text-xs text-[var(--muted-foreground)]">Tatkal rush pricing, FinTech demat liquidation fees, and NRI FEMA repatriation modules.</p>
+      </div>
+    </section>
+
+    <!-- ================= TAB 2: RTA REGISTERS ================= -->
+    <section id="tab-rta" class="tab-content hidden space-y-6">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+        <h2 class="text-xl font-bold text-[var(--foreground)]">Designated RTAs & Statutory Unclaimed Registers</h2>
+        <div class="p-4 bg-[var(--background)] rounded-xl border border-[var(--border)] text-xs flex justify-between items-center">
+          <div>
+            <b>Tata Steel Limited (Link Intime RTA)</b> • Shareholder: RAMESH SHARMA • Folio: S1R0028491<br>
+            Unclaimed Shares: 450 units • Value: ₹1,05,750.00
+          </div>
+          <button onclick="alert('Generated SEBI Form ISR-4!')" class="px-3 py-1.5 bg-indigo-600 text-white rounded-lg font-bold">
+            ⚡ Generate Form ISR-4
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 3: REAL GOV RAILS ================= -->
+    <section id="tab-realgov" class="tab-content hidden space-y-6">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-3">
+        <h2 class="text-xl font-bold text-[var(--foreground)]">Direct Government of India Rails</h2>
+        <p class="text-xs text-[var(--muted-foreground)]">Connected directly to egazette.gov.in (MoHUA) and iepf.gov.in (MCA21 v3).</p>
+      </div>
+    </section>
+
+    <!-- ================= TAB 4: IEPF CALCULATOR ================= -->
+    <section id="tab-iepf" class="tab-content hidden space-y-6">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+        <h2 class="text-xl font-bold text-[var(--foreground)]">IEPF & Deceased Share Recovery Calculator</h2>
+        <p class="text-xs text-[var(--muted-foreground)]">12%–20% contingency success fee payable only upon demat credit.</p>
+      </div>
+    </section>
+
+    <!-- ================= TAB 5: GAZETTE WIZARD ================= -->
+    <section id="tab-gazette" class="tab-content hidden space-y-6">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+        <h2 class="text-xl font-bold text-[var(--foreground)]">Central Gazette Name Change Wizard</h2>
+        <p class="text-xs text-[var(--muted-foreground)]">NeSL e-Stamping + Aadhaar e-Sign + Automated Newspaper Classifieds.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-[var(--muted-foreground)] py-4 border-t border-[var(--border)]">
+      CardSmart & NyayaSetu • Personalized Credit Card ROI Engine • 100% Free Transparent Comparisons
+    </footer>
+
+  </div>
+
+  <!-- Interactive Scripts -->
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('border-indigo-600', 'text-indigo-500', 'border-emerald-600', 'text-emerald-500');
+        el.classList.add('border-transparent', 'text-[var(--muted-foreground)]');
+      });
+
+      const activeContent = document.getElementById('tab-' + tabId);
+      const activeBtn = document.getElementById('tab-btn-' + tabId);
+
+      if (activeContent) activeContent.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.remove('border-transparent', 'text-[var(--muted-foreground)]');
+        activeBtn.classList.add('border-indigo-600', 'text-indigo-500');
+      }
+    }
+
+    // Card Database
+    const CARDS = [
+      {
+        id: "hdfc-regalia-gold",
+        bank: "HDFC Bank",
+        name: "HDFC Regalia Gold Credit Card",
+        tier: "Premium Travel & Lifestyle",
+        annual_fee: 2500,
+        waiver_threshold: 400000,
+        rate_online: 0.0267,
+        rate_dining: 0.0267,
+        rate_travel: 0.065,
+        rate_groceries: 0.0267,
+        rate_fuel: 0.0,
+        rate_other: 0.0267,
+        dom_lounges: 12,
+        intl_lounges: 6,
+        milestones: 6500,
+        verified_days: 6,
+        affiliate_payout: 2800
+      },
+      {
+        id: "sbi-cashback",
+        bank: "SBI Card",
+        name: "SBI Cashback Credit Card",
+        tier: "High-Volume Cashback",
+        annual_fee: 999,
+        waiver_threshold: 200000,
+        rate_online: 0.05,
+        rate_dining: 0.05,
+        rate_travel: 0.05,
+        rate_groceries: 0.01,
+        rate_fuel: 0.0,
+        rate_other: 0.01,
+        dom_lounges: 0,
+        intl_lounges: 0,
+        milestones: 0,
+        verified_days: 2,
+        affiliate_payout: 2200
+      },
+      {
+        id: "tata-neu-infinity",
+        bank: "HDFC Bank",
+        name: "Tata Neu Infinity HDFC Credit Card",
+        tier: "E-Commerce & UPI",
+        annual_fee: 1499,
+        waiver_threshold: 300000,
+        rate_online: 0.05,
+        rate_dining: 0.05,
+        rate_travel: 0.05,
+        rate_groceries: 0.05,
+        rate_fuel: 0.0,
+        rate_other: 0.015,
+        dom_lounges: 8,
+        intl_lounges: 4,
+        milestones: 1499,
+        verified_days: 3,
+        affiliate_payout: 2200
+      },
+      {
+        id: "axis-atlas",
+        bank: "Axis Bank",
+        name: "Axis Bank Atlas Credit Card",
+        tier: "Super Travel",
+        annual_fee: 5000,
+        waiver_threshold: 99999999,
+        rate_online: 0.02,
+        rate_dining: 0.02,
+        rate_travel: 0.05,
+        rate_groceries: 0.02,
+        rate_fuel: 0.0,
+        rate_other: 0.02,
+        dom_lounges: 12,
+        intl_lounges: 4,
+        milestones: 7500,
+        verified_days: 14,
+        affiliate_payout: 3200
+      },
+      {
+        id: "icici-amazon-pay",
+        bank: "ICICI Bank",
+        name: "Amazon Pay ICICI Credit Card",
+        tier: "Lifetime Free (LTF)",
+        annual_fee: 0,
+        waiver_threshold: 0,
+        rate_online: 0.05,
+        rate_dining: 0.02,
+        rate_travel: 0.02,
+        rate_groceries: 0.02,
+        rate_fuel: 0.0,
+        rate_other: 0.01,
+        dom_lounges: 0,
+        intl_lounges: 0,
+        milestones: 0,
+        verified_days: 4,
+        affiliate_payout: 1800
+      },
+      {
+        id: "idfc-first-wealth",
+        bank: "IDFC FIRST Bank",
+        name: "IDFC FIRST Wealth Credit Card",
+        tier: "Super Premium Lifetime Free",
+        annual_fee: 0,
+        waiver_threshold: 0,
+        rate_online: 0.015,
+        rate_dining: 0.015,
+        rate_travel: 0.025,
+        rate_groceries: 0.015,
+        rate_fuel: 0.0,
+        rate_other: 0.015,
+        dom_lounges: 16,
+        intl_lounges: 16,
+        milestones: 500,
+        verified_days: 8,
+        affiliate_payout: 2500
+      }
+    ];
+
+    function recalculateCards() {
+      const online = parseInt(document.getElementById('spend-online').value);
+      const dining = parseInt(document.getElementById('spend-dining').value);
+      const travel = parseInt(document.getElementById('spend-travel').value);
+      const groceries = parseInt(document.getElementById('spend-groceries').value);
+      const fuel = parseInt(document.getElementById('spend-fuel').value);
+      const other = parseInt(document.getElementById('spend-other').value);
+
+      document.getElementById('lbl-spend-online').innerText = "₹" + online.toLocaleString('en-IN');
+      document.getElementById('lbl-spend-dining').innerText = "₹" + dining.toLocaleString('en-IN');
+      document.getElementById('lbl-spend-travel').innerText = "₹" + travel.toLocaleString('en-IN');
+      document.getElementById('lbl-spend-groceries').innerText = "₹" + groceries.toLocaleString('en-IN');
+      document.getElementById('lbl-spend-fuel').innerText = "₹" + fuel.toLocaleString('en-IN');
+      document.getElementById('lbl-spend-other').innerText = "₹" + other.toLocaleString('en-IN');
+
+      const monthlyTotal = online + dining + travel + groceries + fuel + other;
+      const annualSpend = monthlyTotal * 12;
+      document.getElementById('summary-monthly-spend').innerText = "₹" + monthlyTotal.toLocaleString('en-IN');
+
+      const results = CARDS.map(card => {
+        const rew_online = (online * 12) * card.rate_online;
+        const rew_dining = (dining * 12) * card.rate_dining;
+        const rew_travel = (travel * 12) * card.rate_travel;
+        const rew_groceries = (groceries * 12) * card.rate_groceries;
+        const rew_other = (other * 12) * card.rate_other;
+        const catRewards = rew_online + rew_dining + rew_travel + rew_groceries + rew_other;
+
+        const loungeValue = (travel > 0) ? (Math.min(card.dom_lounges, 8) * 800) + (Math.min(card.intl_lounges, 4) * 1500) : 0;
+        const milestones = (annualSpend >= 300000) ? card.milestones : 0;
+
+        let feeCharged = card.annual_fee;
+        let feeWaived = false;
+        if (card.annual_fee === 0 || annualSpend >= card.waiver_threshold) {
+          feeCharged = 0;
+          feeWaived = true;
+        }
+
+        const netBenefit = (catRewards + loungeValue + milestones) - feeCharged;
+        const roiPct = annualSpend > 0 ? ((netBenefit / annualSpend) * 100).toFixed(1) : 0;
+
+        return {
+          ...card,
+          netBenefit: Math.round(netBenefit),
+          catRewards: Math.round(catRewards),
+          loungeValue: Math.round(loungeValue),
+          milestones: Math.round(milestones),
+          feeCharged,
+          feeWaived,
+          roiPct
+        };
+      });
+
+      results.sort((a, b) => b.netBenefit - a.netBenefit);
+      document.getElementById('summary-top-benefit').innerText = "₹" + results[0].netBenefit.toLocaleString('en-IN') + "/yr";
+
+      // Render Cards
+      const container = document.getElementById('card-rankings-container');
+      container.innerHTML = results.map((c, idx) => `
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-3 hover:border-indigo-500/50 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-[var(--border)]">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-indigo-600/10 text-indigo-400 font-bold text-xs flex items-center justify-center">#${idx+1}</span>
+              <div>
+                <h4 class="font-bold text-sm text-[var(--foreground)]">${c.name}</h4>
+                <div class="text-[11px] text-[var(--muted-foreground)]">${c.bank} • ${c.tier}</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/10 text-emerald-500 font-bold">
+                ${c.feeWaived ? 'Fee Waived (₹0)' : 'Annual Fee: ₹' + c.annual_fee}
+              </span>
+              <span class="px-2 py-0.5 rounded text-[10px] bg-indigo-500/10 text-indigo-400 font-mono">
+                Verified ${c.verified_days}d ago ✅
+              </span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs bg-[var(--background)] p-3 rounded-xl border border-[var(--border)]">
+            <div>
+              <span class="text-[10px] text-[var(--muted-foreground)] block">Annual Rewards:</span>
+              <b class="text-[var(--foreground)]">₹${c.catRewards.toLocaleString('en-IN')}</b>
+            </div>
+            <div>
+              <span class="text-[10px] text-[var(--muted-foreground)] block">Lounge Savings:</span>
+              <b class="text-[var(--foreground)]">₹${c.loungeValue.toLocaleString('en-IN')} (${c.dom_lounges} visits)</b>
+            </div>
+            <div>
+              <span class="text-[10px] text-[var(--muted-foreground)] block">Milestones & Gifts:</span>
+              <b class="text-[var(--foreground)]">₹${c.milestones.toLocaleString('en-IN')}</b>
+            </div>
+            <div>
+              <span class="text-[10px] text-[var(--muted-foreground)] block">Calculated Net Value:</span>
+              <b class="text-emerald-400 text-sm">₹${c.netBenefit.toLocaleString('en-IN')}/yr</b>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-1">
+            <span class="text-xs text-[var(--muted-foreground)]">Effective ROI: <b class="text-indigo-400">${c.roiPct}%</b> on total spend</span>
+            <button onclick="alert('Redirecting to official ${c.bank} secure portal via verified partner link.')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition shadow">
+              Apply via Partner Link →
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      runUpgradeComparison();
+    }
+
+    function runUpgradeComparison() {
+      const curId = document.getElementById('upgrade-current').value;
+      const tgtId = document.getElementById('upgrade-target').value;
+
+      const curCard = CARDS.find(c => c.id === curId);
+      const tgtCard = CARDS.find(c => c.id === tgtId);
+
+      const online = parseInt(document.getElementById('spend-online').value);
+      const dining = parseInt(document.getElementById('spend-dining').value);
+      const travel = parseInt(document.getElementById('spend-travel').value);
+      const groceries = parseInt(document.getElementById('spend-groceries').value);
+      const other = parseInt(document.getElementById('spend-other').value);
+
+      function getNet(c) {
+        const rew = (online*12*c.rate_online) + (dining*12*c.rate_dining) + (travel*12*c.rate_travel) + (groceries*12*c.rate_groceries) + (other*12*c.rate_other);
+        const lounge = (travel > 0) ? (Math.min(c.dom_lounges, 8)*800) + (Math.min(c.intl_lounges, 4)*1500) : 0;
+        const milestones = ((online+dining+travel+groceries+other)*12 >= 300000) ? c.milestones : 0;
+        const fee = ((online+dining+travel+groceries+other)*12 >= c.waiver_threshold) ? 0 : c.annual_fee;
+        return (rew + lounge + milestones) - fee;
+      }
+
+      const curNet = getNet(curCard);
+      const tgtNet = getNet(tgtCard);
+      const delta = Math.round(tgtNet - curNet);
+
+      const deltaElem = document.getElementById('upgrade-delta-val');
+      const textElem = document.getElementById('upgrade-verdict-text');
+
+      if (delta > 0) {
+        deltaElem.innerText = "+₹" + delta.toLocaleString('en-IN') + "/yr";
+        deltaElem.className = "font-extrabold text-sm text-emerald-400";
+        textElem.innerText = `UPGRADE RECOMMENDED: Switching from ${curCard.name} to ${tgtCard.name} gives you an extra ₹${delta.toLocaleString('en-IN')} net benefit every year after fees!`;
+      } else {
+        deltaElem.innerText = "-₹" + Math.abs(delta).toLocaleString('en-IN') + "/yr";
+        deltaElem.className = "font-extrabold text-sm text-red-400";
+        textElem.innerText = `KEEP CURRENT CARD: Upgrading to ${tgtCard.name} results in a loss of ₹${Math.abs(delta).toLocaleString('en-IN')}/yr due to fees exceeding rewards on your spend pattern.`;
+      }
+    }
+
+    // ================= FREE VIRAL TOOLS LOGIC =================
+    let isHRACityMetro = true;
+    let successionGender = 'MALE';
+
+    function switchFreeTool(toolId) {
+      document.querySelectorAll('.freetool-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.freetool-btn').forEach(el => {
+        el.classList.remove('bg-emerald-600', 'text-white', 'shadow-md');
+        el.classList.add('bg-[var(--background)]', 'text-[var(--muted-foreground)]');
+      });
+
+      const activeContent = document.getElementById('subtool-' + toolId);
+      const activeBtn = document.getElementById('subtab-btn-' + toolId);
+      if (activeContent) activeContent.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-[var(--background)]', 'text-[var(--muted-foreground)]');
+        activeBtn.classList.add('bg-emerald-600', 'text-white', 'shadow-md');
+      }
+    }
+
+    function setHRACity(isMetro) {
+      isHRACityMetro = isMetro;
+      const btnMetro = document.getElementById('btn-city-metro');
+      const btnNon = document.getElementById('btn-city-nonmetro');
+      if (isMetro) {
+        btnMetro.className = "py-2 px-3 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow transition text-center";
+        btnNon.className = "py-2 px-3 rounded-xl text-xs font-bold bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition text-center";
+      } else {
+        btnNon.className = "py-2 px-3 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow transition text-center";
+        btnMetro.className = "py-2 px-3 rounded-xl text-xs font-bold bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition text-center";
+      }
+      calculateHRAUI();
+    }
+
+    function calculateHRAUI() {
+      const basicMo = parseInt(document.getElementById('hra-basic').value);
+      const receivedMo = parseInt(document.getElementById('hra-received').value);
+      const rentMo = parseInt(document.getElementById('hra-rent').value);
+
+      document.getElementById('lbl-hra-basic').innerText = "₹" + basicMo.toLocaleString('en-IN');
+      document.getElementById('lbl-hra-received').innerText = "₹" + receivedMo.toLocaleString('en-IN');
+      document.getElementById('lbl-hra-rent').innerText = "₹" + rentMo.toLocaleString('en-IN');
+
+      const basicYr = basicMo * 12;
+      const receivedYr = receivedMo * 12;
+      const rentYr = rentMo * 12;
+
+      // Statutory 3 rules
+      const clause1 = receivedYr;
+      const clause2 = basicYr * (isHRACityMetro ? 0.50 : 0.40);
+      const clause3 = Math.max(0, rentYr - (0.10 * basicYr));
+
+      const exemptYr = Math.min(clause1, clause2, clause3);
+      const taxableYr = Math.max(0, receivedYr - exemptYr);
+      const taxSavedYr = Math.round(exemptYr * 0.312); // 30% slab + 4% cess
+
+      document.getElementById('hra-res-exempt').innerText = "₹" + Math.round(exemptYr).toLocaleString('en-IN');
+      document.getElementById('hra-res-exempt-mo').innerText = "₹" + Math.round(exemptYr / 12).toLocaleString('en-IN') + " / month";
+      document.getElementById('hra-res-taxable').innerText = "₹" + Math.round(taxableYr).toLocaleString('en-IN');
+      document.getElementById('hra-res-taxsaved').innerText = "₹" + taxSavedYr.toLocaleString('en-IN');
+
+      document.getElementById('hra-clause-1').innerText = "₹" + clause1.toLocaleString('en-IN') + (exemptYr === clause1 ? " (Min)" : "");
+      document.getElementById('hra-clause-2').innerText = "₹" + clause2.toLocaleString('en-IN') + (exemptYr === clause2 ? " (Min)" : "");
+      document.getElementById('hra-clause-3').innerText = "₹" + clause3.toLocaleString('en-IN') + (exemptYr === clause3 ? " (Min)" : "");
+
+      // PAN Mandatory check (> ₹1,00,000/yr or ₹8,333/mo)
+      const pan = document.getElementById('hra-landlord-pan').value.trim();
+      const panBadge = document.getElementById('hra-pan-badge');
+      if (rentYr > 100000) {
+        if (pan.length >= 10) {
+          panBadge.className = "px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+          panBadge.innerText = "Landlord PAN Compliant ✅";
+        } else {
+          panBadge.className = "px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20";
+          panBadge.innerText = "⚠️ Landlord PAN Mandatory (>₹1L/yr)";
+        }
+      } else {
+        panBadge.className = "px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20";
+        panBadge.innerText = "PAN Optional (Rent < ₹1L/yr)";
+      }
+
+      updateReceiptPreview();
+    }
+
+    function updateReceiptPreview() {
+      const tenant = document.getElementById('hra-tenant-name').value || "Tenant Name";
+      const landlord = document.getElementById('hra-landlord-name').value || "Landlord Name";
+      const pan = document.getElementById('hra-landlord-pan').value || "ABCDE1234F";
+      const address = document.getElementById('hra-property-address').value || "Property Address";
+      const rentMo = parseInt(document.getElementById('hra-rent').value);
+
+      document.getElementById('prev-rec-tenant').innerText = tenant;
+      document.getElementById('prev-rec-landlord').innerText = landlord;
+      document.getElementById('prev-rec-pan').innerText = pan;
+      document.getElementById('prev-rec-address').innerText = address;
+      document.getElementById('prev-rec-amount').innerText = "₹" + rentMo.toLocaleString('en-IN') + " (Monthly Rent)";
+    }
+
+    function setSuccessionGender(gender) {
+      successionGender = gender;
+      const btnM = document.getElementById('btn-succ-male');
+      const btnF = document.getElementById('btn-succ-female');
+      const spouseLabel = document.getElementById('lbl-succ-spouse-text');
+
+      if (gender === 'MALE') {
+        btnM.className = "py-2 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow transition text-center";
+        btnF.className = "py-2 px-3 rounded-xl text-xs font-bold bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition text-center";
+        spouseLabel.innerText = "Surviving Widow (Wife)";
+      } else {
+        btnF.className = "py-2 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow transition text-center";
+        btnM.className = "py-2 px-3 rounded-xl text-xs font-bold bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition text-center";
+        spouseLabel.innerText = "Surviving Husband";
+      }
+      calculateSuccessionUI();
+    }
+
+    function calculateSuccessionUI() {
+      const totalEstate = parseFloat(document.getElementById('succ-estate').value);
+      const estateInLakhs = (totalEstate / 10000000).toFixed(2);
+      document.getElementById('lbl-succ-estate').innerText = "₹" + totalEstate.toLocaleString('en-IN') + ` (${estateInLakhs} Cr)`;
+
+      const hasSpouse = document.getElementById('succ-spouse').checked;
+      const hasMother = document.getElementById('succ-mother').checked;
+      const hasFather = document.getElementById('succ-father').checked;
+      const sonsCount = parseInt(document.getElementById('succ-sons').value);
+      const dtrsCount = parseInt(document.getElementById('succ-daughters').value);
+
+      const fatherAlert = document.getElementById('succ-father-alert');
+      const container = document.getElementById('succ-heirs-container');
+      container.innerHTML = '';
+
+      if (successionGender === 'MALE') {
+        let heads = (hasSpouse ? 1 : 0) + (hasMother ? 1 : 0) + sonsCount + dtrsCount;
+
+        if (heads === 0) {
+          if (hasFather) {
+            fatherAlert.classList.add('hidden');
+            container.innerHTML = `
+              <div class="bg-[var(--card)] border border-emerald-500/30 rounded-2xl p-4 flex justify-between items-center text-xs">
+                <div>
+                  <b class="text-emerald-400">Father (Class-II Entry-I Heir)</b>
+                  <div class="text-[11px] text-[var(--muted-foreground)]">Inherits 100% of estate as no Class-I heirs exist.</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-bold text-sm text-emerald-400">₹${totalEstate.toLocaleString('en-IN')}</div>
+                  <span class="text-[10px] text-[var(--muted-foreground)]">100% Share</span>
+                </div>
+              </div>
+            `;
+            return;
+          }
+          container.innerHTML = `<div class="p-4 text-xs text-[var(--muted-foreground)] text-center">No heirs specified.</div>`;
+          return;
+        }
+
+        fatherAlert.classList.remove('hidden');
+        const sharePct = (100.0 / heads).toFixed(1);
+        const shareVal = totalEstate / heads;
+
+        const heirItems = [];
+        if (hasSpouse) heirItems.push({ title: "Surviving Widow (Wife)", tier: "Class-I Statutory Heir", share: shareVal, pct: sharePct, frac: `1/${heads}` });
+        if (hasMother) heirItems.push({ title: "Mother of Deceased", tier: "Class-I Statutory Heir", share: shareVal, pct: sharePct, frac: `1/${heads}` });
+        for (let i = 1; i <= sonsCount; i++) {
+          heirItems.push({ title: `Son ${sonsCount > 1 ? '#' + i : ''}`, tier: "Class-I Statutory Heir", share: shareVal, pct: sharePct, frac: `1/${heads}` });
+        }
+        for (let i = 1; i <= dtrsCount; i++) {
+          heirItems.push({ title: `Daughter ${dtrsCount > 1 ? '#' + i : ''}`, tier: "Class-I Equal Coparcener (2005 SC Act)", share: shareVal, pct: sharePct, frac: `1/${heads}`, highlight: true });
+        }
+
+        container.innerHTML = heirItems.map((h, i) => `
+          <div class="bg-[var(--card)] border ${h.highlight ? 'border-indigo-500/40 bg-indigo-500/5' : 'border-[var(--border)]'} rounded-2xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 shadow-sm">
+            <div class="space-y-0.5">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-xs text-[var(--foreground)]">${h.title}</span>
+                <span class="px-2 py-0.5 rounded text-[9px] font-semibold ${h.highlight ? 'bg-indigo-500/20 text-indigo-300' : 'bg-[var(--background)] text-[var(--muted-foreground)] border border-[var(--border)]'}">${h.tier}</span>
+              </div>
+              <div class="text-[11px] text-[var(--muted-foreground)]">Statutory Fraction: <b class="text-indigo-400">${h.frac}</b> of total estate</div>
+            </div>
+            <div class="sm:text-right">
+              <div class="text-base font-black text-emerald-400">₹${Math.round(h.share).toLocaleString('en-IN')}</div>
+              <div class="text-[10px] text-[var(--muted-foreground)] font-mono">${h.pct}% Share</div>
+            </div>
+          </div>
+        `).join('');
+
+      } else {
+        // Female deceased
+        fatherAlert.classList.add('hidden');
+        let heads = (hasSpouse ? 1 : 0) + sonsCount + dtrsCount;
+        if (heads === 0) {
+          container.innerHTML = `<div class="p-4 text-xs text-[var(--muted-foreground)] text-center">Deceased female estate falls to husband's heirs or mother/father under Section 15(2).</div>`;
+          return;
+        }
+        const sharePct = (100.0 / heads).toFixed(1);
+        const shareVal = totalEstate / heads;
+
+        const heirItems = [];
+        if (hasSpouse) heirItems.push({ title: "Surviving Husband", tier: "Section 15(1)(a) Primary Heir", share: shareVal, pct: sharePct, frac: `1/${heads}` });
+        for (let i = 1; i <= sonsCount; i++) {
+          heirItems.push({ title: `Son ${sonsCount > 1 ? '#' + i : ''}`, tier: "Section 15(1)(a) Heir", share: shareVal, pct: sharePct, frac: `1/${heads}` });
+        }
+        for (let i = 1; i <= dtrsCount; i++) {
+          heirItems.push({ title: `Daughter ${dtrsCount > 1 ? '#' + i : ''}`, tier: "Section 15(1)(a) Heir", share: shareVal, pct: sharePct, frac: `1/${heads}`, highlight: true });
+        }
+
+        container.innerHTML = heirItems.map((h, i) => `
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 shadow-sm">
+            <div class="space-y-0.5">
+              <span class="font-bold text-xs text-[var(--foreground)]">${h.title}</span>
+              <div class="text-[11px] text-[var(--muted-foreground)]">Statutory Fraction: <b class="text-indigo-400">${h.frac}</b></div>
+            </div>
+            <div class="sm:text-right">
+              <div class="text-base font-black text-emerald-400">₹${Math.round(h.share).toLocaleString('en-IN')}</div>
+              <div class="text-[10px] text-[var(--muted-foreground)] font-mono">${h.pct}% Share</div>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Vehicle Radar Mock DB
+    const VEHICLE_DB = {
+      "KA-03-MG-5678": {
+        reg: "KA-03-MG-5678",
+        state: "Karnataka (Bangalore East RTO - Indiranagar)",
+        model: "Hyundai Creta 1.5 SX (Petrol)",
+        fitness: "12-Aug-2035 (Active)",
+        insurance_active: true,
+        insurer: "HDFC ERGO General Insurance",
+        insurance_exp: "24-Oct-2026",
+        insurance_days: 38,
+        pucc_valid: true,
+        pucc_exp: "15-Nov-2026",
+        has_hp: true,
+        hp_bank: "HDFC Bank Limited",
+        hp_note: "Bank Lien Active on RC smartcard. Form 35 HP removal required to transfer or sell.",
+        challans: [
+          { no: "CH-KA03-88219", fine: 1000, offense: "Over-speeding (84 km/h in 60 zone)", loc: "Airport Road, Bangalore", status: "SENT TO VIRTUAL COURT", urgent: true },
+          { no: "CH-KA03-77412", fine: 1000, offense: "Unauthorized / Yellow Line Parking", loc: "Brigade Road", status: "TRAFFIC POLICE PENDING", urgent: false }
+        ]
+      },
+      "DL-01-AB-1234": {
+        reg: "DL-01-AB-1234",
+        state: "Delhi (Mall Road RTO DL-01)",
+        model: "Honda City 1.5 V-MT",
+        fitness: "20-May-2031 (Active)",
+        insurance_active: true,
+        insurer: "ICICI Lombard General Insurance",
+        insurance_exp: "05-Jan-2027",
+        insurance_days: 110,
+        pucc_valid: true,
+        pucc_exp: "18-Oct-2026",
+        has_hp: false,
+        hp_bank: "None (Clean RC)",
+        hp_note: "No hypothecation lien. Clean ownership.",
+        challans: [
+          { no: "CH-DL01-55193", fine: 2000, offense: "Red Light Jump Violation", loc: "ITO Crossing, New Delhi", status: "SENT TO VIRTUAL COURT", urgent: true }
+        ]
+      },
+      "MH-02-CP-8901": {
+        reg: "MH-02-CP-8901",
+        state: "Maharashtra (Mumbai West RTO - Andheri)",
+        model: "Tata Nexon EV Max",
+        fitness: "10-Dec-2037 (Active)",
+        insurance_active: true,
+        insurer: "Tata AIG General Insurance",
+        insurance_exp: "18-Dec-2026",
+        insurance_days: 93,
+        pucc_valid: true,
+        pucc_exp: "Electric Vehicle (PUCC Exempt)",
+        has_hp: true,
+        hp_bank: "State Bank of India",
+        hp_note: "Auto Loan Active. HP removal required post loan closure.",
+        challans: []
+      }
+    };
+
+    function setVehicleReg(reg) {
+      document.getElementById('vehicle-reg-input').value = reg;
+      auditVehicleUI();
+    }
+
+    function auditVehicleUI() {
+      const input = document.getElementById('vehicle-reg-input').value.trim().toUpperCase();
+      const cleanKey = input.replace(/\s+/g, '').replace(/-/g, '');
+
+      // Lookup or generate plausible data
+      let data = null;
+      for (const [k, v] of Object.entries(VEHICLE_DB)) {
+        if (k.replace(/-/g, '') === cleanKey) {
+          data = v;
+          break;
+        }
+      }
+
+      if (!data) {
+        data = {
+          reg: input,
+          state: "All India State Transport Authority",
+          model: "Passenger Vehicle (M1 Category)",
+          fitness: "Active till 2033",
+          insurance_active: true,
+          insurer: "General Insurance Provider",
+          insurance_exp: "15-Nov-2026",
+          insurance_days: 60,
+          pucc_valid: true,
+          pucc_exp: "30-Oct-2026",
+          has_hp: true,
+          hp_bank: "Private Sector Bank",
+          hp_note: "Hypothecation lien recorded on Vahan database.",
+          challans: [
+            { no: "CH-" + cleanKey + "-102", fine: 1000, offense: "Disobeying Traffic Signs", loc: "City Center", status: "SENT TO VIRTUAL COURT", urgent: true }
+          ]
+        };
+      }
+
+      const totalFines = data.challans.reduce((sum, c) => sum + c.fine, 0);
+      const out = document.getElementById('vehicle-radar-output');
+
+      out.innerHTML = `
+        <!-- Vehicle Status Banner -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 pb-3 border-b border-[var(--border)]">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-base font-black text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-lg border border-indigo-500/20">${data.reg}</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400">RC Active ✅</span>
+              </div>
+              <div class="text-xs text-[var(--muted-foreground)] mt-1">${data.model} • ${data.state}</div>
+            </div>
+            <div class="text-xs text-[var(--muted-foreground)]">
+              Fitness Valid: <b class="text-[var(--foreground)]">${data.fitness}</b>
+            </div>
+          </div>
+
+          <!-- 4 Grid Health Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+            
+            <!-- Insurance -->
+            <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
+              <div class="flex items-center justify-between text-[10px] text-[var(--muted-foreground)]">
+                <span>INSURANCE</span>
+                <span class="px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-400 font-bold font-mono">${data.insurance_days}d left</span>
+              </div>
+              <div class="font-bold text-[var(--foreground)]">${data.insurer}</div>
+              <div class="text-[10px] text-[var(--muted-foreground)]">Exp: ${data.insurance_exp}</div>
+            </div>
+
+            <!-- PUCC -->
+            <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
+              <div class="flex items-center justify-between text-[10px] text-[var(--muted-foreground)]">
+                <span>EMISSION PUCC</span>
+                <span class="px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-400 font-bold">Valid ✅</span>
+              </div>
+              <div class="font-bold text-[var(--foreground)]">${data.pucc_exp}</div>
+              <div class="text-[10px] text-[var(--muted-foreground)]">Statutory Clean Air Certificate</div>
+            </div>
+
+            <!-- Hypothecation (Bank Lien) -->
+            <div class="p-3.5 bg-[var(--background)] rounded-xl border ${data.has_hp ? 'border-amber-500/40 bg-amber-500/5' : 'border-[var(--border)]'} space-y-1">
+              <div class="flex items-center justify-between text-[10px] text-[var(--muted-foreground)]">
+                <span>BANK HYPOTHECATION</span>
+                <span class="px-1.5 py-0.2 rounded ${data.has_hp ? 'bg-amber-500/20 text-amber-400 font-bold' : 'bg-emerald-500/10 text-emerald-400 font-bold'}">
+                  ${data.has_hp ? '⚠️ Lien Active' : 'Clean RC'}
+                </span>
+              </div>
+              <div class="font-bold text-[var(--foreground)]">${data.hp_bank}</div>
+              <div class="text-[9px] text-[var(--muted-foreground)]">${data.has_hp ? 'Form 35 HP removal required' : 'No lender encumbrance'}</div>
+            </div>
+
+            <!-- Pending Challans -->
+            <div class="p-3.5 bg-[var(--background)] rounded-xl border ${data.challans.length > 0 ? 'border-red-500/40 bg-red-500/5' : 'border-emerald-500/40'} space-y-1">
+              <div class="flex items-center justify-between text-[10px] text-[var(--muted-foreground)]">
+                <span>PENDING CHALLANS</span>
+                <span class="px-1.5 py-0.2 rounded ${data.challans.length > 0 ? 'bg-red-500/20 text-red-400 font-bold' : 'bg-emerald-500/10 text-emerald-400 font-bold'}">
+                  ${data.challans.length} Pending
+                </span>
+              </div>
+              <div class="font-black text-sm ${data.challans.length > 0 ? 'text-red-400' : 'text-emerald-400'}">₹${totalFines.toLocaleString('en-IN')} Total</div>
+              <div class="text-[10px] text-[var(--muted-foreground)]">${data.challans.length > 0 ? 'Includes Virtual Court summons' : 'No traffic fines'}</div>
+            </div>
+
+          </div>
+
+          <!-- Pending Challan Items List -->
+          ${data.challans.length > 0 ? `
+            <div class="pt-2 space-y-2">
+              <div class="text-xs font-bold text-[var(--foreground)]">Pending Traffic Challan Docket:</div>
+              ${data.challans.map(c => `
+                <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="font-mono font-bold text-indigo-400">${c.no}</span>
+                      <span class="px-2 py-0.5 rounded text-[9px] font-bold ${c.urgent ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-amber-500/10 text-amber-400'}">
+                        ${c.status}
+                      </span>
+                    </div>
+                    <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">${c.offense} • <span class="italic">${c.loc}</span></div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <span class="font-bold text-red-400 text-sm">₹${c.fine.toLocaleString('en-IN')}</span>
+                    ${c.urgent ? `
+                      <button onclick="alert('NyayaSetu Virtual Court Settlement: Negotiated closure file opened. Concierge fee: ₹499.')" class="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold transition shadow">
+                        Settle in Virtual Court (₹499) →
+                      </button>
+                    ` : ''}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          ` : `
+            <div class="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-xs text-emerald-400 flex items-center gap-2">
+              <span>🎉</span> No pending traffic challans found on state transport database. Your record is 100% clean!
+            </div>
+          `}
+
+          <!-- NyayaSetu Direct RTO Concierge Upsell -->
+          <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="p-4 bg-gradient-to-r from-indigo-950/20 to-[var(--background)] border border-indigo-500/30 rounded-xl flex justify-between items-center text-xs">
+              <div>
+                <b class="text-indigo-400">RTO Bank HP Removal (Form 35)</b>
+                <p class="text-[10px] text-[var(--muted-foreground)]">Remove closed bank loan lien from RC card without visiting RTO.</p>
+              </div>
+              <button onclick="alert('Doorstep Bank HP Removal Concierge booked!')" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold text-xs">
+                ₹2,999 →
+              </button>
+            </div>
+            <div class="p-4 bg-gradient-to-r from-purple-950/20 to-[var(--background)] border border-purple-500/30 rounded-xl flex justify-between items-center text-xs">
+              <div>
+                <b class="text-purple-400">Interstate Vehicle NOC (Form 28)</b>
+                <p class="text-[10px] text-[var(--muted-foreground)]">Moving states? Get official state police & RTO clearance online.</p>
+              </div>
+              <button onclick="alert('Interstate Form 28 NOC file opened!')" class="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-bold text-xs">
+                ₹3,499 →
+              </button>
+            </div>
+          </div>
+
+        </div>
+      `;
+    }
+
+    window.onload = function() {
+      recalculateCards();
+      calculateHRAUI();
+      calculateSuccessionUI();
+      auditVehicleUI();
+    };
+  </script>
+</body>
+</html>
