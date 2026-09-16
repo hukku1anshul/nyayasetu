@@ -217,7 +217,72 @@ def run_tests():
     assert code == 200 and "agreement_markdown" in res, f"Rental Agreement Failed: {res}"
     print(f"PASS: /api/v1/legal/generate-rental-agreement -> MTA Compliant: {res['is_mta_compliant']}, Score: {res['compliance_score']}")
 
-    print("\nSUCCESS: ALL 21 REST API ENDPOINTS VERIFIED & FULLY FUNCTIONAL!")
+
+    # 22. Test Consumer Forum Complaint (e-Daakhil)
+    code, res = post("/api/v1/legal/draft-consumer-complaint", {
+        "complainant_name": "Vikram Seth",
+        "complainant_address": "Koramangala, Bangalore",
+        "complainant_mobile": "9876543210",
+        "respondent_name": "Flipkart India Pvt Ltd",
+        "respondent_address": "Bellandur, Bangalore",
+        "dispute_category": "ECOMMERCE",
+        "transaction_amount": 28000,
+        "compensation_demanded": 35000
+    })
+    assert code == 200 and res.get("success") is True, f"Consumer Complaint Failed: {res}"
+    print(f"PASS: /api/v1/legal/draft-consumer-complaint -> Docket: {res['docket_number']}, Forum: {res['forum']}")
+
+    # 23. Test RTI Application
+    code, res = post("/api/v1/legal/draft-rti-application", {
+        "applicant_name": "Deepak Joshi",
+        "applicant_address": "Civil Lines, Jaipur",
+        "applicant_mobile": "9876543210",
+        "public_authority_name": "Regional Passport Office",
+        "public_authority_address": "Jaipur",
+        "subject_matter": "Passport Delay #JP10829102",
+        "information_points": ["Reason for delay", "Date police verification received"]
+    })
+    assert code == 200 and res.get("success") is True, f"RTI Failed: {res}"
+    print(f"PASS: /api/v1/legal/draft-rti-application -> Docket: {res['docket_number']}, Authority: {res['public_authority']}")
+
+    # 24. Test Cyber Crime Complaint (1930)
+    code, res = post("/api/v1/legal/draft-cybercrime-complaint", {
+        "victim_name": "Pooja Hegde",
+        "victim_mobile": "9876543210",
+        "victim_email": "pooja@gmail.com",
+        "victim_address": "Andheri West, Mumbai",
+        "incident_category": "UPI_FRAUD",
+        "total_loss_inr": 52000
+    })
+    assert code == 200 and res.get("success") is True, f"Cyber Complaint Failed: {res}"
+    print(f"PASS: /api/v1/legal/draft-cybercrime-complaint -> Docket: {res['docket_number']}, Helpline: {res['helpline']}")
+
+    # 25. Test General Sworn Affidavit
+    code, res = post("/api/v1/legal/generate-affidavit", {
+        "deponent_name": "Rohan Mehra",
+        "deponent_parent_name": "Sanjay Mehra",
+        "deponent_age": 28,
+        "deponent_residence": "Bandra West, Mumbai",
+        "affidavit_type": "NAME_CORRECTION",
+        "state_name": "Maharashtra"
+    })
+    assert code == 200 and res.get("success") is True, f"Affidavit Failed: {res}"
+    print(f"PASS: /api/v1/legal/generate-affidavit -> Docket: {res['docket_number']}, Stamp: Rs. {res['recommended_stamp_paper_inr']}")
+
+    # 26. Test Tax Rectification 154
+    code, res = post("/api/v1/tax/draft-rectification-154", {
+        "taxpayer_name": "Ananya Roy",
+        "pan": "ABCDE1234F",
+        "assessment_year": "2025-26",
+        "acknowledgement_no": "89102941029102",
+        "rectification_reason": "TDS_MISMATCH",
+        "claimed_refund_inr": 42000
+    })
+    assert code == 200 and res.get("success") is True, f"Tax Rectification Failed: {res}"
+    print(f"PASS: /api/v1/tax/draft-rectification-154 -> Docket: {res['docket_number']}, AY: {res['assessment_year']}")
+
+    print("\nSUCCESS: ALL 26 REST API ENDPOINTS VERIFIED & FULLY FUNCTIONAL!")
+
 
 
 if __name__ == "__main__":

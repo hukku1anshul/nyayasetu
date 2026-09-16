@@ -35,6 +35,13 @@ from nyayasetu.engines.stamp_duty_engine import StampDutyEngine
 from nyayasetu.engines.cibil_dispute_engine import CIBILDisputeEngine
 from nyayasetu.engines.gratuity_engine import GratuityEngine
 from nyayasetu.engines.rental_agreement_engine import RentalAgreementEngine
+from nyayasetu.engines.consumer_rti_cyber_engine import (
+    ConsumerForumEngine,
+    RTIApplicationEngine,
+    CyberCrimeEngine,
+    AffidavitEngine,
+    TaxRectificationEngine
+)
 
 from nyayasetu.engines.legal_tax_engine import (
     LegalNoticeEngine,
@@ -71,8 +78,8 @@ app.add_middleware(
 @app.get("/", response_class=HTMLResponse)
 def serve_index():
     if STATIC_INDEX.exists():
-        return FileResponse(STATIC_INDEX)
-    return HTMLResponse("<h1>NyayaSetu & CardSmart Running</h1><p><a href='/docs'>Swagger API Docs</a></p>")
+        return FileResponse(STATIC_INDEX, media_type="text/html; charset=utf-8")
+    return HTMLResponse("<h1>NyayaSetu & CardSmart Running</h1><p><a href='/docs'>Swagger API Docs</a></p>", media_type="text/html; charset=utf-8")
 
 gazette_client = CentralGazetteLiveClient()
 iepf_client = IEPFUnclaimedAssetClient()
@@ -608,6 +615,137 @@ def generate_rental_agreement(req: RentalAgreementRequest):
         annual_escalation_pct=req.annual_escalation_pct,
         maintenance_charges=req.maintenance_charges,
         maintenance_payer=req.maintenance_payer
+    )
+
+
+# ----------------- 5 HIGH-VOLUME EVERYDAY CITIZEN LEGAL & CA SUITE -----------------
+
+class ConsumerComplaintRequest(BaseModel):
+    complainant_name: str
+    complainant_address: str
+    complainant_mobile: str
+    respondent_name: str
+    respondent_address: str
+    dispute_category: str = "ECOMMERCE"
+    transaction_amount: float = 15000.0
+    transaction_date: str = "10-08-2026"
+    order_or_ref_id: str = "OD9928172910"
+    grievance_details: str = "Defective goods delivered, replacement/refund refused."
+    compensation_demanded: float = 25000.0
+
+class RTIRequest(BaseModel):
+    applicant_name: str
+    applicant_address: str
+    applicant_mobile: str
+    public_authority_name: str
+    public_authority_address: str
+    subject_matter: str
+    information_points: List[str]
+    is_bpl: bool = False
+    bpl_card_no: str = ""
+
+class CyberCrimeRequest(BaseModel):
+    victim_name: str
+    victim_mobile: str
+    victim_email: str
+    victim_address: str
+    incident_category: str = "UPI_FRAUD"
+    total_loss_inr: float = 45000.0
+    transaction_utr_or_ref: str = "UTR-482910294102"
+    suspect_identifier: str = "fraudster@ybl / +91-9876501234"
+    incident_date: str = "15-09-2026 14:30 IST"
+    incident_summary: str = "Received fraudulent payment link under pretext of electricity bill update; funds debited unauthorizedly."
+
+class AffidavitRequest(BaseModel):
+    deponent_name: str
+    deponent_parent_name: str
+    deponent_age: int
+    deponent_residence: str
+    affidavit_type: str = "NAME_CORRECTION"
+    declaration_facts: Optional[List[str]] = None
+    state_name: str = "Maharashtra"
+
+class TaxRectificationRequest(BaseModel):
+    taxpayer_name: str
+    pan: str
+    assessment_year: str = "2025-26"
+    acknowledgement_no: str = "89102941029102"
+    rectification_reason: str = "TDS_MISMATCH"
+    claimed_refund_inr: float = 38500.0
+    error_details: str = "TDS deposited under Form 26AS/AIS by employer was not credited in intimation order under Section 143(1)."
+
+@app.post("/api/v1/legal/draft-consumer-complaint")
+def draft_consumer_complaint(req: ConsumerComplaintRequest):
+    """Drafts formal consumer complaint under Section 35 Consumer Protection Act 2019 for e-Daakhil."""
+    return ConsumerForumEngine.draft_complaint(
+        complainant_name=req.complainant_name,
+        complainant_address=req.complainant_address,
+        complainant_mobile=req.complainant_mobile,
+        respondent_name=req.respondent_name,
+        respondent_address=req.respondent_address,
+        dispute_category=req.dispute_category,
+        transaction_amount=req.transaction_amount,
+        transaction_date=req.transaction_date,
+        order_or_ref_id=req.order_or_ref_id,
+        grievance_details=req.grievance_details,
+        compensation_demanded=req.compensation_demanded
+    )
+
+@app.post("/api/v1/legal/draft-rti-application")
+def draft_rti_application(req: RTIRequest):
+    """Drafts formal Section 6(1) Right to Information application with 30-day statutory mandate."""
+    return RTIApplicationEngine.draft_rti(
+        applicant_name=req.applicant_name,
+        applicant_address=req.applicant_address,
+        applicant_mobile=req.applicant_mobile,
+        public_authority_name=req.public_authority_name,
+        public_authority_address=req.public_authority_address,
+        subject_matter=req.subject_matter,
+        information_points=req.information_points,
+        is_bpl=req.is_bpl,
+        bpl_card_no=req.bpl_card_no
+    )
+
+@app.post("/api/v1/legal/draft-cybercrime-complaint")
+def draft_cybercrime_complaint(req: CyberCrimeRequest):
+    """Drafts Section 66D IT Act Cyber Police complaint statement for National Cyber Crime Portal."""
+    return CyberCrimeEngine.draft_cyber_complaint(
+        victim_name=req.victim_name,
+        victim_mobile=req.victim_mobile,
+        victim_email=req.victim_email,
+        victim_address=req.victim_address,
+        incident_category=req.incident_category,
+        total_loss_inr=req.total_loss_inr,
+        transaction_utr_or_ref=req.transaction_utr_or_ref,
+        suspect_identifier=req.suspect_identifier,
+        incident_date=req.incident_date,
+        incident_summary=req.incident_summary
+    )
+
+@app.post("/api/v1/legal/generate-affidavit")
+def generate_affidavit(req: AffidavitRequest):
+    """Generates sworn First-Class Magistrate / Notary Public affidavit in standard legal deed format."""
+    return AffidavitEngine.generate_affidavit(
+        deponent_name=req.deponent_name,
+        deponent_parent_name=req.deponent_parent_name,
+        deponent_age=req.deponent_age,
+        deponent_residence=req.deponent_residence,
+        affidavit_type=req.affidavit_type,
+        declaration_facts=req.declaration_facts,
+        state_name=req.state_name
+    )
+
+@app.post("/api/v1/tax/draft-rectification-154")
+def draft_tax_rectification(req: TaxRectificationRequest):
+    """Drafts Section 154 CPC Bengaluru application for rectifying mistakes apparent from record and delayed refunds."""
+    return TaxRectificationEngine.draft_rectification(
+        taxpayer_name=req.taxpayer_name,
+        pan=req.pan,
+        assessment_year=req.assessment_year,
+        acknowledgement_no=req.acknowledgement_no,
+        rectification_reason=req.rectification_reason,
+        claimed_refund_inr=req.claimed_refund_inr,
+        error_details=req.error_details
     )
 
 

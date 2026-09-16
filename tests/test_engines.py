@@ -22,6 +22,13 @@ from nyayasetu.engines.stamp_duty_engine import StampDutyEngine
 from nyayasetu.engines.cibil_dispute_engine import CIBILDisputeEngine
 from nyayasetu.engines.gratuity_engine import GratuityEngine
 from nyayasetu.engines.rental_agreement_engine import RentalAgreementEngine
+from nyayasetu.engines.consumer_rti_cyber_engine import (
+    ConsumerForumEngine,
+    RTIApplicationEngine,
+    CyberCrimeEngine,
+    AffidavitEngine,
+    TaxRectificationEngine
+)
 from nyayasetu.engines.legal_tax_engine import (
     LegalNoticeEngine,
     AgreementRiskEngine,
@@ -402,6 +409,81 @@ def test_rental_agreement_and_mta_audit():
     assert "LEASE AGREEMENT" in audit["agreement_markdown"]
     print(f"Model Tenancy Act Audit & Generator passed! Violations: {len(audit['violations'])}")
 
+
+def test_consumer_forum_complaint():
+    res = ConsumerForumEngine.draft_complaint(
+        complainant_name="Vikram Seth",
+        complainant_address="Koramangala, Bangalore",
+        complainant_mobile="9876543210",
+        respondent_name="Flipkart India Pvt Ltd",
+        respondent_address="Bellandur, Bangalore",
+        dispute_category="ECOMMERCE",
+        transaction_amount=28000.0,
+        compensation_demanded=35000.0
+    )
+    assert res["success"] is True
+    assert "District Consumer" in res["forum"]
+    assert "SECTION 35" in res["petition_text"]
+    assert res["total_claim_inr"] == 63000.0
+    print(f"Consumer Forum Drafter passed! Docket: {res['docket_number']}, Forum: {res['forum']}")
+
+def test_rti_application():
+    res = RTIApplicationEngine.draft_rti(
+        applicant_name="Deepak Joshi",
+        applicant_address="Civil Lines, Jaipur",
+        applicant_mobile="9876543210",
+        public_authority_name="Regional Passport Office",
+        public_authority_address="Jhalana Doongri, Jaipur",
+        subject_matter="Status of Tatkaal Passport Application #JP10829102",
+        information_points=["Date on which police verification was received", "Reason for delay beyond 3 days"]
+    )
+    assert res["success"] is True
+    assert res["statutory_response_days"] == 30
+    assert "SECTION 6(1)" in res["rti_text"]
+    print(f"RTI Application Builder passed! Docket: {res['docket_number']}, Authority: {res['public_authority']}")
+
+def test_cyber_crime_complaint():
+    res = CyberCrimeEngine.draft_cyber_complaint(
+        victim_name="Pooja Hegde",
+        victim_mobile="9876543210",
+        victim_email="pooja@gmail.com",
+        victim_address="Andheri West, Mumbai",
+        incident_category="UPI_FRAUD",
+        total_loss_inr=52000.0
+    )
+    assert res["success"] is True
+    assert "1930" in res["helpline"]
+    assert "SECTION 66D" in res["complaint_text"]
+    print(f"Cyber Crime Complaint passed! Docket: {res['docket_number']}, Helpline: {res['helpline']}")
+
+def test_affidavit_generation():
+    res = AffidavitEngine.generate_affidavit(
+        deponent_name="Rohan Mehra",
+        deponent_parent_name="Sanjay Mehra",
+        deponent_age=28,
+        deponent_residence="Bandra West, Mumbai",
+        affidavit_type="NAME_CORRECTION",
+        state_name="Maharashtra"
+    )
+    assert res["success"] is True
+    assert res["recommended_stamp_paper_inr"] == 100
+    assert "NOTARY PUBLIC" in res["affidavit_text"]
+    print(f"Affidavit Generator passed! Docket: {res['docket_number']}")
+
+def test_tax_rectification_154():
+    res = TaxRectificationEngine.draft_rectification(
+        taxpayer_name="Ananya Roy",
+        pan="ABCDE1234F",
+        assessment_year="2025-26",
+        acknowledgement_no="89102941029102",
+        rectification_reason="TDS_MISMATCH",
+        claimed_refund_inr=42000.0
+    )
+    assert res["success"] is True
+    assert "SECTION 154" in res["rectification_text"]
+    assert res["assessment_year"] == "2025-26"
+    print(f"Tax Rectification 154 passed! Docket: {res['docket_number']}")
+
 if __name__ == "__main__":
     test_credit_card_personalized_ranking()
     test_credit_card_upgrade_calculator()
@@ -423,4 +505,9 @@ if __name__ == "__main__":
     test_cibil_dispute_and_notice()
     test_gratuity_and_pension()
     test_rental_agreement_and_mta_audit()
-    print("\nALL 20+ ENGINES (LOAN MITRA, CARDSMART, VAKIL & CA INDIA, PUBLIC RAILS, AND 5 NEW MOATS) PASSED AUTOMATED TESTS SUCCESSFULLY!")
+    test_consumer_forum_complaint()
+    test_rti_application()
+    test_cyber_crime_complaint()
+    test_affidavit_generation()
+    test_tax_rectification_154()
+    print("\nALL 25+ ENGINES (LOAN MITRA, CARDSMART, VAKIL & CA INDIA, 5 MOATS, 5 EVERYDAY TOOLS) PASSED AUTOMATED TESTS SUCCESSFULLY!")
