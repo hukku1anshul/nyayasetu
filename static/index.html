@@ -2,228 +2,292 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NyayaSetu & CardSmart - Legal, Bureaucracy & Financial Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>NyayaSetu, Loan Mitra & CardSmart - Unified FinTech & LegalTech Platform</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS Engine -->
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  
   <style>
+    :root {
+      --background: #090d16;
+      --card: #0f172a;
+      --card-surface: #141e33;
+      --card-hover: #1b2640;
+      --border: #1e293b;
+      --border-light: #2d3b55;
+      --border-focus: #3b82f6;
+      --foreground: #f8fafc;
+      --muted-foreground: #94a3b8;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --accent-emerald: #10b981;
+      --accent-purple: #8b5cf6;
+      --accent-teal: #14b8a6;
+      --accent-amber: #f59e0b;
+      --accent-cyan: #06b6d4;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow-x: hidden;
+      max-width: 100vw;
+      margin: 0;
+      padding: 0;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    }
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 9999px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--muted-foreground); }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.625rem 0.875rem;
+      border-radius: 0.75rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--muted-foreground);
+      transition: all 0.15s ease-in-out;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      user-select: none;
+    }
+    .sidebar-link:hover {
+      background-color: rgba(255, 255, 255, 0.04);
+      color: var(--foreground);
+    }
+    .sidebar-link.active {
+      background-color: rgba(59, 130, 246, 0.12);
+      color: #60a5fa;
+      border-left-color: #3b82f6;
+    }
+    .sidebar-category {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #64748b;
+      padding: 0.875rem 0.875rem 0.375rem 0.875rem;
+    }
   </style>
 </head>
-<body class="bg-[var(--background)] text-[var(--foreground)] antialiased font-sans min-h-screen p-4 md:p-8">
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased font-sans min-h-screen overflow-x-hidden flex selection:bg-blue-600 selection:text-white">
 
-  <!-- Main Container -->
-  <div class="max-w-7xl mx-auto space-y-6">
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <div id="sidebar-backdrop" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-black/75 backdrop-blur-xs z-40 hidden lg:hidden transition-opacity"></div>
 
-    <!-- Header & Hero Section -->
-    <header class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
-      <div>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-indigo-600 to-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
-            ⚖️
+  <!-- Modern Left Sidebar Navigation -->
+  <aside id="app-sidebar" class="w-72 bg-[var(--card)] border-r border-[var(--border)] flex flex-col h-screen fixed inset-y-0 left-0 z-50 transition-transform duration-300 -translate-x-full lg:translate-x-0 shadow-2xl lg:shadow-none select-none">
+    
+    <!-- Sidebar Brand -->
+    <div class="p-5 border-b border-[var(--border)] flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-indigo-600 to-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
+          ⚖️
+        </div>
+        <div>
+          <div class="font-heading font-extrabold text-base tracking-tight text-white flex items-center gap-1.5">
+            NyayaSetu
+            <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">1.8.0</span>
           </div>
-          <div>
-            <h1 class="text-2xl font-bold tracking-tight text-[var(--foreground)] flex items-center gap-2 flex-wrap">
-              NyayaSetu, Loan Mitra & CardSmart
-              <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 font-semibold">RBI 2025 Compliant</span>
-              <span class="text-xs px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 font-semibold">AI Vakil & CA Suite</span>
-            </h1>
-            <p class="text-sm text-[var(--muted-foreground)]">Unified Credit Marketplace, Credit Card ROI Engine, Bureaucracy Rails & Indian Statutory Legal-Tax Copilot</p>
-          </div>
+          <div class="text-[11px] text-[var(--muted-foreground)] font-medium">Loan Mitra • CardSmart</div>
         </div>
       </div>
-      <div class="flex flex-wrap items-center gap-2.5">
-        <!-- User Profile & Persona Switcher Button -->
-        <button onclick="openSignInModal()" id="btn-user-profile" class="px-3.5 py-2 rounded-xl bg-[var(--background)] hover:bg-[var(--border)] border border-[var(--border)] text-xs font-semibold text-[var(--foreground)] transition flex items-center gap-2 shadow-xs">
-          <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 text-white flex items-center justify-center text-xs font-bold" id="user-avatar">AV</span>
-          <div class="text-left leading-tight">
-            <div class="font-bold flex items-center gap-1">
-              <span id="user-name-display">Aditya Verma</span>
-              <span class="text-[9px] text-emerald-400">●</span>
-            </div>
-            <div class="text-[10px] text-[var(--muted-foreground)]" id="user-role-display">Salaried IT Professional</div>
+      <!-- Mobile close button -->
+      <button onclick="closeMobileSidebar()" class="lg:hidden text-[var(--muted-foreground)] hover:text-white text-lg p-1">✕</button>
+    </div>
+
+    <!-- Quick Search / Filter in Sidebar -->
+    <div class="px-3 pt-3 pb-1">
+      <div class="relative">
+        <input type="text" oninput="filterSidebarMenu(this.value)" placeholder="🔍 Quick Jump / Search..." class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl py-2 pl-3 pr-8 text-xs text-[var(--foreground)] placeholder-[var(--muted-foreground)] focus:outline-none focus:border-blue-500 transition">
+      </div>
+    </div>
+
+    <!-- Grouped Nav Items -->
+    <nav class="flex-1 px-3 py-2 space-y-0.5 overflow-y-auto">
+      
+      <div class="sidebar-category">Financial Marketplace</div>
+      <a onclick="switchTab('loanmitra')" id="nav-item-loanmitra" class="sidebar-link active">
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">🤝</span>
+          <span>Loan Mitra</span>
+        </div>
+        <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 font-bold">RBI 2025</span>
+      </a>
+      <a onclick="switchTab('cardsmart')" id="nav-item-cardsmart" class="sidebar-link">
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">💳</span>
+          <span>CardSmart ROI</span>
+        </div>
+        <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">Net ROI</span>
+      </a>
+
+      <div class="sidebar-category">Legal & Tax Copilot</div>
+      <a onclick="switchTab('vakilca')" id="nav-item-vakilca" class="sidebar-link">
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">⚖️</span>
+          <span>AI Vakil & CA India</span>
+        </div>
+        <span class="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20 font-bold">5-in-1</span>
+      </a>
+
+      <div class="sidebar-category">Public Data Rails</div>
+      <a onclick="switchTab('rails')" id="nav-item-rails" class="sidebar-link">
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">🔍</span>
+          <span>Live Public Rails</span>
+        </div>
+        <span class="text-[10px] px-1.5 py-0.5 rounded bg-teal-500/10 text-teal-400 border border-teal-500/20 font-bold">Live APIs</span>
+      </a>
+
+      <div class="sidebar-category">Bureaucracy Digitization</div>
+      <a onclick="switchTab('gazette')" id="nav-item-gazette" class="sidebar-link">
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">📰</span>
+          <span>Central Gazette</span>
+        </div>
+      </a>
+      <a onclick="switchTab('iepf')" id="nav-item-iepf" class="sidebar-link">
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">💰</span>
+          <span>IEPF Wealth Recovery</span>
+        </div>
+      </a>
+      <a onclick="switchTab('rta')" id="nav-item-rta" class="sidebar-link">
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">🏢</span>
+          <span>Local RTA Registers</span>
+        </div>
+      </a>
+
+      <div class="sidebar-category">Consumer Utilities</div>
+      <a onclick="switchTab('freetools')" id="nav-item-freetools" class="sidebar-link">
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">🎁</span>
+          <span>Free Viral Tools</span>
+        </div>
+        <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">HRA</span>
+      </a>
+
+      <div class="sidebar-category">Channels & Business</div>
+      <a onclick="switchTab('whatsapp')" id="nav-item-whatsapp" class="sidebar-link">
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">💬</span>
+          <span>WhatsApp Bot</span>
+        </div>
+      </a>
+      <a onclick="switchTab('revenue')" id="nav-item-revenue" class="sidebar-link">
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">💸</span>
+          <span>Revenue Studio</span>
+        </div>
+      </a>
+      <a onclick="switchTab('realgov')" id="nav-item-realgov" class="sidebar-link">
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">⚡</span>
+          <span>Gov API Integrations</span>
+        </div>
+      </a>
+
+      <div class="sidebar-category">My Workspace</div>
+      <a onclick="switchTab('history')" id="nav-item-history" class="sidebar-link">
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">📜</span>
+          <span>Activity History</span>
+        </div>
+        <span id="sidebar-hist-badge" class="px-1.5 py-0.5 rounded-full bg-amber-500 text-black font-black text-[10px]">4</span>
+      </a>
+
+    </nav>
+
+    <!-- Sidebar Bottom User Persona Card -->
+    <div class="p-3 border-t border-[var(--border)] bg-[var(--card-surface)]/50">
+      <div onclick="openSignInModal()" class="p-2.5 rounded-xl border border-[var(--border)] hover:border-blue-500/60 bg-[var(--card)] cursor-pointer transition flex items-center justify-between group shadow-xs">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <span id="sidebar-user-avatar" class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 text-white flex items-center justify-center text-xs font-bold shrink-0">AV</span>
+          <div class="min-w-0">
+            <div id="sidebar-user-name" class="font-bold text-xs text-[var(--foreground)] truncate group-hover:text-blue-400 transition">Aditya Verma</div>
+            <div id="sidebar-user-role" class="text-[10px] text-[var(--muted-foreground)] truncate">Salaried IT Professional</div>
           </div>
-          <span class="text-[10px] text-indigo-400 font-bold ml-1">Switch ▾</span>
+        </div>
+        <span class="text-[10px] text-blue-400 font-bold shrink-0 ml-1">Switch ▾</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- Main Viewport Shell -->
+  <div class="flex-1 min-w-0 lg:pl-72 flex flex-col min-h-screen overflow-x-hidden">
+    
+    <!-- Top Sticky Header -->
+    <header class="sticky top-0 z-30 bg-[var(--card)]/90 backdrop-blur-md border-b border-[var(--border)] px-4 sm:px-6 py-3 flex items-center justify-between gap-3 select-none">
+      
+      <!-- Left: Mobile Toggle & Breadcrumbs -->
+      <div class="flex items-center gap-3 min-w-0">
+        <button onclick="toggleMobileSidebar()" class="lg:hidden p-2 rounded-xl bg-[var(--card-surface)] border border-[var(--border)] text-white hover:bg-[var(--border)] transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+        <div class="min-w-0">
+          <div class="text-[10px] uppercase font-bold tracking-wider text-[var(--muted-foreground)]">NyayaSetu Platform</div>
+          <h1 id="header-breadcrumb-title" class="text-sm sm:text-base font-heading font-extrabold text-white truncate">
+            🤝 Loan Mitra Marketplace (RBI 2025)
+          </h1>
+        </div>
+      </div>
+
+      <!-- Right: Action shortcuts -->
+      <div class="flex items-center gap-2 shrink-0">
+        
+        <!-- Persona Quick Button -->
+        <button onclick="openSignInModal()" id="btn-user-profile" class="hidden sm:flex px-3 py-1.5 rounded-xl bg-[var(--card-surface)] hover:bg-[var(--card-hover)] border border-[var(--border)] text-xs font-semibold text-[var(--foreground)] transition items-center gap-2 shadow-xs">
+          <span id="user-avatar" class="w-5 h-5 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 text-white flex items-center justify-center text-[10px] font-bold">AV</span>
+          <div class="text-left leading-tight hidden md:block">
+            <span id="user-name-display" class="font-bold block">Aditya Verma</span>
+            <span id="user-role-display" class="text-[10px] text-[var(--muted-foreground)] block">Salaried IT Professional</span>
+          </div>
+          <span class="text-[9px] text-blue-400 font-bold ml-0.5">Switch ▾</span>
         </button>
 
-        <!-- Activity History Badge Button -->
-        <button onclick="switchTab('history')" class="px-3 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500/20 text-amber-400 text-xs font-bold transition flex items-center gap-1.5 shadow-xs">
+        <!-- History Button -->
+        <button onclick="switchTab('history')" class="px-2.5 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500/20 text-amber-400 text-xs font-bold transition flex items-center gap-1.5 shadow-xs">
           <span>📜</span>
-          <span>History</span>
-          <span id="history-counter-badge" class="px-1.5 py-0.5 bg-amber-500 text-black font-black text-[10px] rounded-full">4</span>
+          <span class="hidden md:inline">History</span>
+          <span id="history-counter-badge" class="px-1.5 py-0.2 bg-amber-500 text-black font-black text-[10px] rounded-full">4</span>
         </button>
 
-        <!-- External Companion App Link -->
-        <a href="http://localhost:3000" target="_blank" class="px-3.5 py-2 rounded-xl bg-purple-950/40 border border-purple-500/40 hover:bg-purple-900/40 text-purple-300 font-bold text-xs shadow-xs transition flex items-center gap-1.5" title="Launch Standalone Next.js 15 Vakil-CA India App on Port 3000">
+        <!-- Companion App Launch -->
+        <a href="http://localhost:3000" target="_blank" class="px-3 py-1.5 rounded-xl bg-purple-950/50 border border-purple-500/40 hover:bg-purple-900/50 text-purple-300 font-bold text-xs shadow-xs transition flex items-center gap-1.5" title="Launch Standalone Next.js 15 Vakil-CA India App on Port 3000">
           <span>⚖️</span>
-          <span>Open Vakil-CA Portal ↗</span>
+          <span class="hidden lg:inline">Open Vakil-CA ↗</span>
         </a>
 
-        <!-- Fast Nav Shortcuts -->
-        <button onclick="switchTab('vakilca')" class="px-3 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1">
-          <span>⚖️</span> AI Vakil & CA
-        </button>
-        <button onclick="switchTab('rails')" class="px-3 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1">
-          <span>🔍</span> Public Rails
-        </button>
-        <button onclick="switchTab('loanmitra')" class="px-3 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1">
-          <span>🤝</span> Loan Mitra
-        </button>
-        <button onclick="switchTab('cardsmart')" class="px-3 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1">
-          <span>💳</span> CardSmart
-        </button>
+        <!-- API Docs -->
+        <a href="/docs" target="_blank" class="hidden xl:flex px-2.5 py-1.5 rounded-xl bg-blue-600/15 border border-blue-500/30 hover:bg-blue-600/25 text-blue-400 font-bold text-xs shadow-xs transition items-center gap-1">
+          <span>📘 Docs</span>
+        </a>
+
       </div>
     </header>
 
-    <!-- Sign-In / Persona Switcher Modal -->
-    <div id="signin-modal" class="fixed inset-0 bg-black/75 backdrop-blur-xs flex items-center justify-center z-50 hidden p-4">
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-5 relative max-h-[90vh] overflow-y-auto">
-        <button onclick="closeSignInModal()" class="absolute top-4 right-4 text-[var(--muted-foreground)] hover:text-[var(--foreground)] text-xl font-bold">✕</button>
-
-        <div class="border-b border-[var(--border)] pb-3">
-          <h2 class="text-xl font-bold text-[var(--foreground)] flex items-center gap-2">
-            <span>👤</span> User Sign-In & Instant Persona Switcher
-          </h2>
-          <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
-            Switch between realistic Indian citizen personas to test loans, credit cards, legal notices, and tax filings, or enter custom details.
-          </p>
-        </div>
-
-        <!-- 1-Click Preloaded Personas Grid -->
-        <div class="space-y-2">
-          <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">⚡ 1-Click Demo Personas (Instant Pre-fill)</span>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <!-- Persona 1 -->
-            <div onclick="selectDemoPersona('aditya')" class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] hover:border-indigo-500 cursor-pointer transition space-y-2 group">
-              <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-xs">AV</div>
-                <div>
-                  <div class="font-bold text-xs text-[var(--foreground)] group-hover:text-indigo-400 transition">Aditya Verma</div>
-                  <div class="text-[10px] text-blue-400 font-semibold">Salaried IT Professional</div>
-                </div>
-              </div>
-              <div class="text-[11px] text-[var(--muted-foreground)] space-y-0.5">
-                <div>💰 ₹18L Annual CTC</div>
-                <div>📍 Bengaluru (560038)</div>
-                <div>💳 HDFC Millennia (Score: 785)</div>
-                <div>⚖️ Needs: HRA, Tax Regime, Lease Audit</div>
-              </div>
-              <button class="w-full py-1 text-center text-xs font-bold bg-blue-600/10 text-blue-400 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition">Select Aditya</button>
-            </div>
-
-            <!-- Persona 2 -->
-            <div onclick="selectDemoPersona('priya')" class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] hover:border-emerald-500 cursor-pointer transition space-y-2 group">
-              <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-xs">PS</div>
-                <div>
-                  <div class="font-bold text-xs text-[var(--foreground)] group-hover:text-emerald-400 transition">Priya Sharma</div>
-                  <div class="text-[10px] text-emerald-400 font-semibold">Freelance UX Consultant</div>
-                </div>
-              </div>
-              <div class="text-[11px] text-[var(--muted-foreground)] space-y-0.5">
-                <div>💰 ₹32L Gross Receipts</div>
-                <div>📍 Mumbai (400050)</div>
-                <div>💼 Section 44ADA Presumptive Tax</div>
-                <div>⚖️ Needs: Contractor Notice, Forex Card</div>
-              </div>
-              <button class="w-full py-1 text-center text-xs font-bold bg-emerald-600/10 text-emerald-400 rounded-lg group-hover:bg-emerald-600 group-hover:text-white transition">Select Priya</button>
-            </div>
-
-            <!-- Persona 3 -->
-            <div onclick="selectDemoPersona('kunal')" class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] hover:border-amber-500 cursor-pointer transition space-y-2 group">
-              <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">KD</div>
-                <div>
-                  <div class="font-bold text-xs text-[var(--foreground)] group-hover:text-amber-400 transition">Kunal Deshmukh</div>
-                  <div class="text-[10px] text-amber-400 font-semibold">SME Wholesale Trader</div>
-                </div>
-              </div>
-              <div class="text-[11px] text-[var(--muted-foreground)] space-y-0.5">
-                <div>💰 ₹95L Annual Turnover</div>
-                <div>📍 Pune (411001)</div>
-                <div>🏢 GSTIN Registered Entity</div>
-                <div>⚖️ Needs: Sec 138 Cheque Bounce, MSME Loan</div>
-              </div>
-              <button class="w-full py-1 text-center text-xs font-bold bg-amber-600/10 text-amber-400 rounded-lg group-hover:bg-amber-600 group-hover:text-white transition">Select Kunal</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Or Custom Profile Form -->
-        <div class="border-t border-[var(--border)] pt-4 space-y-3">
-          <span class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)]">✏️ Or Enter Custom User Credentials</span>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            <div>
-              <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Full Legal Name</label>
-              <input type="text" id="cust-name" placeholder="e.g. Rajesh Kumar" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
-            </div>
-            <div>
-              <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Email / Mobile</label>
-              <input type="text" id="cust-contact" placeholder="e.g. rajesh@example.com / 9876543210" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
-            </div>
-            <div>
-              <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">City & Pincode</label>
-              <div class="flex gap-2">
-                <input type="text" id="cust-city" placeholder="City (Delhi)" class="w-1/2 p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
-                <input type="text" id="cust-pin" placeholder="110001" maxlength="6" class="w-1/2 p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
-              </div>
-            </div>
-            <div>
-              <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">PAN Number (Optional)</label>
-              <input type="text" id="cust-pan" placeholder="e.g. ABCPK1234F" maxlength="10" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg uppercase text-[var(--foreground)] font-mono">
-            </div>
-          </div>
-          <div class="flex justify-end gap-2 pt-2">
-            <button onclick="selectDemoPersona('guest')" class="px-4 py-2 bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] rounded-xl text-xs font-semibold">Reset to Guest</button>
-            <button onclick="saveCustomUser()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold shadow-md">Save & Apply Profile</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Navigation Tabs -->
-    <div class="flex border-b border-[var(--border)] gap-2 overflow-x-auto pb-1 text-sm font-medium">
-      <button onclick="switchTab('loanmitra')" id="tab-btn-loanmitra" class="tab-btn px-4 py-2.5 border-b-2 border-blue-600 text-blue-500 flex items-center gap-2 transition font-bold">
-        🤝 Loan Mitra Marketplace (RBI 2025)
-      </button>
-      <button onclick="switchTab('cardsmart')" id="tab-btn-cardsmart" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-bold">
-        💳 CardSmart ROI & Upgrade Engine
-      </button>
-      <button onclick="switchTab('vakilca')" id="tab-btn-vakilca" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-bold text-purple-400">
-        ⚖️ AI Vakil & CA India
-      </button>
-      <button onclick="switchTab('rails')" id="tab-btn-rails" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-bold text-teal-400">
-        🔍 Live Public Rails (IFSC • PIN • PAN • GSTIN)
-      </button>
-      <button onclick="switchTab('history')" id="tab-btn-history" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-bold text-amber-400">
-        📜 Activity History & Dockets
-      </button>
-      <button onclick="switchTab('freetools')" id="tab-btn-freetools" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-semibold">
-        🎁 Free Viral Tools (HRA • Succession • Challan)
-      </button>
-      <button onclick="switchTab('revenue')" id="tab-btn-revenue" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-semibold">
-        💸 Revenue & Upsell Studio
-      </button>
-      <button onclick="switchTab('rta')" id="tab-btn-rta" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-semibold">
-        🏢 Local RTA & Registers
-      </button>
-      <button onclick="switchTab('realgov')" id="tab-btn-realgov" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition">
-        ⚡ Live Gov Integrations
-      </button>
-      <button onclick="switchTab('iepf')" id="tab-btn-iepf" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition">
-        💰 Unclaimed Wealth Calculator
-      </button>
-      <button onclick="switchTab('gazette')" id="tab-btn-gazette" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition">
-        📰 Central Gazette Wizard
-      </button>
-      <button onclick="switchTab('whatsapp')" id="tab-btn-whatsapp" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-semibold">
-        💬 WhatsApp Bot Simulator
-      </button>
-    </div>
-
-    <!-- ================= TAB: LOAN MITRA (RBI 2025 COMPLIANT MARKETPLACE) ================= -->
+    <!-- Main Content Stage -->
+    <main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto space-y-6 overflow-x-hidden">
+      <!-- ================= TAB: LOAN MITRA (RBI 2025 COMPLIANT MARKETPLACE) ================= -->
     <section id="tab-loanmitra" class="tab-content space-y-6">
       
       <!-- Top Banner -->
@@ -289,16 +353,17 @@
         </div>
       </div>
 
-      <!-- Step-by-Step Instructions Banner -->
-      <div class="bg-gradient-to-r from-slate-900/60 via-[var(--card)] to-slate-900/60 border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-3">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="text-lg">📖</span>
-            <h3 class="text-sm font-bold text-[var(--foreground)] uppercase tracking-wide">How to Use Loan Mitra — Step-by-Step Interactive Guide</h3>
+      <!-- Step-by-Step Instructions Accordion -->
+      <details class="group bg-[var(--card-surface)]/70 border border-[var(--border)] rounded-2xl p-4 transition-all hover:border-[var(--border-light)]">
+        <summary class="cursor-pointer flex items-center justify-between text-xs font-bold text-blue-400 select-none">
+          <div class="flex items-center gap-2.5">
+            <span class="text-base">📖</span>
+            <span class="tracking-wide text-sm text-[var(--foreground)]">How to Use Loan Mitra — Step-by-Step Interactive Guide</span>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">5 Steps</span>
           </div>
-          <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-semibold">User Workflow</span>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs">
+          <span class="text-[11px] font-semibold text-[var(--muted-foreground)] group-open:rotate-180 transition-transform">▾ View Guide</span>
+        </summary>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 text-xs mt-3 pt-3 border-t border-[var(--border)]">
           <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3 space-y-1">
             <div class="font-bold text-blue-400 flex items-center gap-1"><span>1️⃣</span> Profile & Needs</div>
             <p class="text-[11px] text-[var(--muted-foreground)]">Select loan category (Personal, Home, Business, LAP). Slide required loan amount, monthly income, current EMIs, tenure, and credit score.</p>
@@ -319,7 +384,7 @@
             <div class="font-bold text-purple-400 flex items-center gap-1"><span>5️⃣</span> CRM & Verification</div>
             <p class="text-[11px] text-[var(--muted-foreground)]">Inspect real-time lead lifecycle progression (Docs $\rightarrow$ Bank Login $\rightarrow$ Sanction $\rightarrow$ Disbursed) and 7-day lender regulatory health.</p>
           </div>
-        </div>
+      </details>
       </div>
 
       <!-- SUB-TAB 1: LOAN MITRA MATCH (MULTI-LENDER QUESTIONNAIRE) -->
@@ -2731,51 +2796,226 @@ Click "Generate Statutory Legal Notice" or select a sample above to view complet
       </div>
 
     </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="text-center text-xs text-[var(--muted-foreground)] py-4 border-t border-[var(--border)]">
-      CardSmart & NyayaSetu • Personalized Credit Card ROI Engine • 100% Free Transparent Comparisons
+    <!-- Professional Footer -->
+    <footer class="border-t border-[var(--border)] py-6 px-6 text-center text-xs text-[var(--muted-foreground)] bg-[var(--card)]/40">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div>
+          <span class="font-bold text-[var(--foreground)]">NyayaSetu, Loan Mitra & CardSmart</span> • India's Hybrid Legal, FinTech & Consumer Protection Platform
+        </div>
+        <div class="flex items-center gap-4 text-[11px]">
+          <a href="/docs" class="hover:text-blue-400 transition">Interactive API Docs</a>
+          <span>•</span>
+          <a href="http://localhost:3000" target="_blank" class="hover:text-purple-400 transition">Vakil-CA Companion Portal</a>
+          <span>•</span>
+          <span class="text-emerald-400">RBI 2025 Digital Lending Compliant</span>
+        </div>
+      </div>
     </footer>
 
   </div>
 
+  <!-- Sign-In / Persona Switcher Modal (accessible from anywhere) -->
+  <!-- Sign-In / Persona Switcher Modal -->
+    <div id="signin-modal" class="fixed inset-0 bg-black/75 backdrop-blur-xs flex items-center justify-center z-50 hidden p-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-5 relative max-h-[90vh] overflow-y-auto">
+        <button onclick="closeSignInModal()" class="absolute top-4 right-4 text-[var(--muted-foreground)] hover:text-[var(--foreground)] text-xl font-bold">✕</button>
+
+        <div class="border-b border-[var(--border)] pb-3">
+          <h2 class="text-xl font-bold text-[var(--foreground)] flex items-center gap-2">
+            <span>👤</span> User Sign-In & Instant Persona Switcher
+          </h2>
+          <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+            Switch between realistic Indian citizen personas to test loans, credit cards, legal notices, and tax filings, or enter custom details.
+          </p>
+        </div>
+
+        <!-- 1-Click Preloaded Personas Grid -->
+        <div class="space-y-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">⚡ 1-Click Demo Personas (Instant Pre-fill)</span>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <!-- Persona 1 -->
+            <div onclick="selectDemoPersona('aditya')" class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] hover:border-indigo-500 cursor-pointer transition space-y-2 group">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-xs">AV</div>
+                <div>
+                  <div class="font-bold text-xs text-[var(--foreground)] group-hover:text-indigo-400 transition">Aditya Verma</div>
+                  <div class="text-[10px] text-blue-400 font-semibold">Salaried IT Professional</div>
+                </div>
+              </div>
+              <div class="text-[11px] text-[var(--muted-foreground)] space-y-0.5">
+                <div>💰 ₹18L Annual CTC</div>
+                <div>📍 Bengaluru (560038)</div>
+                <div>💳 HDFC Millennia (Score: 785)</div>
+                <div>⚖️ Needs: HRA, Tax Regime, Lease Audit</div>
+              </div>
+              <button class="w-full py-1 text-center text-xs font-bold bg-blue-600/10 text-blue-400 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition">Select Aditya</button>
+            </div>
+
+            <!-- Persona 2 -->
+            <div onclick="selectDemoPersona('priya')" class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] hover:border-emerald-500 cursor-pointer transition space-y-2 group">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-xs">PS</div>
+                <div>
+                  <div class="font-bold text-xs text-[var(--foreground)] group-hover:text-emerald-400 transition">Priya Sharma</div>
+                  <div class="text-[10px] text-emerald-400 font-semibold">Freelance UX Consultant</div>
+                </div>
+              </div>
+              <div class="text-[11px] text-[var(--muted-foreground)] space-y-0.5">
+                <div>💰 ₹32L Gross Receipts</div>
+                <div>📍 Mumbai (400050)</div>
+                <div>💼 Section 44ADA Presumptive Tax</div>
+                <div>⚖️ Needs: Contractor Notice, Forex Card</div>
+              </div>
+              <button class="w-full py-1 text-center text-xs font-bold bg-emerald-600/10 text-emerald-400 rounded-lg group-hover:bg-emerald-600 group-hover:text-white transition">Select Priya</button>
+            </div>
+
+            <!-- Persona 3 -->
+            <div onclick="selectDemoPersona('kunal')" class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] hover:border-amber-500 cursor-pointer transition space-y-2 group">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">KD</div>
+                <div>
+                  <div class="font-bold text-xs text-[var(--foreground)] group-hover:text-amber-400 transition">Kunal Deshmukh</div>
+                  <div class="text-[10px] text-amber-400 font-semibold">SME Wholesale Trader</div>
+                </div>
+              </div>
+              <div class="text-[11px] text-[var(--muted-foreground)] space-y-0.5">
+                <div>💰 ₹95L Annual Turnover</div>
+                <div>📍 Pune (411001)</div>
+                <div>🏢 GSTIN Registered Entity</div>
+                <div>⚖️ Needs: Sec 138 Cheque Bounce, MSME Loan</div>
+              </div>
+              <button class="w-full py-1 text-center text-xs font-bold bg-amber-600/10 text-amber-400 rounded-lg group-hover:bg-amber-600 group-hover:text-white transition">Select Kunal</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Or Custom Profile Form -->
+        <div class="border-t border-[var(--border)] pt-4 space-y-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)]">✏️ Or Enter Custom User Credentials</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div>
+              <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Full Legal Name</label>
+              <input type="text" id="cust-name" placeholder="e.g. Rajesh Kumar" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+            </div>
+            <div>
+              <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Email / Mobile</label>
+              <input type="text" id="cust-contact" placeholder="e.g. rajesh@example.com / 9876543210" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+            </div>
+            <div>
+              <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">City & Pincode</label>
+              <div class="flex gap-2">
+                <input type="text" id="cust-city" placeholder="City (Delhi)" class="w-1/2 p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+                <input type="text" id="cust-pin" placeholder="110001" maxlength="6" class="w-1/2 p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">PAN Number (Optional)</label>
+              <input type="text" id="cust-pan" placeholder="e.g. ABCPK1234F" maxlength="10" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg uppercase text-[var(--foreground)] font-mono">
+            </div>
+          </div>
+          <div class="flex justify-end gap-2 pt-2">
+            <button onclick="selectDemoPersona('guest')" class="px-4 py-2 bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] rounded-xl text-xs font-semibold">Reset to Guest</button>
+            <button onclick="saveCustomUser()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold shadow-md">Save & Apply Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Interactive Scripts -->
   <!-- Interactive Scripts -->
   <script>
     function switchTab(tabId) {
+      // Hide all tab contents
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.tab-btn').forEach(el => {
-        el.classList.remove(
-          'border-indigo-600', 'text-indigo-500', 
-          'border-emerald-600', 'text-emerald-500', 
-          'border-blue-600', 'text-blue-500',
-          'border-purple-600', 'text-purple-500', 'text-purple-400',
-          'border-teal-600', 'text-teal-500', 'text-teal-400',
-          'border-amber-600', 'text-amber-500', 'text-amber-400'
-        );
-        el.classList.add('border-transparent', 'text-[var(--muted-foreground)]');
+
+      // Remove active state from all sidebar links
+      document.querySelectorAll('.sidebar-link').forEach(el => {
+        el.classList.remove('active');
       });
 
+      // Show active content section
       const activeContent = document.getElementById('tab-' + tabId);
-      const activeBtn = document.getElementById('tab-btn-' + tabId);
-
       if (activeContent) activeContent.classList.remove('hidden');
-      if (activeBtn) {
-        activeBtn.classList.remove('border-transparent', 'text-[var(--muted-foreground)]');
-        if (tabId === 'loanmitra') {
-          activeBtn.classList.add('border-blue-600', 'text-blue-500');
-        } else if (tabId === 'freetools') {
-          activeBtn.classList.add('border-emerald-600', 'text-emerald-500');
-        } else if (tabId === 'vakilca') {
-          activeBtn.classList.add('border-purple-600', 'text-purple-400');
-        } else if (tabId === 'rails') {
-          activeBtn.classList.add('border-teal-600', 'text-teal-400');
-        } else if (tabId === 'history') {
-          activeBtn.classList.add('border-amber-600', 'text-amber-400');
-          renderHistory('all');
+
+      // Highlight active sidebar navigation item
+      const activeNav = document.getElementById('nav-item-' + tabId);
+      if (activeNav) activeNav.classList.add('active');
+
+      // Update header breadcrumb title
+      const breadcrumb = document.getElementById('header-breadcrumb-title');
+      const titles = {
+        'loanmitra': 'Loan Mitra Marketplace (RBI 2025)',
+        'cardsmart': 'CardSmart ROI & Upgrade Engine',
+        'vakilca': 'AI Vakil & CA India Suite (5-in-1)',
+        'rails': 'Live Public Rails (IFSC, PIN, PAN, GSTIN)',
+        'history': 'Activity History & Dockets',
+        'freetools': 'Free Viral Consumer Tools (HRA, Succession)',
+        'revenue': 'Revenue & Upsell Studio',
+        'rta': 'Local RTA & Public Registers',
+        'realgov': 'Live Gov Integrations (e-Gazette, MCA IEPF)',
+        'iepf': 'IEPF Unclaimed Wealth Calculator',
+        'gazette': 'Central Gazette Identity Wizard',
+        'whatsapp': 'WhatsApp Conversational Bot Simulator'
+      };
+      if (breadcrumb && titles[tabId]) {
+        breadcrumb.innerText = titles[tabId];
+      }
+
+      // Close mobile drawer if open
+      closeMobileSidebar();
+
+      // Scroll smoothly to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // If history tab, trigger render
+      if (tabId === 'history') {
+        renderHistory(currentHistoryFilter || 'all');
+      }
+    }
+
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar && backdrop) {
+        const isClosed = sidebar.classList.contains('-translate-x-full');
+        if (isClosed) {
+          openMobileSidebar();
         } else {
-          activeBtn.classList.add('border-indigo-600', 'text-indigo-500');
+          closeMobileSidebar();
         }
       }
+    }
+
+    function openMobileSidebar() {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar && backdrop) {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+      }
+    }
+
+    function closeMobileSidebar() {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar && backdrop) {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+      }
+    }
+
+    function filterSidebarMenu(query) {
+      const q = (query || '').toLowerCase().trim();
+      document.querySelectorAll('.sidebar-link').forEach(link => {
+        const text = link.innerText.toLowerCase();
+        if (!q || text.includes(q)) {
+          link.style.display = 'flex';
+        } else {
+          link.style.display = 'none';
+        }
+      });
     }
 
     // ================= LOAN MITRA MARKETPLACE LOGIC (RBI 2025 COMPLIANT) =================
@@ -4565,6 +4805,13 @@ Click "Generate Statutory Legal Notice" or select a sample above to view complet
       if (roleEl) roleEl.innerText = currentUser.role;
       if (avatarEl) avatarEl.innerText = currentUser.initials;
 
+      const sideName = document.getElementById('sidebar-user-name');
+      const sideRole = document.getElementById('sidebar-user-role');
+      const sideAvatar = document.getElementById('sidebar-user-avatar');
+      if (sideName) sideName.innerText = currentUser.name;
+      if (sideRole) sideRole.innerText = currentUser.role;
+      if (sideAvatar) sideAvatar.innerText = currentUser.initials;
+
       localStorage.setItem('nyayasetu_user', JSON.stringify(currentUser));
     }
 
@@ -5337,6 +5584,8 @@ Click "Generate Statutory Legal Notice" or select a sample above to view complet
 
       const badge = document.getElementById('history-counter-badge');
       if (badge) badge.innerText = activityHistory.length;
+      const sideBadge = document.getElementById('sidebar-hist-badge');
+      if (sideBadge) sideBadge.innerText = activityHistory.length;
 
       fetch('/api/v1/user/history', {
         method: 'POST',
@@ -5378,6 +5627,8 @@ Click "Generate Statutory Legal Notice" or select a sample above to view complet
 
       const badge = document.getElementById('history-counter-badge');
       if (badge) badge.innerText = activityHistory.length;
+      const sideBadge = document.getElementById('sidebar-hist-badge');
+      if (sideBadge) sideBadge.innerText = activityHistory.length;
 
       if (filtered.length === 0) {
         container.innerHTML = `
@@ -5436,6 +5687,8 @@ Click "Generate Statutory Legal Notice" or select a sample above to view complet
         renderHistory('all');
         const badge = document.getElementById('history-counter-badge');
         if (badge) badge.innerText = "0";
+        const sideBadge = document.getElementById('sidebar-hist-badge');
+        if (sideBadge) sideBadge.innerText = "0";
       }
     }
 
@@ -5470,5 +5723,9 @@ Click "Generate Statutory Legal Notice" or select a sample above to view complet
       renderHistory('all');
     };
   </script>
+</body>
+</html>
+
+
 </body>
 </html>
