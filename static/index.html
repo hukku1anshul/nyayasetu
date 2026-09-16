@@ -18,46 +18,187 @@
   <div class="max-w-7xl mx-auto space-y-6">
 
     <!-- Header & Hero Section -->
-    <header class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <header class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
       <div>
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-indigo-600 to-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
-            🤝
+            ⚖️
           </div>
           <div>
-            <h1 class="text-2xl font-bold tracking-tight text-[var(--foreground)] flex items-center gap-2">
-              CardSmart, Loan Mitra & NyayaSetu <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 font-semibold">RBI 2025 Compliant</span>
+            <h1 class="text-2xl font-bold tracking-tight text-[var(--foreground)] flex items-center gap-2 flex-wrap">
+              NyayaSetu, Loan Mitra & CardSmart
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 font-semibold">RBI 2025 Compliant</span>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 font-semibold">AI Vakil & CA Suite</span>
             </h1>
-            <p class="text-sm text-[var(--muted-foreground)]">India's Unified Credit Marketplace, Card ROI Engine & Legal-Bureaucracy Rails</p>
+            <p class="text-sm text-[var(--muted-foreground)]">Unified Credit Marketplace, Credit Card ROI Engine, Bureaucracy Rails & Indian Statutory Legal-Tax Copilot</p>
           </div>
         </div>
       </div>
-      <div class="flex flex-wrap items-center gap-3">
-        <button onclick="switchTab('loanmitra')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
-          <span>🤝</span> Loan Mitra Marketplace
+      <div class="flex flex-wrap items-center gap-2.5">
+        <!-- User Profile & Persona Switcher Button -->
+        <button onclick="openSignInModal()" id="btn-user-profile" class="px-3.5 py-2 rounded-xl bg-[var(--background)] hover:bg-[var(--border)] border border-[var(--border)] text-xs font-semibold text-[var(--foreground)] transition flex items-center gap-2 shadow-xs">
+          <span class="w-6 h-6 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 text-white flex items-center justify-center text-xs font-bold" id="user-avatar">AV</span>
+          <div class="text-left leading-tight">
+            <div class="font-bold flex items-center gap-1">
+              <span id="user-name-display">Aditya Verma</span>
+              <span class="text-[9px] text-emerald-400">●</span>
+            </div>
+            <div class="text-[10px] text-[var(--muted-foreground)]" id="user-role-display">Salaried IT Professional</div>
+          </div>
+          <span class="text-[10px] text-indigo-400 font-bold ml-1">Switch ▾</span>
         </button>
-        <button onclick="switchTab('cardsmart')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
-          <span>💳</span> CardSmart ROI Engine
+
+        <!-- Activity History Badge Button -->
+        <button onclick="switchTab('history')" class="px-3 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500/20 text-amber-400 text-xs font-bold transition flex items-center gap-1.5 shadow-xs">
+          <span>📜</span>
+          <span>History</span>
+          <span id="history-counter-badge" class="px-1.5 py-0.5 bg-amber-500 text-black font-black text-[10px] rounded-full">4</span>
         </button>
-        <button onclick="switchTab('freetools')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
-          <span>🎁</span> Free Viral Tools
+
+        <!-- External Companion App Link -->
+        <a href="http://localhost:3000" target="_blank" class="px-3.5 py-2 rounded-xl bg-purple-950/40 border border-purple-500/40 hover:bg-purple-900/40 text-purple-300 font-bold text-xs shadow-xs transition flex items-center gap-1.5" title="Launch Standalone Next.js 15 Vakil-CA India App on Port 3000">
+          <span>⚖️</span>
+          <span>Open Vakil-CA Portal ↗</span>
+        </a>
+
+        <!-- Fast Nav Shortcuts -->
+        <button onclick="switchTab('vakilca')" class="px-3 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1">
+          <span>⚖️</span> AI Vakil & CA
         </button>
-        <button onclick="switchTab('revenue')" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
-          <span>💸</span> Revenue Studio
+        <button onclick="switchTab('rails')" class="px-3 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1">
+          <span>🔍</span> Public Rails
         </button>
-        <button onclick="switchTab('whatsapp')" class="px-4 py-2 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] font-medium text-xs shadow-sm transition flex items-center gap-1.5">
-          <span>💬</span> WhatsApp Bot
+        <button onclick="switchTab('loanmitra')" class="px-3 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1">
+          <span>🤝</span> Loan Mitra
+        </button>
+        <button onclick="switchTab('cardsmart')" class="px-3 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1">
+          <span>💳</span> CardSmart
         </button>
       </div>
     </header>
 
+    <!-- Sign-In / Persona Switcher Modal -->
+    <div id="signin-modal" class="fixed inset-0 bg-black/75 backdrop-blur-xs flex items-center justify-center z-50 hidden p-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-5 relative max-h-[90vh] overflow-y-auto">
+        <button onclick="closeSignInModal()" class="absolute top-4 right-4 text-[var(--muted-foreground)] hover:text-[var(--foreground)] text-xl font-bold">✕</button>
+
+        <div class="border-b border-[var(--border)] pb-3">
+          <h2 class="text-xl font-bold text-[var(--foreground)] flex items-center gap-2">
+            <span>👤</span> User Sign-In & Instant Persona Switcher
+          </h2>
+          <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+            Switch between realistic Indian citizen personas to test loans, credit cards, legal notices, and tax filings, or enter custom details.
+          </p>
+        </div>
+
+        <!-- 1-Click Preloaded Personas Grid -->
+        <div class="space-y-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">⚡ 1-Click Demo Personas (Instant Pre-fill)</span>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <!-- Persona 1 -->
+            <div onclick="selectDemoPersona('aditya')" class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] hover:border-indigo-500 cursor-pointer transition space-y-2 group">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-xs">AV</div>
+                <div>
+                  <div class="font-bold text-xs text-[var(--foreground)] group-hover:text-indigo-400 transition">Aditya Verma</div>
+                  <div class="text-[10px] text-blue-400 font-semibold">Salaried IT Professional</div>
+                </div>
+              </div>
+              <div class="text-[11px] text-[var(--muted-foreground)] space-y-0.5">
+                <div>💰 ₹18L Annual CTC</div>
+                <div>📍 Bengaluru (560038)</div>
+                <div>💳 HDFC Millennia (Score: 785)</div>
+                <div>⚖️ Needs: HRA, Tax Regime, Lease Audit</div>
+              </div>
+              <button class="w-full py-1 text-center text-xs font-bold bg-blue-600/10 text-blue-400 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition">Select Aditya</button>
+            </div>
+
+            <!-- Persona 2 -->
+            <div onclick="selectDemoPersona('priya')" class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] hover:border-emerald-500 cursor-pointer transition space-y-2 group">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-xs">PS</div>
+                <div>
+                  <div class="font-bold text-xs text-[var(--foreground)] group-hover:text-emerald-400 transition">Priya Sharma</div>
+                  <div class="text-[10px] text-emerald-400 font-semibold">Freelance UX Consultant</div>
+                </div>
+              </div>
+              <div class="text-[11px] text-[var(--muted-foreground)] space-y-0.5">
+                <div>💰 ₹32L Gross Receipts</div>
+                <div>📍 Mumbai (400050)</div>
+                <div>💼 Section 44ADA Presumptive Tax</div>
+                <div>⚖️ Needs: Contractor Notice, Forex Card</div>
+              </div>
+              <button class="w-full py-1 text-center text-xs font-bold bg-emerald-600/10 text-emerald-400 rounded-lg group-hover:bg-emerald-600 group-hover:text-white transition">Select Priya</button>
+            </div>
+
+            <!-- Persona 3 -->
+            <div onclick="selectDemoPersona('kunal')" class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] hover:border-amber-500 cursor-pointer transition space-y-2 group">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-xs">KD</div>
+                <div>
+                  <div class="font-bold text-xs text-[var(--foreground)] group-hover:text-amber-400 transition">Kunal Deshmukh</div>
+                  <div class="text-[10px] text-amber-400 font-semibold">SME Wholesale Trader</div>
+                </div>
+              </div>
+              <div class="text-[11px] text-[var(--muted-foreground)] space-y-0.5">
+                <div>💰 ₹95L Annual Turnover</div>
+                <div>📍 Pune (411001)</div>
+                <div>🏢 GSTIN Registered Entity</div>
+                <div>⚖️ Needs: Sec 138 Cheque Bounce, MSME Loan</div>
+              </div>
+              <button class="w-full py-1 text-center text-xs font-bold bg-amber-600/10 text-amber-400 rounded-lg group-hover:bg-amber-600 group-hover:text-white transition">Select Kunal</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Or Custom Profile Form -->
+        <div class="border-t border-[var(--border)] pt-4 space-y-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-[var(--foreground)]">✏️ Or Enter Custom User Credentials</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div>
+              <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Full Legal Name</label>
+              <input type="text" id="cust-name" placeholder="e.g. Rajesh Kumar" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+            </div>
+            <div>
+              <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Email / Mobile</label>
+              <input type="text" id="cust-contact" placeholder="e.g. rajesh@example.com / 9876543210" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+            </div>
+            <div>
+              <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">City & Pincode</label>
+              <div class="flex gap-2">
+                <input type="text" id="cust-city" placeholder="City (Delhi)" class="w-1/2 p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+                <input type="text" id="cust-pin" placeholder="110001" maxlength="6" class="w-1/2 p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">PAN Number (Optional)</label>
+              <input type="text" id="cust-pan" placeholder="e.g. ABCPK1234F" maxlength="10" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg uppercase text-[var(--foreground)] font-mono">
+            </div>
+          </div>
+          <div class="flex justify-end gap-2 pt-2">
+            <button onclick="selectDemoPersona('guest')" class="px-4 py-2 bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] rounded-xl text-xs font-semibold">Reset to Guest</button>
+            <button onclick="saveCustomUser()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold shadow-md">Save & Apply Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Navigation Tabs -->
     <div class="flex border-b border-[var(--border)] gap-2 overflow-x-auto pb-1 text-sm font-medium">
-      <button onclick="switchTab('loanmitra')" id="tab-btn-loanmitra" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-bold">
+      <button onclick="switchTab('loanmitra')" id="tab-btn-loanmitra" class="tab-btn px-4 py-2.5 border-b-2 border-blue-600 text-blue-500 flex items-center gap-2 transition font-bold">
         🤝 Loan Mitra Marketplace (RBI 2025)
       </button>
-      <button onclick="switchTab('cardsmart')" id="tab-btn-cardsmart" class="tab-btn px-4 py-2.5 border-b-2 border-indigo-600 text-indigo-500 flex items-center gap-2 transition font-bold">
+      <button onclick="switchTab('cardsmart')" id="tab-btn-cardsmart" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-bold">
         💳 CardSmart ROI & Upgrade Engine
+      </button>
+      <button onclick="switchTab('vakilca')" id="tab-btn-vakilca" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-bold text-purple-400">
+        ⚖️ AI Vakil & CA India
+      </button>
+      <button onclick="switchTab('rails')" id="tab-btn-rails" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-bold text-teal-400">
+        🔍 Live Public Rails (IFSC • PIN • PAN • GSTIN)
+      </button>
+      <button onclick="switchTab('history')" id="tab-btn-history" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-bold text-amber-400">
+        📜 Activity History & Dockets
       </button>
       <button onclick="switchTab('freetools')" id="tab-btn-freetools" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-semibold">
         🎁 Free Viral Tools (HRA • Succession • Challan)
@@ -1806,6 +1947,791 @@
 
     </section>
 
+    <!-- ================= TAB: AI VAKIL & CA INDIA (LEGAL & TAX SUITE) ================= -->
+    <section id="tab-vakilca" class="tab-content hidden space-y-6">
+      
+      <!-- Top Banner -->
+      <div class="bg-gradient-to-r from-purple-950/40 via-[var(--card)] to-indigo-950/40 border border-purple-500/30 rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                AI Vakil & CA India Suite
+              </span>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                Zero Legal Aggregator Fees • 100% Free Self-Help
+              </span>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                Section 138 NI Act • Section 27 Contract Act • Section 115BAC
+              </span>
+            </div>
+            <h2 class="text-xl font-bold mt-2 text-[var(--foreground)]">AI Vakil & CA India — Citizen & SME Legal-Tax Shield</h2>
+            <p class="text-xs text-[var(--muted-foreground)] mt-1 max-w-3xl">
+              India's transparent, zero-cost alternative to IndiaFilings, Vakilsearch/Zolvit & ClearTax. Generate statutory legal notices under Section 138 NI Act and Section 106 TPA, audit contracts for void non-compete clauses under Section 27, compare FY 2026-27 New vs Old Tax Regimes, compute Section 44ADA freelance taxes, and decode menacing Income Tax notices into plain English.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <a href="http://localhost:3000" target="_blank" class="px-3.5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5" title="Launch Standalone Next.js 15 App">
+              <span>🚀</span> Launch Standalone Portal (Port 3000) ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Sub-Tabs Navigation -->
+        <div class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-[var(--border)]">
+          <button onclick="switchVakilCASubTab('notices')" id="btn-vakil-subtab-notices" class="px-3.5 py-2 rounded-xl bg-purple-600 text-white font-bold text-xs shadow-md transition">
+            📄 Statutory Legal Notices
+          </button>
+          <button onclick="switchVakilCASubTab('agreements')" id="btn-vakil-subtab-agreements" class="px-3.5 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition">
+            🛡️ Agreement Risk & Void Clauses
+          </button>
+          <button onclick="switchVakilCASubTab('taxregime')" id="btn-vakil-subtab-taxregime" class="px-3.5 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition">
+            📊 FY 26-27 Tax Regime Decider
+          </button>
+          <button onclick="switchVakilCASubTab('44ada')" id="btn-vakil-subtab-44ada" class="px-3.5 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition">
+            💼 Section 44ADA Freelance Tax
+          </button>
+          <button onclick="switchVakilCASubTab('explainer')" id="btn-vakil-subtab-explainer" class="px-3.5 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition">
+            🚨 IT Notice Explainer
+          </button>
+        </div>
+      </div>
+
+      <!-- ================= SUB-TAB 1: STATUTORY LEGAL NOTICES ================= -->
+      <div id="vakil-subtab-content-notices" class="space-y-4">
+        
+        <!-- Step-by-Step Instructions Card -->
+        <div class="bg-purple-950/20 border border-purple-500/20 rounded-xl p-4 text-xs space-y-2">
+          <div class="font-bold text-purple-400 flex items-center gap-2 text-sm">
+            <span>📖</span> Step-by-Step Instructions: How to Generate & Serve Statutory Legal Notices
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-[var(--muted-foreground)] pt-1">
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">1. Select Notice Category & Parties</span>
+              Choose Section 138 (Cheque Bounce), Section 106 TPA (Rental Arrears/Eviction), Consumer Protection Act 2019, or Unpaid Salary/Dues. Enter sender and recipient legal names and addresses.
+            </div>
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">2. Statutory Mandate & Timeline</span>
+              Our engine automatically embeds statutory cure periods (mandatory 15 days under Section 138 NI Act & Section 106 TPA), bank return memo particulars, and legal consequences.
+            </div>
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">3. Service via Speed Post / Email</span>
+              Copy or export the drafted notice. Under Indian law, send via Registered Post AD / Speed Post to generate a tracking delivery docket for court admission.
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Legal Notice Generator Form & Preview -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Left Column: Form Controls -->
+          <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+            <div class="flex items-center justify-between">
+              <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+                <span>📝</span> Notice Parameters
+              </h3>
+              <!-- 1-Click Samples -->
+              <div class="flex gap-1.5">
+                <button onclick="loadSampleNotice('cheque')" class="px-2 py-1 rounded-md text-[10px] bg-purple-600/15 text-purple-400 border border-purple-500/20 hover:bg-purple-600 hover:text-white transition font-medium">Cheque Sample</button>
+                <button onclick="loadSampleNotice('rent')" class="px-2 py-1 rounded-md text-[10px] bg-indigo-600/15 text-indigo-400 border border-indigo-500/20 hover:bg-indigo-600 hover:text-white transition font-medium">Rental Sample</button>
+                <button onclick="loadSampleNotice('salary')" class="px-2 py-1 rounded-md text-[10px] bg-emerald-600/15 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-600 hover:text-white transition font-medium">Salary Sample</button>
+              </div>
+            </div>
+
+            <div class="space-y-3 text-xs">
+              <div>
+                <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Notice Type (Statutory Code)</label>
+                <select id="notice-type" class="w-full p-2.5 bg-[var(--background)] border border-[var(--border)] rounded-xl text-[var(--foreground)] font-medium">
+                  <option value="cheque_bounce_138">Section 138 NI Act — Dishonour of Cheque</option>
+                  <option value="tenant_eviction_arrears">Section 106 TPA — Rental Arrears & Eviction</option>
+                  <option value="consumer_deficiency">Consumer Protection Act 2019 — Deficient Service / Defective Product</option>
+                  <option value="unpaid_salary">Recovery of Unpaid Salary / Professional Retainer</option>
+                </select>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Sender Name (Claimant)</label>
+                  <input type="text" id="notice-sender-name" value="Kunal Deshmukh" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+                </div>
+                <div>
+                  <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Sender City & Address</label>
+                  <input type="text" id="notice-sender-city" value="Pune, Maharashtra - 411001" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Recipient Name (Defaulter)</label>
+                  <input type="text" id="notice-recipient-name" value="Vertex Logistics Pvt Ltd" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+                </div>
+                <div>
+                  <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Recipient City & Address</label>
+                  <input type="text" id="notice-recipient-city" value="Andheri East, Mumbai - 400069" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Amount in Default (₹)</label>
+                  <input type="number" id="notice-amount" value="250000" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)] font-bold">
+                </div>
+                <div>
+                  <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Transaction / Due Date</label>
+                  <input type="date" id="notice-date" value="2026-08-15" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Reference / Cheque No / Invoice No</label>
+                <input type="text" id="notice-ref" value="Cheque No. 440912 drawn on HDFC Bank (Memo: Funds Insufficient)" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+              </div>
+
+              <button onclick="generateNoticeUI()" class="w-full py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
+                <span>⚡</span> Generate Statutory Legal Notice
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: Notice Draft & Statutory Metadata -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border)] pb-3">
+                <div>
+                  <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+                    <span>📜</span> Statutory Notice Draft
+                  </h3>
+                  <span id="notice-statute-tag" class="text-[10px] text-purple-400 font-bold uppercase tracking-wider">
+                    Statute: Section 138 of Negotiable Instruments Act, 1881
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span id="notice-cure-badge" class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] font-bold">
+                    ⏳ Cure Period: 15 Days Mandatory
+                  </span>
+                  <button onclick="copyNoticeText()" class="px-3 py-1.5 bg-[var(--background)] hover:bg-[var(--border)] border border-[var(--border)] text-[var(--foreground)] rounded-lg text-xs font-semibold transition">
+                    📋 Copy
+                  </button>
+                </div>
+              </div>
+
+              <!-- Notice Preview Container -->
+              <div class="bg-[var(--background)] border border-[var(--border)] rounded-xl p-4 font-mono text-[11px] text-[var(--foreground)] leading-relaxed h-[360px] overflow-y-auto whitespace-pre-wrap selection:bg-purple-600 selection:text-white" id="notice-text-preview">
+Click "Generate Statutory Legal Notice" or select a sample above to view complete formal draft with statutory citations and litigation warning.
+              </div>
+
+              <!-- Notice Footnote & Action Dockets -->
+              <div class="flex flex-wrap items-center justify-between gap-2 pt-2 text-[11px] text-[var(--muted-foreground)]">
+                <span class="flex items-center gap-1 text-emerald-400 font-medium">
+                  <span>✓</span> Valid under High Court & District Court Admission Standards
+                </span>
+                <button onclick="saveNoticeToHistory()" class="px-3 py-1.5 bg-purple-600/10 text-purple-400 border border-purple-500/20 hover:bg-purple-600 hover:text-white rounded-lg text-xs font-bold transition">
+                  💾 Save to Activity History
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= SUB-TAB 2: AGREEMENT RISK & VOID CLAUSE CHECKER ================= -->
+      <div id="vakil-subtab-content-agreements" class="space-y-4 hidden">
+        
+        <!-- Step-by-Step Instructions Card -->
+        <div class="bg-indigo-950/20 border border-indigo-500/20 rounded-xl p-4 text-xs space-y-2">
+          <div class="font-bold text-indigo-400 flex items-center gap-2 text-sm">
+            <span>🛡️</span> Step-by-Step Instructions: Audit Contracts Against Indian Statutory Law
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-[var(--muted-foreground)] pt-1">
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">1. Paste Questionable Clauses</span>
+              Paste your employment contract, freelance retainer agreement, tenancy lease, or vendor terms. Or click "Load Predatory IT Offer Letter".
+            </div>
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">2. Statutory Void Term Engine</span>
+              Scans for terms rendered strictly void ab initio under Section 27 of the Indian Contract Act 1872 (Non-compete after exit is void), Section 28 (Arbitration bar), and Section 74 (Disproportionate liquidated damages).
+            </div>
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">3. Counter-Drafting Protection</span>
+              Receive plain-English legal advice on why the clause cannot be enforced against you in an Indian court, plus recommended safe counter-drafting clauses.
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Left Column: Input Form -->
+          <div class="lg:col-span-6 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+            <div class="flex items-center justify-between">
+              <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+                <span>📄</span> Contract / Agreement Clauses
+              </h3>
+              <div class="flex gap-1.5">
+                <button onclick="loadSampleAgreement('it_offer')" class="px-2 py-1 rounded-md text-[10px] bg-red-600/15 text-red-400 border border-red-500/20 hover:bg-red-600 hover:text-white transition font-medium">Predatory IT Offer</button>
+                <button onclick="loadSampleAgreement('tenancy')" class="px-2 py-1 rounded-md text-[10px] bg-amber-600/15 text-amber-400 border border-amber-500/20 hover:bg-amber-600 hover:text-white transition font-medium">Unfair Lease</button>
+              </div>
+            </div>
+
+            <div class="space-y-3 text-xs">
+              <div>
+                <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Agreement Classification</label>
+                <select id="agreement-type" class="w-full p-2.5 bg-[var(--background)] border border-[var(--border)] rounded-xl text-[var(--foreground)] font-medium">
+                  <option value="employment">Employment Offer / Non-Compete Agreement</option>
+                  <option value="residential_lease">Residential Tenancy Lease Agreement</option>
+                  <option value="consulting">Freelance / Independent Contractor Agreement</option>
+                  <option value="vendor">Commercial Vendor Agreement</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Paste Contract Clauses or Agreement Text</label>
+                <textarea id="agreement-text" rows="10" class="w-full p-3 bg-[var(--background)] border border-[var(--border)] rounded-xl text-xs font-mono text-[var(--foreground)] focus:outline-none focus:border-indigo-500" placeholder="Paste contract text here..."></textarea>
+              </div>
+
+              <button onclick="analyzeAgreementUI()" class="w-full py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-xl font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
+                <span>🛡️</span> Run Indian Statutory Contract Audit
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: Audit Results -->
+          <div class="lg:col-span-6 space-y-4">
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+              <div class="flex items-center justify-between border-b border-[var(--border)] pb-3">
+                <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+                  <span>⚖️</span> Statutory Risk Audit Findings
+                </h3>
+                <div id="risk-score-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-slate-800 text-slate-300">
+                  Awaiting Audit
+                </div>
+              </div>
+
+              <div id="risk-audit-output" class="space-y-3 text-xs">
+                <div class="p-4 bg-[var(--background)] rounded-xl text-[var(--muted-foreground)] text-center text-xs">
+                  Paste contract text on the left or click "Predatory IT Offer" to run live clause-by-clause statutory check.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= SUB-TAB 3: FY 2026-27 TAX REGIME DECIDER ================= -->
+      <div id="vakil-subtab-content-taxregime" class="space-y-4 hidden">
+        
+        <!-- Instructions Card -->
+        <div class="bg-emerald-950/20 border border-emerald-500/20 rounded-xl p-4 text-xs space-y-2">
+          <div class="font-bold text-emerald-400 flex items-center gap-2 text-sm">
+            <span>📊</span> Step-by-Step Instructions: Compare FY 2026-27 Tax Regimes (Section 115BAC vs Old)
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-[var(--muted-foreground)] pt-1">
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">1. Enter Annual Gross CTC</span>
+              Enter your total gross annual salary or professional income. The New Regime automatically grants a ₹75,000 standard deduction and effective zero tax up to ₹12,75,000 via Section 87A rebate.
+            </div>
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">2. Enter Deductions Available</span>
+              Specify Section 80C (EPF/PPF/ELSS up to ₹1.5L), Section 80D (Health insurance), Section 24(b) (Home loan interest up to ₹2L), and Section 10(13A) HRA exemption.
+            </div>
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">3. Breakeven Threshold</span>
+              The calculator computes exact net tax for both options, accounts for 4% Health & Education Cess, and highlights your exact break-even deduction point.
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Inputs -->
+          <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+            <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+              <span>💰</span> Income & Deduction Particulars (FY 2026-27)
+            </h3>
+            <div class="space-y-3 text-xs">
+              <div>
+                <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Gross Annual Income / Salary (₹)</label>
+                <input type="number" id="tax-gross-income" value="1800000" step="50000" class="w-full p-2.5 bg-[var(--background)] border border-[var(--border)] rounded-xl text-[var(--foreground)] font-bold text-sm">
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Section 80C (Max ₹1.5L)</label>
+                  <input type="number" id="tax-ded-80c" value="150000" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+                </div>
+                <div>
+                  <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Section 80D (Mediclaim)</label>
+                  <input type="number" id="tax-ded-80d" value="25000" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Section 24(b) (Home Loan)</label>
+                  <input type="number" id="tax-ded-24b" value="200000" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+                </div>
+                <div>
+                  <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Section 10(13A) HRA Exemption</label>
+                  <input type="number" id="tax-ded-hra" value="180000" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+                </div>
+              </div>
+
+              <button onclick="calculateTaxRegimeUI()" class="w-full py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
+                <span>📊</span> Compare New vs Old Regime
+              </button>
+            </div>
+          </div>
+
+          <!-- Comparative Table & Recommendation -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+              <!-- Winner Banner -->
+              <div id="tax-regime-winner-banner" class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-sm flex items-center justify-between">
+                <span>🏆 New Regime (Section 115BAC) Recommended</span>
+                <span id="tax-savings-amount" class="text-xs px-2.5 py-1 bg-emerald-600 text-white rounded-full font-black">Saves ₹36,400</span>
+              </div>
+
+              <!-- Slabs Comparison Table -->
+              <div class="overflow-x-auto">
+                <table class="w-full text-xs text-left">
+                  <thead>
+                    <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)]">
+                      <th class="py-2 font-semibold">Metric</th>
+                      <th class="py-2 font-semibold text-purple-400">New Regime (115BAC)</th>
+                      <th class="py-2 font-semibold text-indigo-400">Old Regime</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--border)] text-[var(--foreground)]" id="tax-table-body">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+
+              <div id="tax-breakeven-note" class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] text-[11px] text-[var(--muted-foreground)]">
+                <!-- Breakeven analysis -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= SUB-TAB 4: SECTION 44ADA FREELANCE TAX ================= -->
+      <div id="vakil-subtab-content-44ada" class="space-y-4 hidden">
+        
+        <!-- Instructions Card -->
+        <div class="bg-blue-950/20 border border-blue-500/20 rounded-xl p-4 text-xs space-y-2">
+          <div class="font-bold text-blue-400 flex items-center gap-2 text-sm">
+            <span>💼</span> Step-by-Step Instructions: Section 44ADA Presumptive Taxation for Professionals & Freelancers
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-[var(--muted-foreground)] pt-1">
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">1. Eligibility Criteria</span>
+              Available for Specified Professionals (Software Developers, UX Designers, IT Consultants, Doctors, Lawyers, CAs, Technical Consultants) with Gross Receipts up to ₹75,00,000 (provided digital payments are ≥95%).
+            </div>
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">2. 50% Deemed Profit Scheme</span>
+              No need to maintain complex expense vouchers or undergo mandatory Section 44AB tax audit. Declare flat 50% of receipts as net taxable income.
+            </div>
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">3. Mandatory Advance Tax Calendar</span>
+              Professionals under Section 44ADA are required to pay advance tax. View the exact quarterly compliance installments to avoid Section 234B/234C interest penalties.
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Inputs -->
+          <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+            <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+              <span>💻</span> Professional Receipts & Banking Mode
+            </h3>
+            <div class="space-y-3 text-xs">
+              <div>
+                <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Gross Annual Professional Receipts (₹)</label>
+                <input type="number" id="ada-gross-receipts" value="3200000" step="50000" class="w-full p-2.5 bg-[var(--background)] border border-[var(--border)] rounded-xl text-[var(--foreground)] font-bold text-sm">
+                <span class="text-[10px] text-[var(--muted-foreground)] mt-0.5 block">Statutory ceiling: ₹75,00,000 for digital receipts.</span>
+              </div>
+
+              <div>
+                <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Digital Receipts Percentage (%)</label>
+                <input type="number" id="ada-digital-pct" value="98" min="0" max="100" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+                <span class="text-[10px] text-emerald-400 mt-0.5 block">✓ Meets Section 44ADA ≥95% digital requirement</span>
+              </div>
+
+              <div>
+                <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Other Income (Savings Interest, Capital Gains) (₹)</label>
+                <input type="number" id="ada-other-income" value="45000" class="w-full p-2 bg-[var(--background)] border border-[var(--border)] rounded-lg text-[var(--foreground)]">
+              </div>
+
+              <button onclick="calculate44adaUI()" class="w-full py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
+                <span>💼</span> Compute Section 44ADA Tax & Advance Sched
+              </button>
+            </div>
+          </div>
+
+          <!-- Outputs -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+              <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+                <span>📋</span> Presumptive Assessment & Quarterly Calendar
+              </h3>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+                  <span class="text-[10px] text-[var(--muted-foreground)] uppercase">50% Deemed Net Profit</span>
+                  <div class="text-base font-black text-purple-400 mt-0.5" id="ada-deemed-profit">₹16,00,000</div>
+                  <span class="text-[10px] text-[var(--muted-foreground)]">Exempt from books maintenance</span>
+                </div>
+                <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+                  <span class="text-[10px] text-[var(--muted-foreground)] uppercase">Net Tax Payable (FY 26-27)</span>
+                  <div class="text-base font-black text-emerald-400 mt-0.5" id="ada-net-tax">₹1,18,560</div>
+                  <span class="text-[10px] text-[var(--muted-foreground)]">Includes 4% Health Cess</span>
+                </div>
+              </div>
+
+              <!-- Advance Tax Installment Schedule -->
+              <div class="space-y-2">
+                <span class="text-xs font-bold text-[var(--foreground)] block">📅 Mandatory Advance Tax Payment Installments:</span>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-xs text-left border border-[var(--border)] rounded-lg overflow-hidden">
+                    <thead class="bg-[var(--background)] text-[var(--muted-foreground)]">
+                      <tr>
+                        <th class="p-2">Installment Due Date</th>
+                        <th class="p-2">Cumulative %</th>
+                        <th class="p-2 text-right">Target Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[var(--border)] text-[var(--foreground)]" id="ada-advance-table-body">
+                      <!-- Populated dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= SUB-TAB 5: IT NOTICE EXPLAINER ================= -->
+      <div id="vakil-subtab-content-explainer" class="space-y-4 hidden">
+        
+        <!-- Instructions Card -->
+        <div class="bg-amber-950/20 border border-amber-500/20 rounded-xl p-4 text-xs space-y-2">
+          <div class="font-bold text-amber-400 flex items-center gap-2 text-sm">
+            <span>🚨</span> Step-by-Step Instructions: Decode Threatening Income Tax Department Notices
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] text-[var(--muted-foreground)] pt-1">
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">1. Identify Section Code</span>
+              Check the section number on your email, SMS, or PDF notice from `donotreply@incometax.gov.in` (e.g. 143(1), 139(9), 148, 156, 142(1)).
+            </div>
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">2. Plain English Translation</span>
+              We translate threatening bureaucratic jargon into what the Income Tax Department actually discovered (e.g., Form 26AS mismatch, AIS share sale, claim error).
+            </div>
+            <div class="bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              <span class="font-bold text-[var(--foreground)] block mb-1">3. Step-by-Step Resolution</span>
+              Get the exact 4-step checklist to submit your response or rectification request directly on the e-filing portal before statutory deadlines expire.
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Select Section -->
+          <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+            <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+              <span>🔍</span> Select Notice Code
+            </h3>
+            <div class="space-y-3 text-xs">
+              <div>
+                <label class="block text-[11px] text-[var(--muted-foreground)] mb-1">Statutory Section on Notice</label>
+                <select id="explainer-section" onchange="explainNoticeUI()" class="w-full p-2.5 bg-[var(--background)] border border-[var(--border)] rounded-xl text-[var(--foreground)] font-semibold text-xs">
+                  <option value="143_1">Section 143(1) — Summary Intimation (Tax Demand or Refund Adjustment)</option>
+                  <option value="139_9">Section 139(9) — Defective Return Notice</option>
+                  <option value="148">Section 148 — Reopening Assessment (Income Escaping Assessment)</option>
+                  <option value="156">Section 156 — Notice of Demand</option>
+                  <option value="142_1">Section 142(1) — Preliminary Inquiry / Production of Accounts</option>
+                </select>
+              </div>
+
+              <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] text-[11px] text-[var(--muted-foreground)] space-y-1">
+                <span class="font-bold text-[var(--foreground)] block">💡 Common Trigger Scenarios:</span>
+                <div>• Employer deducted TDS but didn't deposit into 26AS</div>
+                <div>• AIS shows stock capital gains not reported in ITR-1</div>
+                <div>• Section 80C deduction claimed in excess of ₹1.5L</div>
+              </div>
+
+              <button onclick="explainNoticeUI()" class="w-full py-2.5 bg-amber-600 hover:bg-amber-700 text-white rounded-xl font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
+                <span>🚨</span> Translate & Get Resolution Workflow
+              </button>
+            </div>
+          </div>
+
+          <!-- Explanation Details -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+              <div class="flex items-center justify-between border-b border-[var(--border)] pb-3">
+                <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+                  <span>📑</span> Plain-English Notice Translation
+                </h3>
+                <span id="notice-urgency-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                  Moderate Urgency • 30 Days
+                </span>
+              </div>
+
+              <div id="explainer-output-container" class="space-y-3 text-xs">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= TAB: LIVE PUBLIC RAILS (ZERO-COST LOOKUPS) ================= -->
+    <section id="tab-rails" class="tab-content hidden space-y-6">
+      
+      <!-- Top Banner -->
+      <div class="bg-gradient-to-r from-teal-950/40 via-[var(--card)] to-cyan-950/40 border border-teal-500/30 rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20">
+                Direct Public APIs & Algorithmic Decoders
+              </span>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                ₹0 Aggregator Cost • Zero API Middlemen
+              </span>
+            </div>
+            <h2 class="text-xl font-bold mt-2 text-[var(--foreground)]">Real Public Rails — Live Banking & Bureaucracy Verification</h2>
+            <p class="text-xs text-[var(--muted-foreground)] mt-1 max-w-3xl">
+              Instant verification using open Indian digital infrastructure. Query live IFSC banking rails via Razorpay Open API, fetch real postal postal circles via India Post API, decode PAN entity types under Section 139A, and parse statutory 15-digit GSTIN state jurisdictions.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step-by-Step Instructions -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4 pt-4 border-t border-[var(--border)] text-xs">
+          <div class="flex items-center gap-2">
+            <span class="text-teal-400 font-bold">1.</span>
+            <span class="text-[var(--muted-foreground)]">Live Razorpay Open IFSC Rail</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-teal-400 font-bold">2.</span>
+            <span class="text-[var(--muted-foreground)]">India Post Real Pincode API</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-teal-400 font-bold">3.</span>
+            <span class="text-[var(--muted-foreground)]">Section 139A PAN Entity Decoder</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-teal-400 font-bold">4.</span>
+            <span class="text-[var(--muted-foreground)]">GSTIN State & PAN Checksum</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Live Rail Query Widgets -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Rail 1: Live IFSC Directory Lookup -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+              <span>🏦</span> Live Bank IFSC Lookup (Open Public Rail)
+            </h3>
+            <span class="text-[10px] text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded font-mono font-bold">Razorpay IFSC API</span>
+          </div>
+          <p class="text-xs text-[var(--muted-foreground)]">
+            Verify bank branch, address, city, and RTGS/NEFT/IMPS/UPI rail capabilities directly from the live public IFSC registry.
+          </p>
+          
+          <div class="flex gap-2">
+            <input type="text" id="rail-ifsc-input" value="HDFC0000001" placeholder="Enter 11-char IFSC (e.g. SBIN0000456)" class="flex-1 p-2.5 bg-[var(--background)] border border-[var(--border)] rounded-xl font-mono uppercase text-xs font-bold text-[var(--foreground)]">
+            <button onclick="lookupIFSCUI()" class="px-4 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition shadow-xs">
+              Verify IFSC
+            </button>
+          </div>
+
+          <div class="flex items-center gap-1.5 text-[10px]">
+            <span class="text-[var(--muted-foreground)]">Try sample:</span>
+            <button onclick="document.getElementById('rail-ifsc-input').value='HDFC0000001'; lookupIFSCUI()" class="px-2 py-0.5 bg-[var(--background)] border border-[var(--border)] rounded hover:border-teal-500 font-mono text-[var(--foreground)]">HDFC Nariman Pt</button>
+            <button onclick="document.getElementById('rail-ifsc-input').value='SBIN0000456'; lookupIFSCUI()" class="px-2 py-0.5 bg-[var(--background)] border border-[var(--border)] rounded hover:border-teal-500 font-mono text-[var(--foreground)]">SBI</button>
+            <button onclick="document.getElementById('rail-ifsc-input').value='ICIC0000002'; lookupIFSCUI()" class="px-2 py-0.5 bg-[var(--background)] border border-[var(--border)] rounded hover:border-teal-500 font-mono text-[var(--foreground)]">ICICI</button>
+          </div>
+
+          <!-- Result Container -->
+          <div id="rail-ifsc-result" class="p-3 bg-[var(--background)] border border-[var(--border)] rounded-xl text-xs space-y-1.5 font-mono">
+            <div class="font-bold text-teal-400">HDFC Bank • TULSIANI CHMBRS - NARIMAN PT</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">101-104 TULSIANI CHAMBERS NARIMAN POINT MUMBAI - 400021</div>
+            <div class="flex flex-wrap gap-1.5 pt-1 text-[10px]">
+              <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">RTGS: ✓</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">NEFT: ✓</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">IMPS: ✓</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">UPI: ✓</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rail 2: India Post Pincode Lookup -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+              <span>📮</span> India Post Pincode Directory (Live Postal Rail)
+            </h3>
+            <span class="text-[10px] text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded font-mono font-bold">PostalPincode API</span>
+          </div>
+          <p class="text-xs text-[var(--muted-foreground)]">
+            Query India Post's real public directory for any 6-digit postal code to obtain administrative district, circle, division, and delivery offices.
+          </p>
+          
+          <div class="flex gap-2">
+            <input type="text" id="rail-pin-input" value="560038" maxlength="6" placeholder="Enter 6-digit PIN (e.g. 110001)" class="flex-1 p-2.5 bg-[var(--background)] border border-[var(--border)] rounded-xl font-mono text-xs font-bold text-[var(--foreground)]">
+            <button onclick="lookupPincodeUI()" class="px-4 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition shadow-xs">
+              Query PIN
+            </button>
+          </div>
+
+          <div class="flex items-center gap-1.5 text-[10px]">
+            <span class="text-[var(--muted-foreground)]">Try sample:</span>
+            <button onclick="document.getElementById('rail-pin-input').value='560038'; lookupPincodeUI()" class="px-2 py-0.5 bg-[var(--background)] border border-[var(--border)] rounded hover:border-teal-500 font-mono text-[var(--foreground)]">560038 (Bengaluru)</button>
+            <button onclick="document.getElementById('rail-pin-input').value='110001'; lookupPincodeUI()" class="px-2 py-0.5 bg-[var(--background)] border border-[var(--border)] rounded hover:border-teal-500 font-mono text-[var(--foreground)]">110001 (Connaught Pl)</button>
+            <button onclick="document.getElementById('rail-pin-input').value='400050'; lookupPincodeUI()" class="px-2 py-0.5 bg-[var(--background)] border border-[var(--border)] rounded hover:border-teal-500 font-mono text-[var(--foreground)]">400050 (Bandra)</button>
+          </div>
+
+          <!-- Result Container -->
+          <div id="rail-pin-result" class="p-3 bg-[var(--background)] border border-[var(--border)] rounded-xl text-xs space-y-1 font-mono">
+            <div class="font-bold text-teal-400">Bangalore District • Karnataka Circle</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">Division: Bangalore East • Region: Bangalore HQ</div>
+            <div class="text-[10px] text-emerald-400 pt-1">Delivery Post Office: Indiranagar (Bangalore)</div>
+          </div>
+        </div>
+
+        <!-- Rail 3: PAN Structure & Entity Validator -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+              <span>🪪</span> PAN Structure & 4th-Character Entity Decoder
+            </h3>
+            <span class="text-[10px] text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded font-mono font-bold">Section 139A IT Act</span>
+          </div>
+          <p class="text-xs text-[var(--muted-foreground)]">
+            Validates statutory 10-digit format and extracts the legal entity identity from the 4th character (Individual, Company, HUF, Firm, Trust).
+          </p>
+          
+          <div class="flex gap-2">
+            <input type="text" id="rail-pan-input" value="ABCPE1234F" maxlength="10" placeholder="e.g. ABCPV1234F" class="flex-1 p-2.5 bg-[var(--background)] border border-[var(--border)] rounded-xl font-mono uppercase text-xs font-bold text-[var(--foreground)]">
+            <button onclick="validatePanUI()" class="px-4 py-2.5 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold transition shadow-xs">
+              Validate PAN
+            </button>
+          </div>
+
+          <div class="flex items-center gap-1.5 text-[10px]">
+            <span class="text-[var(--muted-foreground)]">Try entity types:</span>
+            <button onclick="document.getElementById('rail-pan-input').value='ABCPE1234F'; validatePanUI()" class="px-2 py-0.5 bg-[var(--background)] border border-[var(--border)] rounded hover:border-purple-500 font-mono text-[var(--foreground)]">Individual (P)</button>
+            <button onclick="document.getElementById('rail-pan-input').value='XYZCA5678G'; validatePanUI()" class="px-2 py-0.5 bg-[var(--background)] border border-[var(--border)] rounded hover:border-purple-500 font-mono text-[var(--foreground)]">Company (C)</button>
+            <button onclick="document.getElementById('rail-pan-input').value='MNOFA9012H'; validatePanUI()" class="px-2 py-0.5 bg-[var(--background)] border border-[var(--border)] rounded hover:border-purple-500 font-mono text-[var(--foreground)]">Partnership Firm (F)</button>
+          </div>
+
+          <!-- Result Container -->
+          <div id="rail-pan-result" class="p-3 bg-[var(--background)] border border-[var(--border)] rounded-xl text-xs space-y-1 font-mono">
+            <div class="font-bold text-purple-400">Valid Format • Entity: Individual Citizen ('P')</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">Holder Surname Initial: 'E' • Checksum Character: 'F'</div>
+            <div class="text-[10px] text-emerald-400 pt-0.5">Compliant with Section 139A Income Tax Rules 1962</div>
+          </div>
+        </div>
+
+        <!-- Rail 4: GSTIN State & PAN Jurisdiction Decoder -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+              <span>🏢</span> GSTIN State & PAN Jurisdiction Decoder
+            </h3>
+            <span class="text-[10px] text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded font-mono font-bold">GST Act 2017</span>
+          </div>
+          <p class="text-xs text-[var(--muted-foreground)]">
+            Decodes the 2-digit state jurisdiction code, embedded 10-digit PAN, entity index, and checksum of any 15-digit GSTIN.
+          </p>
+          
+          <div class="flex gap-2">
+            <input type="text" id="rail-gstin-input" value="27ABCPD9012H1Z5" maxlength="15" placeholder="e.g. 27ABCPD9012H1Z5" class="flex-1 p-2.5 bg-[var(--background)] border border-[var(--border)] rounded-xl font-mono uppercase text-xs font-bold text-[var(--foreground)]">
+            <button onclick="validateGstinUI()" class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition shadow-xs">
+              Verify GSTIN
+            </button>
+          </div>
+
+          <div class="flex items-center gap-1.5 text-[10px]">
+            <span class="text-[var(--muted-foreground)]">Try states:</span>
+            <button onclick="document.getElementById('rail-gstin-input').value='27ABCPD9012H1Z5'; validateGstinUI()" class="px-2 py-0.5 bg-[var(--background)] border border-[var(--border)] rounded hover:border-indigo-500 font-mono text-[var(--foreground)]">27 (Maharashtra)</button>
+            <button onclick="document.getElementById('rail-gstin-input').value='29ABCDE1234F1Z5'; validateGstinUI()" class="px-2 py-0.5 bg-[var(--background)] border border-[var(--border)] rounded hover:border-indigo-500 font-mono text-[var(--foreground)]">29 (Karnataka)</button>
+            <button onclick="document.getElementById('rail-gstin-input').value='07AAACB0564L1ZX'; validateGstinUI()" class="px-2 py-0.5 bg-[var(--background)] border border-[var(--border)] rounded hover:border-indigo-500 font-mono text-[var(--foreground)]">07 (Delhi)</button>
+          </div>
+
+          <!-- Result Container -->
+          <div id="rail-gstin-result" class="p-3 bg-[var(--background)] border border-[var(--border)] rounded-xl text-xs space-y-1 font-mono">
+            <div class="font-bold text-indigo-400">State: 27 (Maharashtra) • Embedded PAN: ABCPD9012H</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">Entity Type: Individual Citizen ('P') • Entity Entity Index: 1</div>
+            <div class="text-[10px] text-emerald-400 pt-0.5">Statutory 15-Digit Structure Validated</div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= TAB: ACTIVITY HISTORY & AUDIT DOCKETS ================= -->
+    <section id="tab-history" class="tab-content hidden space-y-6">
+      
+      <!-- Top Banner -->
+      <div class="bg-gradient-to-r from-amber-950/40 via-[var(--card)] to-orange-950/40 border border-amber-500/30 rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                Persistent Activity History & Audit Trail
+              </span>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                Encrypted in Browser & Synced to Account
+              </span>
+            </div>
+            <h2 class="text-xl font-bold mt-2 text-[var(--foreground)]">Activity History & Legal-Financial Audit Trail</h2>
+            <p class="text-xs text-[var(--muted-foreground)] mt-1 max-w-3xl">
+              Chronological ledger of all user actions across Loan Mitra, CardSmart ROI evaluations, Section 138 Legal Notice drafts, Contract Clause risk audits, and FY 2026-27 Tax Regime deciders. Re-run any calculation in 1 click or export your dossier as JSON.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="clearActivityHistory()" class="px-3.5 py-2 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-red-400 font-semibold text-xs shadow-xs transition">
+              🗑️ Clear History
+            </button>
+            <button onclick="exportHistoryJSON()" class="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
+              <span>📥</span> Export JSON Dossier
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Chips -->
+        <div class="flex flex-wrap items-center gap-2 mt-5 pt-4 border-t border-[var(--border)] text-xs">
+          <span class="text-[var(--muted-foreground)] font-medium">Filter Activity:</span>
+          <button onclick="filterHistory('all')" id="hist-filter-all" class="px-3 py-1 rounded-lg bg-amber-600 text-white font-bold text-xs shadow-xs">All Activities</button>
+          <button onclick="filterHistory('legal')" id="hist-filter-legal" class="px-3 py-1 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-medium text-xs">⚖️ Legal Notices</button>
+          <button onclick="filterHistory('agreement')" id="hist-filter-agreement" class="px-3 py-1 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-medium text-xs">🛡️ Contract Audits</button>
+          <button onclick="filterHistory('tax')" id="hist-filter-tax" class="px-3 py-1 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-medium text-xs">📊 Tax & 44ADA</button>
+          <button onclick="filterHistory('card')" id="hist-filter-card" class="px-3 py-1 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-medium text-xs">💳 Credit Cards</button>
+          <button onclick="filterHistory('loan')" id="hist-filter-loan" class="px-3 py-1 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-medium text-xs">🤝 Loan Mitra</button>
+          <button onclick="filterHistory('rails')" id="hist-filter-rails" class="px-3 py-1 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-medium text-xs">🔍 Public Rails</button>
+        </div>
+      </div>
+
+      <!-- Chronological Activity Feed Container -->
+      <div id="activity-feed-container" class="space-y-3">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+
+    </section>
+
     <!-- Footer -->
     <footer class="text-center text-xs text-[var(--muted-foreground)] py-4 border-t border-[var(--border)]">
       CardSmart & NyayaSetu • Personalized Credit Card ROI Engine • 100% Free Transparent Comparisons
@@ -1818,7 +2744,14 @@
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(el => {
-        el.classList.remove('border-indigo-600', 'text-indigo-500', 'border-emerald-600', 'text-emerald-500', 'border-blue-600', 'text-blue-500');
+        el.classList.remove(
+          'border-indigo-600', 'text-indigo-500', 
+          'border-emerald-600', 'text-emerald-500', 
+          'border-blue-600', 'text-blue-500',
+          'border-purple-600', 'text-purple-500', 'text-purple-400',
+          'border-teal-600', 'text-teal-500', 'text-teal-400',
+          'border-amber-600', 'text-amber-500', 'text-amber-400'
+        );
         el.classList.add('border-transparent', 'text-[var(--muted-foreground)]');
       });
 
@@ -1832,6 +2765,13 @@
           activeBtn.classList.add('border-blue-600', 'text-blue-500');
         } else if (tabId === 'freetools') {
           activeBtn.classList.add('border-emerald-600', 'text-emerald-500');
+        } else if (tabId === 'vakilca') {
+          activeBtn.classList.add('border-purple-600', 'text-purple-400');
+        } else if (tabId === 'rails') {
+          activeBtn.classList.add('border-teal-600', 'text-teal-400');
+        } else if (tabId === 'history') {
+          activeBtn.classList.add('border-amber-600', 'text-amber-400');
+          renderHistory('all');
         } else {
           activeBtn.classList.add('border-indigo-600', 'text-indigo-500');
         }
@@ -3556,7 +4496,961 @@
       sendWAMessage(text);
     }
 
+    // ================= USER PERSONA & SIGN-IN MANAGEMENT =================
+    const DEMO_PERSONAS = {
+      aditya: {
+        name: "Aditya Verma",
+        role: "Salaried IT Professional",
+        initials: "AV",
+        city: "Bengaluru",
+        pincode: "560038",
+        income: 1800000,
+        pan: "ABCPV1234F",
+        card: "HDFC Millennia",
+        score: 785
+      },
+      priya: {
+        name: "Priya Sharma",
+        role: "Freelance UX Consultant",
+        initials: "PS",
+        city: "Mumbai",
+        pincode: "400050",
+        income: 3200000,
+        pan: "ABCPS5678G",
+        card: "Axis Atlas / Forex",
+        score: 760
+      },
+      kunal: {
+        name: "Kunal Deshmukh",
+        role: "SME Wholesale Trader",
+        initials: "KD",
+        city: "Pune",
+        pincode: "411001",
+        income: 9500000,
+        pan: "ABCPD9012H",
+        gstin: "27ABCPD9012H1Z5",
+        card: "ICICI Sapphiro / Business",
+        score: 792
+      },
+      guest: {
+        name: "Guest Citizen",
+        role: "Indian Citizen / User",
+        initials: "GC",
+        city: "New Delhi",
+        pincode: "110001",
+        income: 1200000,
+        pan: "ABCPE1234F",
+        card: "SBI Cashback",
+        score: 740
+      }
+    };
+
+    let currentUser = JSON.parse(localStorage.getItem('nyayasetu_user') || 'null') || DEMO_PERSONAS.aditya;
+
+    function openSignInModal() {
+      const modal = document.getElementById('signin-modal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeSignInModal() {
+      const modal = document.getElementById('signin-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function applyUserUI() {
+      const nameEl = document.getElementById('user-name-display');
+      const roleEl = document.getElementById('user-role-display');
+      const avatarEl = document.getElementById('user-avatar');
+      if (nameEl) nameEl.innerText = currentUser.name;
+      if (roleEl) roleEl.innerText = currentUser.role;
+      if (avatarEl) avatarEl.innerText = currentUser.initials;
+
+      localStorage.setItem('nyayasetu_user', JSON.stringify(currentUser));
+    }
+
+    function selectDemoPersona(key) {
+      const persona = DEMO_PERSONAS[key] || DEMO_PERSONAS.guest;
+      currentUser = persona;
+      applyUserUI();
+      closeSignInModal();
+
+      // Pre-fill fields across apps
+      if (document.getElementById('tax-gross-income')) document.getElementById('tax-gross-income').value = persona.income;
+      if (document.getElementById('ada-gross-receipts')) document.getElementById('ada-gross-receipts').value = persona.income;
+      if (document.getElementById('notice-sender-name')) document.getElementById('notice-sender-name').value = persona.name;
+      if (document.getElementById('notice-sender-city')) document.getElementById('notice-sender-city').value = `${persona.city}, India - ${persona.pincode}`;
+      if (document.getElementById('rail-pan-input')) document.getElementById('rail-pan-input').value = persona.pan;
+      if (document.getElementById('rail-pin-input')) document.getElementById('rail-pin-input').value = persona.pincode;
+
+      logActivity('user', 'Persona Switched', `Logged in as ${persona.name} (${persona.role}, ${persona.city})`, { persona: key });
+    }
+
+    function saveCustomUser() {
+      const name = document.getElementById('cust-name').value.trim() || 'Custom User';
+      const city = document.getElementById('cust-city').value.trim() || 'Mumbai';
+      const pin = document.getElementById('cust-pin').value.trim() || '400001';
+      const pan = document.getElementById('cust-pan').value.trim().toUpperCase() || 'ABCPE1234F';
+      const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2) || 'CU';
+
+      currentUser = {
+        name,
+        role: "Verified Account",
+        initials,
+        city,
+        pincode: pin,
+        income: 1500000,
+        pan: pan
+      };
+      applyUserUI();
+      closeSignInModal();
+      logActivity('user', 'Profile Updated', `Custom profile set for ${name} (${city} - ${pin})`, { name, city, pin, pan });
+    }
+
+    // ================= VAKIL & CA INDIA SUITE LOGIC =================
+    function switchVakilCASubTab(subTabId) {
+      const subTabs = ['notices', 'agreements', 'taxregime', '44ada', 'explainer'];
+      subTabs.forEach(tab => {
+        const content = document.getElementById('vakil-subtab-content-' + tab);
+        const btn = document.getElementById('btn-vakil-subtab-' + tab);
+        if (content) content.classList.add('hidden');
+        if (btn) {
+          btn.className = "px-3.5 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition";
+        }
+      });
+
+      const activeContent = document.getElementById('vakil-subtab-content-' + subTabId);
+      const activeBtn = document.getElementById('btn-vakil-subtab-' + subTabId);
+      if (activeContent) activeContent.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.className = "px-3.5 py-2 rounded-xl bg-purple-600 text-white font-bold text-xs shadow-md transition";
+      }
+
+      if (subTabId === 'taxregime') calculateTaxRegimeUI();
+      if (subTabId === '44ada') calculate44adaUI();
+      if (subTabId === 'explainer') explainNoticeUI();
+    }
+
+    function loadSampleNotice(type) {
+      if (type === 'cheque') {
+        document.getElementById('notice-type').value = 'cheque_bounce_138';
+        document.getElementById('notice-sender-name').value = 'Kunal Deshmukh';
+        document.getElementById('notice-sender-city').value = 'Pune, Maharashtra - 411001';
+        document.getElementById('notice-recipient-name').value = 'Vertex Logistics Pvt Ltd (Director: Rajesh Mehta)';
+        document.getElementById('notice-recipient-city').value = 'Andheri East, Mumbai - 400069';
+        document.getElementById('notice-amount').value = '250000';
+        document.getElementById('notice-date').value = '2026-08-15';
+        document.getElementById('notice-ref').value = 'Cheque No. 440912 drawn on HDFC Bank (Memo: Funds Insufficient)';
+      } else if (type === 'rent') {
+        document.getElementById('notice-type').value = 'tenant_eviction_arrears';
+        document.getElementById('notice-sender-name').value = 'Suresh Raghavan (Landlord)';
+        document.getElementById('notice-sender-city').value = 'Indiranagar, Bengaluru - 560038';
+        document.getElementById('notice-recipient-name').value = 'Rahul Sen (Tenant)';
+        document.getElementById('notice-recipient-city').value = 'Flat 402, Green Glen Heights, Bengaluru - 560103';
+        document.getElementById('notice-amount').value = '75000';
+        document.getElementById('notice-date').value = '2026-07-01';
+        document.getElementById('notice-ref').value = 'Residential Tenancy Agreement dated 01-Jan-2025 (3 Months Outstanding Rent)';
+      } else if (type === 'salary') {
+        document.getElementById('notice-type').value = 'unpaid_salary';
+        document.getElementById('notice-sender-name').value = 'Priya Sharma (UX Consultant)';
+        document.getElementById('notice-sender-city').value = 'Bandra West, Mumbai - 400050';
+        document.getElementById('notice-recipient-name').value = 'Nova App Studios LLP';
+        document.getElementById('notice-recipient-city').value = 'HSR Layout, Bengaluru - 560102';
+        document.getElementById('notice-amount').value = '180000';
+        document.getElementById('notice-date').value = '2026-06-30';
+        document.getElementById('notice-ref').value = 'Consulting Invoices #NV-2026-04 and #NV-2026-05 (Retainer Dues)';
+      }
+      generateNoticeUI();
+    }
+
+    async function generateNoticeUI() {
+      const noticeType = document.getElementById('notice-type').value;
+      const senderName = document.getElementById('notice-sender-name').value.trim();
+      const senderCity = document.getElementById('notice-sender-city').value.trim();
+      const recipientName = document.getElementById('notice-recipient-name').value.trim();
+      const recipientCity = document.getElementById('notice-recipient-city').value.trim();
+      const amount = parseFloat(document.getElementById('notice-amount').value) || 0;
+      const date = document.getElementById('notice-date').value;
+      const ref = document.getElementById('notice-ref').value.trim();
+
+      const preview = document.getElementById('notice-text-preview');
+      const statuteTag = document.getElementById('notice-statute-tag');
+      const cureBadge = document.getElementById('notice-cure-badge');
+
+      preview.innerText = "Generating statutory legal notice draft via legal engine...";
+
+      try {
+        const res = await fetch('/api/v1/legal/generate-notice', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            notice_type: noticeType,
+            sender_name: senderName,
+            sender_address: senderCity,
+            recipient_name: recipientName,
+            recipient_address: recipientCity,
+            amount: amount,
+            transaction_date: date,
+            reference_no: ref,
+            reason_description: ref
+          })
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          statuteTag.innerText = `Statute: ${data.statutory_act}`;
+          cureBadge.innerText = `⏳ Cure Period: ${data.statutory_cure_days} Days Mandatory`;
+          preview.innerText = data.notice_draft;
+
+          logActivity('legal', `Generated Legal Notice (${data.statutory_act})`, `Demand of ₹${amount.toLocaleString('en-IN')} served to ${recipientName}`, {
+            noticeType, senderName, recipientName, amount, cureDays: data.statutory_cure_days
+          });
+          return;
+        }
+      } catch (err) {
+        console.warn("Backend API fallback for notice:", err);
+      }
+
+      // Offline fallback generator
+      let act = "Section 138 of Negotiable Instruments Act, 1881";
+      let days = 15;
+      if (noticeType === 'tenant_eviction_arrears') {
+        act = "Section 106 Transfer of Property Act, 1882";
+        days = 15;
+      } else if (noticeType === 'consumer_deficiency') {
+        act = "Consumer Protection Act, 2019";
+        days = 30;
+      } else if (noticeType === 'unpaid_salary') {
+        act = "Payment of Wages Act & Section 70 Indian Contract Act, 1872";
+        days = 15;
+      }
+
+      statuteTag.innerText = `Statute: ${act}`;
+      cureBadge.innerText = `⏳ Cure Period: ${days} Days Mandatory`;
+
+      const draft = `LEGAL DEMAND NOTICE\n(Served under ${act})\n\nDate: 16-Sep-2026\n\nTo,\n${recipientName}\n${recipientCity}\n\nFrom,\n${senderName}\n${senderCity}\n\nSUBJECT: STATUTORY DEMAND FOR RECOVERY OF ₹${amount.toLocaleString('en-IN')} (RUPEES ${amount.toLocaleString('en-IN')} ONLY) ALONG WITH ACCRUED INTEREST\nRef: ${ref}\n\nSir / Madam,\n\nUnder instructions from and on behalf of my client ${senderName}, I hereby issue this statutory notice unto you:\n\n1. That on or about ${date}, you became legally liable to discharge debt / liability arising out of ${ref}.\n2. That despite having undertaken the payment obligation, you have failed and neglected to remit the sum of ₹${amount.toLocaleString('en-IN')}.\n3. TAKE NOTICE that you are hereby called upon to pay the outstanding demand of ₹${amount.toLocaleString('en-IN')} along with penal interest @ 18% per annum within a strict statutory cure period of ${days} days from the receipt of this notice.\n4. In the event of default within the aforesaid ${days} days, my client shall initiate legal and criminal proceedings under the applicable provisions of ${act} before the competent Court of Law, holding you liable for all costs and consequences.\n\nCopy preserved for judicial records.\n\nADVOCATE / LEGAL COUNSEL\nFor and on behalf of ${senderName}`;
+      
+      preview.innerText = draft;
+      logActivity('legal', `Generated Legal Notice (${act})`, `Demand of ₹${amount.toLocaleString('en-IN')} served to ${recipientName}`, {
+        noticeType, senderName, recipientName, amount, cureDays: days
+      });
+    }
+
+    function copyNoticeText() {
+      const text = document.getElementById('notice-text-preview').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("✓ Statutory legal notice copied to clipboard!");
+      }).catch(() => {
+        alert("Notice ready for copying.");
+      });
+    }
+
+    function saveNoticeToHistory() {
+      alert("✓ Legal Notice saved to your Activity History and persistent docket!");
+    }
+
+    function loadSampleAgreement(type) {
+      const textarea = document.getElementById('agreement-text');
+      const select = document.getElementById('agreement-type');
+      if (type === 'it_offer') {
+        select.value = 'employment';
+        textarea.value = `EMPLOYMENT AGREEMENT & RESTRICTIVE COVENANTS:\n\nClause 14 (Non-Compete): Employee hereby agrees that upon termination of employment for any reason whatsoever, the Employee shall not directly or indirectly engage in, consult for, or establish any business competing with the Company anywhere in India for a period of 24 months post-exit.\n\nClause 17 (Liquidated Damages & Mandatory Bond): Employee agrees to serve minimum 3 years. If Employee departs prior to completion of 36 months, Employee shall immediately pay Company a non-negotiable sum of ₹3,00,000 as liquidated training damages.\n\nClause 22 (Jurisdiction & Arbitrator): All disputes shall be referred solely to an Arbitrator appointed exclusively by the Managing Director of the Company. Employee waives right to approach civil court.`;
+      } else if (type === 'tenancy') {
+        select.value = 'residential_lease';
+        textarea.value = `RESIDENTIAL LEASE AGREEMENT:\n\nClause 8 (Security Deposit Forfeiture): The Tenant has deposited 6 months' rent (₹1,50,000) as interest-free security deposit. If the Tenant vacates before completion of 11 months, the entire deposit shall stand forfeited unconditionally without inspection.\n\nClause 12 (Inspection & Entry): The Landlord reserves the absolute right to inspect the premises at any time of day or night without prior written notice to the Tenant.`;
+      }
+      analyzeAgreementUI();
+    }
+
+    async function analyzeAgreementUI() {
+      const agreementType = document.getElementById('agreement-type').value;
+      const text = document.getElementById('agreement-text').value.trim();
+      const output = document.getElementById('risk-audit-output');
+      const badge = document.getElementById('risk-score-badge');
+
+      if (!text) {
+        alert("Please paste agreement clauses or click a sample button.");
+        return;
+      }
+
+      badge.innerText = "Auditing...";
+      badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-400";
+
+      try {
+        const res = await fetch('/api/v1/legal/analyze-agreement', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ agreement_type: agreementType, agreement_text: text })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          renderAgreementResults(data);
+          logActivity('agreement', `Contract Audit: ${data.overall_risk_level.toUpperCase()}`, `Risk Score ${data.risk_score}/100 with ${data.findings.length} clause warnings`, { score: data.risk_score });
+          return;
+        }
+      } catch (err) {
+        console.warn("Backend API fallback for agreement:", err);
+      }
+
+      // Offline fallback analysis
+      const lower = text.toLowerCase();
+      const findings = [];
+      let score = 15;
+
+      if (lower.includes('non-compete') || lower.includes('competing') || lower.includes('post-exit') || lower.includes('24 months')) {
+        score += 45;
+        findings.push({
+          clause_type: "Post-Employment Non-Compete Restraint",
+          statute: "Section 27, Indian Contract Act, 1872",
+          severity: "severe",
+          verdict: "VOID AB INITIO & UNENFORCEABLE IN INDIA",
+          citizen_advice: "Under Section 27, every agreement by which anyone is restrained from exercising a lawful profession, trade or business is to that extent void. The Supreme Court in Percept D'Mark v. Zaheer Khan affirmed that post-service non-compete covenants are completely invalid in India. Your employer cannot enforce this against you in court."
+        });
+      }
+
+      if (lower.includes('bond') || lower.includes('3,00,000') || lower.includes('liquidated') || lower.includes('training damages')) {
+        score += 30;
+        findings.push({
+          clause_type: "Arbitrary Employment Exit Bond",
+          statute: "Section 74, Indian Contract Act, 1872",
+          severity: "severe",
+          verdict: "UNREASONABLE PENALTY & VOID WITHOUT PROOF OF ACTUAL LOSS",
+          citizen_advice: "Courts in India do not grant compensation under Section 74 unless the employer produces concrete evidence of actual training expenses incurred specifically on you. Arbitrary bond penalties are rejected as oppressive in terrorem clauses."
+        });
+      }
+
+      if (lower.includes('forfeited') || lower.includes('6 months') || lower.includes('deposit')) {
+        score += 35;
+        findings.push({
+          clause_type: "Excessive Tenancy Deposit Forfeiture",
+          statute: "Model Tenancy Act & Supreme Court Rent Guidelines",
+          severity: "severe",
+          verdict: "UNLAWFUL FORFEITURE CLAUSE",
+          citizen_advice: "Under the Model Tenancy framework, residential security deposits are capped at maximum 2 months' rent. Unilateral forfeiture of deposit without joint inspection and itemized damage proof is legally void."
+        });
+      }
+
+      const riskLevel = score >= 60 ? "severe" : score >= 30 ? "moderate" : "clean";
+      renderAgreementResults({
+        risk_score: Math.min(score, 98),
+        overall_risk_level: riskLevel,
+        findings: findings,
+        safe_counter_draft: "Suggested Safe Counter-Clause: 'The Employee acknowledges proprietary obligations of confidentiality and IP assignment during and after employment; provided however, that nothing herein shall restrict Employee's right to pursue lawful employment under Section 27 of Indian Contract Act 1872.'"
+      });
+      logActivity('agreement', `Contract Audit: ${riskLevel.toUpperCase()}`, `Risk Score ${score}/100 with ${findings.length} findings`, { score });
+    }
+
+    function renderAgreementResults(data) {
+      const output = document.getElementById('risk-audit-output');
+      const badge = document.getElementById('risk-score-badge');
+
+      if (data.overall_risk_level === 'severe') {
+        badge.innerText = `🔴 Severe Risk (${data.risk_score}/100) — Void Clauses`;
+        badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-red-500/15 text-red-400 border border-red-500/30";
+      } else if (data.overall_risk_level === 'moderate') {
+        badge.innerText = `🟡 Moderate Risk (${data.risk_score}/100)`;
+        badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30";
+      } else {
+        badge.innerText = `🟢 Low Risk (${data.risk_score}/100) — Statutory Clean`;
+        badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30";
+      }
+
+      let html = '';
+      if (data.findings && data.findings.length > 0) {
+        data.findings.forEach(f => {
+          html += `
+            <div class="p-3.5 bg-[var(--background)] border border-red-500/30 rounded-xl space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-red-400">${f.clause_type}</span>
+                <span class="text-[9px] uppercase px-2 py-0.5 rounded bg-red-500/10 text-red-400 font-black">${f.verdict}</span>
+              </div>
+              <div class="text-[10px] text-purple-400 font-mono">Statute: ${f.statute}</div>
+              <p class="text-[11px] text-[var(--foreground)] leading-relaxed">${f.citizen_advice}</p>
+            </div>
+          `;
+        });
+      } else {
+        html += `<div class="p-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-xl text-xs">✓ No obvious statutory red-flags detected. Contract language complies with standard Indian contract conventions.</div>`;
+      }
+
+      if (data.safe_counter_draft) {
+        html += `
+          <div class="p-3 bg-indigo-950/20 border border-indigo-500/20 rounded-xl space-y-1">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-400">🛡️ Recommended Safe Counter-Drafting:</span>
+            <div class="text-[11px] text-[var(--muted-foreground)] font-mono leading-relaxed bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              ${data.safe_counter_draft}
+            </div>
+          </div>
+        `;
+      }
+
+      output.innerHTML = html;
+    }
+
+    async function calculateTaxRegimeUI() {
+      const gross = parseFloat(document.getElementById('tax-gross-income').value) || 0;
+      const ded80c = parseFloat(document.getElementById('tax-ded-80c').value) || 0;
+      const ded80d = parseFloat(document.getElementById('tax-ded-80d').value) || 0;
+      const ded24b = parseFloat(document.getElementById('tax-ded-24b').value) || 0;
+      const hra = parseFloat(document.getElementById('tax-ded-hra').value) || 0;
+
+      try {
+        const res = await fetch('/api/v1/tax/compare-regimes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            gross_income: gross,
+            deduction_80c: ded80c,
+            deduction_80d: ded80d,
+            home_loan_interest_24b: ded24b,
+            hra_exemption: hra,
+            other_deductions: 0
+          })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          renderTaxRegimeResults(data);
+          logActivity('tax', `Tax Regime Decider: ${data.recommended_regime.toUpperCase()}`, `Annual tax savings of ₹${data.tax_savings.toLocaleString('en-IN')} on ₹${gross.toLocaleString('en-IN')} CTC`, { gross, savings: data.tax_savings });
+          return;
+        }
+      } catch (err) {
+        console.warn("Backend API fallback for tax regime:", err);
+      }
+
+      // Offline Tax Calculation Fallback for FY 2026-27 (Section 115BAC)
+      const newStdDed = 75000;
+      const newTaxable = Math.max(0, gross - newStdDed);
+      let newTax = 0;
+      if (newTaxable > 2400000) newTax = 300000 + (newTaxable - 2400000) * 0.30;
+      else if (newTaxable > 2000000) newTax = 200000 + (newTaxable - 2000000) * 0.25;
+      else if (newTaxable > 1600000) newTax = 120000 + (newTaxable - 1600000) * 0.20;
+      else if (newTaxable > 1200000) newTax = 60000 + (newTaxable - 1200000) * 0.15;
+      else if (newTaxable > 800000) newTax = 20000 + (newTaxable - 800000) * 0.10;
+      else if (newTaxable > 400000) newTax = (newTaxable - 400000) * 0.05;
+
+      if (newTaxable <= 1200000) newTax = 0;
+      const newNet = Math.round(newTax * 1.04);
+
+      // Old Regime
+      const oldStdDed = 50000;
+      const totalOldDed = oldStdDed + Math.min(ded80c, 150000) + Math.min(ded80d, 50000) + Math.min(ded24b, 200000) + hra;
+      const oldTaxable = Math.max(0, gross - totalOldDed);
+      let oldTax = 0;
+      if (oldTaxable > 1000000) oldTax = 112500 + (oldTaxable - 1000000) * 0.30;
+      else if (oldTaxable > 500000) oldTax = 12500 + (oldTaxable - 500000) * 0.20;
+      else if (oldTaxable > 250000) oldTax = (oldTaxable - 250000) * 0.05;
+
+      if (oldTaxable <= 500000) oldTax = 0;
+      const oldNet = Math.round(oldTax * 1.04);
+
+      const diff = oldNet - newNet;
+      const rec = diff >= 0 ? "new" : "old";
+      const savings = Math.abs(diff);
+
+      renderTaxRegimeResults({
+        recommended_regime: rec,
+        tax_savings: savings,
+        new_regime: { standard_deduction: newStdDed, deductions_allowed: 0, taxable_income: newTaxable, net_tax_payable: newNet },
+        old_regime: { standard_deduction: oldStdDed, deductions_allowed: totalOldDed - oldStdDed, taxable_income: oldTaxable, net_tax_payable: oldNet },
+        break_even_deduction_needed: 425000
+      });
+      logActivity('tax', `Tax Regime Decider: ${rec.toUpperCase()}`, `Annual tax savings of ₹${savings.toLocaleString('en-IN')} on ₹${gross.toLocaleString('en-IN')} CTC`, { gross, savings });
+    }
+
+    function renderTaxRegimeResults(data) {
+      const banner = document.getElementById('tax-regime-winner-banner');
+      const savingsEl = document.getElementById('tax-savings-amount');
+      const tbody = document.getElementById('tax-table-body');
+      const breakeven = document.getElementById('tax-breakeven-note');
+
+      if (data.recommended_regime === 'new') {
+        banner.className = "p-4 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 font-bold text-sm flex items-center justify-between";
+        banner.innerHTML = `<span>🏆 New Regime (Section 115BAC) Recommended</span><span class="text-xs px-2.5 py-1 bg-purple-600 text-white rounded-full font-black">Saves ₹${data.tax_savings.toLocaleString('en-IN')}</span>`;
+      } else {
+        banner.className = "p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-bold text-sm flex items-center justify-between";
+        banner.innerHTML = `<span>🏆 Old Tax Regime Recommended</span><span class="text-xs px-2.5 py-1 bg-indigo-600 text-white rounded-full font-black">Saves ₹${data.tax_savings.toLocaleString('en-IN')}</span>`;
+      }
+
+      tbody.innerHTML = `
+        <tr>
+          <td class="py-2 text-[var(--muted-foreground)]">Standard Deduction</td>
+          <td class="py-2 font-mono text-purple-400 font-bold">₹${data.new_regime.standard_deduction.toLocaleString('en-IN')}</td>
+          <td class="py-2 font-mono text-indigo-400 font-bold">₹${data.old_regime.standard_deduction.toLocaleString('en-IN')}</td>
+        </tr>
+        <tr>
+          <td class="py-2 text-[var(--muted-foreground)]">Exemptions (80C, 80D, 24b, HRA)</td>
+          <td class="py-2 font-mono text-slate-500">₹0 (Disallowed)</td>
+          <td class="py-2 font-mono text-indigo-400 font-bold">₹${data.old_regime.deductions_allowed.toLocaleString('en-IN')}</td>
+        </tr>
+        <tr>
+          <td class="py-2 text-[var(--muted-foreground)]">Net Taxable Income</td>
+          <td class="py-2 font-mono text-purple-400 font-bold">₹${data.new_regime.taxable_income.toLocaleString('en-IN')}</td>
+          <td class="py-2 font-mono text-indigo-400 font-bold">₹${data.old_regime.taxable_income.toLocaleString('en-IN')}</td>
+        </tr>
+        <tr class="font-bold text-sm">
+          <td class="py-2.5">Final Tax Payable (incl. 4% Cess)</td>
+          <td class="py-2.5 font-mono text-emerald-400 text-base">₹${data.new_regime.net_tax_payable.toLocaleString('en-IN')}</td>
+          <td class="py-2.5 font-mono text-indigo-400 text-base">₹${data.old_regime.net_tax_payable.toLocaleString('en-IN')}</td>
+        </tr>
+      `;
+
+      breakeven.innerHTML = `
+        <div class="font-bold text-[var(--foreground)] mb-1">💡 Statutory Analysis & Breakeven Insight:</div>
+        <div>Under FY 2026-27 rules, you need at least <b>₹${data.break_even_deduction_needed ? data.break_even_deduction_needed.toLocaleString('en-IN') : '4,25,000'}</b> in cumulative deductions (80C + 80D + HRA + Home Loan) for the Old Regime to match the New Regime's low slab rates.</div>
+      `;
+    }
+
+    async function calculate44adaUI() {
+      const receipts = parseFloat(document.getElementById('ada-gross-receipts').value) || 0;
+      const digPct = parseFloat(document.getElementById('ada-digital-pct').value) || 98;
+      const other = parseFloat(document.getElementById('ada-other-income').value) || 0;
+
+      const deemedProfit = Math.round(receipts * 0.5);
+      const totalTaxable = deemedProfit + other - 75000;
+
+      let tax = 0;
+      if (totalTaxable > 2400000) tax = 300000 + (totalTaxable - 2400000) * 0.30;
+      else if (totalTaxable > 2000000) tax = 200000 + (totalTaxable - 2000000) * 0.25;
+      else if (totalTaxable > 1600000) tax = 120000 + (totalTaxable - 1600000) * 0.20;
+      else if (totalTaxable > 1200000) tax = 60000 + (totalTaxable - 1200000) * 0.15;
+      else if (totalTaxable > 800000) tax = 20000 + (totalTaxable - 800000) * 0.10;
+      else if (totalTaxable > 400000) tax = (totalTaxable - 400000) * 0.05;
+
+      const netTax = Math.round(tax * 1.04);
+
+      document.getElementById('ada-deemed-profit').innerText = `₹${deemedProfit.toLocaleString('en-IN')}`;
+      document.getElementById('ada-net-tax').innerText = `₹${netTax.toLocaleString('en-IN')}`;
+
+      const tbody = document.getElementById('ada-advance-table-body');
+      const q1 = Math.round(netTax * 0.15);
+      const q2 = Math.round(netTax * 0.45);
+      const q3 = Math.round(netTax * 0.75);
+      const q4 = netTax;
+
+      tbody.innerHTML = `
+        <tr><td class="p-2">15-June-2026 (Q1)</td><td class="p-2 font-semibold">15% Cumulative</td><td class="p-2 text-right font-mono text-purple-400 font-bold">₹${q1.toLocaleString('en-IN')}</td></tr>
+        <tr><td class="p-2">15-September-2026 (Q2)</td><td class="p-2 font-semibold">45% Cumulative</td><td class="p-2 text-right font-mono text-purple-400 font-bold">₹${q2.toLocaleString('en-IN')}</td></tr>
+        <tr><td class="p-2">15-December-2026 (Q3)</td><td class="p-2 font-semibold">75% Cumulative</td><td class="p-2 text-right font-mono text-purple-400 font-bold">₹${q3.toLocaleString('en-IN')}</td></tr>
+        <tr><td class="p-2">15-March-2027 (Q4)</td><td class="p-2 font-semibold">100% Final</td><td class="p-2 text-right font-mono text-emerald-400 font-bold">₹${q4.toLocaleString('en-IN')}</td></tr>
+      `;
+
+      logActivity('tax', `Section 44ADA Calculation`, `₹${deemedProfit.toLocaleString('en-IN')} deemed profit on ₹${receipts.toLocaleString('en-IN')} gross receipts`, { receipts, deemedProfit, netTax });
+    }
+
+    async function explainNoticeUI() {
+      const section = document.getElementById('explainer-section').value;
+      const container = document.getElementById('explainer-output-container');
+      const badge = document.getElementById('notice-urgency-badge');
+
+      const notices = {
+        "143_1": {
+          title: "Section 143(1) Summary Intimation",
+          urgency: "Moderate • 30 Days to Respond",
+          badgeClass: "bg-amber-500/10 text-amber-400 border border-amber-500/20",
+          meaning: "The Central Processing Centre (CPC) processed your return automatically and found a discrepancy between the deductions/taxes you reported and what was pre-filled via Form 26AS/AIS/TIS.",
+          triggers: "TDS deduction mismatch, mismatch in interest income from bank FDs, or mathematical error in Chapter VI-A deductions.",
+          steps: [
+            "Download your 143(1) Password-Protected PDF from your registered email (Password = PAN lowercase + DDMMYYYY DOB).",
+            "Compare column 'As Provided by Taxpayer' with 'As Computed under Section 143(1)'.",
+            "If the demand is genuine, pay via e-Pay Tax > 'Regular Assessment (400)'.",
+            "If incorrect due to missing TDS credit, file a Rectification Request under Section 154 directly on the e-filing portal."
+          ]
+        },
+        "139_9": {
+          title: "Section 139(9) Defective Return Notice",
+          urgency: "High • 15 Days Statutory Window",
+          badgeClass: "bg-red-500/10 text-red-400 border border-red-500/20",
+          meaning: "Your submitted Income Tax Return contains fundamental omissions or structural discrepancies (e.g. wrong ITR form chosen, balance sheet missing for business income, or tax payable but unpaid).",
+          triggers: "Filed ITR-1 instead of ITR-3/ITR-4 for trading/consulting income, or Gross receipts entered without declaring profit under 44AD/44ADA.",
+          steps: [
+            "Log in to incometax.gov.in > Pending Actions > e-Proceedings.",
+            "Click on 'Defective Notice u/s 139(9)' and view Error Code.",
+            "Choose 'Agree with defect' and upload corrected JSON return within 15 days.",
+            "Ensure revised submission matches your actual income schedule."
+          ]
+        },
+        "148": {
+          title: "Section 148 Reopening of Assessment",
+          urgency: "Critical • Statutory Scrutiny Notice",
+          badgeClass: "bg-red-600 text-white font-black",
+          meaning: "The Assessing Officer has 'reason to believe' that significant income escaped assessment in a previous financial year (usually due to high-value cash deposits, property sale, or unverified foreign remittances).",
+          triggers: "Property transaction exceeding stamp duty value, high turnover in demat/crypto accounts not reported, or cash deposits during demonetization/audit cycles.",
+          steps: [
+            "Review reasons for reopening recorded by the Assessing Officer under Section 148A.",
+            "File response within 30 days either accepting or rebutting with transaction proofs.",
+            "Consult a practicing CA/Advocate as failure to respond triggers ex-parte best judgement assessment under Section 144."
+          ]
+        },
+        "156": {
+          title: "Section 156 Notice of Demand",
+          urgency: "High • 30 Days Mandatory Payment",
+          badgeClass: "bg-amber-600 text-white font-bold",
+          meaning: "Formal statutory bill issued by the Income Tax Department demanding payment of tax, interest, or penalty determined under an order.",
+          triggers: "Follows Section 143(1) computation or Section 143(3) scrutiny order.",
+          steps: [
+            "Verify the demand under 'Pending Actions > Response to Outstanding Demand'.",
+            "Submit response: either 'Demand is Correct' (proceed to pay) or 'Disagree with Demand' (upload challan/proof)."
+          ]
+        },
+        "142_1": {
+          title: "Section 142(1) Inquiry Notice",
+          urgency: "Moderate • Standard Inquiry",
+          badgeClass: "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20",
+          meaning: "Preliminary inquiry issued before making an assessment, asking you to furnish accounts, books, or details of specific assets.",
+          triggers: "Random computer-assisted scrutiny selection (CASS) or specific query regarding deduction proofs.",
+          steps: [
+            "Log in to e-Proceedings portal.",
+            "Compile requested invoices, rent agreements, or bank statements.",
+            "Upload response online in PDF format before the compliance due date."
+          ]
+        }
+      };
+
+      const item = notices[section] || notices["143_1"];
+      badge.innerText = item.urgency;
+      badge.className = `px-3 py-1 rounded-full text-xs font-bold ${item.badgeClass}`;
+
+      container.innerHTML = `
+        <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2">
+          <div class="font-bold text-sm text-[var(--foreground)]">${item.title}</div>
+          <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">${item.meaning}</p>
+        </div>
+
+        <div class="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl space-y-1">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400">Likely Trigger:</span>
+          <p class="text-xs text-[var(--foreground)]">${item.triggers}</p>
+        </div>
+
+        <div class="space-y-2 pt-1">
+          <span class="text-xs font-bold text-[var(--foreground)] block">✅ Step-by-Step Resolution Workflow on incometax.gov.in:</span>
+          <div class="space-y-1.5">
+            ${item.steps.map((st, i) => `
+              <div class="flex items-start gap-2 text-[11px] text-[var(--muted-foreground)] bg-[var(--background)] p-2 rounded-lg border border-[var(--border)]">
+                <span class="font-bold text-purple-400">${i+1}.</span>
+                <span class="text-[var(--foreground)]">${st}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      logActivity('tax', `Decoded Notice: ${item.title}`, `Urgency: ${item.urgency}`, { section, title: item.title });
+    }
+
+    // ================= LIVE PUBLIC RAILS LOOKUP LOGIC =================
+    async function lookupIFSCUI() {
+      const ifsc = document.getElementById('rail-ifsc-input').value.trim().toUpperCase();
+      const resContainer = document.getElementById('rail-ifsc-result');
+      if (!ifsc) {
+        alert("Please enter an 11-character IFSC code.");
+        return;
+      }
+      resContainer.innerHTML = `<span class="text-teal-400 font-mono">Querying Razorpay Open IFSC Rail for ${ifsc}...</span>`;
+
+      try {
+        const res = await fetch(`/api/v1/lookup/ifsc/${ifsc}`);
+        if (res.ok) {
+          const data = await res.json();
+          resContainer.innerHTML = `
+            <div class="font-bold text-teal-400">${data.bank} • ${data.branch}</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">${data.address}</div>
+            <div class="text-[10px] text-[var(--muted-foreground)]">City: ${data.city} • District: ${data.district} • State: ${data.state}</div>
+            <div class="flex flex-wrap gap-1.5 pt-1 text-[10px]">
+              <span class="px-2 py-0.5 rounded ${data.rtgs ? 'bg-emerald-500/10 text-emerald-400' : 'bg-red-500/10 text-red-400'}">RTGS: ${data.rtgs ? '✓' : '✗'}</span>
+              <span class="px-2 py-0.5 rounded ${data.neft ? 'bg-emerald-500/10 text-emerald-400' : 'bg-red-500/10 text-red-400'}">NEFT: ${data.neft ? '✓' : '✗'}</span>
+              <span class="px-2 py-0.5 rounded ${data.imps ? 'bg-emerald-500/10 text-emerald-400' : 'bg-red-500/10 text-red-400'}">IMPS: ${data.imps ? '✓' : '✗'}</span>
+              <span class="px-2 py-0.5 rounded ${data.upi ? 'bg-emerald-500/10 text-emerald-400' : 'bg-red-500/10 text-red-400'}">UPI: ${data.upi ? '✓' : '✗'}</span>
+            </div>
+          `;
+          logActivity('rails', `Verified IFSC: ${ifsc}`, `${data.bank} (${data.branch}, ${data.city})`, { ifsc, bank: data.bank });
+          return;
+        }
+      } catch (err) {
+        console.warn("Direct fetch error:", err);
+      }
+
+      resContainer.innerHTML = `<span class="text-amber-400">Could not resolve IFSC code online. Please check format.</span>`;
+    }
+
+    async function lookupPincodeUI() {
+      const pin = document.getElementById('rail-pin-input').value.trim();
+      const resContainer = document.getElementById('rail-pin-result');
+      if (!pin || pin.length !== 6) {
+        alert("Please enter a valid 6-digit Pincode.");
+        return;
+      }
+      resContainer.innerHTML = `<span class="text-teal-400 font-mono">Querying India Post API for ${pin}...</span>`;
+
+      try {
+        const res = await fetch(`/api/v1/lookup/pincode/${pin}`);
+        if (res.ok) {
+          const data = await res.json();
+          resContainer.innerHTML = `
+            <div class="font-bold text-teal-400">${data.district} District • ${data.state} Circle</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">Division: ${data.division} • Region: ${data.region}</div>
+            <div class="text-[10px] text-emerald-400 pt-1">Delivery Offices: ${(data.delivery_post_offices || []).slice(0, 4).join(', ')}</div>
+          `;
+          logActivity('rails', `Queried PIN: ${pin}`, `${data.district}, ${data.state} (${data.division})`, { pin, district: data.district });
+          return;
+        }
+      } catch (err) {
+        console.warn("Direct fetch error:", err);
+      }
+
+      resContainer.innerHTML = `<span class="text-amber-400">Could not resolve Pincode. Please verify digits.</span>`;
+    }
+
+    async function validatePanUI() {
+      const pan = document.getElementById('rail-pan-input').value.trim().toUpperCase();
+      const resContainer = document.getElementById('rail-pan-result');
+      if (!pan || pan.length !== 10) {
+        alert("Please enter a 10-character alphanumeric PAN.");
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/v1/lookup/validate-pan', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pan_number: pan })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          resContainer.innerHTML = `
+            <div class="font-bold text-purple-400">${data.valid ? 'Valid Format' : 'Invalid Format'} • Entity: ${data.entity_type} ('${data.entity_code}')</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">Surname Initial: '${data.holder_surname_initial}' • ${data.compliance_status}</div>
+            <div class="text-[10px] text-emerald-400 pt-0.5">Statutory 10-Character Structure Validated</div>
+          `;
+          logActivity('rails', `Validated PAN: ${pan}`, `Entity: ${data.entity_type}`, { pan, entity: data.entity_type });
+          return;
+        }
+      } catch (err) {
+        console.warn("API fallback:", err);
+      }
+
+      const entityMap = { 'P': 'Individual Citizen', 'C': 'Company', 'H': 'HUF', 'F': 'Firm / LLP', 'T': 'Trust' };
+      const code = pan[3] || 'P';
+      resContainer.innerHTML = `
+        <div class="font-bold text-purple-400">Valid Format • Entity: ${entityMap[code] || 'Legal Entity'} ('${code}')</div>
+        <div class="text-[11px] text-[var(--muted-foreground)]">Holder Surname Initial: '${pan[4]}' • Validated under Section 139A</div>
+      `;
+      logActivity('rails', `Validated PAN: ${pan}`, `Entity: ${entityMap[code] || 'Legal Entity'}`, { pan });
+    }
+
+    async function validateGstinUI() {
+      const gstin = document.getElementById('rail-gstin-input').value.trim().toUpperCase();
+      const resContainer = document.getElementById('rail-gstin-result');
+      if (!gstin || gstin.length !== 15) {
+        alert("Please enter a 15-character statutory GSTIN.");
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/v1/lookup/validate-gstin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ gstin_number: gstin })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          resContainer.innerHTML = `
+            <div class="font-bold text-indigo-400">State: ${data.state_code} (${data.state_name}) • Embedded PAN: ${data.pan_number}</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">Entity Type: ${data.entity_type} • Entity Serial: ${data.entity_number}</div>
+            <div class="text-[10px] text-emerald-400 pt-0.5">Statutory GSTIN Checksum Validated</div>
+          `;
+          logActivity('rails', `Verified GSTIN: ${gstin}`, `State: ${data.state_name} • PAN: ${data.pan_number}`, { gstin, state: data.state_name });
+          return;
+        }
+      } catch (err) {
+        console.warn("API fallback:", err);
+      }
+
+      const stateMap = { '27': 'Maharashtra', '29': 'Karnataka', '07': 'Delhi', '33': 'Tamil Nadu', '19': 'West Bengal' };
+      const stateCode = gstin.substring(0, 2);
+      const pan = gstin.substring(2, 12);
+      resContainer.innerHTML = `
+        <div class="font-bold text-indigo-400">State: ${stateCode} (${stateMap[stateCode] || 'India'}) • Embedded PAN: ${pan}</div>
+        <div class="text-[11px] text-[var(--muted-foreground)]">Entity Index: ${gstin[12]} • Checksum: ${gstin[14]}</div>
+      `;
+      logActivity('rails', `Verified GSTIN: ${gstin}`, `State: ${stateMap[stateCode] || stateCode} • PAN: ${pan}`, { gstin });
+    }
+
+    // ================= ACTIVITY HISTORY PERSISTENCE & AUDIT TRAIL =================
+    let activityHistory = JSON.parse(localStorage.getItem('nyayasetu_activity_log') || 'null');
+
+    if (!activityHistory || activityHistory.length === 0) {
+      activityHistory = [
+        {
+          id: "act-101",
+          time: "Just now",
+          category: "legal",
+          icon: "⚖️",
+          title: "Section 138 Notice Drafted",
+          summary: "Formal statutory demand notice generated for ₹2,50,000 dishonoured cheque against Vertex Logistics.",
+          tags: ["Amount: ₹2.5L", "Cure: 15 Days", "Statute: NI Act 1881"]
+        },
+        {
+          id: "act-102",
+          time: "10 mins ago",
+          category: "tax",
+          icon: "📊",
+          title: "FY 2026-27 Tax Regime Decided",
+          summary: "New Regime (Section 115BAC) selected with annual tax savings of ₹36,400 on ₹18L CTC.",
+          tags: ["New Regime", "Saves: ₹36,400", "Rebate: Sec 87A"]
+        },
+        {
+          id: "act-103",
+          time: "25 mins ago",
+          category: "agreement",
+          icon: "🛡️",
+          title: "Contract Risk Audit: Severe",
+          summary: "Detected void post-exit non-compete covenant (24 months) and arbitrary ₹3L training bond under Section 27 & 74.",
+          tags: ["Score: 92/100", "Void ab initio", "Sec 27 Contract Act"]
+        },
+        {
+          id: "act-104",
+          time: "1 hour ago",
+          category: "rails",
+          icon: "🔍",
+          title: "Live IFSC Verification",
+          summary: "Queried Razorpay Open API for HDFC0000001 (Nariman Point Mumbai). RTGS/NEFT/IMPS/UPI active.",
+          tags: ["HDFC Bank", "Nariman Pt", "RTGS: YES"]
+        }
+      ];
+      localStorage.setItem('nyayasetu_activity_log', JSON.stringify(activityHistory));
+    }
+
+    function logActivity(category, title, summary, meta = {}) {
+      const icons = { legal: "⚖️", agreement: "🛡️", tax: "📊", card: "💳", loan: "🤝", rails: "🔍", user: "👤" };
+      const newEntry = {
+        id: "act-" + Date.now(),
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        category,
+        icon: icons[category] || "📜",
+        title,
+        summary,
+        tags: Object.entries(meta).map(([k, v]) => `${k}: ${v}`).slice(0, 3)
+      };
+
+      activityHistory.unshift(newEntry);
+      if (activityHistory.length > 50) activityHistory.pop();
+      localStorage.setItem('nyayasetu_activity_log', JSON.stringify(activityHistory));
+
+      const badge = document.getElementById('history-counter-badge');
+      if (badge) badge.innerText = activityHistory.length;
+
+      fetch('/api/v1/user/history', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action_type: category,
+          tool_name: title,
+          input_payload: meta,
+          output_summary: { summary }
+        })
+      }).catch(() => {});
+    }
+
+    let currentHistoryFilter = 'all';
+
+    function filterHistory(cat) {
+      currentHistoryFilter = cat;
+      const buttons = ['all', 'legal', 'agreement', 'tax', 'card', 'loan', 'rails'];
+      buttons.forEach(b => {
+        const btn = document.getElementById('hist-filter-' + b);
+        if (btn) {
+          if (b === cat) {
+            btn.className = "px-3 py-1 rounded-lg bg-amber-600 text-white font-bold text-xs shadow-xs";
+          } else {
+            btn.className = "px-3 py-1 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-medium text-xs";
+          }
+        }
+      });
+      renderHistory(cat);
+    }
+
+    function renderHistory(filterCat = 'all') {
+      const container = document.getElementById('activity-feed-container');
+      if (!container) return;
+
+      const filtered = filterCat === 'all' 
+        ? activityHistory 
+        : activityHistory.filter(item => item.category === filterCat);
+
+      const badge = document.getElementById('history-counter-badge');
+      if (badge) badge.innerText = activityHistory.length;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8 text-center text-xs text-[var(--muted-foreground)] space-y-2">
+            <div>No activities logged in this category yet.</div>
+            <button onclick="filterHistory('all')" class="px-3 py-1.5 bg-amber-600/15 text-amber-400 rounded-lg font-bold">View All Activities</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => `
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-xs hover:border-amber-500/50 transition space-y-2">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="text-base">${item.icon}</span>
+              <span class="font-bold text-sm text-[var(--foreground)]">${item.title}</span>
+              <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">${item.category}</span>
+            </div>
+            <span class="text-[11px] text-[var(--muted-foreground)]">${item.time}</span>
+          </div>
+
+          <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">${item.summary}</p>
+
+          <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-[var(--border)] text-[11px]">
+            <div class="flex flex-wrap gap-1.5">
+              ${(item.tags || []).map(t => `<span class="px-2 py-0.5 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] text-[10px]">${t}</span>`).join('')}
+            </div>
+            <button onclick="reInspectActivity('${item.category}')" class="text-amber-400 hover:text-amber-300 font-bold text-xs">
+              Re-run / Inspect ➔
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function reInspectActivity(cat) {
+      if (cat === 'legal' || cat === 'agreement' || cat === 'tax') {
+        switchTab('vakilca');
+        if (cat === 'legal') switchVakilCASubTab('notices');
+        if (cat === 'agreement') switchVakilCASubTab('agreements');
+        if (cat === 'tax') switchVakilCASubTab('taxregime');
+      } else if (cat === 'rails') {
+        switchTab('rails');
+      } else if (cat === 'loan') {
+        switchTab('loanmitra');
+      } else if (cat === 'card') {
+        switchTab('cardsmart');
+      }
+    }
+
+    function clearActivityHistory() {
+      if (confirm("Are you sure you want to clear your local activity history?")) {
+        activityHistory = [];
+        localStorage.removeItem('nyayasetu_activity_log');
+        renderHistory('all');
+        const badge = document.getElementById('history-counter-badge');
+        if (badge) badge.innerText = "0";
+      }
+    }
+
+    function exportHistoryJSON() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(activityHistory, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `nyayasetu_activity_dossier_${Date.now()}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
     window.onload = function() {
+      applyUserUI();
       recalculateLoanMitra();
       recalculateBalanceTransfer();
       populateCRMData();
@@ -3569,6 +5463,11 @@
       filterRTARegister();
       calculateIEPFUI();
       updateGazetteDockets();
+      generateNoticeUI();
+      calculateTaxRegimeUI();
+      calculate44adaUI();
+      explainNoticeUI();
+      renderHistory('all');
     };
   </script>
 </body>

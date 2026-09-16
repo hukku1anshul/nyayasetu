@@ -29,6 +29,14 @@ from nyayasetu.engines.loan_mitra_engine import (
     BalanceTransferEngine,
     LoanMitraCRM
 )
+from nyayasetu.engines.lookup_rails_engine import LookupRailsEngine
+from nyayasetu.engines.legal_tax_engine import (
+    LegalNoticeEngine,
+    AgreementRiskEngine,
+    TaxRegimeEngine,
+    PresumptiveTaxEngine,
+    NoticeExplainerEngine
+)
 
 from nyayasetu.integrations.gazette_live_client import CentralGazetteLiveClient
 from nyayasetu.integrations.iepf_mca_client import IEPFUnclaimedAssetClient, MCACryptoEngine
@@ -226,6 +234,201 @@ def get_loan_crm_pipeline():
     """Returns pipeline metrics: Leads, Approved Sanctions, Disbursals, and Aggregator Commission payouts."""
     return LoanMitraCRM.get_lead_pipeline_summary()
 
+# ----------------- REAL OPEN PUBLIC RAILS LOOKUP -----------------
+@app.get("/api/v1/lookup/ifsc/{ifsc_code}")
+def lookup_ifsc(ifsc_code: str):
+    """Real-time bank branch lookup via Razorpay Open IFSC Rail."""
+    return LookupRailsEngine.lookup_ifsc(ifsc_code)
+
+@app.get("/api/v1/lookup/pincode/{pincode}")
+def lookup_pincode(pincode: str):
+    """Real-time postal district, state, and RTO circle lookup via India Post Open API."""
+    return LookupRailsEngine.lookup_pincode(pincode)
+
+class PanValidateRequest(BaseModel):
+    pan_number: Optional[str] = None
+    pan: Optional[str] = None
+
+@app.post("/api/v1/lookup/validate-pan")
+def validate_pan(req: PanValidateRequest):
+    """Validates 10-digit statutory PAN under Section 139A and extracts entity classification."""
+    target_pan = req.pan_number or req.pan or ""
+    return LookupRailsEngine.validate_pan(target_pan)
+
+class GstinValidateRequest(BaseModel):
+    gstin: Optional[str] = None
+    gstin_number: Optional[str] = None
+
+@app.post("/api/v1/lookup/validate-gstin")
+def validate_gstin(req: GstinValidateRequest):
+    """Validates 15-digit GSTIN and decodes State, PAN component, and entity sequence."""
+    target_gstin = req.gstin or req.gstin_number or ""
+    return LookupRailsEngine.validate_gstin(target_gstin)
+
+# ----------------- AI VAKIL & LEGAL INTELLIGENCE -----------------
+class LegalNoticeRequest(BaseModel):
+    notice_type: str = "CHEQUE_BOUNCE_SEC138"
+    sender_name: str = "Claimant Citizen"
+    sender_address: str = "India"
+    sender_phone: str = "+91 98200 11223"
+    recipient_name: str = "Respondent"
+    recipient_address: str = "India"
+    claim_amount_inr: Optional[float] = None
+    amount: Optional[float] = None
+    transaction_date: str = "2026-08-01"
+    instrument_or_reference_no: Optional[str] = None
+    reference_no: Optional[str] = None
+    dispute_summary: str = ""
+    reason_description: str = ""
+
+@app.post("/api/v1/legal/generate-notice")
+def generate_legal_notice(req: LegalNoticeRequest):
+    """Generates statutory legal notice docket ready for dispatch via Registered Post AD / Speed Post."""
+    eff_amount = req.claim_amount_inr if req.claim_amount_inr is not None else (req.amount or 0.0)
+    eff_ref = req.instrument_or_reference_no or req.reference_no or "N/A"
+    eff_desc = req.dispute_summary or req.reason_description or eff_ref
+    return LegalNoticeEngine.generate_notice(
+        notice_type=req.notice_type,
+        sender_name=req.sender_name,
+        sender_address=req.sender_address,
+        sender_phone=req.sender_phone,
+        recipient_name=req.recipient_name,
+        recipient_address=req.recipient_address,
+        claim_amount_inr=eff_amount,
+        transaction_date=req.transaction_date,
+        instrument_or_reference_no=eff_ref,
+        dispute_summary=eff_desc
+    )
+
+class AgreementAnalysisRequest(BaseModel):
+    agreement_type: str = Field("employment", description="'employment', 'rental', 'freelance_sow'")
+    agreement_text: str
+
+@app.post("/api/v1/legal/analyze-agreement")
+def analyze_agreement(req: AgreementAnalysisRequest):
+    """Inspects contract text for void non-compete clauses, arbitrary bonds, and statutory legal traps."""
+    return AgreementRiskEngine.analyze_agreement(
+        agreement_type=req.agreement_type,
+        agreement_text=req.agreement_text
+    )
+
+# ----------------- AI CA & TAX INTELLIGENCE -----------------
+class TaxRegimeCompareRequest(BaseModel):
+    gross_annual_income: Optional[float] = None
+    gross_income: Optional[float] = None
+    deduction_80c: float = 150000.0
+    deduction_80d: float = 25000.0
+    home_loan_interest_24b: float = 0.0
+    hra_exemption_10_13a: Optional[float] = None
+    hra_exemption: Optional[float] = None
+    other_deductions_chapter_via: Optional[float] = 0.0
+    other_deductions: Optional[float] = 0.0
+
+@app.post("/api/v1/tax/compare-regimes")
+def compare_tax_regimes(req: TaxRegimeCompareRequest):
+    """Side-by-side comparison of New (Section 115BAC) vs Old Tax Regime liability."""
+    gross = req.gross_annual_income if req.gross_annual_income is not None else (req.gross_income or 0.0)
+    hra = req.hra_exemption_10_13a if req.hra_exemption_10_13a is not None else (req.hra_exemption or 0.0)
+    other = req.other_deductions_chapter_via or req.other_deductions or 0.0
+    return TaxRegimeEngine.compare_tax_regimes(
+        gross_annual_income=gross,
+        deduction_80c=req.deduction_80c,
+        deduction_80d=req.deduction_80d,
+        home_loan_interest_24b=req.home_loan_interest_24b,
+        hra_exemption_10_13a=hra,
+        other_deductions_chapter_via=other
+    )
+
+class PresumptiveTaxRequest(BaseModel):
+    gross_professional_receipts: Optional[float] = None
+    gross_receipts: Optional[float] = None
+    actual_business_expenses: float = 0.0
+    digital_receipts_percentage: float = 95.0
+    other_income: float = 0.0
+
+@app.post("/api/v1/tax/presumptive-44ada")
+def calculate_44ada(req: PresumptiveTaxRequest):
+    """Calculates Section 44ADA 50% deemed profit and tax savings for notified professionals."""
+    receipts = req.gross_professional_receipts if req.gross_professional_receipts is not None else (req.gross_receipts or 0.0)
+    return PresumptiveTaxEngine.calculate_44ada(
+        gross_professional_receipts=receipts,
+        actual_business_expenses=req.actual_business_expenses
+    )
+
+@app.get("/api/v1/tax/explain-notice/{section_code}")
+def explain_tax_notice(section_code: str):
+    """Provides plain-English diagnosis and statutory response strategy for IT notices."""
+    return NoticeExplainerEngine.explain_notice(section_code)
+
+# ----------------- PERSISTENT USER HISTORY & DOCKET AUDIT -----------------
+USER_HISTORY_STORE: List[Dict[str, Any]] = [
+    {
+        "id": "ACT-2026-901",
+        "category": "LOAN_MITRA",
+        "title": "Personal Loan Multi-Lender Match",
+        "summary": "Evaluated ₹5,00,000 for 36 months across 6 lenders (HDFC Insta PL top match at 10.50%)",
+        "timestamp": "Today, 11:15 AM",
+        "data": {"amount": 500000, "tenure": 36, "rate": 10.5}
+    },
+    {
+        "id": "ACT-2026-902",
+        "category": "BALANCE_TRANSFER",
+        "title": "Refinancing Break-Even Simulation",
+        "summary": "Outstanding ₹8,00,000 switched from 14.50% to 10.50% (Net savings ₹65,884, break-even 6.3 mos)",
+        "timestamp": "Today, 10:45 AM",
+        "data": {"balance": 800000, "saved": 65884}
+    },
+    {
+        "id": "ACT-2026-903",
+        "category": "HRA_RECEIPT",
+        "title": "12-Month Section 10(13A) Stamped Receipts",
+        "summary": "Generated ₹2,40,000 annual exemption manifest for Landlord Rajesh Khanna (PAN: ABCDE1234F)",
+        "timestamp": "Yesterday, 04:20 PM",
+        "data": {"annual_rent": 300000, "exemption": 240000}
+    },
+    {
+        "id": "ACT-2026-904",
+        "category": "LEGAL_NOTICE",
+        "title": "Section 138 Cheque Bounce Demand Notice",
+        "summary": "Statutory notice drafted for dishonoured Cheque #449102 (₹1,50,000) under NI Act 1881",
+        "timestamp": "14 Sep 2026, 02:10 PM",
+        "data": {"amount": 150000, "section": "138 NI Act"}
+    }
+]
+
+class UserActivityPayload(BaseModel):
+    category: Optional[str] = None
+    action_type: Optional[str] = None
+    title: Optional[str] = None
+    tool_name: Optional[str] = None
+    summary: Optional[str] = None
+    output_summary: Optional[Any] = None
+    data: Optional[Dict[str, Any]] = None
+    input_payload: Optional[Dict[str, Any]] = None
+
+@app.get("/api/v1/user/history")
+def get_user_history():
+    """Returns chronological activity history and generated dockets."""
+    return {"success": True, "history": USER_HISTORY_STORE, "history_records": USER_HISTORY_STORE}
+
+@app.post("/api/v1/user/history")
+def add_user_history(payload: UserActivityPayload):
+    """Logs user calculation or generated docket."""
+    eff_cat = payload.category or payload.action_type or "GENERAL"
+    eff_title = payload.title or payload.tool_name or "User Action"
+    eff_summary = payload.summary or (payload.output_summary.get("summary") if isinstance(payload.output_summary, dict) else str(payload.output_summary or ""))
+    eff_data = payload.data or payload.input_payload or {}
+    record = {
+        "id": f"ACT-2026-{len(USER_HISTORY_STORE) + 901}",
+        "category": eff_cat,
+        "title": eff_title,
+        "summary": eff_summary,
+        "timestamp": "Just now",
+        "data": eff_data
+    }
+    USER_HISTORY_STORE.insert(0, record)
+    return {"success": True, "record": record}
+
 # ----------------- CHANNELS -----------------
 class WhatsAppIncomingPayload(BaseModel):
     From: str
@@ -241,11 +444,13 @@ def handle_whatsapp(payload: WhatsAppIncomingPayload):
 def health_check():
     return {
         "status": "healthy",
-        "platform": "NyayaSetu, CardSmart & Loan Mitra Unified Engine",
-        "version": "1.7.0",
+        "platform": "NyayaSetu, CardSmart, Loan Mitra & Vakil-CA India Unified Engine",
+        "version": "1.8.0",
         "core_modules": [
             "Loan Mitra: RBI 2025 Digital Lending Multi-Lender Aggregator & Balance Transfer Optimizer",
             "CardSmart: Credit Card Personalized ROI & Upgrade Marketplace",
+            "AI Vakil & CA India: Legal Notices, Contract Risk Analysis, New vs Old Tax Regime, 44ADA",
+            "Real Public Rails: Razorpay Open IFSC API, India Post Pincode API, PAN/GSTIN Validators",
             "NyayaSetu: Central Gazette, MCA IEPF Recovery, RTO Registry, Relinquishment Deeds",
             "Free Viral Utilities: HRA Rent Exemption (10(13A)), Hindu Succession, Vehicle Radar"
         ]

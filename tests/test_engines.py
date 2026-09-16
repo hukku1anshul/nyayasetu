@@ -16,6 +16,14 @@ from nyayasetu.engines.succession_noc_engine import SuccessionNOCEngine
 from nyayasetu.engines.iepf_recovery import IEPFTransmissionEngine, UnclaimedAssetFolio
 from nyayasetu.engines.free_tools_engine import HRARentReceiptEngine, InheritanceShareCalculator, VehicleComplianceRadar
 from nyayasetu.engines.loan_mitra_engine import LoanMitraMatchEngine, BalanceTransferEngine, LoanMitraCRM
+from nyayasetu.engines.lookup_rails_engine import LookupRailsEngine
+from nyayasetu.engines.legal_tax_engine import (
+    LegalNoticeEngine,
+    AgreementRiskEngine,
+    TaxRegimeEngine,
+    PresumptiveTaxEngine,
+    NoticeExplainerEngine
+)
 
 def test_hra_rent_receipt_and_exemption():
     calc = HRARentReceiptEngine.calculate_hra_exemption(
@@ -189,6 +197,77 @@ def test_loan_mitra_crm():
     assert len(health) >= 5
     print(f"Loan Mitra CRM & Verification Health passed! Pipeline Volume: Rs. {crm['total_pipeline_volume_inr']:,.2f}")
 
+def test_lookup_rails():
+    # 1. IFSC lookup
+    ifsc = LookupRailsEngine.lookup_ifsc("HDFC0000060")
+    assert ifsc["success"] is True
+    assert "HDFC Bank" in ifsc["bank"]
+
+    # 2. Pincode lookup
+    pin = LookupRailsEngine.lookup_pincode("560038")
+    assert pin["success"] is True
+    assert pin["pincode"] == "560038"
+
+    # 3. PAN validation
+    pan = LookupRailsEngine.validate_pan("ABCPE1234F")
+    assert pan["valid"] is True
+    assert pan["entity_type"] == "Individual Citizen"
+
+    # 4. GSTIN validation
+    gst = LookupRailsEngine.validate_gstin("29ABCPE1234F1Z5")
+    assert gst["valid"] is True
+    assert gst["state_name"] == "Karnataka"
+    print("Zero-Cost Public Lookup Rails (IFSC, Pincode, PAN, GSTIN) passed!")
+
+def test_legal_notice_engine():
+    notice = LegalNoticeEngine.generate_notice(
+        notice_type="CHEQUE_BOUNCE_SEC138",
+        sender_name="Sunil Mehra",
+        sender_address="Flat 204, Koramangala, Bengaluru",
+        sender_phone="9876543210",
+        recipient_name="Amit Enterprises",
+        recipient_address="MG Road, Bengaluru",
+        claim_amount_inr=250000.0,
+        transaction_date="15-Jan-2026",
+        instrument_or_reference_no="CHQ-991204",
+        dispute_summary="Cheque dishonoured due to funds insufficient"
+    )
+    assert "SECTION 138" in notice["title"]
+    assert notice["statutory_period_days"] == 15
+    assert "250,000" in notice["formatted_notice_text"]
+    print(f"Legal Notice Engine passed! Docket: {notice['tracking_docket']}")
+
+def test_agreement_risk_analyzer():
+    sample_contract = """
+    EMPLOYMENT AGREEMENT
+    1. The employee shall not engage in any competing business anywhere in India for a period of 2 years post-termination.
+    2. Employee shall be bound by a 36-month lock-in period with liquidated damages of Rs. 5,00,000.
+    3. The employer may terminate immediately without notice, while employee must provide 90 days notice.
+    """
+    analysis = AgreementRiskEngine.analyze_agreement("employment", sample_contract)
+    assert analysis["overall_risk_score"] >= 60
+    assert analysis["total_clauses_flagged"] >= 2
+    assert any("SECTION 27" in f["statutory_analysis"].upper() for f in analysis["findings"])
+    print(f"Agreement Risk Analyzer passed! Risk score: {analysis['overall_risk_score']}")
+
+def test_tax_regime_and_44ada():
+    # 1. Tax Regime Comparison for ₹15 Lakh income
+    tax = TaxRegimeEngine.compare_tax_regimes(
+        gross_annual_income=1500000.0,
+        deduction_80c=150000.0,
+        deduction_80d=25000.0,
+        home_loan_interest_24b=0.0
+    )
+    assert tax["new_regime"]["total_tax_payable_inr"] > 0
+    assert tax["comparison"]["recommended_regime"] in ("NEW_REGIME", "OLD_REGIME")
+    print(f"Tax Regime Comparator passed! Recommended: {tax['comparison']['recommended_regime']} (Savings: Rs. {tax['comparison']['net_tax_saved_inr']:,.2f})")
+
+    # 2. Section 44ADA Presumptive Tax for ₹40 Lakh tech consultant
+    pres = PresumptiveTaxEngine.calculate_44ada(gross_professional_receipts=4000000.0, actual_business_expenses=500000.0)
+    assert pres["deemed_taxable_profit_inr"] == 2000000.0
+    assert pres["is_eligible_under_75_lakhs"] is True
+    print(f"Section 44ADA Presumptive Tax passed! Deemed Profit: Rs. {pres['deemed_taxable_profit_inr']:,.2f}")
+
 if __name__ == "__main__":
     test_credit_card_personalized_ranking()
     test_credit_card_upgrade_calculator()
@@ -201,5 +280,9 @@ if __name__ == "__main__":
     test_loan_mitra_matching()
     test_loan_mitra_balance_transfer()
     test_loan_mitra_crm()
-    print("\nALL ENGINES (LOAN MITRA, CARDSMART, NYAYASETU, FREE VIRAL TOOLS) PASSED AUTOMATED TESTS SUCCESSFULLY!")
+    test_lookup_rails()
+    test_legal_notice_engine()
+    test_agreement_risk_analyzer()
+    test_tax_regime_and_44ada()
+    print("\nALL 15+ ENGINES (LOAN MITRA, CARDSMART, VAKIL & CA INDIA, PUBLIC RAILS) PASSED AUTOMATED TESTS SUCCESSFULLY!")
 
