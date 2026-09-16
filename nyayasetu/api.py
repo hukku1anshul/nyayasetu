@@ -48,9 +48,9 @@ from nyayasetu.channels.web_intake import WebIntakeEngine, WebLeadIntakePayload
 STATIC_INDEX = Path(__file__).parent.parent / "static" / "index.html"
 
 app = FastAPI(
-    title="NyayaSetu & CardSmart Platform API",
-    description="Legal, Compliance, Bureaucracy, Financial & Free Consumer Utilities Engine for India",
-    version="1.6.0"
+    title="NyayaSetu, Loan Mitra & CardSmart Unified Platform API",
+    description="RBI 2025 Digital Lending Marketplace, Card ROI Engine, AI Vakil & CA India Suite, and Public Rails",
+    version="1.8.0"
 )
 
 # Enable CORS for web and mobile clients
