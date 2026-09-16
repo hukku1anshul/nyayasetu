@@ -217,7 +217,29 @@ def test_lookup_rails():
     gst = LookupRailsEngine.validate_gstin("29ABCPE1234F1Z5")
     assert gst["valid"] is True
     assert gst["state_name"] == "Karnataka"
-    print("Zero-Cost Public Lookup Rails (IFSC, Pincode, PAN, GSTIN) passed!")
+
+    # 5. MCA Corporate CIN validation
+    cin = LookupRailsEngine.validate_cin("U72200KA2020PTC134567")
+    assert cin["valid"] is True
+    assert "Software" in cin["industry_sector"]
+    assert "Karnataka" in cin["roc_jurisdiction"]
+
+    # 6. NPCI UPI VPA validation
+    upi = LookupRailsEngine.validate_upi_vpa("merchant@okhdfcbank")
+    assert upi["valid"] is True
+    assert "HDFC Bank" in upi["sponsor_bank"]
+
+    # 7. RBI Card BIN intelligence
+    bin_info = LookupRailsEngine.lookup_card_bin("405520")
+    assert bin_info["valid"] is True
+    assert "HDFC Bank" in bin_info["bank"]
+    assert bin_info["network"] == "Visa"
+
+    # 8. eCourts CNR case decoder
+    cnr = LookupRailsEngine.decode_ecourts_cnr("MHAU010012342026")
+    assert cnr["valid"] is True
+    assert "Aurangabad" in cnr["court_name"]
+    print("All 8 Zero-Cost Public Rails (IFSC, Pincode, PAN, GSTIN, CIN, UPI, BIN, CNR) passed!")
 
 def test_legal_notice_engine():
     notice = LegalNoticeEngine.generate_notice(

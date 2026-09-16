@@ -106,7 +106,27 @@ def run_tests():
     assert code == 200 and get_res.get("success") is True and len(get_res.get("history", [])) > 0, f"History GET Failed: {get_res}"
     print(f"PASS: /api/v1/user/history -> Persisted entries count: {len(get_res['history'])}")
 
-    print("\nSUCCESS: ALL 10 REST API ENDPOINTS VERIFIED & FULLY FUNCTIONAL!")
+    # 11. Test MCA Corporate CIN Validation
+    code, res = post("/api/v1/lookup/validate-cin", {"cin_number": "U72200KA2020PTC134567"})
+    assert code == 200 and res.get("valid") is True, f"CIN Failed: {res}"
+    print(f"PASS: /api/v1/lookup/validate-cin -> Industry: {res['industry_sector']}, RoC: {res['roc_jurisdiction']}")
+
+    # 12. Test NPCI UPI VPA Validation
+    code, res = post("/api/v1/lookup/validate-upi", {"upi_id": "merchant@okhdfcbank"})
+    assert code == 200 and res.get("valid") is True, f"UPI Failed: {res}"
+    print(f"PASS: /api/v1/lookup/validate-upi -> Sponsor: {res['sponsor_bank']}, TPAP: {res['tpap_app']}")
+
+    # 13. Test RBI Card BIN Intelligence
+    code, res = post("/api/v1/lookup/card-bin", {"bin_number": "405520"})
+    assert code == 200 and res.get("valid") is True, f"Card BIN Failed: {res}"
+    print(f"PASS: /api/v1/lookup/card-bin -> Issuer: {res['bank']}, Network: {res['network']} ({res['tier']})")
+
+    # 14. Test eCourts CNR Case Decoder
+    code, res = post("/api/v1/lookup/decode-cnr", {"cnr_number": "MHAU010012342026"})
+    assert code == 200 and res.get("valid") is True, f"CNR Failed: {res}"
+    print(f"PASS: /api/v1/lookup/decode-cnr -> Court: {res['court_name']}, Identifier: {res['case_identifier']}")
+
+    print("\nSUCCESS: ALL 14 REST API ENDPOINTS VERIFIED & FULLY FUNCTIONAL!")
 
 if __name__ == "__main__":
     run_tests()

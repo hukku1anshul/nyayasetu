@@ -265,6 +265,46 @@ def validate_gstin(req: GstinValidateRequest):
     target_gstin = req.gstin or req.gstin_number or ""
     return LookupRailsEngine.validate_gstin(target_gstin)
 
+class CinValidateRequest(BaseModel):
+    cin_number: Optional[str] = None
+    cin: Optional[str] = None
+
+@app.post("/api/v1/lookup/validate-cin")
+def validate_cin(req: CinValidateRequest):
+    """Validates 21-digit MCA CIN, extracts Listing status, NIC Industry, RoC State, and Year."""
+    target_cin = req.cin_number or req.cin or ""
+    return LookupRailsEngine.validate_cin(target_cin)
+
+class UpiValidateRequest(BaseModel):
+    upi_id: Optional[str] = None
+    upi: Optional[str] = None
+
+@app.post("/api/v1/lookup/validate-upi")
+def validate_upi(req: UpiValidateRequest):
+    """Validates NPCI UPI VPA handle and maps Sponsor Bank (GPay, PhonePe, Paytm, BHIM)."""
+    target_upi = req.upi_id or req.upi or ""
+    return LookupRailsEngine.validate_upi_vpa(target_upi)
+
+class CardBinRequest(BaseModel):
+    bin_number: Optional[str] = None
+    bin: Optional[str] = None
+
+@app.post("/api/v1/lookup/card-bin")
+def lookup_card_bin(req: CardBinRequest):
+    """Detects Payment Network (RuPay/Visa/Mastercard), Issuing Bank, and Tier from 6-digit BIN."""
+    target_bin = req.bin_number or req.bin or ""
+    return LookupRailsEngine.lookup_card_bin(target_bin)
+
+class CnrDecodeRequest(BaseModel):
+    cnr_number: Optional[str] = None
+    cnr: Optional[str] = None
+
+@app.post("/api/v1/lookup/decode-cnr")
+def decode_ecourts_cnr(req: CnrDecodeRequest):
+    """Decodes 16-character National eCourts CNR, resolves Court Complex, and generates direct tracking URL."""
+    target_cnr = req.cnr_number or req.cnr or ""
+    return LookupRailsEngine.decode_ecourts_cnr(target_cnr)
+
 # ----------------- AI VAKIL & LEGAL INTELLIGENCE -----------------
 class LegalNoticeRequest(BaseModel):
     notice_type: str = "CHEQUE_BOUNCE_SEC138"
