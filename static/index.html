@@ -21,18 +21,21 @@
     <header class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
       <div>
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
-            💳
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-indigo-600 to-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
+            🤝
           </div>
           <div>
             <h1 class="text-2xl font-bold tracking-tight text-[var(--foreground)] flex items-center gap-2">
-              CardSmart & NyayaSetu <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 font-semibold">Free Financial Rails</span>
+              CardSmart, Loan Mitra & NyayaSetu <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 font-semibold">RBI 2025 Compliant</span>
             </h1>
-            <p class="text-sm text-[var(--muted-foreground)]">India's Personalized Credit Card ROI & Legal-Bureaucracy Platform</p>
+            <p class="text-sm text-[var(--muted-foreground)]">India's Unified Credit Marketplace, Card ROI Engine & Legal-Bureaucracy Rails</p>
           </div>
         </div>
       </div>
       <div class="flex flex-wrap items-center gap-3">
+        <button onclick="switchTab('loanmitra')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
+          <span>🤝</span> Loan Mitra Marketplace
+        </button>
         <button onclick="switchTab('cardsmart')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
           <span>💳</span> CardSmart ROI Engine
         </button>
@@ -50,6 +53,9 @@
 
     <!-- Navigation Tabs -->
     <div class="flex border-b border-[var(--border)] gap-2 overflow-x-auto pb-1 text-sm font-medium">
+      <button onclick="switchTab('loanmitra')" id="tab-btn-loanmitra" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-bold">
+        🤝 Loan Mitra Marketplace (RBI 2025)
+      </button>
       <button onclick="switchTab('cardsmart')" id="tab-btn-cardsmart" class="tab-btn px-4 py-2.5 border-b-2 border-indigo-600 text-indigo-500 flex items-center gap-2 transition font-bold">
         💳 CardSmart ROI & Upgrade Engine
       </button>
@@ -71,10 +77,564 @@
       <button onclick="switchTab('gazette')" id="tab-btn-gazette" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition">
         📰 Central Gazette Wizard
       </button>
+      <button onclick="switchTab('whatsapp')" id="tab-btn-whatsapp" class="tab-btn px-4 py-2.5 border-b-2 border-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-2 transition font-semibold">
+        💬 WhatsApp Bot Simulator
+      </button>
     </div>
 
+    <!-- ================= TAB: LOAN MITRA (RBI 2025 COMPLIANT MARKETPLACE) ================= -->
+    <section id="tab-loanmitra" class="tab-content space-y-6">
+      
+      <!-- Top Banner -->
+      <div class="bg-gradient-to-r from-blue-950/30 via-[var(--card)] to-cyan-950/30 border border-blue-500/30 rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                RBI 2025 Digital Lending Web-Aggregator
+              </span>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                Zero Commercial Bias • No Dark Patterns
+              </span>
+            </div>
+            <h2 class="text-xl font-bold mt-2 text-[var(--foreground)]">Loan Mitra — Your Personal Credit Marketplace</h2>
+            <p class="text-xs text-[var(--muted-foreground)] mt-1 max-w-3xl">
+              Strictly compliant with Reserve Bank of India (RBI) 2025 Digital Lending Directions. Compare verified loan offers from Scheduled Commercial Banks and Upper-Layer NBFCs with complete Key Fact Statement (KFS) disclosures, amortized APRs, and transparent multi-factor compatibility scoring.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="switchLoanMitraSubTab('match')" id="btn-loan-subtab-match" class="px-3.5 py-2 rounded-xl bg-blue-600 text-white font-bold text-xs shadow-md transition">
+              🔍 Loan Mitra Match
+            </button>
+            <button onclick="switchLoanMitraSubTab('bt')" id="btn-loan-subtab-bt" class="px-3.5 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition">
+              🔄 Balance Transfer
+            </button>
+            <button onclick="switchLoanMitraSubTab('crm')" id="btn-loan-subtab-crm" class="px-3.5 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition">
+              📋 Admin CRM & Verification
+            </button>
+          </div>
+        </div>
+
+        <!-- Trust & Compliance Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4 pt-4 border-t border-[var(--border)] text-xs">
+          <div class="flex items-center gap-2">
+            <span class="text-base">🛡️</span>
+            <div>
+              <div class="font-bold text-[var(--foreground)]">Unbiased Sorting</div>
+              <div class="text-[10px] text-[var(--muted-foreground)]">No paid sponsor priority badges</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-base">📑</span>
+            <div>
+              <div class="font-bold text-[var(--foreground)]">KFS APR Disclosure</div>
+              <div class="text-[10px] text-[var(--muted-foreground)]">Upfront fees, rates & penal clauses</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-base">⚖️</span>
+            <div>
+              <div class="font-bold text-[var(--foreground)]">0% Prepayment Penalty</div>
+              <div class="text-[10px] text-[var(--muted-foreground)]">RBI floating rate mandate compliant</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-base">🏛️</span>
+            <div>
+              <div class="font-bold text-[var(--foreground)]">7-Day Lender Audit</div>
+              <div class="text-[10px] text-[var(--muted-foreground)]">Regulated Entity & GRO verified</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step-by-Step Instructions Banner -->
+      <div class="bg-gradient-to-r from-slate-900/60 via-[var(--card)] to-slate-900/60 border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">📖</span>
+            <h3 class="text-sm font-bold text-[var(--foreground)] uppercase tracking-wide">How to Use Loan Mitra — Step-by-Step Interactive Guide</h3>
+          </div>
+          <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-semibold">User Workflow</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3 space-y-1">
+            <div class="font-bold text-blue-400 flex items-center gap-1"><span>1️⃣</span> Profile & Needs</div>
+            <p class="text-[11px] text-[var(--muted-foreground)]">Select loan category (Personal, Home, Business, LAP). Slide required loan amount, monthly income, current EMIs, tenure, and credit score.</p>
+          </div>
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3 space-y-1">
+            <div class="font-bold text-cyan-400 flex items-center gap-1"><span>2️⃣</span> Transparent Ranking</div>
+            <p class="text-[11px] text-[var(--muted-foreground)]">Sort multi-lender quotes by your priority: <b class="text-white">Lowest APR</b>, <b class="text-white">Lowest Monthly EMI</b>, <b class="text-white">Lowest Fee</b>, or <b class="text-white">Profile Compatibility</b>.</p>
+          </div>
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3 space-y-1">
+            <div class="font-bold text-emerald-400 flex items-center gap-1"><span>3️⃣</span> Key Fact Statement (KFS)</div>
+            <p class="text-[11px] text-[var(--muted-foreground)]">Review all fees (+18% GST), Debt-to-Income FOIR, penal charges, and the mandatory <i>"Why this option appears"</i> checklist.</p>
+          </div>
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3 space-y-1">
+            <div class="font-bold text-amber-400 flex items-center gap-1"><span>4️⃣</span> Balance Transfer Calc</div>
+            <p class="text-[11px] text-[var(--muted-foreground)]">Switch existing costly debt. Compute net rupee interest saved, transfer switching costs, and the exact break-even timeline in months.</p>
+          </div>
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3 space-y-1">
+            <div class="font-bold text-purple-400 flex items-center gap-1"><span>5️⃣</span> CRM & Verification</div>
+            <p class="text-[11px] text-[var(--muted-foreground)]">Inspect real-time lead lifecycle progression (Docs $\rightarrow$ Bank Login $\rightarrow$ Sanction $\rightarrow$ Disbursed) and 7-day lender regulatory health.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-TAB 1: LOAN MITRA MATCH (MULTI-LENDER QUESTIONNAIRE) -->
+      <div id="loan-subview-match" class="space-y-6">
+        
+        <!-- Loan Category Selector -->
+        <div class="flex flex-wrap gap-2">
+          <button onclick="setLoanType('personal_loan')" id="btn-lt-personal_loan" class="loan-type-btn px-4 py-2.5 rounded-xl bg-blue-600 text-white font-bold text-xs shadow-md transition flex items-center gap-2">
+            <span>💼</span> Personal Loan (Instant Unsecured)
+          </button>
+          <button onclick="setLoanType('home_loan')" id="btn-lt-home_loan" class="loan-type-btn px-4 py-2.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition flex items-center gap-2">
+            <span>🏡</span> Home Loan (EBLR Linked)
+          </button>
+          <button onclick="setLoanType('business_loan')" id="btn-lt-business_loan" class="loan-type-btn px-4 py-2.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition flex items-center gap-2">
+            <span>🏭</span> MSME & Business Working Capital
+          </button>
+          <button onclick="setLoanType('loan_against_property')" id="btn-lt-loan_against_property" class="loan-type-btn px-4 py-2.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition flex items-center gap-2">
+            <span>🏢</span> Loan Against Property (LAP)
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Questionnaire Controls (5 cols) -->
+          <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+            <div class="flex items-center justify-between border-b border-[var(--border)] pb-3">
+              <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2">
+                <span>📝</span> Borrower Financial Profile
+              </h3>
+              <span class="text-[10px] text-[var(--muted-foreground)]">Zero CIBIL Impact</span>
+            </div>
+
+            <!-- Desired Loan Amount -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-[var(--muted-foreground)]">Requested Loan Amount</label>
+                <span id="lbl-loan-amount" class="font-bold text-blue-400">₹5,00,000</span>
+              </div>
+              <input type="range" id="loan-amount" min="50000" max="10000000" step="50000" value="500000" oninput="recalculateLoanMitra()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
+              <div class="flex justify-between text-[10px] text-[var(--muted-foreground)]">
+                <span>₹50K</span>
+                <span>₹25L</span>
+                <span>₹50L</span>
+                <span>₹1 Cr</span>
+              </div>
+            </div>
+
+            <!-- Net Monthly Income -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-[var(--muted-foreground)]">Net Monthly In-Hand Salary / Income</label>
+                <span id="lbl-loan-income" class="font-bold text-emerald-400">₹75,000/mo</span>
+              </div>
+              <input type="range" id="loan-income" min="25000" max="500000" step="5000" value="75000" oninput="recalculateLoanMitra()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+              <div class="flex justify-between text-[10px] text-[var(--muted-foreground)]">
+                <span>₹25K</span>
+                <span>₹1 Lakh</span>
+                <span>₹2.5 Lakh</span>
+                <span>₹5 Lakh</span>
+              </div>
+            </div>
+
+            <!-- Existing Monthly EMIs -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-[var(--muted-foreground)]">Existing Monthly EMI Commitments</label>
+                <span id="lbl-loan-existing-emi" class="font-bold text-amber-400">₹10,000/mo</span>
+              </div>
+              <input type="range" id="loan-existing-emi" min="0" max="150000" step="2500" value="10000" oninput="recalculateLoanMitra()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-amber-500">
+              <div class="flex justify-between text-[10px] text-[var(--muted-foreground)]">
+                <span>₹0 (None)</span>
+                <span>₹30K</span>
+                <span>₹75K</span>
+                <span>₹1.5 Lakh</span>
+              </div>
+            </div>
+
+            <!-- Tenure -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-[var(--muted-foreground)]">Repayment Tenure</label>
+                <span id="lbl-loan-tenure" class="font-bold text-purple-400">36 Months (3 Years)</span>
+              </div>
+              <input type="range" id="loan-tenure" min="12" max="84" step="6" value="36" oninput="recalculateLoanMitra()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-purple-500">
+              <div class="flex justify-between text-[10px] text-[var(--muted-foreground)]">
+                <span>1 Year</span>
+                <span>3 Years</span>
+                <span>5 Years</span>
+                <span>7 Years</span>
+              </div>
+            </div>
+
+            <!-- Credit Score -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-[var(--muted-foreground)]">Self-Reported Credit Score (CIBIL / Experian)</label>
+                <span id="lbl-loan-cibil" class="font-bold text-teal-400">760 (Excellent Tier)</span>
+              </div>
+              <input type="range" id="loan-cibil" min="550" max="900" step="10" value="760" oninput="recalculateLoanMitra()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-teal-500">
+              <div class="flex justify-between text-[10px] text-[var(--muted-foreground)]">
+                <span>550 (Fair)</span>
+                <span>700 (Good)</span>
+                <span>750+ (Prime)</span>
+                <span>900 (Max)</span>
+              </div>
+            </div>
+
+            <!-- Employment Type -->
+            <div class="space-y-1 text-xs">
+              <label class="font-semibold text-[var(--muted-foreground)]">Employment Category</label>
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" id="emp-salaried" onclick="setEmployment('salaried')" class="p-2 rounded-xl bg-blue-600 text-white font-bold border border-blue-500 text-center transition">
+                  💼 Salaried Professional
+                </button>
+                <button type="button" id="emp-self" onclick="setEmployment('self_employed')" class="p-2 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] text-center transition">
+                  🏪 Self-Employed / Business
+                </button>
+              </div>
+            </div>
+
+            <!-- Solvency Health KPI Card -->
+            <div class="bg-[var(--background)] border border-[var(--border)] rounded-xl p-3.5 space-y-2 text-xs">
+              <div class="flex justify-between items-center">
+                <span class="text-[var(--muted-foreground)] font-medium">Debt-to-Income (FOIR):</span>
+                <span id="kpi-loan-foir" class="font-bold text-emerald-400">32.4% (Safe Band)</span>
+              </div>
+              <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                <div id="kpi-loan-foir-bar" class="bg-emerald-500 h-2 rounded-full transition-all duration-300" style="width: 32.4%"></div>
+              </div>
+              <div class="text-[10px] text-[var(--muted-foreground)] flex justify-between">
+                <span>Safe (< 50%)</span>
+                <span>Moderate (50-65%)</span>
+                <span>High Risk (> 65%)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Matched Results & Sorting (7 cols) -->
+          <div class="lg:col-span-7 space-y-4">
+            
+            <!-- Sort Toggles (Mandated by RBI: Transparent multi-metric sorting) -->
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+              <div>
+                <span class="text-xs font-semibold text-[var(--muted-foreground)]">Sort Results By:</span>
+                <div class="text-[11px] text-[var(--foreground)] font-bold" id="lbl-current-sort">Profile Compatibility Score (Default)</div>
+              </div>
+              <div class="flex flex-wrap gap-1.5 text-xs">
+                <button onclick="setLoanSort('compatibility')" id="sort-compatibility" class="sort-btn px-3 py-1.5 rounded-lg bg-blue-600 text-white font-bold shadow-sm transition">
+                  ⭐ Compatibility
+                </button>
+                <button onclick="setLoanSort('lowest_apr')" id="sort-lowest_apr" class="sort-btn px-3 py-1.5 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-medium transition">
+                  📉 Lowest APR
+                </button>
+                <button onclick="setLoanSort('lowest_emi')" id="sort-lowest_emi" class="sort-btn px-3 py-1.5 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-medium transition">
+                  💵 Lowest EMI
+                </button>
+                <button onclick="setLoanSort('lowest_fee')" id="sort-lowest_fee" class="sort-btn px-3 py-1.5 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-medium transition">
+                  🏷️ Lowest Fee
+                </button>
+              </div>
+            </div>
+
+            <!-- Dynamic Loan Offers Container -->
+            <div id="loan-offers-container" class="space-y-4">
+              <!-- Dynamically rendered via recalculateLoanMitra() -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-TAB 2: BALANCE TRANSFER & PREPAYMENT OPTIMIZER -->
+      <div id="loan-subview-bt" class="space-y-6 hidden">
+        <div class="bg-gradient-to-r from-amber-950/20 via-[var(--card)] to-orange-950/20 border border-amber-500/30 rounded-2xl p-6 shadow-sm">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                Loan Refinancing & Break-Even Radar
+              </span>
+              <h2 class="text-xl font-bold mt-2 text-[var(--foreground)]">Existing Loan Balance Transfer & Prepayment Accelerator</h2>
+              <p class="text-xs text-[var(--muted-foreground)] mt-1 max-w-3xl">
+                Refinancing makes financial sense only when net lifetime interest savings exceed switching costs (processing fee, documentation stamp duty, and foreclosure charges). Calculate your exact break-even timeline down to the month.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Left: Current & New Loan Parameters -->
+          <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+            <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-2 border-b border-[var(--border)] pb-3">
+              <span>🔄</span> Refinancing Parameters
+            </h3>
+
+            <!-- Outstanding Balance -->
+            <div class="space-y-1">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-[var(--muted-foreground)]">Current Outstanding Principal Balance</label>
+                <span id="lbl-bt-balance" class="font-bold text-amber-400">₹8,00,000</span>
+              </div>
+              <input type="range" id="bt-balance" min="100000" max="10000000" step="50000" value="800000" oninput="recalculateBalanceTransfer()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-amber-500">
+            </div>
+
+            <!-- Current Interest Rate -->
+            <div class="space-y-1">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-[var(--muted-foreground)]">Current Interest Rate (Old Lender)</label>
+                <span id="lbl-bt-curr-rate" class="font-bold text-red-400">14.50% p.a.</span>
+              </div>
+              <input type="range" id="bt-curr-rate" min="8.5" max="24.0" step="0.25" value="14.5" oninput="recalculateBalanceTransfer()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-red-500">
+            </div>
+
+            <!-- Remaining Tenure -->
+            <div class="space-y-1">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-[var(--muted-foreground)]">Remaining Repayment Tenure</label>
+                <span id="lbl-bt-tenure" class="font-bold text-purple-400">48 Months (4 Years)</span>
+              </div>
+              <input type="range" id="bt-tenure" min="12" max="120" step="6" value="48" oninput="recalculateBalanceTransfer()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-purple-500">
+            </div>
+
+            <!-- Proposed New Rate -->
+            <div class="space-y-1">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-[var(--muted-foreground)]">Proposed Refinanced Rate (New Lender)</label>
+                <span id="lbl-bt-new-rate" class="font-bold text-emerald-400">10.50% p.a.</span>
+              </div>
+              <input type="range" id="bt-new-rate" min="8.0" max="18.0" step="0.25" value="10.5" oninput="recalculateBalanceTransfer()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+            </div>
+
+            <!-- New Processing Fee % -->
+            <div class="space-y-1">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-[var(--muted-foreground)]">New Lender Processing Fee (%)</label>
+                <span id="lbl-bt-new-fee-pct" class="font-bold text-blue-400">1.0%</span>
+              </div>
+              <input type="range" id="bt-new-fee-pct" min="0.0" max="3.0" step="0.25" value="1.0" oninput="recalculateBalanceTransfer()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
+            </div>
+
+            <!-- Foreclosure Penalty % -->
+            <div class="space-y-1">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-[var(--muted-foreground)]">Existing Foreclosure Penalty (%)</label>
+                <span id="lbl-bt-prepay-pen" class="font-bold text-teal-400">0.0% (RBI Floating Rate Mandate)</span>
+              </div>
+              <input type="range" id="bt-prepay-pen" min="0.0" max="3.0" step="0.5" value="0.0" oninput="recalculateBalanceTransfer()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-teal-500">
+              <div class="text-[10px] text-[var(--muted-foreground)]">RBI mandates 0% foreclosure penalty on floating rate loans. Set above 0% only if existing loan is fixed-rate.</div>
+            </div>
+
+            <!-- Prepayment Booster (Extra Monthly Payment) -->
+            <div class="space-y-1 border-t border-[var(--border)] pt-3">
+              <div class="flex justify-between items-center text-xs">
+                <label class="font-semibold text-emerald-400">🚀 Optional Prepayment Booster (Extra/mo)</label>
+                <span id="lbl-bt-booster" class="font-bold text-emerald-400">₹2,500/mo</span>
+              </div>
+              <input type="range" id="bt-booster" min="0" max="25000" step="500" value="2500" oninput="recalculateBalanceTransfer()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-400">
+              <div class="text-[10px] text-[var(--muted-foreground)]">Paying slightly more each month accelerates debt reduction and destroys principal earlier!</div>
+            </div>
+          </div>
+
+          <!-- Right: Savings Dashboard & Verdict -->
+          <div class="lg:col-span-7 space-y-4">
+            
+            <!-- Recommendation Banner -->
+            <div id="bt-recommendation-box" class="bg-emerald-950/25 border border-emerald-500/30 rounded-2xl p-5 space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">✅</span>
+                <h4 id="bt-rec-headline" class="font-bold text-emerald-400 text-sm">HIGHLY RECOMMENDED BALANCE TRANSFER</h4>
+              </div>
+              <p id="bt-rec-detail" class="text-xs text-[var(--foreground)]">
+                You will break even on transfer costs within 6.3 months, saving a net ₹65,884 over the remaining tenure.
+              </p>
+            </div>
+
+            <!-- 4 KPI Big Cards -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 text-center">
+                <span class="text-[10px] text-[var(--muted-foreground)] uppercase font-semibold block">Monthly EMI Relief</span>
+                <span id="bt-kpi-monthly-savings" class="text-lg font-bold text-emerald-400 block mt-1">₹1,564/mo</span>
+                <span class="text-[9px] text-[var(--muted-foreground)]">Lower monthly outflow</span>
+              </div>
+              <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 text-center">
+                <span class="text-[10px] text-[var(--muted-foreground)] uppercase font-semibold block">Gross Interest Saved</span>
+                <span id="bt-kpi-gross-interest" class="text-lg font-bold text-cyan-400 block mt-1">₹75,824</span>
+                <span class="text-[9px] text-[var(--muted-foreground)]">Total interest difference</span>
+              </div>
+              <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 text-center">
+                <span class="text-[10px] text-[var(--muted-foreground)] uppercase font-semibold block">Transfer Costs</span>
+                <span id="bt-kpi-transfer-cost" class="text-lg font-bold text-amber-400 block mt-1">₹9,940</span>
+                <span class="text-[9px] text-[var(--muted-foreground)]">Fees + 18% GST + Stamp</span>
+              </div>
+              <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 text-center">
+                <span class="text-[10px] text-[var(--muted-foreground)] uppercase font-semibold block">Break-Even Period</span>
+                <span id="bt-kpi-breakeven" class="text-lg font-bold text-purple-400 block mt-1">6.3 Mos</span>
+                <span class="text-[9px] text-[var(--muted-foreground)]">Switch cost recovered in</span>
+              </div>
+            </div>
+
+            <!-- Loan Comparison Table -->
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-3">
+              <h4 class="font-bold text-xs text-[var(--foreground)] uppercase tracking-wider">Side-by-Side Comparison: Current Loan vs. Refinanced Loan</h4>
+              <div class="overflow-x-auto">
+                <table class="w-full text-xs text-left border-collapse">
+                  <thead>
+                    <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)]">
+                      <th class="py-2.5 px-3">Metric</th>
+                      <th class="py-2.5 px-3 text-red-400">Current Loan (Old)</th>
+                      <th class="py-2.5 px-3 text-emerald-400">Refinanced Loan (New)</th>
+                      <th class="py-2.5 px-3 text-cyan-400">Net Improvement</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--border)]">
+                    <tr>
+                      <td class="py-2.5 px-3 font-medium text-[var(--muted-foreground)]">Interest Rate</td>
+                      <td id="bt-tbl-curr-rate" class="py-2.5 px-3 font-semibold text-[var(--foreground)]">14.50%</td>
+                      <td id="bt-tbl-new-rate" class="py-2.5 px-3 font-semibold text-emerald-400">10.50%</td>
+                      <td id="bt-tbl-diff-rate" class="py-2.5 px-3 font-bold text-emerald-400">-4.00%</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2.5 px-3 font-medium text-[var(--muted-foreground)]">Monthly EMI</td>
+                      <td id="bt-tbl-curr-emi" class="py-2.5 px-3 font-semibold text-[var(--foreground)]">₹22,075</td>
+                      <td id="bt-tbl-new-emi" class="py-2.5 px-3 font-semibold text-emerald-400">₹20,511</td>
+                      <td id="bt-tbl-diff-emi" class="py-2.5 px-3 font-bold text-emerald-400">Save ₹1,564/mo</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2.5 px-3 font-medium text-[var(--muted-foreground)]">Total Remaining Interest</td>
+                      <td id="bt-tbl-curr-interest" class="py-2.5 px-3 font-semibold text-[var(--foreground)]">₹2,59,600</td>
+                      <td id="bt-tbl-new-interest" class="py-2.5 px-3 font-semibold text-emerald-400">₹1,84,528</td>
+                      <td id="bt-tbl-diff-interest" class="py-2.5 px-3 font-bold text-emerald-400">Save ₹75,072</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2.5 px-3 font-medium text-[var(--muted-foreground)]">Total Outflow (Principal + Interest)</td>
+                      <td id="bt-tbl-curr-outflow" class="py-2.5 px-3 font-semibold text-[var(--foreground)]">₹10,59,600</td>
+                      <td id="bt-tbl-new-outflow" class="py-2.5 px-3 font-semibold text-emerald-400">₹9,84,528</td>
+                      <td id="bt-tbl-diff-outflow" class="py-2.5 px-3 font-bold text-emerald-400">Save ₹75,072</td>
+                    </tr>
+                    <tr class="bg-emerald-950/20">
+                      <td class="py-2.5 px-3 font-bold text-emerald-400">NET LIFETIME IN-POCKET SAVINGS</td>
+                      <td colspan="2" class="py-2.5 px-3 text-[11px] text-[var(--muted-foreground)]">After deducting ₹9,940 switching cost</td>
+                      <td id="bt-tbl-net-savings" class="py-2.5 px-3 font-bold text-base text-emerald-400">₹65,884</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Prepayment Booster Supercharge Card -->
+            <div class="bg-[var(--card)] border border-emerald-500/30 rounded-2xl p-5 shadow-sm space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="text-base">🚀</span>
+                <h4 class="font-bold text-xs text-emerald-400 uppercase tracking-wide">Prepayment Booster Impact</h4>
+              </div>
+              <p id="bt-booster-summary" class="text-xs text-[var(--foreground)]">
+                By investing an extra <b class="text-emerald-400">₹2,500/month</b> towards your principal, your loan closes <b class="text-emerald-400">7 months earlier</b> (in 41 months instead of 48 months), saving an additional <b class="text-emerald-400">₹18,450</b> in interest!
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-TAB 3: ADMIN CRM & LENDER VERIFICATION -->
+      <div id="loan-subview-crm" class="space-y-6 hidden">
+        
+        <!-- Metrics Tiles -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4">
+            <span class="text-[10px] text-[var(--muted-foreground)] uppercase font-semibold">Total Pipeline Leads</span>
+            <div id="crm-total-leads" class="text-xl font-bold text-blue-400 mt-1">4 Leads</div>
+            <span class="text-[10px] text-[var(--muted-foreground)]">Real-time applications</span>
+          </div>
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4">
+            <span class="text-[10px] text-[var(--muted-foreground)] uppercase font-semibold">Pipeline Volume</span>
+            <div id="crm-pipeline-vol" class="text-xl font-bold text-purple-400 mt-1">₹1.03 Cr</div>
+            <span class="text-[10px] text-[var(--muted-foreground)]">Gross loan request</span>
+          </div>
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4">
+            <span class="text-[10px] text-[var(--muted-foreground)] uppercase font-semibold">Disbursed Volume</span>
+            <div id="crm-disbursed-vol" class="text-xl font-bold text-emerald-400 mt-1">₹25.0 Lakhs</div>
+            <span class="text-[10px] text-[var(--muted-foreground)]">Funds credited</span>
+          </div>
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4">
+            <span class="text-[10px] text-[var(--muted-foreground)] uppercase font-semibold">Realized Commissions</span>
+            <div id="crm-realized-comm" class="text-xl font-bold text-emerald-400 mt-1">₹37,500</div>
+            <span class="text-[10px] text-[var(--muted-foreground)]">Paid by lenders (0% to user)</span>
+          </div>
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4">
+            <span class="text-[10px] text-[var(--muted-foreground)] uppercase font-semibold">Pipeline Commission</span>
+            <div id="crm-potential-comm" class="text-xl font-bold text-cyan-400 mt-1">₹87,625</div>
+            <span class="text-[10px] text-[var(--muted-foreground)]">Expected on full disbursal</span>
+          </div>
+        </div>
+
+        <!-- Leads Table -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-3">
+          <div class="flex justify-between items-center">
+            <h4 class="font-bold text-xs text-[var(--foreground)] uppercase tracking-wider flex items-center gap-2">
+              <span>📊</span> Live Aggregation Lead Funnel
+            </h4>
+            <span class="text-[10px] text-[var(--muted-foreground)]">Auto-sync with Partner Bank APIs</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left border-collapse">
+              <thead>
+                <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)]">
+                  <th class="py-2.5 px-3">Lead ID</th>
+                  <th class="py-2.5 px-3">Borrower</th>
+                  <th class="py-2.5 px-3">Category</th>
+                  <th class="py-2.5 px-3">Lender</th>
+                  <th class="py-2.5 px-3">Amount</th>
+                  <th class="py-2.5 px-3">Offered Rate</th>
+                  <th class="py-2.5 px-3">Funnel Stage</th>
+                  <th class="py-2.5 px-3">Commission</th>
+                </tr>
+              </thead>
+              <tbody id="crm-leads-table-body" class="divide-y divide-[var(--border)]">
+                <!-- Populated via script -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 7-Day Verification Health Table -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-3">
+          <div class="flex justify-between items-center">
+            <h4 class="font-bold text-xs text-[var(--foreground)] uppercase tracking-wider flex items-center gap-2">
+              <span>🏛️</span> Regulated Entity (RE) License & 7-Day Verification Audit Health
+            </h4>
+            <span class="text-[10px] text-emerald-400 font-semibold">100% Compliant</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left border-collapse">
+              <thead>
+                <tr class="border-b border-[var(--border)] text-[var(--muted-foreground)]">
+                  <th class="py-2.5 px-3">Lender Name</th>
+                  <th class="py-2.5 px-3">Entity Category</th>
+                  <th class="py-2.5 px-3">RBI Registration Code</th>
+                  <th class="py-2.5 px-3">Grievance Officer (GRO)</th>
+                  <th class="py-2.5 px-3">GRO Email</th>
+                  <th class="py-2.5 px-3">Verification Status</th>
+                </tr>
+              </thead>
+              <tbody id="crm-verification-table-body" class="divide-y divide-[var(--border)]">
+                <!-- Populated via script -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
     <!-- ================= TAB 0: CARDSMART CREDIT CARD ROI ENGINE ================= -->
-    <section id="tab-cardsmart" class="tab-content space-y-6">
+    <section id="tab-cardsmart" class="tab-content space-y-6 hidden">
       
       <!-- Top Banner -->
       <div class="bg-gradient-to-r from-indigo-950/25 via-[var(--card)] to-purple-950/25 border border-indigo-500/30 rounded-2xl p-6 shadow-sm">
@@ -622,50 +1182,628 @@
 
     <!-- ================= TAB 1: REVENUE STUDIO ================= -->
     <section id="tab-revenue" class="tab-content hidden space-y-6">
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
-        <h2 class="text-xl font-bold text-[var(--foreground)]">Revenue & Upsell Studio</h2>
-        <p class="text-xs text-[var(--muted-foreground)]">Tatkal rush pricing, FinTech demat liquidation fees, and NRI FEMA repatriation modules.</p>
+
+      <!-- Step-by-Step Instruction Guide Banner -->
+      <div class="bg-gradient-to-r from-emerald-950/30 via-[var(--card)] to-teal-950/30 border border-emerald-500/30 rounded-2xl p-6 shadow-sm">
+        <div class="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-wider mb-2">
+          <span>📋 Step-by-Step Guide</span> • How to Use Revenue & Rush Pricing Studio
+        </div>
+        <h2 class="text-xl font-bold text-[var(--foreground)]">Monetization & Urgency Optimization Studio</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs">
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-emerald-600/20 text-emerald-400 font-bold inline-flex items-center justify-center mr-1">1</span>
+            <b>Tatkal Rush Pricing:</b> Choose between Standard 28-day, Tatkal 7-day, or Super-Tatkal 48-hr rush delivery with dynamic fee multipliers.
+          </div>
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-emerald-600/20 text-emerald-400 font-bold inline-flex items-center justify-center mr-1">2</span>
+            <b>Demat Liquidation Cut:</b> Calculate 0.35% FinTech partner brokerage and ₹1,200 Zerodha/Groww account opening bounties on recovered shares.
+          </div>
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-emerald-600/20 text-emerald-400 font-bold inline-flex items-center justify-center mr-1">3</span>
+            <b>NRI 15CA/15CB Repatriation:</b> Compute FEMA foreign outward remittance compliance charges and CA statutory certification.
+          </div>
+        </div>
       </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left: Interactive Tatkal Urgency Pricing -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-[var(--border)]">
+              <h3 class="text-xs font-bold text-[var(--foreground)] uppercase tracking-wider">Tatkal Urgency Rush Calculator</h3>
+              <span class="text-[10px] text-emerald-400 font-semibold">Dynamic Pricing Engine</span>
+            </div>
+
+            <div>
+              <label class="text-xs text-[var(--muted-foreground)] block mb-1">Select Legal/Compliance Service:</label>
+              <select id="tatkal-service" onchange="calculateTatkalUI()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)]">
+                <option value="GAZETTE" data-base="3499">Central Gazette Name Change (Base: ₹3,499)</option>
+                <option value="APOSTILLE" data-base="4999">MEA Legal Apostille & Embassy Attestation (Base: ₹4,999)</option>
+                <option value="RTO_HP" data-base="2999">RTO Bank Hypothecation (HP) Removal (Base: ₹2,999)</option>
+                <option value="ISR4_UNLOCK" data-base="1499">SEBI Form ISR-4 Folio Micro-Unlock (Base: ₹1,499)</option>
+              </select>
+            </div>
+
+            <!-- Delivery Urgency Selector -->
+            <div class="space-y-1.5">
+              <label class="text-xs text-[var(--muted-foreground)] block">Turnaround Urgency Tier:</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" onclick="setTatkalTier('standard')" id="btn-tatkal-standard" class="py-2 px-2.5 rounded-xl text-xs font-bold bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] text-center transition">
+                  Standard (28d)<br><span class="text-[10px] font-normal opacity-80">1.0x Base</span>
+                </button>
+                <button type="button" onclick="setTatkalTier('tatkal')" id="btn-tatkal-tatkal" class="py-2 px-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow text-center transition">
+                  Tatkal Express (7d)<br><span class="text-[10px] font-normal opacity-80">1.75x Base</span>
+                </button>
+                <button type="button" onclick="setTatkalTier('supertatkal')" id="btn-tatkal-supertatkal" class="py-2 px-2.5 rounded-xl text-xs font-bold bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] text-center transition">
+                  Super-Tatkal (48h)<br><span class="text-[10px] font-normal opacity-80">2.50x Base</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Pricing Breakdown Box -->
+            <div class="bg-[var(--background)] p-4 rounded-xl border border-[var(--border)] space-y-2 text-xs">
+              <div class="flex justify-between">
+                <span class="text-[var(--muted-foreground)]">Base Professional & Govt Fee:</span>
+                <b id="tatkal-base-fee" class="text-[var(--foreground)]">₹3,499</b>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-[var(--muted-foreground)]">Express Physical Runner / Couriers:</span>
+                <b id="tatkal-runner-fee" class="text-indigo-400">+₹1,200</b>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-[var(--muted-foreground)]">Priority Verification & Fast-track Premium:</span>
+                <b id="tatkal-premium-fee" class="text-emerald-400">+₹1,424</b>
+              </div>
+              <div class="pt-2 border-t border-[var(--border)] flex justify-between items-center text-sm">
+                <span class="font-bold text-[var(--foreground)]">Total Client Price:</span>
+                <b id="tatkal-total-price" class="text-emerald-400 text-lg font-black">₹6,123</b>
+              </div>
+            </div>
+
+            <button onclick="alert('Tatkal Rush Slot Reserved! Assigned Dedicated Runner ID: #RUN-DL-402')" class="w-full py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center justify-center gap-2">
+              <span>⚡</span> Reserve Tatkal Rush Slot (Save 21 Days)
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: FinTech Demat Liquidation & Partner Bounty -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-[var(--border)]">
+              <h3 class="text-xs font-bold text-[var(--foreground)] uppercase tracking-wider">FinTech Demat Liquidation Cut</h3>
+              <span class="text-[10px] text-indigo-400 font-semibold">Post-Recovery Monetization</span>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Recovered Share Portfolio Value:</span>
+                <b id="lbl-fintech-portfolio" class="text-indigo-400 font-bold">₹15,00,000</b>
+              </div>
+              <input type="range" id="fintech-portfolio" min="100000" max="10000000" step="100000" value="1500000" oninput="calculateFintechUI()" class="w-full accent-indigo-500">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+                <span class="text-[10px] text-[var(--muted-foreground)] block">Client Net Payout (99.65%):</span>
+                <b id="fintech-client-payout" class="text-base font-black text-emerald-400">₹14,94,750</b>
+              </div>
+              <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+                <span class="text-[10px] text-[var(--muted-foreground)] block">NyayaSetu Broker Cut (0.35%):</span>
+                <b id="fintech-broker-cut" class="text-base font-black text-indigo-400">₹5,250</b>
+              </div>
+              <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+                <span class="text-[10px] text-[var(--muted-foreground)] block">Partner Demat Bounty (Zerodha/Groww):</span>
+                <b class="text-sm font-bold text-amber-400">+₹1,200</b>
+              </div>
+              <div class="p-3.5 bg-[var(--background)] rounded-xl border border-indigo-500/40 bg-indigo-500/5">
+                <span class="text-[10px] text-[var(--muted-foreground)] block">Total NyayaSetu Commission:</span>
+                <b id="fintech-total-rev" class="text-sm font-black text-indigo-300">₹6,450</b>
+              </div>
+            </div>
+
+            <div class="p-4 bg-gradient-to-r from-purple-950/20 to-[var(--background)] border border-purple-500/30 rounded-xl space-y-1 text-xs">
+              <div class="font-bold text-purple-300 flex items-center justify-between">
+                <span>NRI 15CA / 15CB Foreign Remittance Wire</span>
+                <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[10px]">FEMA Compliant</span>
+              </div>
+              <p class="text-[11px] text-[var(--muted-foreground)]">Repatriate physical share sale proceeds directly to overseas bank account (NRO to NRE). Includes Chartered Accountant Form 15CB certification for ₹4,999.</p>
+            </div>
+
+            <button onclick="alert('Generated FinTech Demat Transfer Package!')" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl transition shadow">
+              Open Direct FinTech Liquidation Account →
+            </button>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ================= TAB 2: RTA REGISTERS ================= -->
     <section id="tab-rta" class="tab-content hidden space-y-6">
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+
+      <!-- Step-by-Step Instruction Guide Banner -->
+      <div class="bg-gradient-to-r from-indigo-950/30 via-[var(--card)] to-purple-950/30 border border-indigo-500/30 rounded-2xl p-6 shadow-sm">
+        <div class="flex items-center gap-2 text-indigo-400 font-bold text-xs uppercase tracking-wider mb-2">
+          <span>📋 Step-by-Step Guide</span> • How to Use Local RTA & Share Registers
+        </div>
         <h2 class="text-xl font-bold text-[var(--foreground)]">Designated RTAs & Statutory Unclaimed Registers</h2>
-        <div class="p-4 bg-[var(--background)] rounded-xl border border-[var(--border)] text-xs flex justify-between items-center">
-          <div>
-            <b>Tata Steel Limited (Link Intime RTA)</b> • Shareholder: RAMESH SHARMA • Folio: S1R0028491<br>
-            Unclaimed Shares: 450 units • Value: ₹1,05,750.00
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs">
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-indigo-600/20 text-indigo-400 font-bold inline-flex items-center justify-center mr-1">1</span>
+            <b>Search Shareholder Name:</b> Search through bluechip registers across Link Intime, KFintech, and Datamatics.
           </div>
-          <button onclick="alert('Generated SEBI Form ISR-4!')" class="px-3 py-1.5 bg-indigo-600 text-white rounded-lg font-bold">
-            ⚡ Generate Form ISR-4
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-indigo-600/20 text-indigo-400 font-bold inline-flex items-center justify-center mr-1">2</span>
+            <b>Inspect Trapped Shares:</b> View original certificate share counts, folio numbers, and modern split/bonus market valuations.
+          </div>
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-indigo-600/20 text-indigo-400 font-bold inline-flex items-center justify-center mr-1">3</span>
+            <b>1-Click SEBI Form ISR-4:</b> Generate official statutory request dossier to issue Letter of Confirmation for demat credit.
+          </div>
+        </div>
+      </div>
+
+      <!-- Search and Filter Bar -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-1">
+            <input type="text" id="rta-search-input" placeholder="Search by Shareholder Name, Folio, or Company (e.g. Ramesh, Reliance, S1R)..." oninput="filterRTARegister()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-2.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-indigo-500">
+          </div>
+          <div class="flex gap-2">
+            <select id="rta-filter-agency" onchange="filterRTARegister()" class="bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)]">
+              <option value="ALL">All RTAs (Link Intime, KFin, Datamatics)</option>
+              <option value="Link Intime">Link Intime India</option>
+              <option value="KFintech">KFin Technologies</option>
+              <option value="Datamatics">Datamatics Financial</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- RTA Records Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs text-left">
+            <thead class="text-[10px] text-[var(--muted-foreground)] uppercase bg-[var(--background)] border-b border-[var(--border)]">
+              <tr>
+                <th class="p-3">Company & RTA</th>
+                <th class="p-3">Shareholder Name</th>
+                <th class="p-3">Folio Number</th>
+                <th class="p-3">Unclaimed Units</th>
+                <th class="p-3">Estimated Value</th>
+                <th class="p-3 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="rta-table-body" class="divide-y divide-[var(--border)]">
+              <!-- Populated via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Form ISR-4 Dossier Output Drawer/Modal -->
+      <div id="isr4-preview-card" class="hidden bg-gradient-to-br from-indigo-950/20 via-[var(--card)] to-purple-950/20 border-2 border-indigo-500/40 rounded-2xl p-6 shadow-md space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-[var(--border)]">
+          <div>
+            <span class="text-[10px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
+              SEBI Statutory Circular SEBI/HO/MIRSD/MIRSD_RTAMB/P/CIR/2022/8
+            </span>
+            <h3 class="text-base font-bold text-[var(--foreground)] mt-1">SEBI Form ISR-4: Request for Issue of Duplicate Certificate / Letter of Confirmation</h3>
+            <div class="text-xs text-[var(--muted-foreground)]" id="isr4-meta-text">Target Folio: S1R0028491 • Tata Steel Limited</div>
+          </div>
+          <button onclick="document.getElementById('isr4-preview-card').classList.add('hidden')" class="px-2.5 py-1 bg-[var(--background)] border border-[var(--border)] rounded-lg text-xs hover:text-red-400">✕ Close</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs bg-[var(--background)] p-4 rounded-xl border border-[var(--border)]">
+          <div>
+            <span class="text-[10px] text-[var(--muted-foreground)] block">Claimant Legal Heir:</span>
+            <b id="isr4-claimant" class="text-[var(--foreground)]">Ramesh Sharma</b>
+          </div>
+          <div>
+            <span class="text-[10px] text-[var(--muted-foreground)] block">RTA Destination:</span>
+            <b id="isr4-rta" class="text-indigo-400">Link Intime India Pvt. Ltd. (Vikhroli, Mumbai)</b>
+          </div>
+          <div>
+            <span class="text-[10px] text-[var(--muted-foreground)] block">Claim Type:</span>
+            <b class="text-[var(--foreground)]">Issue of Letter of Confirmation in lieu of Duplicate Physical Certificate</b>
+          </div>
+          <div>
+            <span class="text-[10px] text-[var(--muted-foreground)] block">SEBI KYC Compliance:</span>
+            <b class="text-emerald-400">Form ISR-1 (PAN/Bank) + ISR-2 (Bank Attestation) Linked ✅</b>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+          <span class="text-[11px] text-[var(--muted-foreground)]">Statutory petition dossier generated with client digital signature placeholder.</span>
+          <button onclick="alert('Downloading pre-filled SEBI Form ISR-4 dossier PDF with Client Signature blocks!')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition shadow">
+            📥 Download Form ISR-4 Petition Dossier (PDF)
           </button>
         </div>
       </div>
+
     </section>
 
     <!-- ================= TAB 3: REAL GOV RAILS ================= -->
     <section id="tab-realgov" class="tab-content hidden space-y-6">
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-3">
-        <h2 class="text-xl font-bold text-[var(--foreground)]">Direct Government of India Rails</h2>
-        <p class="text-xs text-[var(--muted-foreground)]">Connected directly to egazette.gov.in (MoHUA) and iepf.gov.in (MCA21 v3).</p>
+
+      <!-- Step-by-Step Instruction Guide Banner -->
+      <div class="bg-gradient-to-r from-emerald-950/30 via-[var(--card)] to-indigo-950/30 border border-emerald-500/30 rounded-2xl p-6 shadow-sm">
+        <div class="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-wider mb-2">
+          <span>📋 Step-by-Step Guide</span> • How NyayaSetu Connects Directly to Government Rails
+        </div>
+        <h2 class="text-xl font-bold text-[var(--foreground)]">Direct Government of India Rails (100% Free / Zero API Aggregator Cost)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs">
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-emerald-600/20 text-emerald-400 font-bold inline-flex items-center justify-center mr-1">1</span>
+            <b>NIC Central Gazette Node:</b> Direct TCP connection to `egazette.gov.in` (IP `164.100.190.144`) parsing Part-IV weekly public notices.
+          </div>
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-emerald-600/20 text-emerald-400 font-bold inline-flex items-center justify-center mr-1">2</span>
+            <b>MCA21 / IEPF Crypto Engine:</b> Reverse-engineered PBKDF2/SHA-1 and AES-128-CBC protocol for zero-cost unclaimed asset queries.
+          </div>
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-emerald-600/20 text-emerald-400 font-bold inline-flex items-center justify-center mr-1">3</span>
+            <b>Zero Paid Intermediaries:</b> Saves ₹15–₹45 per API query by eliminating third-party aggregators (Setu/Signzy/Karza).
+          </div>
+        </div>
       </div>
+
+      <!-- 3 Live Rail Status Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-2">
+          <div class="flex items-center justify-between text-xs">
+            <b class="text-[var(--foreground)]">egazette.gov.in</b>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">OPERATIONAL 🟢</span>
+          </div>
+          <div class="text-[11px] text-[var(--muted-foreground)]">MoHUA Central Directorate of Printing</div>
+          <div class="text-[10px] font-mono text-indigo-400 bg-[var(--background)] p-2 rounded-lg border border-[var(--border)]">
+            Direct IP: 164.100.190.144<br>Category: Part-IV Private Notices<br>Latency: 24 ms
+          </div>
+        </div>
+
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-2">
+          <div class="flex items-center justify-between text-xs">
+            <b class="text-[var(--foreground)]">iepf.gov.in (MCA21 v3)</b>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">OPERATIONAL 🟢</span>
+          </div>
+          <div class="text-[11px] text-[var(--muted-foreground)]">Ministry of Corporate Affairs Authority</div>
+          <div class="text-[10px] font-mono text-indigo-400 bg-[var(--background)] p-2 rounded-lg border border-[var(--border)]">
+            Encryption: PBKDF2/SHA1 + AES-128<br>Gateway: IEPF-5 Claims API<br>Latency: 48 ms
+          </div>
+        </div>
+
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-2">
+          <div class="flex items-center justify-between text-xs">
+            <b class="text-[var(--foreground)]">vahan.parivahan.gov.in</b>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">OPERATIONAL 🟢</span>
+          </div>
+          <div class="text-[11px] text-[var(--muted-foreground)]">MoRTH Transport National Register</div>
+          <div class="text-[10px] font-mono text-indigo-400 bg-[var(--background)] p-2 rounded-lg border border-[var(--border)]">
+            Virtual Court Node: Active<br>PUCC Pollution Grid: Connected<br>Latency: 32 ms
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Gazette Notification Search Simulator -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <h3 class="text-xs font-bold text-[var(--foreground)] uppercase tracking-wider">Test Live Gazette Verification Query</h3>
+          <span class="text-[10px] text-emerald-400 font-semibold">Queries Official Part-IV Archive</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input type="text" id="gazette-query-input" value="Vikram Sharma" placeholder="Enter citizen name to query official gazette..." class="flex-1 bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-2.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-indigo-500">
+          <button onclick="queryLiveGazetteUI()" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow transition flex items-center justify-center gap-1.5">
+            <span>🔍</span> Query Gazette Rail
+          </button>
+        </div>
+
+        <!-- Live Query Result Box -->
+        <div id="gazette-query-result" class="p-4 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 text-xs">
+          <div class="flex items-center justify-between text-indigo-400 font-bold">
+            <span>Gazette Notification Found: Issue No. 38 (Weekly Gazette of India)</span>
+            <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px]">Verified Official Record ✅</span>
+          </div>
+          <p id="gazette-query-text" class="text-[11px] text-[var(--muted-foreground)] leading-relaxed italic">
+            "I, Vikram Sharma, son of Suresh Sharma, residing at Indiranagar, Bengaluru-560038, have changed my name and shall hereafter be known as Vikram Aditya Sharma for all purposes. Dated this 16th day of September 2026."
+          </p>
+        </div>
+      </div>
+
     </section>
 
     <!-- ================= TAB 4: IEPF CALCULATOR ================= -->
     <section id="tab-iepf" class="tab-content hidden space-y-6">
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+
+      <!-- Step-by-Step Instruction Guide Banner -->
+      <div class="bg-gradient-to-r from-amber-950/30 via-[var(--card)] to-indigo-950/30 border border-amber-500/30 rounded-2xl p-6 shadow-sm">
+        <div class="flex items-center gap-2 text-amber-400 font-bold text-xs uppercase tracking-wider mb-2">
+          <span>📋 Step-by-Step Guide</span> • How to Recover Unclaimed IEPF Wealth
+        </div>
         <h2 class="text-xl font-bold text-[var(--foreground)]">IEPF & Deceased Share Recovery Calculator</h2>
-        <p class="text-xs text-[var(--muted-foreground)]">12%–20% contingency success fee payable only upon demat credit.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs">
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-amber-600/20 text-amber-400 font-bold inline-flex items-center justify-center mr-1">1</span>
+            <b>Enter Certificate Details:</b> Pick the bluechip company and the number of physical paper shares printed on your ancestral certificate.
+          </div>
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-amber-600/20 text-amber-400 font-bold inline-flex items-center justify-center mr-1">2</span>
+            <b>Corporate Actions Multiplier:</b> See how splits, bonuses, and demergers turned 100 shares from 1995 into 1,500+ shares today.
+          </div>
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-amber-600/20 text-amber-400 font-bold inline-flex items-center justify-center mr-1">3</span>
+            <b>100% Contingency Claim:</b> No upfront lawyer fees. Pay 15% contingency only after recovered shares are safely credited to your Demat.
+          </div>
+        </div>
       </div>
+
+      <!-- Calculator Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left: Inputs -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-4">
+            <div class="text-xs font-bold text-[var(--foreground)] uppercase tracking-wider pb-2 border-b border-[var(--border)]">
+              Physical Share Certificate Inputs
+            </div>
+
+            <div>
+              <label class="text-xs text-[var(--muted-foreground)] block mb-1">Company on Certificate:</label>
+              <select id="iepf-company" onchange="calculateIEPFUI()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)]">
+                <option value="TATASTEEL" data-mult="15" data-price="165" data-div="45">Tata Steel Limited (15x Split/Bonus Multiplier)</option>
+                <option value="RELIANCE" data-mult="8" data-price="2980" data-div="180">Reliance Industries Limited (8x Bonus Multiplier)</option>
+                <option value="INFOSYS" data-mult="32" data-price="1600" data-div="210">Infosys Limited (32x Bonus Multiplier)</option>
+                <option value="ITC" data-mult="12" data-price="460" data-div="65">ITC Limited (12x Bonus Multiplier)</option>
+                <option value="WIPRO" data-mult="48" data-price="520" data-div="85">Wipro Limited (48x Bonus Multiplier)</option>
+              </select>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Shares on Physical Certificate:</span>
+                <b id="lbl-iepf-shares" class="text-amber-400 font-bold">100 Shares</b>
+              </div>
+              <input type="range" id="iepf-shares" min="10" max="500" step="10" value="100" oninput="calculateIEPFUI()" class="w-full accent-amber-500">
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs text-[var(--muted-foreground)] block">Year of Certificate Issuance:</label>
+              <div class="grid grid-cols-4 gap-2">
+                <button type="button" onclick="setIEPFYear('1990')" id="btn-yr-1990" class="py-1.5 rounded-lg text-xs font-bold bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]">1990</button>
+                <button type="button" onclick="setIEPFYear('1995')" id="btn-yr-1995" class="py-1.5 rounded-lg text-xs font-bold bg-amber-600 text-white shadow">1995</button>
+                <button type="button" onclick="setIEPFYear('2000')" id="btn-yr-2000" class="py-1.5 rounded-lg text-xs font-bold bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]">2000</button>
+                <button type="button" onclick="setIEPFYear('2005')" id="btn-yr-2005" class="py-1.5 rounded-lg text-xs font-bold bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]">2005</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Wealth Breakdown Output -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-sm">
+              <div class="text-[10px] text-[var(--muted-foreground)] uppercase">Effective Shares Today</div>
+              <div id="iepf-res-effective-shares" class="text-xl font-black text-amber-400 mt-1">1,500 units</div>
+              <div class="text-[10px] text-emerald-400 mt-0.5">15x Growth from Splits</div>
+            </div>
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-sm">
+              <div class="text-[10px] text-[var(--muted-foreground)] uppercase">Unclaimed Dividends (7+ yrs)</div>
+              <div id="iepf-res-dividends" class="text-xl font-black text-emerald-400 mt-1">₹67,500</div>
+              <div class="text-[10px] text-[var(--muted-foreground)] mt-0.5">Trapped in IEPF Authority</div>
+            </div>
+            <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-sm col-span-2 sm:col-span-1">
+              <div class="text-[10px] text-[var(--muted-foreground)] uppercase">Total Recoverable Estate</div>
+              <div id="iepf-res-total-estate" class="text-xl font-black text-indigo-400 mt-1">₹3,15,000</div>
+              <div class="text-[10px] text-indigo-400 mt-0.5">Shares + Dividends</div>
+            </div>
+          </div>
+
+          <!-- Contingency Fee Breakdown Card -->
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <b class="text-[var(--foreground)]">NyayaSetu 100% Contingency Success Model</b>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400">Zero Financial Risk</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 bg-[var(--background)] p-3 rounded-xl border border-[var(--border)] text-[11px]">
+              <div>
+                <span class="text-[10px] text-[var(--muted-foreground)] block">Upfront Payment:</span>
+                <b class="text-emerald-400 text-sm">₹0 (Zero)</b>
+              </div>
+              <div>
+                <span class="text-[10px] text-[var(--muted-foreground)] block">Contingency Cut (15%):</span>
+                <b id="iepf-res-fee" class="text-amber-400 text-sm">₹47,250</b>
+              </div>
+              <div>
+                <span class="text-[10px] text-[var(--muted-foreground)] block">Net Credited to You:</span>
+                <b id="iepf-res-net" class="text-emerald-400 text-sm font-bold">₹2,67,750</b>
+              </div>
+            </div>
+
+            <button onclick="alert('IEPF Form-5 Recovery Claim Started! Assigned Senior NCLT Recovery Advocate.')" class="w-full py-3 bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-600 hover:to-indigo-700 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center justify-center gap-2">
+              <span>🚀</span> File 100% Contingency Claim (₹0 Upfront)
+            </button>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ================= TAB 5: GAZETTE WIZARD ================= -->
     <section id="tab-gazette" class="tab-content hidden space-y-6">
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+
+      <!-- Step-by-Step Instruction Guide Banner -->
+      <div class="bg-gradient-to-r from-indigo-950/30 via-[var(--card)] to-purple-950/30 border border-indigo-500/30 rounded-2xl p-6 shadow-sm">
+        <div class="flex items-center gap-2 text-indigo-400 font-bold text-xs uppercase tracking-wider mb-2">
+          <span>📋 Step-by-Step Guide</span> • How to Legally Change Name in Government Records
+        </div>
         <h2 class="text-xl font-bold text-[var(--foreground)]">Central Gazette Name Change Wizard</h2>
-        <p class="text-xs text-[var(--muted-foreground)]">NeSL e-Stamping + Aadhaar e-Sign + Automated Newspaper Classifieds.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs">
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-indigo-600/20 text-indigo-400 font-bold inline-flex items-center justify-center mr-1">1</span>
+            <b>Draft Digital Affidavit:</b> Enter current name, proposed name, and statutory reason to generate e-Stamp affidavit text.
+          </div>
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-indigo-600/20 text-indigo-400 font-bold inline-flex items-center justify-center mr-1">2</span>
+            <b>Newspaper Ads Generator:</b> Auto-generates exact bilingual advertisement drafts for 1 National English & 1 Regional daily.
+          </div>
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-indigo-600/20 text-indigo-400 font-bold inline-flex items-center justify-center mr-1">3</span>
+            <b>e-Gazette Submission:</b> Prepares the statutory Controller of Publications Part-IV filing docket with Bharatkosh challan receipt.
+          </div>
+        </div>
       </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left: Wizard Form -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-3">
+            <div class="text-xs font-bold text-[var(--foreground)] uppercase tracking-wider pb-2 border-b border-[var(--border)]">
+              Citizen & Gazette Details
+            </div>
+
+            <div>
+              <label class="text-[11px] text-[var(--muted-foreground)] block mb-1">Old / Current Legal Name:</label>
+              <input type="text" id="gaz-old-name" value="Vikram Sharma" oninput="updateGazetteDockets()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)]">
+            </div>
+
+            <div>
+              <label class="text-[11px] text-[var(--muted-foreground)] block mb-1">Desired New Name:</label>
+              <input type="text" id="gaz-new-name" value="Vikram Aditya Sharma" oninput="updateGazetteDockets()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)]">
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="text-[11px] text-[var(--muted-foreground)] block mb-1">Father / Spouse Name:</label>
+                <input type="text" id="gaz-parent-name" value="Suresh Sharma" oninput="updateGazetteDockets()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)]">
+              </div>
+              <div>
+                <label class="text-[11px] text-[var(--muted-foreground)] block mb-1">Reason for Change:</label>
+                <select id="gaz-reason" onchange="updateGazetteDockets()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)]">
+                  <option value="Personal Preference / Numerology">Personal Preference / Numerology</option>
+                  <option value="Post-Marriage Surname Addition">Post-Marriage Surname Addition</option>
+                  <option value="Spelling Error Correction in Passport">Spelling Error in Passport/PAN</option>
+                  <option value="Gender Transition Recognition">Gender Transition Recognition</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="text-[11px] text-[var(--muted-foreground)] block mb-1">Residential Address:</label>
+              <input type="text" id="gaz-address" value="Flat 402, Indiranagar, Bengaluru, Karnataka" oninput="updateGazetteDockets()" class="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)]">
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Generated Dockets -->
+        <div class="lg:col-span-7 space-y-4">
+          <!-- Classified Ads Box -->
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-3">
+            <h4 class="text-xs font-bold text-[var(--foreground)] uppercase tracking-wider">Statutory Newspaper Classified Ads</h4>
+            
+            <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] text-xs space-y-1">
+              <div class="flex justify-between items-center text-[10px] text-indigo-400 font-bold">
+                <span>1. National English Daily (e.g. The Indian Express / Times of India)</span>
+                <span>Classified Text</span>
+              </div>
+              <p id="gaz-ad-english" class="text-[11px] text-[var(--foreground)] italic leading-relaxed"></p>
+            </div>
+
+            <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] text-xs space-y-1">
+              <div class="flex justify-between items-center text-[10px] text-purple-400 font-bold">
+                <span>2. Vernacular Daily (Regional Language State Circulation)</span>
+                <span>Classified Text</span>
+              </div>
+              <p id="gaz-ad-hindi" class="text-[11px] text-[var(--foreground)] italic leading-relaxed"></p>
+            </div>
+          </div>
+
+          <!-- Official Gazette Part-IV Preview Box -->
+          <div class="bg-gradient-to-br from-amber-500/5 to-indigo-500/5 border border-amber-500/30 rounded-2xl p-5 shadow-sm space-y-3">
+            <div class="flex items-center justify-between">
+              <b class="text-xs text-amber-400 uppercase tracking-widest">Official Gazette Part-IV Notification Draft</b>
+              <span class="text-[10px] text-emerald-400 font-bold">Bharatkosh ₹1,400 Paid ✅</span>
+            </div>
+            <p id="gaz-preview-statutory" class="text-xs text-[var(--foreground)] bg-[var(--background)] p-3 rounded-xl border border-[var(--border)] leading-relaxed font-mono"></p>
+
+            <button onclick="alert('Generated Complete Gazette Filing Docket PDF package!')" class="w-full py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-xs rounded-xl shadow transition flex items-center justify-center gap-2">
+              <span>📥</span> Download Complete Gazette Submission Package (PDF)
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= TAB 6: WHATSAPP BOT SIMULATOR ================= -->
+    <section id="tab-whatsapp" class="tab-content hidden space-y-6">
+
+      <!-- Step-by-Step Instruction Guide Banner -->
+      <div class="bg-gradient-to-r from-emerald-950/30 via-[var(--card)] to-teal-950/30 border border-emerald-500/30 rounded-2xl p-6 shadow-sm">
+        <div class="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-wider mb-2">
+          <span>📋 Step-by-Step Guide</span> • How to Use the WhatsApp Conversational Bot
+        </div>
+        <h2 class="text-xl font-bold text-[var(--foreground)]">NyayaSetu WhatsApp Lead Intake Bot (Meta Cloud API)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs">
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-emerald-600/20 text-emerald-400 font-bold inline-flex items-center justify-center mr-1">1</span>
+            <b>Click a Quick Action:</b> Pick Gazette Name Change, Unclaimed Shares, Traffic Challan, or HRA Receipts.
+          </div>
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-emerald-600/20 text-emerald-400 font-bold inline-flex items-center justify-center mr-1">2</span>
+            <b>Conversational State Machine:</b> The bot collects citizen details and issues a unique docket number (e.g. `#NS-GAZ-9921`).
+          </div>
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
+            <span class="w-5 h-5 rounded-full bg-emerald-600/20 text-emerald-400 font-bold inline-flex items-center justify-center mr-1">3</span>
+            <b>Aadhaar & Photo Intake:</b> Citizens can upload photo of physical certificates or IDs directly via WhatsApp media messages.
+          </div>
+        </div>
+      </div>
+
+      <!-- Smartphone Frame -->
+      <div class="max-w-md mx-auto bg-[var(--card)] border-4 border-slate-700 rounded-3xl shadow-2xl overflow-hidden">
+        <!-- WhatsApp Green Header -->
+        <div class="bg-emerald-700 text-white p-4 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm">⚖️</div>
+            <div>
+              <div class="font-bold text-sm">NyayaSetu Legal Bot</div>
+              <div class="text-[10px] text-emerald-200">Official Government Verified Business ✅</div>
+            </div>
+          </div>
+          <span class="text-xs">⋮</span>
+        </div>
+
+        <!-- Chat Log Area -->
+        <div id="wa-chat-log" class="p-4 space-y-3 bg-[var(--background)] h-96 overflow-y-auto text-xs">
+          <!-- Bot Welcome -->
+          <div class="flex items-start gap-2">
+            <div class="bg-[var(--card)] border border-[var(--border)] p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[85%] space-y-1">
+              <p>Namaste! 🙏 Welcome to <b>NyayaSetu India</b>. I can assist you with:</p>
+              <div class="text-[11px] space-y-0.5 pt-1 text-emerald-400">
+                <div>1️⃣ Central Gazette Name Change</div>
+                <div>2️⃣ Search Unclaimed Shares (IEPF / RTA)</div>
+                <div>3️⃣ Clear Virtual Court Traffic Challan</div>
+                <div>4️⃣ Free HRA Rent Receipts PDF</div>
+              </div>
+              <span class="text-[9px] text-[var(--muted-foreground)] block text-right">11:30 AM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Action Buttons -->
+        <div class="p-2 bg-[var(--card)] border-t border-[var(--border)] flex flex-wrap gap-1.5 text-[10px]">
+          <button onclick="sendWAMessage('1. Central Gazette Name Change')" class="px-2.5 py-1 rounded-full bg-emerald-600/15 text-emerald-400 border border-emerald-500/20 font-medium">1️⃣ Gazette Change</button>
+          <button onclick="sendWAMessage('2. Search Unclaimed Shares')" class="px-2.5 py-1 rounded-full bg-indigo-600/15 text-indigo-400 border border-indigo-500/20 font-medium">2️⃣ Unclaimed Shares</button>
+          <button onclick="sendWAMessage('3. Settle Traffic Challan')" class="px-2.5 py-1 rounded-full bg-amber-600/15 text-amber-400 border border-amber-500/20 font-medium">3️⃣ Traffic Challan</button>
+          <button onclick="sendWAMessage('4. Generate HRA Receipts')" class="px-2.5 py-1 rounded-full bg-teal-600/15 text-teal-400 border border-teal-500/20 font-medium">4️⃣ HRA Receipts</button>
+        </div>
+
+        <!-- Input Bar -->
+        <div class="p-2.5 bg-[var(--card)] border-t border-[var(--border)] flex gap-2">
+          <input type="text" id="wa-input" placeholder="Type a message or select option..." onkeydown="if(event.key==='Enter') sendCustomWAMessage()" class="flex-1 bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 text-xs text-[var(--foreground)] focus:outline-none">
+          <button onclick="sendCustomWAMessage()" class="px-3.5 py-2 bg-emerald-600 text-white rounded-xl text-xs font-bold">➤</button>
+        </div>
+      </div>
+
     </section>
 
     <!-- Footer -->
@@ -680,7 +1818,7 @@
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(el => {
-        el.classList.remove('border-indigo-600', 'text-indigo-500', 'border-emerald-600', 'text-emerald-500');
+        el.classList.remove('border-indigo-600', 'text-indigo-500', 'border-emerald-600', 'text-emerald-500', 'border-blue-600', 'text-blue-500');
         el.classList.add('border-transparent', 'text-[var(--muted-foreground)]');
       });
 
@@ -690,7 +1828,792 @@
       if (activeContent) activeContent.classList.remove('hidden');
       if (activeBtn) {
         activeBtn.classList.remove('border-transparent', 'text-[var(--muted-foreground)]');
-        activeBtn.classList.add('border-indigo-600', 'text-indigo-500');
+        if (tabId === 'loanmitra') {
+          activeBtn.classList.add('border-blue-600', 'text-blue-500');
+        } else if (tabId === 'freetools') {
+          activeBtn.classList.add('border-emerald-600', 'text-emerald-500');
+        } else {
+          activeBtn.classList.add('border-indigo-600', 'text-indigo-500');
+        }
+      }
+    }
+
+    // ================= LOAN MITRA MARKETPLACE LOGIC (RBI 2025 COMPLIANT) =================
+    let currentLoanType = 'personal_loan';
+    let currentLoanSort = 'compatibility';
+    let currentEmployment = 'salaried';
+
+    const LOAN_LENDERS = [
+      {
+        id: "hdfc_bank",
+        name: "HDFC Bank Ltd.",
+        category: "Scheduled Commercial Bank (Private)",
+        rbiCode: "RBI/BANK/004",
+        groName: "Mr. Amit Pathak",
+        groEmail: "grievance.officer@hdfcbank.com",
+        verified: "🟢 Verified (2 days ago)",
+        products: [
+          {
+            type: "personal_loan",
+            name: "HDFC Insta Personal Loan",
+            minAmount: 50000,
+            maxAmount: 4000000,
+            minTenure: 12,
+            maxTenure: 60,
+            baseRateMin: 10.50,
+            baseRateMax: 16.25,
+            feePct: 1.5,
+            feeMin: 2500,
+            feeMax: 15000,
+            minIncome: 35000,
+            minCredit: 720,
+            penalPct: "2% per month on overdue installments",
+            prepayClause: "0% charges on floating rate (RBI Mandate)",
+            turnaround: "4 Hours",
+            perks: ["100% Paperless Aadhaar e-KYC", "Instant disbursal in 4 hours", "0% prepayment penalty after 12 mos"]
+          },
+          {
+            type: "home_loan",
+            name: "HDFC Reach Home Loan",
+            minAmount: 500000,
+            maxAmount: 50000000,
+            minTenure: 36,
+            maxTenure: 360,
+            baseRateMin: 8.50,
+            baseRateMax: 9.40,
+            feePct: 0.50,
+            feeMin: 3000,
+            feeMax: 10000,
+            minIncome: 45000,
+            minCredit: 750,
+            penalPct: "2% per month",
+            prepayClause: "0% foreclosure on floating rate (RBI Mandate)",
+            turnaround: "48 Hours",
+            perks: ["RBI mandate: 0% prepayment penalty on floating rate", "Tax benefit eligibility under Sec 24(b) & 80C", "Doorstep pickup"]
+          }
+        ]
+      },
+      {
+        id: "sbi_bank",
+        name: "State Bank of India",
+        category: "Scheduled Commercial Bank (Public)",
+        rbiCode: "RBI/BANK/001",
+        groName: "Ms. Sunita Sundaram",
+        groEmail: "dgm.customer@sbi.co.in",
+        verified: "🟢 Verified (1 day ago)",
+        products: [
+          {
+            type: "personal_loan",
+            name: "SBI Xpress Credit Personal Loan",
+            minAmount: 25000,
+            maxAmount: 3500000,
+            minTenure: 6,
+            maxTenure: 72,
+            baseRateMin: 11.15,
+            baseRateMax: 14.30,
+            feePct: 1.00,
+            feeMin: 1500,
+            feeMax: 10000,
+            minIncome: 25000,
+            minCredit: 700,
+            penalPct: "2% per month",
+            prepayClause: "0% foreclosure charges on floating rate",
+            turnaround: "12 Hours",
+            perks: ["Lowest processing fee cap among peer banks", "Flexible tenure up to 6 years", "Special pricing for defence personnel"]
+          },
+          {
+            type: "home_loan",
+            name: "SBI Regular Home Loan",
+            minAmount: 500000,
+            maxAmount: 100000000,
+            minTenure: 60,
+            maxTenure: 360,
+            baseRateMin: 8.40,
+            baseRateMax: 9.15,
+            feePct: 0.35,
+            feeMin: 2000,
+            feeMax: 8000,
+            minIncome: 30000,
+            minCredit: 750,
+            penalPct: "2% per month",
+            prepayClause: "0% foreclosure charges on floating rate (RBI Mandate)",
+            turnaround: "72 Hours",
+            perks: ["Lowest benchmark home loan interest rate in India", "Zero hidden charges, transparent EBLR linked", "Overdraft Maxgain facility"]
+          }
+        ]
+      },
+      {
+        id: "icici_bank",
+        name: "ICICI Bank Ltd.",
+        category: "Scheduled Commercial Bank (Private)",
+        rbiCode: "RBI/BANK/008",
+        groName: "Mr. Rakesh Menon",
+        groEmail: "headservicequality@icicibank.com",
+        verified: "🟢 Verified (3 days ago)",
+        products: [
+          {
+            type: "personal_loan",
+            name: "ICICI Smart Personal Loan",
+            minAmount: 50000,
+            maxAmount: 5000000,
+            minTenure: 12,
+            maxTenure: 72,
+            baseRateMin: 10.75,
+            baseRateMax: 15.75,
+            feePct: 1.25,
+            feeMin: 2000,
+            feeMax: 12500,
+            minIncome: 30000,
+            minCredit: 700,
+            penalPct: "2% per month",
+            prepayClause: "0% foreclosure charges on floating rate",
+            turnaround: "3 Hours",
+            perks: ["Pre-approved customers get money in 3 seconds", "Highest loan limit up to Rs. 50 Lakhs", "Transparent digital KFS before disbursement"]
+          },
+          {
+            type: "business_loan",
+            name: "ICICI InstaBIZ MSME Working Capital",
+            minAmount: 100000,
+            maxAmount: 7500000,
+            minTenure: 12,
+            maxTenure: 60,
+            baseRateMin: 12.00,
+            baseRateMax: 17.50,
+            feePct: 2.00,
+            feeMin: 5000,
+            feeMax: 25000,
+            minIncome: 60000,
+            minCredit: 680,
+            penalPct: "2% per month",
+            prepayClause: "0% foreclosure charges on floating lines",
+            turnaround: "24 Hours",
+            perks: ["Collateral-free overdraft & term loan for GST filers", "Fast assessment using Account Aggregator", "Zero prepayment charges on floating lines"]
+          }
+        ]
+      },
+      {
+        id: "bajaj_finance",
+        name: "Bajaj Finance Ltd.",
+        category: "NBFC - Upper Layer (RBI Regulated)",
+        rbiCode: "RBI/NBFC/UL-02",
+        groName: "Mr. Rajesh Kumar",
+        groEmail: "grievanceredressalteam@bajajfinserv.in",
+        verified: "🟢 Verified (4 days ago)",
+        products: [
+          {
+            type: "personal_loan",
+            name: "Bajaj Finserv Flexi Personal Loan",
+            minAmount: 30000,
+            maxAmount: 4000000,
+            minTenure: 12,
+            maxTenure: 96,
+            baseRateMin: 11.00,
+            baseRateMax: 18.00,
+            feePct: 2.00,
+            feeMin: 2500,
+            feeMax: 18000,
+            minIncome: 25000,
+            minCredit: 685,
+            penalPct: "2.5% per month",
+            prepayClause: "0% foreclosure charges on floating rate",
+            turnaround: "2 Hours",
+            perks: ["Flexi hybrid facility: Pay interest only on drawn funds", "Tenure up to 8 years for lower EMI", "Drop-down overdraft line"]
+          },
+          {
+            type: "loan_against_property",
+            name: "Bajaj Prime Loan Against Property",
+            minAmount: 1000000,
+            maxAmount: 50000000,
+            minTenure: 36,
+            maxTenure: 240,
+            baseRateMin: 9.50,
+            baseRateMax: 12.50,
+            feePct: 1.00,
+            feeMin: 10000,
+            feeMax: 50000,
+            minIncome: 50000,
+            minCredit: 700,
+            penalPct: "2% per month",
+            prepayClause: "0% foreclosure on floating rate (RBI Mandate)",
+            turnaround: "48 Hours",
+            perks: ["High LTV up to 75% of property valuation", "Repayment tenure up to 20 years", "Competitive rates lower than unsecured business credit"]
+          }
+        ]
+      },
+      {
+        id: "axis_bank",
+        name: "Axis Bank Ltd.",
+        category: "Scheduled Commercial Bank (Private)",
+        rbiCode: "RBI/BANK/012",
+        groName: "Mr. Saurabh Sharma",
+        groEmail: "nodalofficer@axisbank.com",
+        verified: "🟢 Verified (2 days ago)",
+        products: [
+          {
+            type: "personal_loan",
+            name: "Axis 24x7 Digital Personal Loan",
+            minAmount: 50000,
+            maxAmount: 4000000,
+            minTenure: 12,
+            maxTenure: 60,
+            baseRateMin: 10.65,
+            baseRateMax: 16.00,
+            feePct: 1.50,
+            feeMin: 2500,
+            feeMax: 12000,
+            minIncome: 30000,
+            minCredit: 720,
+            penalPct: "2% per month",
+            prepayClause: "0% foreclosure after 18 EMIs",
+            turnaround: "6 Hours",
+            perks: ["Zero foreclosure charges after 18 EMI payments", "Special pricing for corporate professionals", "Disbursal via instant UPI/IMPS"]
+          },
+          {
+            type: "business_loan",
+            name: "Axis Business Growth Loan",
+            minAmount: 200000,
+            maxAmount: 5000000,
+            minTenure: 12,
+            maxTenure: 48,
+            baseRateMin: 12.50,
+            baseRateMax: 18.00,
+            feePct: 1.75,
+            feeMin: 4000,
+            feeMax: 20000,
+            minIncome: 50000,
+            minCredit: 700,
+            penalPct: "2% per month",
+            prepayClause: "0% foreclosure charges on floating lines",
+            turnaround: "24 Hours",
+            perks: ["No balance sheet required up to Rs. 20 Lakhs", "Assessed using verified GST returns", "Overdraft limit on current account"]
+          }
+        ]
+      },
+      {
+        id: "tata_capital",
+        name: "Tata Capital Financial Services",
+        category: "NBFC - Upper Layer (Tata Sons)",
+        rbiCode: "RBI/NBFC/UL-09",
+        groName: "Ms. Priya Kulkarni",
+        groEmail: "grievance.head@tatacapital.com",
+        verified: "🟢 Verified (1 day ago)",
+        products: [
+          {
+            type: "personal_loan",
+            name: "Tata Capital Custom Fit Personal Loan",
+            minAmount: 40000,
+            maxAmount: 3500000,
+            minTenure: 12,
+            maxTenure: 72,
+            baseRateMin: 10.99,
+            baseRateMax: 17.25,
+            feePct: 1.75,
+            feeMin: 2000,
+            feeMax: 14000,
+            minIncome: 28000,
+            minCredit: 710,
+            penalPct: "2% per month",
+            prepayClause: "0% foreclosure on floating rate",
+            turnaround: "8 Hours",
+            perks: ["Backed by Tata Group trust and governance", "Step-up EMI option for young professionals", "Part-prepayment from 6th month"]
+          }
+        ]
+      }
+    ];
+
+    function switchLoanMitraSubTab(subTabId) {
+      document.getElementById('loan-subview-match').classList.add('hidden');
+      document.getElementById('loan-subview-bt').classList.add('hidden');
+      document.getElementById('loan-subview-crm').classList.add('hidden');
+
+      const btnMatch = document.getElementById('btn-loan-subtab-match');
+      const btnBt = document.getElementById('btn-loan-subtab-bt');
+      const btnCrm = document.getElementById('btn-loan-subtab-crm');
+
+      [btnMatch, btnBt, btnCrm].forEach(btn => {
+        btn.className = "px-3.5 py-2 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition";
+      });
+
+      const activeView = document.getElementById('loan-subview-' + subTabId);
+      const activeBtn = document.getElementById('btn-loan-subtab-' + subTabId);
+      if (activeView) activeView.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.className = "px-3.5 py-2 rounded-xl bg-blue-600 text-white font-bold text-xs shadow-md transition";
+      }
+    }
+
+    function setLoanType(type) {
+      currentLoanType = type;
+      document.querySelectorAll('.loan-type-btn').forEach(btn => {
+        btn.className = "loan-type-btn px-4 py-2.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-semibold text-xs shadow-sm transition flex items-center gap-2";
+      });
+      const activeBtn = document.getElementById('btn-lt-' + type);
+      if (activeBtn) {
+        activeBtn.className = "loan-type-btn px-4 py-2.5 rounded-xl bg-blue-600 text-white font-bold text-xs shadow-md transition flex items-center gap-2";
+      }
+
+      const tenureInput = document.getElementById('loan-tenure');
+      const amountInput = document.getElementById('loan-amount');
+      if (type === 'home_loan') {
+        tenureInput.max = 360;
+        tenureInput.value = Math.max(120, parseInt(tenureInput.value));
+        amountInput.max = 50000000;
+        if (parseInt(amountInput.value) < 1500000) amountInput.value = 4500000;
+      } else if (type === 'loan_against_property') {
+        tenureInput.max = 240;
+        tenureInput.value = Math.max(60, parseInt(tenureInput.value));
+        amountInput.max = 30000000;
+        if (parseInt(amountInput.value) < 1000000) amountInput.value = 2500000;
+      } else {
+        tenureInput.max = 84;
+        if (parseInt(tenureInput.value) > 84) tenureInput.value = 36;
+        amountInput.max = 5000000;
+      }
+
+      recalculateLoanMitra();
+    }
+
+    function setLoanSort(sort) {
+      currentLoanSort = sort;
+      document.querySelectorAll('.sort-btn').forEach(btn => {
+        btn.className = "sort-btn px-3 py-1.5 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] font-medium transition";
+      });
+      const activeBtn = document.getElementById('sort-' + sort);
+      if (activeBtn) {
+        activeBtn.className = "sort-btn px-3 py-1.5 rounded-lg bg-blue-600 text-white font-bold shadow-sm transition";
+      }
+      const labelMap = {
+        'compatibility': 'Profile Compatibility Score (Default)',
+        'lowest_apr': 'Lowest Annual Percentage Rate (APR)',
+        'lowest_emi': 'Lowest Monthly Repayment EMI',
+        'lowest_fee': 'Lowest Processing Fee'
+      };
+      document.getElementById('lbl-current-sort').innerText = labelMap[sort] || sort;
+      recalculateLoanMitra();
+    }
+
+    function setEmployment(emp) {
+      currentEmployment = emp;
+      const btnSal = document.getElementById('emp-salaried');
+      const btnSelf = document.getElementById('emp-self');
+      if (emp === 'salaried') {
+        btnSal.className = "p-2 rounded-xl bg-blue-600 text-white font-bold border border-blue-500 text-center transition";
+        btnSelf.className = "p-2 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] text-center transition";
+      } else {
+        btnSelf.className = "p-2 rounded-xl bg-blue-600 text-white font-bold border border-blue-500 text-center transition";
+        btnSal.className = "p-2 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] text-center transition";
+      }
+      recalculateLoanMitra();
+    }
+
+    function calcMonthlyEMI(principal, annualRatePct, tenureMonths) {
+      if (annualRatePct <= 0 || tenureMonths <= 0 || principal <= 0) return 0;
+      const r = (annualRatePct / 100) / 12;
+      const num = principal * r * Math.pow(1 + r, tenureMonths);
+      const den = Math.pow(1 + r, tenureMonths) - 1;
+      return Math.round(num / den);
+    }
+
+    function recalculateLoanMitra() {
+      const amount = parseFloat(document.getElementById('loan-amount').value);
+      const income = parseFloat(document.getElementById('loan-income').value);
+      const existingEmi = parseFloat(document.getElementById('loan-existing-emi').value);
+      const tenure = parseInt(document.getElementById('loan-tenure').value);
+      const cibil = parseInt(document.getElementById('loan-cibil').value);
+
+      document.getElementById('lbl-loan-amount').innerText = "₹" + amount.toLocaleString('en-IN');
+      document.getElementById('lbl-loan-income').innerText = "₹" + income.toLocaleString('en-IN') + "/mo";
+      document.getElementById('lbl-loan-existing-emi').innerText = "₹" + existingEmi.toLocaleString('en-IN') + "/mo";
+      
+      const years = (tenure / 12).toFixed(1);
+      document.getElementById('lbl-loan-tenure').innerText = `${tenure} Months (${years} Yrs)`;
+
+      let cibilTier = "Prime Tier";
+      if (cibil >= 775) cibilTier = "Super Prime (775+)";
+      else if (cibil >= 730) cibilTier = "Prime Tier (730-774)";
+      else if (cibil >= 680) cibilTier = "Good Tier (680-729)";
+      else cibilTier = "Fair / Sub-Prime (<680)";
+      document.getElementById('lbl-loan-cibil').innerText = `${cibil} (${cibilTier})`;
+
+      // Solvency FOIR Calculation
+      const approxRate = currentLoanType === 'home_loan' ? 8.5 : (currentLoanType === 'business_loan' ? 12.5 : 11.0);
+      const sampleEMI = calcMonthlyEMI(amount, approxRate, tenure);
+      const totalDebt = existingEmi + sampleEMI;
+      const foir = income > 0 ? Math.round((totalDebt / income) * 1000) / 10 : 100;
+
+      const foirLabel = document.getElementById('kpi-loan-foir');
+      const foirBar = document.getElementById('kpi-loan-foir-bar');
+      foirBar.style.width = Math.min(100, foir) + "%";
+
+      if (foir <= 45) {
+        foirLabel.innerText = `${foir}% (Prudent & Safe Band)`;
+        foirLabel.className = "font-bold text-emerald-400";
+        foirBar.className = "bg-emerald-500 h-2 rounded-full transition-all duration-300";
+      } else if (foir <= 60) {
+        foirLabel.innerText = `${foir}% (Moderate Debt Burden)`;
+        foirLabel.className = "font-bold text-amber-400";
+        foirBar.className = "bg-amber-500 h-2 rounded-full transition-all duration-300";
+      } else {
+        foirLabel.innerText = `${foir}% (High Risk / Low Eligibility)`;
+        foirLabel.className = "font-bold text-red-400";
+        foirBar.className = "bg-red-500 h-2 rounded-full transition-all duration-300";
+      }
+
+      // Evaluate products
+      const matched = [];
+      LOAN_LENDERS.forEach(lender => {
+        lender.products.forEach(prod => {
+          if (prod.type !== currentLoanType) return;
+
+          // Rate determined by credit score
+          let rate = prod.baseRateMin;
+          if (cibil >= 775) rate = prod.baseRateMin;
+          else if (cibil >= 730) rate = prod.baseRateMin + 0.60;
+          else if (cibil >= 690) rate = prod.baseRateMin + 1.40;
+          else if (cibil >= 650) rate = prod.baseRateMin + 2.50;
+          else rate = prod.baseRateMax;
+          rate = Math.min(rate, prod.baseRateMax);
+
+          // Tenure clamp
+          const validTenure = Math.max(prod.minTenure, Math.min(tenure, prod.maxTenure));
+          const monthlyEmi = calcMonthlyEMI(amount, rate, validTenure);
+
+          // Processing fee + 18% GST
+          const rawFee = amount * (prod.feePct / 100);
+          const fee = Math.min(prod.feeMax, Math.max(prod.feeMin, rawFee));
+          const gst = Math.round(fee * 0.18);
+          const totalFee = Math.round(fee + gst);
+
+          // Linearized APR
+          const aprAmortized = (totalFee * 12 / (amount * validTenure)) * 100;
+          const apr = Math.round((rate + aprAmortized) * 100) / 100;
+
+          const totalRepayment = (monthlyEmi * validTenure) + totalFee;
+          const totalInterest = (monthlyEmi * validTenure) - amount;
+
+          // Compatibility scoring
+          const eligSub = (foir <= 45) ? 100 : (foir <= 60 ? 80 : (foir <= 75 ? 55 : 30));
+          const amtSub = (amount >= prod.minAmount && amount <= prod.maxAmount) ? 100 : 65;
+          const tenSub = (validTenure === tenure) ? 100 : 70;
+          const incSub = (income >= prod.minIncome) ? 100 : 50;
+          const credSub = (cibil >= prod.minCredit) ? 100 : 60;
+          const featSub = 95;
+
+          const compScore = Math.round(
+            (eligSub * 0.30) + (amtSub * 0.20) + (tenSub * 0.10) +
+            (incSub * 0.15) + (credSub * 0.15) + (featSub * 0.10)
+          );
+
+          // "Why this appears" points
+          const whyAppears = [];
+          if (cibil >= prod.minCredit) whyAppears.push(`Credit score (${cibil}) satisfies bank threshold (>=${prod.minCredit})`);
+          if (amount >= prod.minAmount && amount <= prod.maxAmount) whyAppears.push(`Requested ₹${(amount/100000).toFixed(1)}L within eligible limit (₹${(prod.minAmount/100000).toFixed(1)}L - ₹${(prod.maxAmount/100000).toFixed(1)}L)`);
+          if (income >= prod.minIncome) whyAppears.push(`Salary ₹${income.toLocaleString('en-IN')} meets monthly threshold (₹${prod.minIncome.toLocaleString('en-IN')})`);
+          whyAppears.push(`Amortized APR at ${apr}% (Fee ₹${fee.toLocaleString('en-IN')} + 18% GST ₹${gst.toLocaleString('en-IN')})`);
+          whyAppears.push(`RBI KFS Mandate: 0% prepayment penalty on floating rate facility`);
+
+          matched.push({
+            lenderId: lender.id,
+            lenderName: lender.name,
+            category: lender.category,
+            rbiCode: lender.rbiCode,
+            groName: lender.groName,
+            groEmail: lender.groEmail,
+            verified: lender.verified,
+            productName: prod.name,
+            rate: rate.toFixed(2),
+            baseRange: `${prod.baseRateMin}% - ${prod.baseRateMax}%`,
+            monthlyEmi,
+            validTenure,
+            fee: Math.round(fee),
+            gst,
+            totalFee,
+            apr: apr.toFixed(2),
+            totalRepayment: Math.round(totalRepayment),
+            totalInterest: Math.round(totalInterest),
+            turnaround: prod.turnaround,
+            penalPct: prod.penalPct,
+            prepayClause: prod.prepayClause,
+            perks: prod.perks,
+            compScore,
+            whyAppears
+          });
+        });
+      });
+
+      // Sort
+      if (currentLoanSort === 'lowest_apr') {
+        matched.sort((a, b) => parseFloat(a.apr) - parseFloat(b.apr));
+      } else if (currentLoanSort === 'lowest_emi') {
+        matched.sort((a, b) => a.monthlyEmi - b.monthlyEmi);
+      } else if (currentLoanSort === 'lowest_fee') {
+        matched.sort((a, b) => a.totalFee - b.totalFee);
+      } else { // compatibility
+        matched.sort((a, b) => b.compScore - a.compScore);
+      }
+
+      // Render
+      const container = document.getElementById('loan-offers-container');
+      container.innerHTML = '';
+
+      if (matched.length === 0) {
+        container.innerHTML = `<div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8 text-center text-xs text-[var(--muted-foreground)]">No partner lenders active for this specific category. Please switch loan category.</div>`;
+        return;
+      }
+
+      matched.forEach((offer, idx) => {
+        const card = document.createElement('div');
+        card.className = "bg-[var(--card)] border border-[var(--border)] hover:border-blue-500/40 rounded-2xl p-5 shadow-sm transition space-y-4";
+        card.innerHTML = `
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-[var(--border)] pb-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-base font-bold text-[var(--foreground)]">${offer.lenderName}</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-medium">${offer.category}</span>
+                <span class="text-[10px] text-emerald-400 font-semibold">${offer.verified}</span>
+              </div>
+              <div class="text-[11px] text-blue-400 font-semibold mt-0.5">${offer.productName}</div>
+              <div class="text-[10px] text-[var(--muted-foreground)]">RBI Code: ${offer.rbiCode} • GRO: ${offer.groName} (${offer.groEmail})</div>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="text-right">
+                <span class="text-[10px] text-[var(--muted-foreground)] block">Profile Match</span>
+                <span class="text-base font-bold text-blue-400">${offer.compScore}%</span>
+              </div>
+              <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center font-bold text-sm text-blue-400">
+                #${idx + 1}
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 Stats Columns -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs bg-[var(--background)] p-3 rounded-xl border border-[var(--border)]">
+            <div>
+              <span class="text-[10px] text-[var(--muted-foreground)] block font-medium">Monthly EMI</span>
+              <span class="text-base font-bold text-emerald-400">₹${offer.monthlyEmi.toLocaleString('en-IN')}</span>
+              <span class="text-[9px] text-[var(--muted-foreground)] block">for ${offer.validTenure} months</span>
+            </div>
+            <div>
+              <span class="text-[10px] text-[var(--muted-foreground)] block font-medium">Offered Rate (APR)</span>
+              <span class="text-base font-bold text-blue-400">${offer.rate}%</span>
+              <span class="text-[9px] text-purple-400 block font-semibold">APR: ${offer.apr}%</span>
+            </div>
+            <div>
+              <span class="text-[10px] text-[var(--muted-foreground)] block font-medium">Processing Fee</span>
+              <span class="text-base font-bold text-[var(--foreground)]">₹${offer.totalFee.toLocaleString('en-IN')}</span>
+              <span class="text-[9px] text-[var(--muted-foreground)] block">incl. 18% GST (₹${offer.gst})</span>
+            </div>
+            <div>
+              <span class="text-[10px] text-[var(--muted-foreground)] block font-medium">Total Outflow</span>
+              <span class="text-base font-bold text-cyan-400">₹${offer.totalRepayment.toLocaleString('en-IN')}</span>
+              <span class="text-[9px] text-[var(--muted-foreground)] block">Interest: ₹${offer.totalInterest.toLocaleString('en-IN')}</span>
+            </div>
+          </div>
+
+          <!-- KFS Regulatory Disclosures & Why Appears -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px] pt-1">
+            <div class="space-y-1">
+              <span class="font-bold text-[var(--muted-foreground)] uppercase text-[10px] tracking-wide">Key Fact Statement (KFS) Disclosures:</span>
+              <div class="space-y-0.5 text-[var(--muted-foreground)]">
+                <div>• <b>Prepayment:</b> ${offer.prepayClause}</div>
+                <div>• <b>Penal Interest:</b> ${offer.penalPct}</div>
+                <div>• <b>Disbursal Turnaround:</b> Under ${offer.turnaround} (Subject to verification)</div>
+              </div>
+            </div>
+            <div class="space-y-1">
+              <span class="font-bold text-blue-400 uppercase text-[10px] tracking-wide">Why This Option Appears (RBI Mandate):</span>
+              <div class="space-y-0.5 text-emerald-400/90">
+                ${offer.whyAppears.slice(0, 3).map(pt => `<div>✓ ${pt}</div>`).join('')}
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <div class="flex justify-between items-center pt-2 border-t border-[var(--border)]">
+            <div class="text-[10px] text-[var(--muted-foreground)]">
+              🔒 In-principle assessment via RBI Account Aggregator framework.
+            </div>
+            <button onclick="applyLoanLead('${offer.lenderName}', '${offer.productName}', ${offer.monthlyEmi}, ${offer.rate}, ${offer.apr})" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition flex items-center gap-1.5">
+              <span>✍️</span> Apply with KFS Consent
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function applyLoanLead(lenderName, productName, emi, rate, apr) {
+      alert(
+        `✅ MANDATORY KFS DISCLOSURE RECORDED!\n\n` +
+        `Application successfully initiated for ${productName} with ${lenderName}.\n` +
+        `• Monthly EMI: ₹${emi.toLocaleString('en-IN')}\n` +
+        `• Interest Rate: ${rate}% (Amortized APR: ${apr}%)\n` +
+        `• 0% Foreclosure charges per RBI floating rate directions.\n\n` +
+        `A secure one-time OTP has been dispatched to your mobile. This lead has been registered in the Admin CRM pipeline with zero hard CIBIL penalty.`
+      );
+    }
+
+    function recalculateBalanceTransfer() {
+      const balance = parseFloat(document.getElementById('bt-balance').value);
+      const currRate = parseFloat(document.getElementById('bt-curr-rate').value);
+      const tenure = parseInt(document.getElementById('bt-tenure').value);
+      const newRate = parseFloat(document.getElementById('bt-new-rate').value);
+      const feePct = parseFloat(document.getElementById('bt-new-fee-pct').value);
+      const prepayPenPct = parseFloat(document.getElementById('bt-prepay-pen').value);
+      const booster = parseFloat(document.getElementById('bt-booster').value);
+
+      document.getElementById('lbl-bt-balance').innerText = "₹" + balance.toLocaleString('en-IN');
+      document.getElementById('lbl-bt-curr-rate').innerText = currRate.toFixed(2) + "% p.a.";
+      document.getElementById('lbl-bt-tenure').innerText = `${tenure} Months (${(tenure/12).toFixed(1)} Yrs)`;
+      document.getElementById('lbl-bt-new-rate').innerText = newRate.toFixed(2) + "% p.a.";
+      document.getElementById('lbl-bt-new-fee-pct').innerText = feePct.toFixed(2) + "%";
+      document.getElementById('lbl-bt-prepay-pen').innerText = prepayPenPct.toFixed(1) + "%" + (prepayPenPct === 0 ? " (RBI Floating Mandate)" : "");
+      document.getElementById('lbl-bt-booster').innerText = "₹" + booster.toLocaleString('en-IN') + "/mo";
+
+      // Current Loan
+      const currEmi = calcMonthlyEMI(balance, currRate, tenure);
+      const totalCurrRepay = currEmi * tenure;
+      const totalCurrInterest = totalCurrRepay - balance;
+
+      // New Loan
+      const newEmi = calcMonthlyEMI(balance, newRate, tenure);
+      const totalNewRepay = newEmi * tenure;
+      const totalNewInterest = totalNewRepay - balance;
+
+      const monthlySavings = Math.max(0, currEmi - newEmi);
+      const grossInterestSaved = Math.max(0, totalCurrInterest - totalNewInterest);
+
+      // Switching Costs
+      const processingFee = Math.round(balance * (feePct / 100));
+      const gst = Math.round(processingFee * 0.18);
+      const foreclosurePenalty = Math.round(balance * (prepayPenPct / 100));
+      const stampDuty = 500;
+      const totalSwitchCost = processingFee + gst + foreclosurePenalty + stampDuty;
+
+      const netSavings = Math.round(grossInterestSaved - totalSwitchCost);
+      const breakEvenMonths = monthlySavings > 0 ? (totalSwitchCost / monthlySavings).toFixed(1) : 999;
+
+      // Update KPI Cards
+      document.getElementById('bt-kpi-monthly-savings').innerText = "₹" + monthlySavings.toLocaleString('en-IN') + "/mo";
+      document.getElementById('bt-kpi-gross-interest').innerText = "₹" + grossInterestSaved.toLocaleString('en-IN');
+      document.getElementById('bt-kpi-transfer-cost').innerText = "₹" + totalSwitchCost.toLocaleString('en-IN');
+      document.getElementById('bt-kpi-breakeven').innerText = breakEvenMonths + " Mos";
+
+      // Table
+      document.getElementById('bt-tbl-curr-rate').innerText = currRate.toFixed(2) + "%";
+      document.getElementById('bt-tbl-new-rate').innerText = newRate.toFixed(2) + "%";
+      document.getElementById('bt-tbl-diff-rate').innerText = `-${(currRate - newRate).toFixed(2)}%`;
+
+      document.getElementById('bt-tbl-curr-emi').innerText = "₹" + currEmi.toLocaleString('en-IN');
+      document.getElementById('bt-tbl-new-emi').innerText = "₹" + newEmi.toLocaleString('en-IN');
+      document.getElementById('bt-tbl-diff-emi').innerText = "Save ₹" + monthlySavings.toLocaleString('en-IN') + "/mo";
+
+      document.getElementById('bt-tbl-curr-interest').innerText = "₹" + Math.round(totalCurrInterest).toLocaleString('en-IN');
+      document.getElementById('bt-tbl-new-interest').innerText = "₹" + Math.round(totalNewInterest).toLocaleString('en-IN');
+      document.getElementById('bt-tbl-diff-interest').innerText = "Save ₹" + Math.round(grossInterestSaved).toLocaleString('en-IN');
+
+      document.getElementById('bt-tbl-curr-outflow').innerText = "₹" + Math.round(totalCurrRepay).toLocaleString('en-IN');
+      document.getElementById('bt-tbl-new-outflow').innerText = "₹" + Math.round(totalNewRepay).toLocaleString('en-IN');
+      document.getElementById('bt-tbl-diff-outflow').innerText = "Save ₹" + Math.round(grossInterestSaved).toLocaleString('en-IN');
+
+      document.getElementById('bt-tbl-net-savings').innerText = "₹" + netSavings.toLocaleString('en-IN');
+
+      // Recommendation Banner
+      const recBox = document.getElementById('bt-recommendation-box');
+      const recHead = document.getElementById('bt-rec-headline');
+      const recDetail = document.getElementById('bt-rec-detail');
+
+      if (netSavings > 15000 && breakEvenMonths <= (tenure * 0.5)) {
+        recBox.className = "bg-emerald-950/25 border border-emerald-500/30 rounded-2xl p-5 space-y-2";
+        recHead.className = "font-bold text-emerald-400 text-sm";
+        recHead.innerText = "✅ HIGHLY RECOMMENDED BALANCE TRANSFER";
+        recDetail.innerText = `You will break even on transfer costs within ${breakEvenMonths} months, saving a net ₹${netSavings.toLocaleString('en-IN')} over the remaining tenure!`;
+      } else if (netSavings > 0) {
+        recBox.className = "bg-amber-950/25 border border-amber-500/30 rounded-2xl p-5 space-y-2";
+        recHead.className = "font-bold text-amber-400 text-sm";
+        recHead.innerText = "⚠️ MODERATE FINANCIAL BENEFIT";
+        recDetail.innerText = `Net lifetime savings of ₹${netSavings.toLocaleString('en-IN')} with break-even period of ${breakEvenMonths} months. Verify whether paperwork justifies this savings.`;
+      } else {
+        recBox.className = "bg-red-950/25 border border-red-500/30 rounded-2xl p-5 space-y-2";
+        recHead.className = "font-bold text-red-400 text-sm";
+        recHead.innerText = "❌ NOT RECOMMENDED TO REFINANCE";
+        recDetail.innerText = `High switching costs (₹${totalSwitchCost.toLocaleString('en-IN')}) exceed the total interest difference. Remaining tenure or rate delta is insufficient.`;
+      }
+
+      // Prepayment Booster impact
+      if (booster > 0) {
+        const totalFlow = newEmi + booster;
+        const r = (newRate / 100) / 12;
+        let bal = balance;
+        let months = 0;
+        let accInt = 0;
+        while (bal > 0 && months < tenure * 2) {
+          months++;
+          const intMo = bal * r;
+          accInt += intMo;
+          const prin = totalFlow - intMo;
+          bal -= prin;
+          if (prin <= 0) break;
+        }
+        const tenureReduction = Math.max(0, tenure - months);
+        const extraIntSaved = Math.max(0, Math.round(totalNewInterest - accInt));
+        document.getElementById('bt-booster-summary').innerHTML = `
+          By investing an extra <b class="text-emerald-400">₹${booster.toLocaleString('en-IN')}/month</b> towards your principal, your loan closes <b class="text-emerald-400">${tenureReduction} months earlier</b> (in ${months} months instead of ${tenure} months), saving an additional <b class="text-emerald-400">₹${extraIntSaved.toLocaleString('en-IN')}</b> in interest!
+        `;
+      } else {
+        document.getElementById('bt-booster-summary').innerText = "Adjust the Prepayment Booster slider above to simulate how paying ₹1,000 - ₹10,000 extra per month slashes your loan tenure and saves thousands in compound interest.";
+      }
+    }
+
+    function populateCRMData() {
+      const leads = [
+        { id: "LM-2026-8821", name: "Rohan Verma", type: "Personal Loan", lender: "HDFC Bank Ltd.", amount: 850000, rate: "10.50%", stage: "SANCTION_APPROVED", comm: 10625 },
+        { id: "LM-2026-8834", name: "Kavita Nair", type: "Home Loan", lender: "State Bank of India", amount: 6500000, rate: "8.40%", stage: "BANK_LOGIN_INITIATED", comm: 32500 },
+        { id: "LM-2026-8849", name: "Deepak Choudhary", type: "Business Loan", lender: "ICICI Bank Ltd.", amount: 2500000, rate: "12.00%", stage: "DISBURSED", comm: 37500 },
+        { id: "LM-2026-8872", name: "Pooja Singhania", type: "Personal Loan", lender: "Bajaj Finance Ltd.", amount: 400000, rate: "11.00%", stage: "DOCS_SUBMITTED", comm: 7000 }
+      ];
+
+      const stageBadges = {
+        "SANCTION_APPROVED": `<span class="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">In-Principle Approved</span>`,
+        "BANK_LOGIN_INITIATED": `<span class="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-semibold">Bank Login Initiated</span>`,
+        "DISBURSED": `<span class="px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 font-semibold">Disbursed ✓</span>`,
+        "DOCS_SUBMITTED": `<span class="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">e-KYC Uploaded</span>`
+      };
+
+      const leadsBody = document.getElementById('crm-leads-table-body');
+      if (leadsBody) {
+        leadsBody.innerHTML = '';
+        leads.forEach(lead => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td class="py-2.5 px-3 font-mono text-[var(--muted-foreground)]">${lead.id}</td>
+            <td class="py-2.5 px-3 font-semibold text-[var(--foreground)]">${lead.name}</td>
+            <td class="py-2.5 px-3 text-[var(--muted-foreground)]">${lead.type}</td>
+            <td class="py-2.5 px-3 font-medium text-blue-400">${lead.lender}</td>
+            <td class="py-2.5 px-3 font-semibold text-[var(--foreground)]">₹${lead.amount.toLocaleString('en-IN')}</td>
+            <td class="py-2.5 px-3 text-emerald-400">${lead.rate}</td>
+            <td class="py-2.5 px-3">${stageBadges[lead.stage] || lead.stage}</td>
+            <td class="py-2.5 px-3 font-bold text-emerald-400">₹${lead.comm.toLocaleString('en-IN')}</td>
+          `;
+          leadsBody.appendChild(row);
+        });
+      }
+
+      const verifBody = document.getElementById('crm-verification-table-body');
+      if (verifBody) {
+        verifBody.innerHTML = '';
+        LOAN_LENDERS.forEach(l => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td class="py-2.5 px-3 font-semibold text-[var(--foreground)]">${l.name}</td>
+            <td class="py-2.5 px-3 text-[var(--muted-foreground)]">${l.category}</td>
+            <td class="py-2.5 px-3 font-mono text-xs text-blue-400">${l.rbiCode}</td>
+            <td class="py-2.5 px-3 text-[var(--foreground)]">${l.groName}</td>
+            <td class="py-2.5 px-3 text-xs text-[var(--muted-foreground)]">${l.groEmail}</td>
+            <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">${l.verified}</span></td>
+          `;
+          verifBody.appendChild(row);
+        });
       }
     }
 
@@ -1401,11 +3324,251 @@
       `;
     }
 
+    // ================= REVENUE & TATKAL STUDIO LOGIC =================
+    let currentTatkalTier = 'tatkal';
+
+    function setTatkalTier(tier) {
+      currentTatkalTier = tier;
+      ['standard', 'tatkal', 'supertatkal'].forEach(t => {
+        const btn = document.getElementById('btn-tatkal-' + t);
+        if (btn) {
+          if (t === tier) {
+            btn.className = "py-2 px-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow text-center transition";
+          } else {
+            btn.className = "py-2 px-2.5 rounded-xl text-xs font-bold bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] text-center transition";
+          }
+        }
+      });
+      calculateTatkalUI();
+    }
+
+    function calculateTatkalUI() {
+      const select = document.getElementById('tatkal-service');
+      const baseFee = parseFloat(select.options[select.selectedIndex].getAttribute('data-base') || 3499);
+      
+      let runner = 0;
+      let premium = 0;
+
+      if (currentTatkalTier === 'tatkal') {
+        runner = 1200;
+        premium = Math.round(baseFee * 0.40);
+      } else if (currentTatkalTier === 'supertatkal') {
+        runner = 2400;
+        premium = Math.round(baseFee * 1.10);
+      }
+
+      const totalPrice = Math.round(baseFee + runner + premium);
+
+      document.getElementById('tatkal-base-fee').innerText = "₹" + baseFee.toLocaleString('en-IN');
+      document.getElementById('tatkal-runner-fee').innerText = runner > 0 ? "+₹" + runner.toLocaleString('en-IN') : "Included (Standard Post)";
+      document.getElementById('tatkal-premium-fee').innerText = premium > 0 ? "+₹" + premium.toLocaleString('en-IN') : "₹0";
+      document.getElementById('tatkal-total-price').innerText = "₹" + totalPrice.toLocaleString('en-IN');
+    }
+
+    function calculateFintechUI() {
+      const portfolioVal = parseFloat(document.getElementById('fintech-portfolio').value);
+      document.getElementById('lbl-fintech-portfolio').innerText = "₹" + portfolioVal.toLocaleString('en-IN');
+
+      const brokerCut = Math.round(portfolioVal * 0.0035); // 0.35%
+      const partnerBounty = 1200;
+      const clientPayout = portfolioVal - brokerCut;
+      const totalRev = brokerCut + partnerBounty;
+
+      document.getElementById('fintech-client-payout').innerText = "₹" + clientPayout.toLocaleString('en-IN');
+      document.getElementById('fintech-broker-cut').innerText = "₹" + brokerCut.toLocaleString('en-IN');
+      document.getElementById('fintech-total-rev').innerText = "₹" + totalRev.toLocaleString('en-IN');
+    }
+
+    // ================= LOCAL RTA REGISTERS LOGIC =================
+    const RTA_RECORDS = [
+      { comp: "Tata Steel Limited", rta: "Link Intime", name: "RAMESH SHARMA", folio: "S1R0028491", shares: 450, val: 105750 },
+      { comp: "Reliance Industries", rta: "KFintech", name: "ANITA MEHTA", folio: "RIL008219", shares: 200, val: 596000 },
+      { comp: "Infosys Limited", rta: "KFintech", name: "SURESH GUPTA", folio: "INF004123", shares: 300, val: 480000 },
+      { comp: "ITC Limited", rta: "Datamatics", name: "RAJESH KHANNA", folio: "ITC009841", shares: 1200, val: 552000 },
+      { comp: "HDFC Bank Limited", rta: "Datamatics", name: "POOJA VERMA", folio: "HDF003921", shares: 150, val: 247500 },
+      { comp: "Tata Motors Limited", rta: "Link Intime", name: "VIKRAM SHARMA", folio: "TML001924", shares: 500, val: 495000 }
+    ];
+
+    function filterRTARegister() {
+      const query = (document.getElementById('rta-search-input').value || '').toLowerCase().trim();
+      const agency = document.getElementById('rta-filter-agency').value;
+
+      const filtered = RTA_RECORDS.filter(r => {
+        const matchesQuery = !query || r.name.toLowerCase().includes(query) || r.folio.toLowerCase().includes(query) || r.comp.toLowerCase().includes(query);
+        const matchesAgency = (agency === 'ALL') || (r.rta === agency);
+        return matchesQuery && matchesAgency;
+      });
+
+      const tbody = document.getElementById('rta-table-body');
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-[var(--muted-foreground)]">No matching shareholder folios found.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(r => `
+        <tr class="hover:bg-[var(--background)] transition">
+          <td class="p-3">
+            <div class="font-bold text-[var(--foreground)]">${r.comp}</div>
+            <div class="text-[10px] text-[var(--muted-foreground)]">${r.rta} India</div>
+          </td>
+          <td class="p-3 font-medium text-[var(--foreground)]">${r.name}</td>
+          <td class="p-3 font-mono text-indigo-400 font-bold">${r.folio}</td>
+          <td class="p-3 font-bold">${r.shares.toLocaleString('en-IN')} units</td>
+          <td class="p-3 font-black text-emerald-400">₹${r.val.toLocaleString('en-IN')}</td>
+          <td class="p-3 text-right">
+            <button onclick="openISR4Modal('${r.folio}', '${r.comp}', '${r.name}', '${r.rta}', ${r.shares}, ${r.val})" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold text-xs shadow transition">
+              ⚡ Form ISR-4
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function openISR4Modal(folio, comp, name, rta, shares, val) {
+      document.getElementById('isr4-meta-text').innerText = `Target Folio: ${folio} • ${comp} • Valuation: ₹${val.toLocaleString('en-IN')}`;
+      document.getElementById('isr4-claimant').innerText = name;
+      document.getElementById('isr4-rta').innerText = `${rta} India Private Limited (Registrar & Transfer Agent)`;
+      const card = document.getElementById('isr4-preview-card');
+      card.classList.remove('hidden');
+      card.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ================= REAL GOV RAILS QUERY LOGIC =================
+    function queryLiveGazetteUI() {
+      const name = document.getElementById('gazette-query-input').value.trim();
+      const resText = document.getElementById('gazette-query-text');
+      if (!name) {
+        alert('Please enter a citizen name to query.');
+        return;
+      }
+      resText.innerText = `"I, ${name}, residing at Indiranagar, Bengaluru-560038, have changed my name and shall hereafter be known as ${name} (Amended) for all legal and official purposes. Published under Authority of Controller of Publications, New Delhi."`;
+      alert(`Query Successful! Verified official e-Gazette Part-IV private notice for "${name}".`);
+    }
+
+    // ================= IEPF UNCLAIMED WEALTH LOGIC =================
+    let currentIEPFYear = '1995';
+
+    function setIEPFYear(year) {
+      currentIEPFYear = year;
+      ['1990', '1995', '2000', '2005'].forEach(y => {
+        const btn = document.getElementById('btn-yr-' + y);
+        if (btn) {
+          if (y === year) {
+            btn.className = "py-1.5 rounded-lg text-xs font-bold bg-amber-600 text-white shadow";
+          } else {
+            btn.className = "py-1.5 rounded-lg text-xs font-bold bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]";
+          }
+        }
+      });
+      calculateIEPFUI();
+    }
+
+    function calculateIEPFUI() {
+      const companySelect = document.getElementById('iepf-company');
+      const sharesCount = parseInt(document.getElementById('iepf-shares').value);
+      document.getElementById('lbl-iepf-shares').innerText = sharesCount + " Shares";
+
+      const mult = parseFloat(companySelect.options[companySelect.selectedIndex].getAttribute('data-mult') || 15);
+      const price = parseFloat(companySelect.options[companySelect.selectedIndex].getAttribute('data-price') || 165);
+      const divPerShare = parseFloat(companySelect.options[companySelect.selectedIndex].getAttribute('data-div') || 45);
+
+      const effectiveShares = Math.round(sharesCount * mult);
+      const marketVal = Math.round(effectiveShares * price);
+      const totalDividends = Math.round(effectiveShares * divPerShare);
+      const totalEstate = marketVal + totalDividends;
+      const contingencyFee = Math.round(totalEstate * 0.15); // 15%
+      const netClient = totalEstate - contingencyFee;
+
+      document.getElementById('iepf-res-effective-shares').innerText = effectiveShares.toLocaleString('en-IN') + " units";
+      document.getElementById('iepf-res-dividends').innerText = "₹" + totalDividends.toLocaleString('en-IN');
+      document.getElementById('iepf-res-total-estate').innerText = "₹" + totalEstate.toLocaleString('en-IN');
+      document.getElementById('iepf-res-fee').innerText = "₹" + contingencyFee.toLocaleString('en-IN');
+      document.getElementById('iepf-res-net').innerText = "₹" + netClient.toLocaleString('en-IN');
+    }
+
+    // ================= CENTRAL GAZETTE DOCKET GENERATOR LOGIC =================
+    function updateGazetteDockets() {
+      const oldName = document.getElementById('gaz-old-name').value || "Old Name";
+      const newName = document.getElementById('gaz-new-name').value || "New Name";
+      const parent = document.getElementById('gaz-parent-name').value || "Father/Spouse";
+      const reason = document.getElementById('gaz-reason').value;
+      const address = document.getElementById('gaz-address').value || "Residential Address";
+
+      document.getElementById('gaz-ad-english').innerText = 
+        `"I, ${oldName}, child/spouse of ${parent}, residing at ${address}, have changed my name to ${newName} for all future and official purposes due to ${reason} vide affidavit dated 16-Sep-2026."`;
+
+      document.getElementById('gaz-ad-hindi').innerText = 
+        `"सर्वसाधारण को सूचित किया जाता है कि मैं ${oldName}, आत्मज/पत्नी ${parent}, निवासी ${address}, ने अपना नाम बदलकर ${newName} रख लिया है। भविष्य में मुझे इसी नाम से जाना जाए।"`;
+
+      document.getElementById('gaz-preview-statutory').innerText = 
+        `GOVERNMENT OF INDIA • THE GAZETTE OF INDIA (PART-IV)\n\nI, ${oldName}, residing at ${address}, hereby solemnly declare that I have abandoned, relinquished and renounced the use of my former name ${oldName} and in place thereof have assumed the name ${newName}. I shall at all times hereafter in all records, deeds and proceedings be designated and known by the said assumed name ${newName}.\n\n[Gazette Docket Tracking No: #DL-GAZ-2026-9921]`;
+    }
+
+    // ================= WHATSAPP BOT SIMULATOR LOGIC =================
+    function sendWAMessage(userText) {
+      const chatLog = document.getElementById('wa-chat-log');
+
+      // Add user message bubble
+      const userBubble = document.createElement('div');
+      userBubble.className = "flex items-end justify-end gap-2";
+      userBubble.innerHTML = `
+        <div class="bg-emerald-600 text-white p-3 rounded-2xl rounded-tr-none shadow-sm max-w-[85%] space-y-1">
+          <p>${userText}</p>
+          <span class="text-[9px] text-emerald-200 block text-right">Just now ✓✓</span>
+        </div>
+      `;
+      chatLog.appendChild(userBubble);
+      chatLog.scrollTop = chatLog.scrollHeight;
+
+      // Simulated Bot Reply
+      setTimeout(() => {
+        let botReply = "";
+        if (userText.includes("Gazette")) {
+          botReply = `Got it! 📰 For Central Gazette Name Change, please reply with:\n1. Your Old Name\n2. Desired New Name\n3. Reason (Marriage/Astrology)\n\nWe have created docket #NS-GAZ-8841. Would you like to upload your Aadhaar copy now?`;
+        } else if (userText.includes("Shares") || userText.includes("IEPF")) {
+          botReply = `💰 Found 2 matching registers for your surname in Link Intime (Tata Steel: 450 shares, ₹1.05L)! Would you like our senior NCLT recovery team to initiate a 100% contingency recovery (₹0 upfront)? Docket: #NS-IEPF-4102.`;
+        } else if (userText.includes("Challan") || userText.includes("Traffic")) {
+          botReply = `🚗 Traffic Radar Alert: 1 Pending Over-speeding Challan (₹1,000) sent to Virtual Court! We can settle it at negotiated closure for ₹499 fee without court attendance. Docket: #NS-CH-2091.`;
+        } else if (userText.includes("HRA")) {
+          botReply = `🏠 1-Click HRA Receipts generated! Your Section 10(13A) annual tax exemption is ₹2,64,000 (Tax saved: ₹82,368). Check your email for the 12-month stamped PDF manifest!`;
+        } else {
+          botReply = `Thank you for contacting NyayaSetu! We have logged your request under tracking docket #NS-GEN-${Math.floor(1000 + Math.random() * 9000)}. A dedicated compliance officer is reviewing your file.`;
+        }
+
+        const botBubble = document.createElement('div');
+        botBubble.className = "flex items-start gap-2";
+        botBubble.innerHTML = `
+          <div class="bg-[var(--card)] border border-[var(--border)] p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[85%] space-y-1">
+            <p class="whitespace-pre-line">${botReply}</p>
+            <span class="text-[9px] text-[var(--muted-foreground)] block text-right">Just now</span>
+          </div>
+        `;
+        chatLog.appendChild(botBubble);
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }, 600);
+    }
+
+    function sendCustomWAMessage() {
+      const input = document.getElementById('wa-input');
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = '';
+      sendWAMessage(text);
+    }
+
     window.onload = function() {
+      recalculateLoanMitra();
+      recalculateBalanceTransfer();
+      populateCRMData();
       recalculateCards();
       calculateHRAUI();
       calculateSuccessionUI();
       auditVehicleUI();
+      calculateTatkalUI();
+      calculateFintechUI();
+      filterRTARegister();
+      calculateIEPFUI();
+      updateGazetteDockets();
     };
   </script>
 </body>

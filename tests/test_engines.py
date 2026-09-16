@@ -15,6 +15,7 @@ from nyayasetu.engines.corporate_action_engine import CorporateActionEngine
 from nyayasetu.engines.succession_noc_engine import SuccessionNOCEngine
 from nyayasetu.engines.iepf_recovery import IEPFTransmissionEngine, UnclaimedAssetFolio
 from nyayasetu.engines.free_tools_engine import HRARentReceiptEngine, InheritanceShareCalculator, VehicleComplianceRadar
+from nyayasetu.engines.loan_mitra_engine import LoanMitraMatchEngine, BalanceTransferEngine, LoanMitraCRM
 
 def test_hra_rent_receipt_and_exemption():
     calc = HRARentReceiptEngine.calculate_hra_exemption(
@@ -127,6 +128,67 @@ def test_succession_noc():
     )
     assert "FORM-C" in noc["document_title"].upper()
 
+def test_loan_mitra_matching():
+    res = LoanMitraMatchEngine.match_loans(
+        loan_type="personal_loan",
+        requested_amount=500000.0,
+        monthly_income=75000.0,
+        employment_type="salaried",
+        tenure_months=36,
+        existing_monthly_emi=8000.0,
+        credit_score=760,
+        sort_by="compatibility"
+    )
+    assert len(res["offers"]) > 0
+    top_offer = res["offers"][0]
+    assert "apr_pct" in top_offer
+    assert "monthly_emi_inr" in top_offer
+    assert "why_appears" in top_offer
+    assert len(top_offer["why_appears"]) >= 3
+    assert top_offer["compatibility_score"] > 60.0
+
+    # Test sorting by lowest APR
+    apr_res = LoanMitraMatchEngine.match_loans(
+        loan_type="personal_loan",
+        requested_amount=500000.0,
+        monthly_income=75000.0,
+        employment_type="salaried",
+        tenure_months=36,
+        existing_monthly_emi=8000.0,
+        credit_score=760,
+        sort_by="lowest_apr"
+    )
+    aprs = [o["apr_pct"] for o in apr_res["offers"]]
+    assert aprs == sorted(aprs)
+    print(f"Loan Mitra Matching test passed! {len(res['offers'])} compliant offers evaluated. Top offer APR: {top_offer['apr_pct']}%")
+
+def test_loan_mitra_balance_transfer():
+    bt = BalanceTransferEngine.calculate_balance_transfer(
+        outstanding_principal_inr=800000.0,
+        current_interest_rate_pct=14.5,
+        remaining_tenure_months=48,
+        new_interest_rate_pct=10.5,
+        new_processing_fee_pct=1.0,
+        existing_foreclosure_penalty_pct=0.0,
+        monthly_prepay_booster_inr=2000.0
+    )
+    summary = bt["savings_summary"]
+    assert summary["monthly_emi_reduction_inr"] > 1000.0
+    assert summary["gross_interest_saved_inr"] > summary["total_switching_cost_inr"]
+    assert summary["net_lifetime_savings_inr"] > 0.0
+    assert summary["break_even_period_months"] < 12.0
+    assert bt["prepayment_booster"]["tenure_reduction_months"] > 0
+    print(f"Loan Mitra Balance Transfer test passed! Net Lifetime Savings: Rs. {summary['net_lifetime_savings_inr']:,.2f}, Break-Even: {summary['break_even_period_months']} months")
+
+def test_loan_mitra_crm():
+    crm = LoanMitraCRM.get_lead_pipeline_summary()
+    assert crm["total_leads_count"] >= 4
+    assert crm["total_pipeline_volume_inr"] > 5000000.0
+    assert len(crm["leads"]) >= 4
+    health = LoanMitraCRM.get_verification_health()
+    assert len(health) >= 5
+    print(f"Loan Mitra CRM & Verification Health passed! Pipeline Volume: Rs. {crm['total_pipeline_volume_inr']:,.2f}")
+
 if __name__ == "__main__":
     test_credit_card_personalized_ranking()
     test_credit_card_upgrade_calculator()
@@ -136,4 +198,8 @@ if __name__ == "__main__":
     test_hra_rent_receipt_and_exemption()
     test_hindu_succession_share_calculator()
     test_vehicle_compliance_radar()
-    print("\nALL FREE VIRAL TOOLS, CARDSMART & NYAYASETU ENGINE TESTS PASSED SUCCESSFULLY!")
+    test_loan_mitra_matching()
+    test_loan_mitra_balance_transfer()
+    test_loan_mitra_crm()
+    print("\nALL ENGINES (LOAN MITRA, CARDSMART, NYAYASETU, FREE VIRAL TOOLS) PASSED AUTOMATED TESTS SUCCESSFULLY!")
+

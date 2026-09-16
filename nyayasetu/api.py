@@ -23,6 +23,12 @@ from nyayasetu.engines.gazette_engine import GazetteEngine
 from nyayasetu.engines.corporate_action_engine import CorporateActionEngine
 from nyayasetu.engines.succession_noc_engine import SuccessionNOCEngine
 from nyayasetu.engines.revenue_optimizer import RevenueOptimizationEngine
+from nyayasetu.engines.loan_mitra_engine import (
+    LoanMitraRegistry,
+    LoanMitraMatchEngine,
+    BalanceTransferEngine,
+    LoanMitraCRM
+)
 
 from nyayasetu.integrations.gazette_live_client import CentralGazetteLiveClient
 from nyayasetu.integrations.iepf_mca_client import IEPFUnclaimedAssetClient, MCACryptoEngine
@@ -154,6 +160,72 @@ def recommend_cards(payload: MonthlySpendsPayload):
 def get_tatkal_pricing(service_type: str = "GAZETTE", base_price: float = 3499.0, rush_days: int = 7):
     return RevenueOptimizationEngine.calculate_tatkal_pricing(service_type, base_price, rush_days)
 
+# ----------------- LOAN MITRA (RBI 2025 COMPLIANT MARKETPLACE) -----------------
+class LoanMatchRequest(BaseModel):
+    loan_type: str = Field("personal_loan", description="'personal_loan', 'home_loan', 'business_loan', 'loan_against_property'")
+    requested_amount: float = Field(500000.0, ge=10000)
+    monthly_income: float = Field(60000.0, ge=10000)
+    employment_type: str = Field("salaried", description="'salaried' or 'self_employed'")
+    tenure_months: int = Field(36, ge=6, le=360)
+    existing_monthly_emi: float = Field(0.0, ge=0)
+    credit_score: int = Field(750, ge=300, le=900)
+    sort_by: str = Field("compatibility", description="'compatibility', 'lowest_apr', 'lowest_emi', 'lowest_fee'")
+
+@app.post("/api/v1/loans/match")
+def match_loans(req: LoanMatchRequest):
+    """
+    Evaluates applicant profile across all regulated lenders and returns unbiased comparative cards
+    with complete Key Fact Statement (KFS) disclosures, APR, and 'Why this appears' compliance details.
+    """
+    return LoanMitraMatchEngine.match_loans(
+        loan_type=req.loan_type,
+        requested_amount=req.requested_amount,
+        monthly_income=req.monthly_income,
+        employment_type=req.employment_type,
+        tenure_months=req.tenure_months,
+        existing_monthly_emi=req.existing_monthly_emi,
+        credit_score=req.credit_score,
+        sort_by=req.sort_by
+    )
+
+class BalanceTransferRequest(BaseModel):
+    outstanding_principal_inr: float = Field(800000.0, ge=10000)
+    current_interest_rate_pct: float = Field(14.5, ge=5.0, le=45.0)
+    remaining_tenure_months: int = Field(48, ge=6, le=360)
+    new_interest_rate_pct: Optional[float] = None
+    new_processing_fee_pct: float = Field(1.0, ge=0.0, le=5.0)
+    existing_foreclosure_penalty_pct: float = Field(0.0, ge=0.0, le=5.0)
+    monthly_prepay_booster_inr: float = Field(0.0, ge=0.0)
+
+@app.post("/api/v1/loans/balance-transfer-optimize")
+def optimize_balance_transfer(req: BalanceTransferRequest):
+    """
+    Calculates existing vs refinancing rate savings, switching fees, and exact break-even timeline in months.
+    """
+    return BalanceTransferEngine.calculate_balance_transfer(
+        outstanding_principal_inr=req.outstanding_principal_inr,
+        current_interest_rate_pct=req.current_interest_rate_pct,
+        remaining_tenure_months=req.remaining_tenure_months,
+        new_interest_rate_pct=req.new_interest_rate_pct,
+        new_processing_fee_pct=req.new_processing_fee_pct,
+        existing_foreclosure_penalty_pct=req.existing_foreclosure_penalty_pct,
+        monthly_prepay_booster_inr=req.monthly_prepay_booster_inr
+    )
+
+@app.get("/api/v1/loans/products")
+def list_loan_products():
+    """Returns verified catalog of registered lenders, products, and 7-day compliance verification audits."""
+    return {
+        "framework": "RBI 2025 Digital Lending Web-Aggregation Framework",
+        "registered_lenders": LoanMitraRegistry.LENDERS,
+        "verification_audit": LoanMitraCRM.get_verification_health()
+    }
+
+@app.get("/api/v1/loans/crm-pipeline")
+def get_loan_crm_pipeline():
+    """Returns pipeline metrics: Leads, Approved Sanctions, Disbursals, and Aggregator Commission payouts."""
+    return LoanMitraCRM.get_lead_pipeline_summary()
+
 # ----------------- CHANNELS -----------------
 class WhatsAppIncomingPayload(BaseModel):
     From: str
@@ -169,11 +241,12 @@ def handle_whatsapp(payload: WhatsAppIncomingPayload):
 def health_check():
     return {
         "status": "healthy",
-        "platform": "NyayaSetu & CardSmart Core API",
-        "version": "1.6.0",
-        "free_consumer_utilities": [
-            "HRA Rent Receipt & Tax Exemption Generator (Section 10(13A))",
-            "Hindu Succession Legal Heir Share Calculator (Class-I)",
-            "Multi-State Vehicle Compliance & Virtual Court Challan Radar"
+        "platform": "NyayaSetu, CardSmart & Loan Mitra Unified Engine",
+        "version": "1.7.0",
+        "core_modules": [
+            "Loan Mitra: RBI 2025 Digital Lending Multi-Lender Aggregator & Balance Transfer Optimizer",
+            "CardSmart: Credit Card Personalized ROI & Upgrade Marketplace",
+            "NyayaSetu: Central Gazette, MCA IEPF Recovery, RTO Registry, Relinquishment Deeds",
+            "Free Viral Utilities: HRA Rent Exemption (10(13A)), Hindu Succession, Vehicle Radar"
         ]
     }
