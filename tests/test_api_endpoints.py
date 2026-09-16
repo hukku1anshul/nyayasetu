@@ -281,7 +281,77 @@ def run_tests():
     assert code == 200 and res.get("success") is True, f"Tax Rectification Failed: {res}"
     print(f"PASS: /api/v1/tax/draft-rectification-154 -> Docket: {res['docket_number']}, AY: {res['assessment_year']}")
 
-    print("\nSUCCESS: ALL 26 REST API ENDPOINTS VERIFIED & FULLY FUNCTIONAL!")
+    # 27. Test MSME Samadhaan Delayed Payment Petition
+    code, res = post("/api/v1/legal/draft-msme-samadhaan", {
+        "supplier_enterprise_name": "Apex Precision Components LLP",
+        "supplier_udyam_reg": "UDYAM-MH-01-0029102",
+        "supplier_address": "Bhosari MIDC, Pune",
+        "buyer_company_name": "Sterling Heavy Infra Pvt Ltd",
+        "buyer_gstin": "27AAACS1234F1Z8",
+        "buyer_address": "Nariman Point, Mumbai",
+        "invoice_number": "INV/2026/089",
+        "invoice_date": "2026-05-15",
+        "principal_amount_inr": 850000.0,
+        "agreed_credit_days": 30
+    })
+    assert code == 200 and res.get("success") is True, f"MSME Samadhaan Failed: {res}"
+    print(f"PASS: /api/v1/legal/draft-msme-samadhaan -> Docket: {res['docket_number']}, Total Claim: Rs. {res['financial_breakdown']['total_claimable_inr']:,.2f}")
+
+    # 28. Test Statutory Will & Testament
+    code, res = post("/api/v1/legal/draft-statutory-will", {
+        "testator_name": "Ramesh Chandra Sharma",
+        "testator_age": 62,
+        "testator_parent_or_spouse": "Late Harish Chandra Sharma",
+        "testator_address": "Vasant Vihar, New Delhi",
+        "executor_name": "Anil Sharma",
+        "executor_address": "Sector 15, Noida",
+        "bequests": [
+            {"asset_description": "Vasant Vihar Flat", "beneficiary_name": "Sunita Sharma", "relationship": "Spouse", "share_percentage": "100%"}
+        ]
+    })
+    assert code == 200 and res.get("success") is True, f"Statutory Will Failed: {res}"
+    print(f"PASS: /api/v1/legal/draft-statutory-will -> Docket: {res['docket_number']}")
+
+    # 29. Test Gift Deed & Section 56(2)(x) Tax Exemption
+    code, res = post("/api/v1/legal/generate-gift-deed", {
+        "donor_name": "Suresh K. Patel",
+        "donor_pan": "ABCPP1234D",
+        "donor_address": "Navrangpura, Ahmedabad",
+        "donee_name": "Hardik S. Patel",
+        "donee_pan": "ABCPP5678E",
+        "donee_address": "Prahlad Nagar, Ahmedabad",
+        "relationship": "LINEAL_DESCENDANT",
+        "asset_description": "Rs 15,00,000 RTGS Transfer",
+        "estimated_value_inr": 1500000.0
+    })
+    assert code == 200 and res.get("is_tax_exempt_relative") is True, f"Gift Deed Failed: {res}"
+    print(f"PASS: /api/v1/legal/generate-gift-deed -> Docket: {res['docket_number']}, Tax: Rs. {res['tax_liability_donee_inr']}")
+
+    # 30. Test GST Revocation of Cancellation (REG-21)
+    code, res = post("/api/v1/tax/draft-gst-revocation", {
+        "taxpayer_trade_name": "Mahalaxmi Traders",
+        "gstin": "24AABCM9102K1ZT",
+        "principal_place_address": "Ring Road, Surat",
+        "cancellation_order_number": "ZA240826019201Z",
+        "cancellation_order_date": "2026-08-10"
+    })
+    assert code == 200 and res.get("success") is True, f"GST Revocation Failed: {res}"
+    print(f"PASS: /api/v1/tax/draft-gst-revocation -> Docket: {res['docket_number']}")
+
+    # 31. Test Section 143A NI Act Interim Compensation
+    code, res = post("/api/v1/legal/calculate-143a-interim", {
+        "complainant_name": "Vikram Aditya",
+        "accused_name": "Rajesh Singhania",
+        "court_name": "Metropolitan Magistrate Court, Esplanade, Mumbai",
+        "case_cc_number": "CC/1402/2026",
+        "cheque_number": "891024",
+        "cheque_amount_inr": 1200000.0,
+        "cheque_date": "2026-06-20"
+    })
+    assert code == 200 and res.get("interim_compensation_inr") == 240000.0, f"Section 143A Failed: {res}"
+    print(f"PASS: /api/v1/legal/calculate-143a-interim -> 20% Relief: Rs. {res['interim_compensation_inr']:,.2f}")
+
+    print("\nSUCCESS: ALL 31 REST API ENDPOINTS VERIFIED & FULLY FUNCTIONAL!")
 
 
 

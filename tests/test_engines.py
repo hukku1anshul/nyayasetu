@@ -29,6 +29,13 @@ from nyayasetu.engines.consumer_rti_cyber_engine import (
     AffidavitEngine,
     TaxRectificationEngine
 )
+from nyayasetu.engines.online_vakil_ca_engine import (
+    MSMESamadhaanEngine,
+    StatutoryWillEngine,
+    GiftDeedEngine,
+    GSTRevocationEngine,
+    InterimCompensation143AEngine
+)
 from nyayasetu.engines.legal_tax_engine import (
     LegalNoticeEngine,
     AgreementRiskEngine,
@@ -484,6 +491,85 @@ def test_tax_rectification_154():
     assert res["assessment_year"] == "2025-26"
     print(f"Tax Rectification 154 passed! Docket: {res['docket_number']}")
 
+def test_online_vakil_ca_suite():
+    # 1. MSME Samadhaan Engine
+    msme = MSMESamadhaanEngine.draft_msme_petition(
+        supplier_enterprise_name="Apex Precision Components LLP",
+        supplier_udyam_reg="UDYAM-MH-01-0029102",
+        supplier_address="Bhosari MIDC, Pune",
+        buyer_company_name="Sterling Heavy Infra Pvt Ltd",
+        buyer_gstin="27AAACS1234F1Z8",
+        buyer_address="Nariman Point, Mumbai",
+        invoice_number="INV/2026/089",
+        invoice_date="2026-05-15",
+        principal_amount_inr=850000.0
+    )
+    assert msme["success"] is True
+    assert msme["financial_breakdown"]["statutory_rate_annual_pct"] == 20.25  # 3x 6.75%
+    assert msme["financial_breakdown"]["interest_amount_inr"] > 0
+    print(f"MSME Samadhaan Engine passed! Rate: {msme['financial_breakdown']['statutory_rate_annual_pct']}% p.a., Total: Rs. {msme['financial_breakdown']['total_claimable_inr']:,.2f}")
+
+    # 2. Statutory Will Engine
+    will = StatutoryWillEngine.draft_will(
+        testator_name="Ramesh Chandra Sharma",
+        testator_age=62,
+        testator_parent_or_spouse="Late Shri Harish Chandra Sharma",
+        testator_address="Flat 402, Shanti Kunj, Vasant Vihar, New Delhi",
+        executor_name="Anil Sharma",
+        executor_address="Sector 15, Noida",
+        bequests=[
+            {"asset_description": "Residential Flat in Vasant Vihar, New Delhi", "beneficiary_name": "Sunita Sharma", "relationship": "Spouse", "share_percentage": "100%"}
+        ]
+    )
+    assert will["success"] is True
+    assert "LAST WILL AND TESTAMENT" in will["will_text"]
+    assert "SECTION 63(c)" in will["will_text"]
+    print(f"Statutory Will Engine passed! Docket: {will['docket_number']}")
+
+    # 3. Gift Deed & Section 56(2)(x) Tax Audit
+    gift = GiftDeedEngine.audit_and_generate_gift_deed(
+        donor_name="Suresh K. Patel",
+        donor_pan="ABCPP1234D",
+        donor_address="Navrangpura, Ahmedabad",
+        donee_name="Hardik S. Patel",
+        donee_pan="ABCPP5678E",
+        donee_address="Prahlad Nagar, Ahmedabad",
+        relationship="LINEAL_DESCENDANT",
+        asset_description="Rs 15,00,000 via RTGS",
+        estimated_value_inr=1500000.0
+    )
+    assert gift["success"] is True
+    assert gift["is_tax_exempt_relative"] is True
+    assert gift["tax_liability_donee_inr"] == 0.0
+    print(f"Gift Deed & Sec 56(2)(x) Safe Harbor passed! Tax Liability: Rs. {gift['tax_liability_donee_inr']}")
+
+    # 4. GST Revocation Engine
+    gst_rev = GSTRevocationEngine.draft_revocation_application(
+        taxpayer_trade_name="Mahalaxmi Traders",
+        gstin="24AABCM9102K1ZT",
+        principal_place_address="Ring Road, Surat",
+        cancellation_order_number="ZA240826019201Z",
+        cancellation_order_date="2026-08-10"
+    )
+    assert gst_rev["success"] is True
+    assert "FORM GST REG-21" in gst_rev["application_text"]
+    print(f"GST Revocation (REG-21) passed! Docket: {gst_rev['docket_number']}")
+
+    # 5. Section 143A NI Act Interim Compensation
+    interim = InterimCompensation143AEngine.calculate_and_draft_143a(
+        complainant_name="Vikram Aditya",
+        accused_name="Rajesh Singhania",
+        court_name="Metropolitan Magistrate Court, Esplanade, Mumbai",
+        case_cc_number="CC/1402/2026",
+        cheque_number="891024",
+        cheque_amount_inr=1200000.0,
+        cheque_date="2026-06-20"
+    )
+    assert interim["success"] is True
+    assert interim["interim_compensation_inr"] == 240000.0  # Exactly 20% of 12L
+    assert "SECTION 143A" in interim["magistrate_application_text"]
+    print(f"Section 143A Interim Compensation passed! 20% Relief: Rs. {interim['interim_compensation_inr']:,.2f}")
+
 if __name__ == "__main__":
     test_credit_card_personalized_ranking()
     test_credit_card_upgrade_calculator()
@@ -510,4 +596,6 @@ if __name__ == "__main__":
     test_cyber_crime_complaint()
     test_affidavit_generation()
     test_tax_rectification_154()
-    print("\nALL 25+ ENGINES (LOAN MITRA, CARDSMART, VAKIL & CA INDIA, 5 MOATS, 5 EVERYDAY TOOLS) PASSED AUTOMATED TESTS SUCCESSFULLY!")
+    test_online_vakil_ca_suite()
+    print("\nALL 30+ ENGINES (LOAN MITRA, CARDSMART, VAKIL & CA INDIA, 5 MOATS, 10 ONLINE SUITE TOOLS) PASSED AUTOMATED TESTS SUCCESSFULLY!")
+

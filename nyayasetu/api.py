@@ -42,6 +42,13 @@ from nyayasetu.engines.consumer_rti_cyber_engine import (
     AffidavitEngine,
     TaxRectificationEngine
 )
+from nyayasetu.engines.online_vakil_ca_engine import (
+    MSMESamadhaanEngine,
+    StatutoryWillEngine,
+    GiftDeedEngine,
+    GSTRevocationEngine,
+    InterimCompensation143AEngine
+)
 
 from nyayasetu.engines.legal_tax_engine import (
     LegalNoticeEngine,
@@ -747,6 +754,143 @@ def draft_tax_rectification(req: TaxRectificationRequest):
         claimed_refund_inr=req.claimed_refund_inr,
         error_details=req.error_details
     )
+
+
+# ----------------- 5 ADDITIONAL ONLINE LEGAL & CA SUITE ENDPOINTS -----------------
+
+class MSMESamadhaanRequest(BaseModel):
+    supplier_enterprise_name: str = "Apex Precision Components LLP"
+    supplier_udyam_reg: str = "UDYAM-MH-01-0029102"
+    supplier_address: str = "Bhosari MIDC, Pune, Maharashtra"
+    buyer_company_name: str = "Sterling Heavy Infra Pvt Ltd"
+    buyer_gstin: str = "27AAACS1234F1Z8"
+    buyer_address: str = "Nariman Point, Mumbai, Maharashtra"
+    invoice_number: str = "INV/2026/089"
+    invoice_date: str = "2026-05-15"
+    principal_amount_inr: float = 850000.0
+    agreed_credit_days: int = 30
+    goods_or_services_desc: str = "Supply of precision CNC machined components"
+
+class StatutoryWillRequest(BaseModel):
+    testator_name: str = "Ramesh Chandra Sharma"
+    testator_age: int = 62
+    testator_parent_or_spouse: str = "Late Shri Harish Chandra Sharma"
+    testator_address: str = "Flat 402, Shanti Kunj, Vasant Vihar, New Delhi"
+    executor_name: str = "Anil Sharma"
+    executor_address: str = "Sector 15, Noida, Uttar Pradesh"
+    bequests: List[Dict[str, str]] = [
+        {"asset_description": "Residential Flat in Vasant Vihar, New Delhi", "beneficiary_name": "Sunita Sharma", "relationship": "Spouse", "share_percentage": "100%"},
+        {"asset_description": "Fixed Deposits with SBI (Rs 25,00,000)", "beneficiary_name": "Anil Sharma & Priya Sharma", "relationship": "Children", "share_percentage": "50% each"}
+    ]
+    witness_1_name: str = "Dr. Ashok Mehta"
+    witness_2_name: str = "Advocate Rajesh Khanna"
+
+class GiftDeedRequest(BaseModel):
+    donor_name: str = "Suresh K. Patel"
+    donor_pan: str = "ABCPP1234D"
+    donor_address: str = "Navrangpura, Ahmedabad, Gujarat"
+    donee_name: str = "Hardik S. Patel"
+    donee_pan: str = "ABCPP5678E"
+    donee_address: str = "Prahlad Nagar, Ahmedabad, Gujarat"
+    relationship: str = "LINEAL_DESCENDANT"  # Son
+    gift_type: str = "MOVABLE_CASH_OR_SECURITIES"
+    asset_description: str = "Rs 15,00,000 transferred via RTGS / Bank Transfer from HDFC Bank"
+    estimated_value_inr: float = 1500000.0
+
+class GSTRevocationRequest(BaseModel):
+    taxpayer_trade_name: str = "Mahalaxmi Traders"
+    gstin: str = "24AABCM9102K1ZT"
+    principal_place_address: str = "Ring Road, Surat, Gujarat"
+    cancellation_order_number: str = "ZA240826019201Z"
+    cancellation_order_date: str = "2026-08-10"
+    reason_category: str = "NON_FILING_OVERCOME"
+    justification_details: str = "Non-filing due to prolonged hospitalization of proprietor; all pending GSTR-3B/1 returns filed with late fees."
+
+class Interim143ARequest(BaseModel):
+    complainant_name: str = "Vikram Aditya"
+    accused_name: str = "Rajesh Singhania"
+    court_name: str = "Metropolitan Magistrate Court, Esplanade, Mumbai"
+    case_cc_number: str = "CC/1402/2026"
+    cheque_number: str = "891024"
+    cheque_amount_inr: float = 1200000.0
+    cheque_date: str = "2026-06-20"
+    plea_date: str = "2026-09-01"
+
+@app.post("/api/v1/legal/draft-msme-samadhaan")
+def draft_msme_samadhaan(req: MSMESamadhaanRequest):
+    """Calculates 3x RBI compound bank rate interest and drafts Section 18 MSMED conciliation petition."""
+    return MSMESamadhaanEngine.draft_msme_petition(
+        supplier_enterprise_name=req.supplier_enterprise_name,
+        supplier_udyam_reg=req.supplier_udyam_reg,
+        supplier_address=req.supplier_address,
+        buyer_company_name=req.buyer_company_name,
+        buyer_gstin=req.buyer_gstin,
+        buyer_address=req.buyer_address,
+        invoice_number=req.invoice_number,
+        invoice_date=req.invoice_date,
+        principal_amount_inr=req.principal_amount_inr,
+        agreed_credit_days=req.agreed_credit_days,
+        goods_or_services_desc=req.goods_or_services_desc
+    )
+
+@app.post("/api/v1/legal/draft-statutory-will")
+def draft_statutory_will(req: StatutoryWillRequest):
+    """Drafts court-admissible simple testamentary will with 2-witness declaration under Indian Succession Act 1925."""
+    return StatutoryWillEngine.draft_will(
+        testator_name=req.testator_name,
+        testator_age=req.testator_age,
+        testator_parent_or_spouse=req.testator_parent_or_spouse,
+        testator_address=req.testator_address,
+        executor_name=req.executor_name,
+        executor_address=req.executor_address,
+        bequests=req.bequests,
+        witness_1_name=req.witness_1_name,
+        witness_2_name=req.witness_2_name
+    )
+
+@app.post("/api/v1/legal/generate-gift-deed")
+def generate_gift_deed(req: GiftDeedRequest):
+    """Audits Section 56(2)(x) Relative tax exemption and generates court-admissible Gift Deed."""
+    return GiftDeedEngine.audit_and_generate_gift_deed(
+        donor_name=req.donor_name,
+        donor_pan=req.donor_pan,
+        donor_address=req.donor_address,
+        donee_name=req.donee_name,
+        donee_pan=req.donee_pan,
+        donee_address=req.donee_address,
+        relationship=req.relationship,
+        gift_type=req.gift_type,
+        asset_description=req.asset_description,
+        estimated_value_inr=req.estimated_value_inr
+    )
+
+@app.post("/api/v1/tax/draft-gst-revocation")
+def draft_gst_revocation(req: GSTRevocationRequest):
+    """Drafts Form GST REG-21 Application for Revocation of Cancellation under Rule 23 CGST Rules."""
+    return GSTRevocationEngine.draft_revocation_application(
+        taxpayer_trade_name=req.taxpayer_trade_name,
+        gstin=req.gstin,
+        principal_place_address=req.principal_place_address,
+        cancellation_order_number=req.cancellation_order_number,
+        cancellation_order_date=req.cancellation_order_date,
+        reason_category=req.reason_category,
+        justification_details=req.justification_details
+    )
+
+@app.post("/api/v1/legal/calculate-143a-interim")
+def calculate_143a_interim(req: Interim143ARequest):
+    """Calculates statutory 20% interim compensation and drafts Magistrate Court application u/s 143A NI Act."""
+    return InterimCompensation143AEngine.calculate_and_draft_143a(
+        complainant_name=req.complainant_name,
+        accused_name=req.accused_name,
+        court_name=req.court_name,
+        case_cc_number=req.case_cc_number,
+        cheque_number=req.cheque_number,
+        cheque_amount_inr=req.cheque_amount_inr,
+        cheque_date=req.cheque_date,
+        plea_date=req.plea_date
+    )
+
 
 
 # ----------------- PERSISTENT USER HISTORY & DOCKET AUDIT -----------------

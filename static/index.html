@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>NyayaSetu, Loan Mitra & CardSmart - Unified FinTech & LegalTech Platform</title>
   
   <!-- Fonts -->
@@ -127,7 +127,23 @@
         font-size: 0.75rem !important;
       }
     }
-  </style>
+  
+    /* Mobile-First Hardware & Touch Ergonomics */
+    @media (max-width: 640px) {
+      input, select, textarea {
+        font-size: 16px !important; /* Prevents iOS Safari unwanted auto-zoom on input focus */
+      }
+      .mobile-safe-pb {
+        padding-bottom: calc(6.5rem + env(safe-area-inset-bottom, 0px)) !important;
+      }
+      .mobile-tap-target {
+        min-height: 44px;
+      }
+    }
+    .safe-area-bottom {
+      padding-bottom: env(safe-area-inset-bottom, 0.75rem);
+    }
+</style>
 </head>
 <body class="bg-[var(--background)] text-[var(--foreground)] antialiased font-sans min-h-screen overflow-x-hidden flex selection:bg-blue-600 selection:text-white">
 
@@ -196,7 +212,7 @@
           <span class="text-base">&#9878;&#65039;</span>
           <span>AI Vakil & CA India</span>
         </div>
-        <span class="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20 font-bold">15 Templates</span>
+        <span class="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/20 font-bold">20 Templates</span>
       </a>
 
       <div class="sidebar-category">Public Data Rails</div>
@@ -338,7 +354,7 @@
     </header>
 
     <!-- Main Content Stage -->
-    <main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto space-y-6 overflow-x-hidden">
+    <main class="flex-1 p-3 sm:p-6 lg:p-8 pb-32 lg:pb-12 max-w-7xl w-full mx-auto space-y-6 overflow-x-hidden mobile-safe-pb">
       <!-- ================= TAB: LOAN MITRA (RBI 2025 COMPLIANT MARKETPLACE) ================= -->
     <section id="tab-loanmitra" class="tab-content space-y-6">
       
@@ -2102,7 +2118,7 @@
                 &#8377;0 Public Rails Drafter
               </span>
               <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                15 Statutory Documents
+                20 Statutory Documents
               </span>
             </div>
             <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
@@ -2130,7 +2146,7 @@
             <input type="text"
                    id="template-search-input"
                    oninput="filterTemplatesLive(this.value)"
-                   placeholder="Search 15+ statutory templates (e.g. 'cheque bounce', 'rental lease', 'cyber', 'rti', '154', 'epfo')..."
+                   placeholder="Search 20+ statutory templates (e.g. 'cheque bounce', 'rental lease', 'cyber', 'rti', '154', 'epfo')..."
                    class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--card-surface)] border border-[var(--border)] focus:border-purple-500 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none transition shadow-inner">
             <button onclick="clearTemplateSearch()" id="btn-clear-search" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-white text-xs">
               &#10005; Clear
@@ -2140,16 +2156,16 @@
           <!-- Filter Pills -->
           <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 text-xs">
             <button onclick="filterTemplateCategory('all')" id="pill-filter-all" class="clio-filter-pill px-3.5 py-1.5 rounded-xl bg-purple-600 text-white font-bold transition shadow-xs">
-              All Templates (15)
+              All Templates (20)
             </button>
             <button onclick="filterTemplateCategory('grievance')" id="pill-filter-grievance" class="clio-filter-pill px-3.5 py-1.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-slate-400 hover:text-white font-semibold transition">
-              &#127963;&#65039; Citizen Grievances (4)
+              &#127963;&#65039; Citizen Grievances (5)
             </button>
             <button onclick="filterTemplateCategory('contracts')" id="pill-filter-contracts" class="clio-filter-pill px-3.5 py-1.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-slate-400 hover:text-white font-semibold transition">
-              &#128737;&#65039; Contracts &amp; Deeds (4)
+              &#128737;&#65039; Contracts &amp; Deeds (7)
             </button>
             <button onclick="filterTemplateCategory('tax')" id="pill-filter-tax" class="clio-filter-pill px-3.5 py-1.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-slate-400 hover:text-white font-semibold transition">
-              &#128184; Taxation &amp; CA (4)
+              &#128184; Taxation &amp; CA (5)
             </button>
             <button onclick="filterTemplateCategory('moats')" id="pill-filter-moats" class="clio-filter-pill px-3.5 py-1.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-slate-400 hover:text-white font-semibold transition">
               &#128203; Employment &amp; Banking (3)
@@ -2821,7 +2837,177 @@
 
         </div>
     
-      </div>
+      
+        <!-- Card: msme -->
+        <div class="clio-template-card group bg-[var(--card)] hover:bg-[var(--card-hover)] border border-[var(--border)] hover:border-purple-500/50 rounded-2xl p-5 flex flex-col justify-between transition-all duration-200 shadow-sm hover:shadow-lg relative"
+             data-category="contracts"
+             data-search="msme samadhaan delayed payment 3x rbi interest conciliation invoice msefc buyer supplier overdue recovery">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                Contracts &amp; MSME
+              </span>
+              <span class="text-[10px] font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded border border-slate-700/60">
+                Sec 15-18 MSMED Act
+              </span>
+            </div>
+            <h3 class="text-base font-extrabold text-white group-hover:text-purple-300 transition-colors flex items-start gap-2.5">
+              <span class="text-xl shrink-0 mt-0.5">&#128187;</span>
+              <span class="leading-snug">MSME Samadhaan Delayed Payment Petition</span>
+            </h3>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+              Calculate statutory compound interest at 3x RBI Bank Rate (20.25% p.a.) and generate Section 18 MSEFC conciliation petition for overdue buyer payments past 45 days.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-[var(--border)]/60">
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">3x RBI Rate (20.25%)</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">45-Day Statutory Cap</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">samadhaan.msme.gov.in</span>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[var(--border)]/60">
+            <button onclick="openTemplateWorkspace('msme')" class="w-full py-2.5 px-4 rounded-xl bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/40 hover:border-purple-600 font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-xs group-hover:shadow-md min-h-[44px]">
+              <span>Open Interactive Drafter</span>
+              <span class="text-sm transition-transform group-hover:translate-x-1">&#8594;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card: will -->
+        <div class="clio-template-card group bg-[var(--card)] hover:bg-[var(--card-hover)] border border-[var(--border)] hover:border-purple-500/50 rounded-2xl p-5 flex flex-col justify-between transition-all duration-200 shadow-sm hover:shadow-lg relative"
+             data-category="contracts"
+             data-search="will testament codicil inheritance succession asset bequeath property executor witness death estate succession act">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                Contracts &amp; Succession
+              </span>
+              <span class="text-[10px] font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded border border-slate-700/60">
+                Sec 59-63 Succession Act
+              </span>
+            </div>
+            <h3 class="text-base font-extrabold text-white group-hover:text-purple-300 transition-colors flex items-start gap-2.5">
+              <span class="text-xl shrink-0 mt-0.5">&#128220;</span>
+              <span class="leading-snug">Statutory Will &amp; Testament Drafter</span>
+            </h3>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+              Draft a court-admissible simple testamentary will with executor nomination, asset distribution schedules, and 2-independent-witness attestation. Plain white paper valid.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-[var(--border)]/60">
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">Plain Paper Valid</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">2-Witness Attestation</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">Zero Stamp Duty</span>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[var(--border)]/60">
+            <button onclick="openTemplateWorkspace('will')" class="w-full py-2.5 px-4 rounded-xl bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/40 hover:border-purple-600 font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-xs group-hover:shadow-md min-h-[44px]">
+              <span>Open Interactive Drafter</span>
+              <span class="text-sm transition-transform group-hover:translate-x-1">&#8594;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card: gift -->
+        <div class="clio-template-card group bg-[var(--card)] hover:bg-[var(--card-hover)] border border-[var(--border)] hover:border-purple-500/50 rounded-2xl p-5 flex flex-col justify-between transition-all duration-200 shadow-sm hover:shadow-lg relative"
+             data-category="contracts"
+             data-search="gift deed family settlement relative tax exemption 56 2 x transfer of property cash shares property blood relative son daughter spouse">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                Contracts &amp; Tax Safe Harbor
+              </span>
+              <span class="text-[10px] font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded border border-slate-700/60">
+                Sec 122 TPA / 56(2)(x) ITA
+              </span>
+            </div>
+            <h3 class="text-base font-extrabold text-white group-hover:text-purple-300 transition-colors flex items-start gap-2.5">
+              <span class="text-xl shrink-0 mt-0.5">&#127873;</span>
+              <span class="leading-snug">Gift Deed with Sec 56(2)(x) Relative Tax Shield</span>
+            </h3>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+              Audit statutory blood-relative definitions under Section 56(2)(x) for 100% tax-exempt asset transfer (money, shares, gold, property) and generate court-admissible Gift Deed.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-[var(--border)]/60">
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">100% Tax Free Relative</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">Irrevocable Delivery</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">Schedule OS Safe Harbor</span>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[var(--border)]/60">
+            <button onclick="openTemplateWorkspace('gift')" class="w-full py-2.5 px-4 rounded-xl bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/40 hover:border-purple-600 font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-xs group-hover:shadow-md min-h-[44px]">
+              <span>Open Interactive Drafter</span>
+              <span class="text-sm transition-transform group-hover:translate-x-1">&#8594;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card: gst_rev -->
+        <div class="clio-template-card group bg-[var(--card)] hover:bg-[var(--card-hover)] border border-[var(--border)] hover:border-purple-500/50 rounded-2xl p-5 flex flex-col justify-between transition-all duration-200 shadow-sm hover:shadow-lg relative"
+             data-category="tax"
+             data-search="gst revocation cancellation reg-21 form gst reg 21 suo motu non-filing return gstin restore portal tax ca">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                Taxation &amp; CA
+              </span>
+              <span class="text-[10px] font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded border border-slate-700/60">
+                Rule 23 CGST / Sec 30
+              </span>
+            </div>
+            <h3 class="text-base font-extrabold text-white group-hover:text-purple-300 transition-colors flex items-start gap-2.5">
+              <span class="text-xl shrink-0 mt-0.5">&#128260;</span>
+              <span class="leading-snug">GST Revocation of Cancellation (REG-21)</span>
+            </h3>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+              Draft formal Form GST REG-21 Application to restore cancelled GSTIN with 30-to-90 day condonation window calculation, cause submission, and direct portal link.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-[var(--border)]/60">
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">Form GST REG-21</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">30-90 Day Window</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">services.gst.gov.in</span>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[var(--border)]/60">
+            <button onclick="openTemplateWorkspace('gst_rev')" class="w-full py-2.5 px-4 rounded-xl bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/40 hover:border-purple-600 font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-xs group-hover:shadow-md min-h-[44px]">
+              <span>Open Interactive Drafter</span>
+              <span class="text-sm transition-transform group-hover:translate-x-1">&#8594;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card: interim143a -->
+        <div class="clio-template-card group bg-[var(--card)] hover:bg-[var(--card-hover)] border border-[var(--border)] hover:border-purple-500/50 rounded-2xl p-5 flex flex-col justify-between transition-all duration-200 shadow-sm hover:shadow-lg relative"
+             data-category="grievance"
+             data-search="143a interim compensation cheque bounce 138 ni act 20 percent magistrate court complaint recovery fast track relief">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                Citizen Grievance
+              </span>
+              <span class="text-[10px] font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded border border-slate-700/60">
+                Sec 143A NI Act 1881
+              </span>
+            </div>
+            <h3 class="text-base font-extrabold text-white group-hover:text-purple-300 transition-colors flex items-start gap-2.5">
+              <span class="text-xl shrink-0 mt-0.5">&#9878;&#65039;</span>
+              <span class="leading-snug">Section 143A NI Act 20% Interim Compensation</span>
+            </h3>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+              Calculate statutory 20% interim cash recovery in Section 138 cheque bounce trials and generate formal Magistrate Court interlocutory application under Section 143A.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-[var(--border)]/60">
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">20% Cheque Value</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">60-Day Deposit Mandate</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md bg-[var(--card)] border border-[var(--border)] text-slate-300 font-mono">Interlocutory Petition</span>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[var(--border)]/60">
+            <button onclick="openTemplateWorkspace('interim143a')" class="w-full py-2.5 px-4 rounded-xl bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/40 hover:border-purple-600 font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-xs group-hover:shadow-md min-h-[44px]">
+              <span>Open Interactive Drafter</span>
+              <span class="text-sm transition-transform group-hover:translate-x-1">&#8594;</span>
+            </button>
+          </div>
+        </div>
+</div>
 
       <!-- Zero Results State -->
       <div id="template-zero-results" class="hidden text-center py-12 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8">
@@ -2829,7 +3015,7 @@
         <h3 class="text-base font-bold text-white">No matching legal templates found</h3>
         <p class="text-xs text-slate-400 mt-1 max-w-md mx-auto">Try searching for keywords like "cheque", "lease", "cyber", "rti", "rectification", or "gratuity".</p>
         <button onclick="clearTemplateSearch()" class="mt-4 px-4 py-2 rounded-xl bg-purple-600 text-white font-bold text-xs transition">
-          View All 15 Templates
+          View All 20 Templates
         </button>
       </div>
 
@@ -2844,7 +3030,7 @@
         <div class="flex items-center gap-3">
           <button onclick="showTemplateDirectory()" class="px-3.5 py-2 rounded-xl bg-[var(--card-surface)] hover:bg-purple-600/20 text-purple-300 hover:text-white border border-[var(--border)] hover:border-purple-500/40 text-xs font-bold transition flex items-center gap-2 shadow-xs group">
             <span class="text-sm transition-transform group-hover:-translate-x-1">&#8592;</span>
-            <span>All Templates (15)</span>
+            <span>All Templates (20)</span>
           </button>
           <div class="min-w-0">
             <div class="text-[10px] uppercase font-bold tracking-wider text-purple-400">Legal Templates Hub &gt; Active Drafter</div>
@@ -2886,6 +3072,22 @@
           <button onclick="switchVakilCASubTab('explainer')" id="btn-vakil-subtab-explainer" class="px-3 py-1.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-slate-400 hover:text-white font-semibold transition whitespace-nowrap">
             &#128269; IT Notice
           </button>
+          <button onclick="switchVakilCASubTab('msme')" id="btn-vakil-subtab-msme" class="px-3 py-1.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-slate-400 hover:text-white font-semibold transition whitespace-nowrap min-h-[38px]">
+            &#128187; MSME Samadhaan
+          </button>
+          <button onclick="switchVakilCASubTab('will')" id="btn-vakil-subtab-will" class="px-3 py-1.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-slate-400 hover:text-white font-semibold transition whitespace-nowrap min-h-[38px]">
+            &#128220; Will Drafter
+          </button>
+          <button onclick="switchVakilCASubTab('gift')" id="btn-vakil-subtab-gift" class="px-3 py-1.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-slate-400 hover:text-white font-semibold transition whitespace-nowrap min-h-[38px]">
+            &#127873; Gift Deed
+          </button>
+          <button onclick="switchVakilCASubTab('gst_rev')" id="btn-vakil-subtab-gst_rev" class="px-3 py-1.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-slate-400 hover:text-white font-semibold transition whitespace-nowrap min-h-[38px]">
+            &#128260; GST REG-21
+          </button>
+          <button onclick="switchVakilCASubTab('interim143a')" id="btn-vakil-subtab-interim143a" class="px-3 py-1.5 rounded-xl bg-[var(--card)] border border-[var(--border)] text-slate-400 hover:text-white font-semibold transition whitespace-nowrap min-h-[38px]">
+            &#9878;&#65039; Sec 143A
+          </button>
+
         </div>
       </div>
 
@@ -3757,6 +3959,408 @@
 
           <div id="explainer-result-container" class="mt-6 pt-5 border-t border-[var(--border)] space-y-4">
             <!-- Rendered via JS -->
+          </div>
+        </div>
+      </div>
+
+      
+
+      <!-- ================= SUBTAB: MSME SAMADHAAN DELAYED PAYMENT ================= -->
+      <div id="vakil-subtab-content-msme" class="space-y-6 hidden">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <div>
+              <div class="text-[10px] uppercase font-bold tracking-wider text-indigo-400">Section 15-18 MSMED Act 2006</div>
+              <h3 class="text-lg font-bold text-white mt-0.5">MSME Samadhaan Delayed Payment Petition &amp; 3x RBI Interest</h3>
+              <p class="text-xs text-slate-400 mt-1">45-day statutory payment cap with monthly compounding interest at 3 times the RBI Bank Rate (20.25% p.a.).</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <a href="https://samadhaan.msme.gov.in" target="_blank" class="px-3 py-1.5 rounded-xl bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/40 text-xs font-bold transition flex items-center gap-1.5 min-h-[44px]">
+                <span>&#127760;</span> samadhaan.msme.gov.in &#8599;
+              </a>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 overflow-x-auto no-scrollbar mt-4 pt-3 border-t border-[var(--border)] text-xs">
+            <span class="text-slate-400 font-semibold shrink-0">1-Click Test Samples:</span>
+            <button onclick="loadMSMESample('manufacturing')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-indigo-500 text-slate-300 hover:text-white transition whitespace-nowrap min-h-[38px]">
+              &#9889; CNC Components (&#8377;8.5L Overdue)
+            </button>
+            <button onclick="loadMSMESample('it_services')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-indigo-500 text-slate-300 hover:text-white transition whitespace-nowrap min-h-[38px]">
+              &#9889; Software Dev Dues (&#8377;14.2L Overdue)
+            </button>
+            <button onclick="loadMSMESample('trader')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-indigo-500 text-slate-300 hover:text-white transition whitespace-nowrap min-h-[38px]">
+              &#9889; Packaging Raw Material (&#8377;4.8L Overdue)
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+            <h4 class="font-bold text-sm text-white flex items-center gap-2">
+              <span>&#128187;</span> Supplier &amp; Buyer Particulars
+            </h4>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Supplier Enterprise &amp; Udyam Reg</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <input type="text" id="msme-supplier-name" placeholder="Enterprise Legal Name" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+                  <input type="text" id="msme-udyam" placeholder="UDYAM-MH-01-0029102" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 font-mono">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Supplier Address</label>
+                <input type="text" id="msme-supplier-address" placeholder="Bhosari MIDC, Pune, Maharashtra" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Buyer Company Name &amp; GSTIN</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <input type="text" id="msme-buyer-name" placeholder="Buyer Corporate Name" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+                  <input type="text" id="msme-buyer-gstin" placeholder="27AAACS1234F1Z8" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 font-mono">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Invoice Details &amp; Principal Outstanding</label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <input type="text" id="msme-invoice-no" placeholder="INV/2026/089" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+                  <input type="date" id="msme-invoice-date" value="2026-05-15" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+                  <input type="number" id="msme-principal" placeholder="850000" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+                </div>
+              </div>
+              <button onclick="draftMSMEPetition()" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2 min-h-[44px]">
+                <span>&#128187;</span> Compute 3x Interest &amp; Draft MSEFC Petition
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-4">
+            <div id="msme-result-container" class="hidden space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="msme-kpi-cards"></div>
+              <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-3 shadow-sm">
+                <div class="flex items-center justify-between">
+                  <h4 class="font-bold text-sm text-white flex items-center gap-2">
+                    <span>&#128220;</span> Court &amp; Council Admissible MSEFC Petition
+                  </h4>
+                  <button onclick="copyToClipboard('msme-text-pre')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-indigo-500 text-slate-300 text-xs font-semibold transition min-h-[38px]">
+                    &#128203; Copy Petition
+                  </button>
+                </div>
+                <pre id="msme-text-pre" class="p-4 rounded-xl bg-[var(--card-surface)] border border-[var(--border)] font-mono text-[11px] text-slate-200 whitespace-pre-wrap max-h-96 overflow-y-auto select-all"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SUBTAB: STATUTORY WILL & TESTAMENT ================= -->
+      <div id="vakil-subtab-content-will" class="space-y-6 hidden">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <div>
+              <div class="text-[10px] uppercase font-bold tracking-wider text-indigo-400">Sections 59-63 Indian Succession Act 1925</div>
+              <h3 class="text-lg font-bold text-white mt-0.5">Statutory Will &amp; Testament Drafter</h3>
+              <p class="text-xs text-slate-400 mt-1">Court-admissible simple testamentary will. Under Indian Law, registration &amp; stamp duty are optional &mdash; valid on plain white paper with 2 witnesses.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 overflow-x-auto no-scrollbar mt-4 pt-3 border-t border-[var(--border)] text-xs">
+            <span class="text-slate-400 font-semibold shrink-0">1-Click Test Samples:</span>
+            <button onclick="loadWillSample('standard')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-indigo-500 text-slate-300 hover:text-white transition whitespace-nowrap min-h-[38px]">
+              &#9889; Senior Citizen (Flat + FDs to Spouse &amp; Children)
+            </button>
+            <button onclick="loadWillSample('single_beneficiary')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-indigo-500 text-slate-300 hover:text-white transition whitespace-nowrap min-h-[38px]">
+              &#9889; Sole Beneficiary (Entire Estate to Daughter)
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+            <h4 class="font-bold text-sm text-white flex items-center gap-2">
+              <span>&#128220;</span> Testator &amp; Executor Details
+            </h4>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Testator Name &amp; Age</label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <input type="text" id="will-testator-name" placeholder="Ramesh Chandra Sharma" class="sm:col-span-2 w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+                  <input type="number" id="will-testator-age" placeholder="62" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Parent or Spouse Name</label>
+                <input type="text" id="will-parent-spouse" placeholder="Late Shri Harish Chandra Sharma" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Testator Permanent Residence</label>
+                <input type="text" id="will-address" placeholder="Flat 402, Shanti Kunj, Vasant Vihar, New Delhi" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Nominated Executor Name &amp; Address</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <input type="text" id="will-executor-name" placeholder="Anil Sharma (Son/Friend)" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+                  <input type="text" id="will-executor-address" placeholder="Sector 15, Noida, UP" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Asset Bequests Summary</label>
+                <textarea id="will-bequests" rows="3" placeholder="e.g. Residential flat to spouse Sunita Sharma; SBI FDs of Rs 25L equally among 2 children." class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"></textarea>
+              </div>
+              <button onclick="draftStatutoryWill()" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2 min-h-[44px]">
+                <span>&#128220;</span> Assemble Court-Admissible Will Format
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-4">
+            <div id="will-result-container" class="hidden space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="will-kpi-cards"></div>
+              <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-3 shadow-sm">
+                <div class="flex items-center justify-between">
+                  <h4 class="font-bold text-sm text-white flex items-center gap-2">
+                    <span>&#128220;</span> Ready-to-Execute Last Will &amp; Testament
+                  </h4>
+                  <button onclick="copyToClipboard('will-text-pre')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-indigo-500 text-slate-300 text-xs font-semibold transition min-h-[38px]">
+                    &#128203; Copy Will Text
+                  </button>
+                </div>
+                <pre id="will-text-pre" class="p-4 rounded-xl bg-[var(--card-surface)] border border-[var(--border)] font-mono text-[11px] text-slate-200 whitespace-pre-wrap max-h-96 overflow-y-auto select-all"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SUBTAB: GIFT DEED & TAX SAFE HARBOR ================= -->
+      <div id="vakil-subtab-content-gift" class="space-y-6 hidden">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <div>
+              <div class="text-[10px] uppercase font-bold tracking-wider text-indigo-400">Section 122 TPA &amp; Section 56(2)(x) Income Tax Act</div>
+              <h3 class="text-lg font-bold text-white mt-0.5">Gift Deed with Relative Tax Exemption Shield</h3>
+              <p class="text-xs text-slate-400 mt-1">Audit statutory "Relative" safe harbor definitions. Gifts between blood relatives are 100% income tax exempt in the hands of the recipient.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 overflow-x-auto no-scrollbar mt-4 pt-3 border-t border-[var(--border)] text-xs">
+            <span class="text-slate-400 font-semibold shrink-0">1-Click Test Samples:</span>
+            <button onclick="loadGiftSample('father_son')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-indigo-500 text-slate-300 hover:text-white transition whitespace-nowrap min-h-[38px]">
+              &#9889; Father to Son (&#8377;15 Lakh Cash Transfer)
+            </button>
+            <button onclick="loadGiftSample('husband_wife')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-indigo-500 text-slate-300 hover:text-white transition whitespace-nowrap min-h-[38px]">
+              &#9889; Husband to Wife (500 Equity Shares)
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+            <h4 class="font-bold text-sm text-white flex items-center gap-2">
+              <span>&#127873;</span> Donor, Donee &amp; Asset Specification
+            </h4>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Donor Details (Name &amp; PAN)</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <input type="text" id="gift-donor-name" placeholder="Suresh K. Patel" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+                  <input type="text" id="gift-donor-pan" placeholder="ABCPP1234D" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 font-mono">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Donee Details (Name &amp; PAN)</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <input type="text" id="gift-donee-name" placeholder="Hardik S. Patel" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+                  <input type="text" id="gift-donee-pan" placeholder="ABCPP5678E" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 font-mono">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Statutory Relationship (Sec 56(2)(x))</label>
+                <select id="gift-relation" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-indigo-500">
+                  <option value="LINEAL_DESCENDANT">Child / Lineal Descendant (Son/Daughter) &mdash; 100% Tax Exempt</option>
+                  <option value="SPOUSE">Spouse (Husband/Wife) &mdash; 100% Tax Exempt</option>
+                  <option value="BROTHER">Brother / Sister &mdash; 100% Tax Exempt</option>
+                  <option value="LINEAL_ASCENDANT">Parent / Lineal Ascendant (Father/Mother) &mdash; 100% Tax Exempt</option>
+                  <option value="FRIEND_OR_OTHER">Friend / Distant Relative &mdash; Taxable over &#8377;50,000</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Gift Asset Description &amp; Value</label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <input type="text" id="gift-asset-desc" placeholder="Rs 15,00,000 via RTGS" class="sm:col-span-2 w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+                  <input type="number" id="gift-value" placeholder="1500000" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+                </div>
+              </div>
+              <button onclick="generateGiftDeed()" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2 min-h-[44px]">
+                <span>&#127873;</span> Audit Tax Exemption &amp; Generate Gift Deed
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-4">
+            <div id="gift-result-container" class="hidden space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="gift-kpi-cards"></div>
+              <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-3 shadow-sm">
+                <div class="flex items-center justify-between">
+                  <h4 class="font-bold text-sm text-white flex items-center gap-2">
+                    <span>&#128220;</span> Executable Deed of Gift
+                  </h4>
+                  <button onclick="copyToClipboard('gift-text-pre')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-indigo-500 text-slate-300 text-xs font-semibold transition min-h-[38px]">
+                    &#128203; Copy Deed
+                  </button>
+                </div>
+                <pre id="gift-text-pre" class="p-4 rounded-xl bg-[var(--card-surface)] border border-[var(--border)] font-mono text-[11px] text-slate-200 whitespace-pre-wrap max-h-96 overflow-y-auto select-all"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SUBTAB: GST REVOCATION (REG-21) ================= -->
+      <div id="vakil-subtab-content-gst_rev" class="space-y-6 hidden">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <div>
+              <div class="text-[10px] uppercase font-bold tracking-wider text-emerald-400">Rule 23 CGST Rules 2017 &amp; Section 30</div>
+              <h3 class="text-lg font-bold text-white mt-0.5">Form GST REG-21 Revocation of Cancellation Application</h3>
+              <p class="text-xs text-slate-400 mt-1">Restore suo-motu cancelled GSTIN with 30-to-90 day condonation window calculation, cause submission, and direct portal link.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <a href="https://services.gst.gov.in" target="_blank" class="px-3 py-1.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600 text-emerald-300 hover:text-white border border-emerald-500/40 text-xs font-bold transition flex items-center gap-1.5 min-h-[44px]">
+                <span>&#127760;</span> services.gst.gov.in &#8599;
+              </a>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 overflow-x-auto no-scrollbar mt-4 pt-3 border-t border-[var(--border)] text-xs">
+            <span class="text-slate-400 font-semibold shrink-0">1-Click Test Samples:</span>
+            <button onclick="loadGSTRevocationSample('hospitalization')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-emerald-500 text-slate-300 hover:text-white transition whitespace-nowrap min-h-[38px]">
+              &#9889; Hospitalization / Medical Distress
+            </button>
+            <button onclick="loadGSTRevocationSample('it_glitch')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-emerald-500 text-slate-300 hover:text-white transition whitespace-nowrap min-h-[38px]">
+              &#9889; Portal Glitch &amp; Bank Freeze Overcome
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+            <h4 class="font-bold text-sm text-white flex items-center gap-2">
+              <span>&#128260;</span> Taxpayer &amp; Cancellation Particulars
+            </h4>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Trade Name &amp; GSTIN</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <input type="text" id="gst-trade-name" placeholder="Mahalaxmi Traders" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500">
+                  <input type="text" id="gst-gstin" placeholder="24AABCM9102K1ZT" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500 font-mono">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Principal Business Address</label>
+                <input type="text" id="gst-address" placeholder="Ring Road, Surat, Gujarat" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Cancellation Order No. &amp; Date</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <input type="text" id="gst-order-no" placeholder="ZA240826019201Z" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500">
+                  <input type="date" id="gst-order-date" value="2026-08-10" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Justification &amp; Dues Cleared Undertaking</label>
+                <textarea id="gst-justification" rows="3" placeholder="Explain reasonable cause for non-filing (e.g. medical distress) and confirm all pending GSTR-3B filed with late fee." class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500"></textarea>
+              </div>
+              <button onclick="draftGSTRevocation()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2 min-h-[44px]">
+                <span>&#128260;</span> Verify Timeline &amp; Draft Form GST REG-21
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-4">
+            <div id="gst-result-container" class="hidden space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="gst-kpi-cards"></div>
+              <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-3 shadow-sm">
+                <div class="flex items-center justify-between">
+                  <h4 class="font-bold text-sm text-white flex items-center gap-2">
+                    <span>&#128220;</span> Official Form GST REG-21 Application
+                  </h4>
+                  <button onclick="copyToClipboard('gst-text-pre')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-emerald-500 text-slate-300 text-xs font-semibold transition min-h-[38px]">
+                    &#128203; Copy Form Text
+                  </button>
+                </div>
+                <pre id="gst-text-pre" class="p-4 rounded-xl bg-[var(--card-surface)] border border-[var(--border)] font-mono text-[11px] text-slate-200 whitespace-pre-wrap max-h-96 overflow-y-auto select-all"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SUBTAB: SECTION 143A INTERIM COMPENSATION ================= -->
+      <div id="vakil-subtab-content-interim143a" class="space-y-6 hidden">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <div>
+              <div class="text-[10px] uppercase font-bold tracking-wider text-purple-400">Section 143A Negotiable Instruments Act 1881</div>
+              <h3 class="text-lg font-bold text-white mt-0.5">Section 143A NI Act 20% Interim Compensation Application</h3>
+              <p class="text-xs text-slate-400 mt-1">Interim cash recovery of up to 20% of the cheque face value during Section 138 trial. Mandatory 60-day deposit order by Magistrate.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 overflow-x-auto no-scrollbar mt-4 pt-3 border-t border-[var(--border)] text-xs">
+            <span class="text-slate-400 font-semibold shrink-0">1-Click Test Samples:</span>
+            <button onclick="load143AInterimSample('business_loan')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-purple-500 text-slate-300 hover:text-white transition whitespace-nowrap min-h-[38px]">
+              &#9889; Business Loan Dishonour (&#8377;12L Cheque &rarr; &#8377;2.4L Interim)
+            </button>
+            <button onclick="load143AInterimSample('property_advance')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-purple-500 text-slate-300 hover:text-white transition whitespace-nowrap min-h-[38px]">
+              &#9889; Property Advance Cheque (&#8377;25L Cheque &rarr; &#8377;5L Interim)
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4 shadow-sm">
+            <h4 class="font-bold text-sm text-white flex items-center gap-2">
+              <span>&#9878;&#65039;</span> Court Case &amp; Dishonoured Cheque Particulars
+            </h4>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Complainant &amp; Accused</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <input type="text" id="int-complainant" placeholder="Vikram Aditya" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-purple-500">
+                  <input type="text" id="int-accused" placeholder="Rajesh Singhania" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-purple-500">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Court Name &amp; Case C.C. Number</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <input type="text" id="int-court" placeholder="MM Court, Esplanade, Mumbai" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-purple-500">
+                  <input type="text" id="int-cc-no" placeholder="CC/1402/2026" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-purple-500">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Cheque Number, Date &amp; Amount</label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <input type="text" id="int-cheque-no" placeholder="891024" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-purple-500">
+                  <input type="date" id="int-cheque-date" value="2026-06-20" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-purple-500">
+                  <input type="number" id="int-amount" placeholder="1200000" class="w-full bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-purple-500">
+                </div>
+              </div>
+              <button onclick="calculate143AInterim()" class="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2 min-h-[44px]">
+                <span>&#9878;&#65039;</span> Calculate 20% Relief &amp; Draft Application
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-4">
+            <div id="int-result-container" class="hidden space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="int-kpi-cards"></div>
+              <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-3 shadow-sm">
+                <div class="flex items-center justify-between">
+                  <h4 class="font-bold text-sm text-white flex items-center gap-2">
+                    <span>&#128220;</span> Magistrate Court Application u/s 143A
+                  </h4>
+                  <button onclick="copyToClipboard('int-text-pre')" class="px-3 py-1 rounded-lg bg-[var(--card-surface)] border border-[var(--border)] hover:border-purple-500 text-slate-300 text-xs font-semibold transition min-h-[38px]">
+                    &#128203; Copy Application
+                  </button>
+                </div>
+                <pre id="int-text-pre" class="p-4 rounded-xl bg-[var(--card-surface)] border border-[var(--border)] font-mono text-[11px] text-slate-200 whitespace-pre-wrap max-h-96 overflow-y-auto select-all"></pre>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -8957,7 +9561,12 @@
       'taxregime': '&#128202; New vs Old Tax Regime Decider (FY 26-27)',
       '44ada': '&#128188; Section 44ADA Presumptive Tax Calculator',
       'rectification': '&#128184; Section 154 CPC Tax Rectification & Refund Application',
-      'explainer': '&#128269; Income Tax Notice Explainer & Responder'
+      'explainer': '&#128269; Income Tax Notice Explainer & Responder',
+      'msme': '&#128187; MSME Samadhaan Delayed Payment Petition (Sec 18 MSMED Act)',
+      'will': '&#128220; Statutory Will & Testament Drafter (Sec 59-63 Succession Act)',
+      'gift': '&#127873; Gift Deed with Sec 56(2)(x) Relative Tax Exemption',
+      'gst_rev': '&#128260; Form GST REG-21 Application for Revocation of Cancellation',
+      'interim143a': '&#9878;&#65039; Section 143A NI Act 20% Interim Compensation Application'
     };
 
     // Enhance existing switchVakilCASubTab to update title and button styles
@@ -8968,7 +9577,7 @@
         titleElem.innerHTML = subtabTitles[subtabKey];
       }
       
-      const subtabs = ['consumer', 'rti', 'cyber', 'notices', 'agreements', 'affidavit', 'taxregime', '44ada', 'rectification', 'explainer'];
+      const subtabs = ['consumer', 'rti', 'cyber', 'notices', 'agreements', 'affidavit', 'taxregime', '44ada', 'rectification', 'explainer', 'msme', 'will', 'gift', 'gst_rev', 'interim143a'];
       subtabs.forEach(k => {
         const el = document.getElementById(`vakil-subtab-content-${k}`);
         if (el) {
@@ -8985,6 +9594,428 @@
         }
       });
     };
+
+
+
+
+
+    /* ==================== 5 NEW ONLINE LEGAL & CA SUITE EVENT HANDLERS ==================== */
+
+    // 1. MSME Samadhaan Engine
+    function loadMSMESample(type) {
+      if (type === 'manufacturing') {
+        document.getElementById('msme-supplier-name').value = 'Apex Precision Components LLP';
+        document.getElementById('msme-udyam').value = 'UDYAM-MH-01-0029102';
+        document.getElementById('msme-supplier-address').value = 'Bhosari MIDC, Pune, Maharashtra';
+        document.getElementById('msme-buyer-name').value = 'Sterling Heavy Infra Pvt Ltd';
+        document.getElementById('msme-buyer-gstin').value = '27AAACS1234F1Z8';
+        document.getElementById('msme-invoice-no').value = 'INV/2026/089';
+        document.getElementById('msme-invoice-date').value = '2026-05-15';
+        document.getElementById('msme-principal').value = '850000';
+      } else if (type === 'it_services') {
+        document.getElementById('msme-supplier-name').value = 'CloudScale Tech Solutions Pvt Ltd';
+        document.getElementById('msme-udyam').value = 'UDYAM-KA-03-0091823';
+        document.getElementById('msme-supplier-address').value = 'HSR Layout, Bengaluru, Karnataka';
+        document.getElementById('msme-buyer-name').value = 'Global Edutech Media Ltd';
+        document.getElementById('msme-buyer-gstin').value = '29AABCG8192K1Z4';
+        document.getElementById('msme-invoice-no').value = 'CS/MAY/26';
+        document.getElementById('msme-invoice-date').value = '2026-04-10';
+        document.getElementById('msme-principal').value = '1420000';
+      } else {
+        document.getElementById('msme-supplier-name').value = 'Krishna Packaging Works';
+        document.getElementById('msme-udyam').value = 'UDYAM-GJ-01-0044192';
+        document.getElementById('msme-supplier-address').value = 'GIDC Vatva, Ahmedabad, Gujarat';
+        document.getElementById('msme-buyer-name').value = 'Navkar Pharma Formulations';
+        document.getElementById('msme-buyer-gstin').value = '24AABCN1029L1ZM';
+        document.getElementById('msme-invoice-no').value = 'KP/26-27/102';
+        document.getElementById('msme-invoice-date').value = '2026-06-01';
+        document.getElementById('msme-principal').value = '480000';
+      }
+      draftMSMEPetition();
+    }
+
+    async function draftMSMEPetition() {
+      const payload = {
+        supplier_enterprise_name: document.getElementById('msme-supplier-name').value || 'Apex Precision Components LLP',
+        supplier_udyam_reg: document.getElementById('msme-udyam').value || 'UDYAM-MH-01-0029102',
+        supplier_address: document.getElementById('msme-supplier-address').value || 'Bhosari MIDC, Pune',
+        buyer_company_name: document.getElementById('msme-buyer-name').value || 'Sterling Heavy Infra Pvt Ltd',
+        buyer_gstin: document.getElementById('msme-buyer-gstin').value || '27AAACS1234F1Z8',
+        buyer_address: 'Nariman Point, Mumbai, Maharashtra',
+        invoice_number: document.getElementById('msme-invoice-no').value || 'INV/2026/089',
+        invoice_date: document.getElementById('msme-invoice-date').value || '2026-05-15',
+        principal_amount_inr: parseFloat(document.getElementById('msme-principal').value) || 850000.0,
+        agreed_credit_days: 30
+      };
+
+      try {
+        const resp = await fetch('/api/v1/legal/draft-msme-samadhaan', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+
+        document.getElementById('msme-result-container').classList.remove('hidden');
+
+        document.getElementById('msme-kpi-cards').innerHTML = `
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Statutory 3x Rate</div>
+            <div class="text-2xl font-bold text-emerald-400 mt-1">${data.financial_breakdown.statutory_rate_annual_pct}% p.a.</div>
+            <div class="text-[10px] text-slate-400 mt-1">3x RBI Bank Rate (Sec 16)</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Compound Interest</div>
+            <div class="text-2xl font-bold text-amber-400 mt-1">&#8377;${data.financial_breakdown.interest_amount_inr.toLocaleString('en-IN')}</div>
+            <div class="text-[10px] text-amber-300 mt-1">Delayed for ${data.financial_breakdown.delay_days} days</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Total MSEFC Claim</div>
+            <div class="text-2xl font-bold text-white mt-1">&#8377;${data.financial_breakdown.total_claimable_inr.toLocaleString('en-IN')}</div>
+            <div class="text-[10px] text-blue-400 mt-1">Principal + Compounded Interest</div>
+          </div>
+        `;
+
+        document.getElementById('msme-text-pre').textContent = data.petition_text;
+
+        // History logging
+        fetch('/api/v1/user/history', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            category: 'MSME_SAMADHAAN',
+            title: `MSME Delayed Payment: ${payload.buyer_company_name}`,
+            summary: `Claim: &#8377;${data.financial_breakdown.total_claimable_inr.toLocaleString('en-IN')} (${data.docket_number})`,
+            data: {docket: data.docket_number, total: data.financial_breakdown.total_claimable_inr}
+          })
+        }).catch(()=>{});
+      } catch (err) {
+        console.error('MSME error:', err);
+      }
+    }
+
+    // 2. Statutory Will Engine
+    function loadWillSample(type) {
+      if (type === 'standard') {
+        document.getElementById('will-testator-name').value = 'Ramesh Chandra Sharma';
+        document.getElementById('will-testator-age').value = '62';
+        document.getElementById('will-parent-spouse').value = 'Late Shri Harish Chandra Sharma';
+        document.getElementById('will-address').value = 'Flat 402, Shanti Kunj, Vasant Vihar, New Delhi';
+        document.getElementById('will-executor-name').value = 'Anil Sharma';
+        document.getElementById('will-executor-address').value = 'Sector 15, Noida, Uttar Pradesh';
+        document.getElementById('will-bequests').value = 'Residential Flat in Vasant Vihar to spouse Sunita Sharma; Fixed Deposits of Rs 25,00,000 equally among 2 children Anil & Priya.';
+      } else {
+        document.getElementById('will-testator-name').value = 'Kavita Deshmukh';
+        document.getElementById('will-testator-age').value = '55';
+        document.getElementById('will-parent-spouse').value = 'Late Anand Deshmukh';
+        document.getElementById('will-address').value = 'Plot 12, Baner Road, Pune, Maharashtra';
+        document.getElementById('will-executor-name').value = 'Advocate Rajesh Joshi';
+        document.getElementById('will-executor-address').value = 'FC Road, Pune, Maharashtra';
+        document.getElementById('will-bequests').value = 'Entire estate including residential bungalow at Baner and demat share portfolio to daughter Ananya Deshmukh absolutely.';
+      }
+      draftStatutoryWill();
+    }
+
+    async function draftStatutoryWill() {
+      const payload = {
+        testator_name: document.getElementById('will-testator-name').value || 'Ramesh Chandra Sharma',
+        testator_age: parseInt(document.getElementById('will-testator-age').value) || 62,
+        testator_parent_or_spouse: document.getElementById('will-parent-spouse').value || 'Late Shri Harish Chandra Sharma',
+        testator_address: document.getElementById('will-address').value || 'Vasant Vihar, New Delhi',
+        executor_name: document.getElementById('will-executor-name').value || 'Anil Sharma',
+        executor_address: document.getElementById('will-executor-address').value || 'Noida, UP',
+        bequests: [
+          {"asset_description": document.getElementById('will-bequests').value || 'All movable & immovable estate', "beneficiary_name": "Named Legal Heirs", "relationship": "Family", "share_percentage": "100%"}
+        ],
+        witness_1_name: "Dr. Ashok Mehta (MBBS)",
+        witness_2_name: "Advocate Rajesh Khanna"
+      };
+
+      try {
+        const resp = await fetch('/api/v1/legal/draft-statutory-will', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+
+        document.getElementById('will-result-container').classList.remove('hidden');
+
+        document.getElementById('will-kpi-cards').innerHTML = `
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Statutory Stamp Duty</div>
+            <div class="text-2xl font-bold text-emerald-400 mt-1">&#8377;0 (Zero)</div>
+            <div class="text-[10px] text-slate-400 mt-1">Plain Paper Legally Valid</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Witness Requirement</div>
+            <div class="text-2xl font-bold text-white mt-1">2 Witnesses</div>
+            <div class="text-[10px] text-slate-400 mt-1">Sec 63(c) Succession Act</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Registration Status</div>
+            <div class="text-2xl font-bold text-purple-400 mt-1">Optional</div>
+            <div class="text-[10px] text-purple-300 mt-1">Section 18 Registration Act</div>
+          </div>
+        `;
+
+        document.getElementById('will-text-pre').textContent = data.will_text;
+
+        // History logging
+        fetch('/api/v1/user/history', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            category: 'STATUTORY_WILL',
+            title: `Last Will: ${payload.testator_name}`,
+            summary: `Executor: ${payload.executor_name} (${data.docket_number})`,
+            data: {docket: data.docket_number}
+          })
+        }).catch(()=>{});
+      } catch (err) {
+        console.error('Will error:', err);
+      }
+    }
+
+    // 3. Gift Deed Engine
+    function loadGiftSample(type) {
+      if (type === 'father_son') {
+        document.getElementById('gift-donor-name').value = 'Suresh K. Patel';
+        document.getElementById('gift-donor-pan').value = 'ABCPP1234D';
+        document.getElementById('gift-donee-name').value = 'Hardik S. Patel';
+        document.getElementById('gift-donee-pan').value = 'ABCPP5678E';
+        document.getElementById('gift-relation').value = 'LINEAL_DESCENDANT';
+        document.getElementById('gift-asset-desc').value = 'Rs 15,00,000 via RTGS Bank Transfer';
+        document.getElementById('gift-value').value = '1500000';
+      } else {
+        document.getElementById('gift-donor-name').value = 'Manoj Agarwal';
+        document.getElementById('gift-donor-pan').value = 'ABCPM9910H';
+        document.getElementById('gift-donee-name').value = 'Pooja Agarwal';
+        document.getElementById('gift-donee-pan').value = 'ABCPK1829L';
+        document.getElementById('gift-relation').value = 'SPOUSE';
+        document.getElementById('gift-asset-desc').value = '500 Equity Shares of Reliance Industries Ltd (Demat Transfer)';
+        document.getElementById('gift-value').value = '1450000';
+      }
+      generateGiftDeed();
+    }
+
+    async function generateGiftDeed() {
+      const payload = {
+        donor_name: document.getElementById('gift-donor-name').value || 'Suresh K. Patel',
+        donor_pan: document.getElementById('gift-donor-pan').value || 'ABCPP1234D',
+        donor_address: 'Navrangpura, Ahmedabad, Gujarat',
+        donee_name: document.getElementById('gift-donee-name').value || 'Hardik S. Patel',
+        donee_pan: document.getElementById('gift-donee-pan').value || 'ABCPP5678E',
+        donee_address: 'Prahlad Nagar, Ahmedabad, Gujarat',
+        relationship: document.getElementById('gift-relation').value,
+        gift_type: 'MOVABLE_CASH_OR_SECURITIES',
+        asset_description: document.getElementById('gift-asset-desc').value || 'Rs 15,00,000 RTGS',
+        estimated_value_inr: parseFloat(document.getElementById('gift-value').value) || 1500000.0
+      };
+
+      try {
+        const resp = await fetch('/api/v1/legal/generate-gift-deed', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+
+        document.getElementById('gift-result-container').classList.remove('hidden');
+
+        document.getElementById('gift-kpi-cards').innerHTML = `
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Sec 56(2)(x) Tax Status</div>
+            <div class="text-2xl font-bold ${data.is_tax_exempt_relative ? 'text-emerald-400' : 'text-rose-400'} mt-1">
+              ${data.is_tax_exempt_relative ? '100% Tax Free' : 'Taxable (31.2%)'}
+            </div>
+            <div class="text-[10px] text-slate-400 mt-1">${data.is_tax_exempt_relative ? 'Statutory Relative Safe Harbor' : 'Non-Relative (>Rs 50k)'}</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Tax Liability (Donee)</div>
+            <div class="text-2xl font-bold text-white mt-1">&#8377;${data.tax_liability_donee_inr.toLocaleString('en-IN')}</div>
+            <div class="text-[10px] text-emerald-400 mt-1">&#8377;0 on Relative Gifts</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Enforceability</div>
+            <div class="text-2xl font-bold text-indigo-400 mt-1">Irrevocable</div>
+            <div class="text-[10px] text-slate-400 mt-1">Sec 122 Transfer of Property Act</div>
+          </div>
+        `;
+
+        document.getElementById('gift-text-pre').textContent = data.gift_deed_text;
+
+        // History logging
+        fetch('/api/v1/user/history', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            category: 'GIFT_DEED',
+            title: `Gift Deed: ${payload.donor_name} &rarr; ${payload.donee_name}`,
+            summary: `Value: &#8377;${payload.estimated_value_inr.toLocaleString('en-IN')} (${data.docket_number})`,
+            data: {docket: data.docket_number}
+          })
+        }).catch(()=>{});
+      } catch (err) {
+        console.error('Gift error:', err);
+      }
+    }
+
+    // 4. GST Revocation Engine
+    function loadGSTRevocationSample(type) {
+      if (type === 'hospitalization') {
+        document.getElementById('gst-trade-name').value = 'Mahalaxmi Traders';
+        document.getElementById('gst-gstin').value = '24AABCM9102K1ZT';
+        document.getElementById('gst-address').value = 'Ring Road, Surat, Gujarat';
+        document.getElementById('gst-order-no').value = 'ZA240826019201Z';
+        document.getElementById('gst-order-date').value = '2026-08-10';
+        document.getElementById('gst-justification').value = 'The proprietor suffered serious medical complications requiring intensive hospitalization. All pending GSTR-3B & GSTR-1 returns have now been duly filed along with applicable late fees and interest.';
+      } else {
+        document.getElementById('gst-trade-name').value = 'Falcon Logistics Solutions';
+        document.getElementById('gst-gstin').value = '27AAACF8910J1Z3';
+        document.getElementById('gst-address').value = 'Bhiwandi, Thane, Maharashtra';
+        document.getElementById('gst-order-no').value = 'ZA270726048192X';
+        document.getElementById('gst-order-date').value = '2026-07-25';
+        document.getElementById('gst-justification').value = 'Severe working capital disruption and portal authentication lock caused unintentional filing delay. The applicant has now deposited all tax arrears and reconciled GSTR-2B.';
+      }
+      draftGSTRevocation();
+    }
+
+    async function draftGSTRevocation() {
+      const payload = {
+        taxpayer_trade_name: document.getElementById('gst-trade-name').value || 'Mahalaxmi Traders',
+        gstin: document.getElementById('gst-gstin').value || '24AABCM9102K1ZT',
+        principal_place_address: document.getElementById('gst-address').value || 'Surat, Gujarat',
+        cancellation_order_number: document.getElementById('gst-order-no').value || 'ZA240826019201Z',
+        cancellation_order_date: document.getElementById('gst-order-date').value || '2026-08-10',
+        reason_category: 'NON_FILING_OVERCOME',
+        justification_details: document.getElementById('gst-justification').value || 'Pending returns filed with late fees.'
+      };
+
+      try {
+        const resp = await fetch('/api/v1/tax/draft-gst-revocation', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+
+        document.getElementById('gst-result-container').classList.remove('hidden');
+
+        document.getElementById('gst-kpi-cards').innerHTML = `
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">30-Day Standard Window</div>
+            <div class="text-sm font-bold text-white mt-1">${data.statutory_timeline.normal_window_30_days}</div>
+            <div class="text-[10px] text-slate-400 mt-1">Section 30(1) CGST Act</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">90-Day Condonation</div>
+            <div class="text-sm font-bold text-amber-400 mt-1">${data.statutory_timeline.condonation_window_90_days}</div>
+            <div class="text-[10px] text-amber-300 mt-1">JC / Commissioner Powers</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Status</div>
+            <div class="text-sm font-bold text-emerald-400 mt-1">${data.statutory_timeline.is_within_standard_window ? 'Within Time' : 'Condonation Needed'}</div>
+            <div class="text-[10px] text-slate-400 mt-1">Direct e-Filing on GSTN</div>
+          </div>
+        `;
+
+        document.getElementById('gst-text-pre').textContent = data.application_text;
+
+        // History logging
+        fetch('/api/v1/user/history', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            category: 'GST_REVOCATION',
+            title: `GST Revocation: ${payload.gstin}`,
+            summary: `Trade: ${payload.taxpayer_trade_name} (${data.docket_number})`,
+            data: {docket: data.docket_number, gstin: payload.gstin}
+          })
+        }).catch(()=>{});
+      } catch (err) {
+        console.error('GST error:', err);
+      }
+    }
+
+    // 5. Section 143A NI Act Interim Compensation
+    function load143AInterimSample(type) {
+      if (type === 'business_loan') {
+        document.getElementById('int-complainant').value = 'Vikram Aditya';
+        document.getElementById('int-accused').value = 'Rajesh Singhania';
+        document.getElementById('int-court').value = 'Metropolitan Magistrate Court, Esplanade, Mumbai';
+        document.getElementById('int-cc-no').value = 'CC/1402/2026';
+        document.getElementById('int-cheque-no').value = '891024';
+        document.getElementById('int-cheque-date').value = '2026-06-20';
+        document.getElementById('int-amount').value = '1200000';
+      } else {
+        document.getElementById('int-complainant').value = 'Meera Nambiar';
+        document.getElementById('int-accused').value = 'Pradeep Developers Pvt Ltd';
+        document.getElementById('int-court').value = 'JMFC Court, Shivaji Nagar, Pune';
+        document.getElementById('int-cc-no').value = 'CC/902/2026';
+        document.getElementById('int-cheque-no').value = '441092';
+        document.getElementById('int-cheque-date').value = '2026-05-18';
+        document.getElementById('int-amount').value = '2500000';
+      }
+      calculate143AInterim();
+    }
+
+    async function calculate143AInterim() {
+      const payload = {
+        complainant_name: document.getElementById('int-complainant').value || 'Vikram Aditya',
+        accused_name: document.getElementById('int-accused').value || 'Rajesh Singhania',
+        court_name: document.getElementById('int-court').value || 'MM Court, Esplanade, Mumbai',
+        case_cc_number: document.getElementById('int-cc-no').value || 'CC/1402/2026',
+        cheque_number: document.getElementById('int-cheque-no').value || '891024',
+        cheque_amount_inr: parseFloat(document.getElementById('int-amount').value) || 1200000.0,
+        cheque_date: document.getElementById('int-cheque-date').value || '2026-06-20'
+      };
+
+      try {
+        const resp = await fetch('/api/v1/legal/calculate-143a-interim', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+
+        document.getElementById('int-result-container').classList.remove('hidden');
+
+        document.getElementById('int-kpi-cards').innerHTML = `
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Statutory Ceiling</div>
+            <div class="text-2xl font-bold text-white mt-1">20%</div>
+            <div class="text-[10px] text-slate-400 mt-1">Section 143A(2) NI Act</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Interim Cash Recovery</div>
+            <div class="text-2xl font-bold text-purple-400 mt-1">&#8377;${data.interim_compensation_inr.toLocaleString('en-IN')}</div>
+            <div class="text-[10px] text-purple-300 mt-1">Direct deposit to Complainant</div>
+          </div>
+          <div class="bg-[var(--card-surface)] border border-[var(--border)] rounded-xl p-4">
+            <div class="text-[11px] text-[var(--muted-foreground)]">Deposit Mandate</div>
+            <div class="text-2xl font-bold text-emerald-400 mt-1">60 Days</div>
+            <div class="text-[10px] text-slate-400 mt-1">From order date (+30 extension)</div>
+          </div>
+        `;
+
+        document.getElementById('int-text-pre').textContent = data.magistrate_application_text;
+
+        // History logging
+        fetch('/api/v1/user/history', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            category: 'INTERIM_143A',
+            title: `Sec 143A Interim: ${payload.case_cc_number}`,
+            summary: `20% Relief: &#8377;${data.interim_compensation_inr.toLocaleString('en-IN')} (${data.docket_number})`,
+            data: {docket: data.docket_number, interim: data.interim_compensation_inr}
+          })
+        }).catch(()=>{});
+      } catch (err) {
+        console.error('143A error:', err);
+      }
+    }
 
 
 </script>
